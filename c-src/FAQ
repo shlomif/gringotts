@@ -1,0 +1,359 @@
+			    -=   The Gringotts FAQ   =-
+
+
+			  -=        The Project        =-
+
+
+Q: Why Gringotts, in first place?
+
+A: The name comes from a famous book saga for children, by J.K.Rowling, and it
+   is the name of a bank, famous for its extreme safety. If you still have
+   doubts, the best thing you can do is to read the books - they're cool! :) The
+   idea of the program comes from a similar program I once used under Windows -
+   I can't remember its name. Since I had the desire to program something about
+   security, I started this. Now the application is quite different from that,
+   because of all the people who gave me invaluable advice... :)
+
+
+			  -=        On Security        =-
+
+
+Q: You define it a strongbox. How safe it is, actually?
+
+A: Very safe, and not entirely safe. If a malicious user put his hands on a file
+   created with Gringotts (Grg, from now on), there's virtually nothing he can
+   do to open it without knowing the password. It can't retrieve any information
+   about the content - neither the type of password, nor the kind of data
+   contained. It's all locked. 
+
+
+Q: What if the attacker can access the system I'm working into?
+
+A: It still has barely a remote chance to read them. The memory is protected,
+   and neither users nor root can spy it; the data that are written to temporary
+   files are coded with temporary keys, so they're safe, too. Data is also
+   protected from paging, and gets overwritten with random data at exit, so
+   after the use of Gringotts he can't get anything dumping the memory you wrote
+   to, or the swap file.
+
+
+Q: What if it can see my screen??
+
+A: Don't joke. It's impossible to protect anything in these conditions... or
+   maybe it is... ;-) I've received an important advice on this,  and I'm
+   working on it :)
+
+
+Q: Amazing! It's totally safe!
+
+A: No :( Grg is built on top of Gtk+, and even if these are very safe
+   libraries, they aren't designed with the same goal as Grg in mind. They would
+   be too slow, for istance. So, it's still true that nothing gets paged and no
+   one can spy in the memory, but not all the data gets securely erased after
+   use. Not clipboard, nor the editor buffer, for instance. Be careful. I'm
+   working on it, anyway.
+
+
+Q: Ok, ok. What else does it provide?
+
+A: Some other cute features. It allows the user to securely delete files, in
+   such a way that no one can recover them later. It allows one to use different
+   password than just strings.
+
+
+Q: Nice! Tell me more on this!
+
+A: Well, the user can use three kind of passwords. The first is plain text, the
+   usual ones. Simple character blah-blah-blah. The second, files. You can use
+   any regular file to protect data. If an attacker doesn't have that file, he
+   can't even dream to open your data. Third, floppy disks. This is the closest
+   thing to smart cards available on common PC's: insert your key disk, use it
+   to protect your data, and store it in a safe place. As long as no one can
+   access it, no one will be able to read your passwords... :)
+   The nice thing about this all is that it's impossible to tell what kind of
+   password you used to protect your data by just looking at the file!
+
+
+Q: Is there something I should know about string passwords?
+
+A: Hmm... they can be up to 32 bytes in size... and when you first type your
+   password, a gauge will tell you how "good" it is.  You have an idea of how
+   secure your data will be.
+   My advice for this choice is the usual: try to use as many characters,
+   symbols and numbers you can, and be sure not to forget it.
+
+
+Q: Is there something I should know about passfiles?
+
+A: When using a file, the "password quality" is very secure because both its
+   length and its alphabet size will be considerably larger. If you're on your
+   "private" system, at home, and want to store your data in a "public" place
+   (i.e. an internet repository), you can use this feature to simply ensure a
+   much better password quality.
+   The bad thing is that, if you aren't careful, the number of possible keys
+   will be *much smaller* using files than using passwords: in fact, you'll need
+   to choose a file that won't change, and if you are on a "public" system (i.e.
+   logged on a system where other users are logged on, too) the choice could be
+   quite limited. So, a brute-force attack that simply tries all the files in
+   the system is relatively simple to do. Don't rely on simply deleting a file;
+   it can be undeleted, so it's better use the `wipe file' tool present in
+   Gringotts. The best thing to do is probably to store the file on a removable
+   device (i.e. a floppy disk) and bring it with you... and keep it safe.
+
+   Here are some notes to take into consideration:
+
+   * Pay extra attention to the integrity of the file you use: if you lose it or
+     it gets corrupted, you'll lose your data! There's NO recovering!
+   * Only the *content* of the file is used. So, you can change file name, date,
+     permissions as much as you want; as long as the content is preserved, it
+	 will work.
+   * Don't rely on being able to generate the same password file. For example,
+     if you compile a program and use the binary as password, don't assume you
+	 will be able to re-generate the /very same/ file: next time, something can
+	 be different, and even a slight difference will lead to a different result,
+	 trashing your data! This is valid also for "generated" images, especially
+	 using lossy algorithms (JPEG...).
+   * Generating files from commandline (i.e.
+
+	    echo "password" | bzip2 -c | gzip -c > file.pwd
+
+	 ) may be a good idea, *but* be careful, all the same: be sure to erase the
+	 command from the bash history (~/.bash_history), and, when you delete the
+	 generated file (and the bash history, in case), to ensure they can't be
+	 undeleted.
+   * Password files (and strings) are hashed into keys, to be used by the coder.
+     These keys are generally of 256 bits, which are 32 bytes. So, if you use a
+	 good file (that is, a file in which bytes can assume all the 255 values,
+	 and aren't disposed in any particular pattern, for example in some binary
+	 data), a 32 byte file is just as good as a 512 Kb one.
+     Is this a weakness? No! A good hashing algorithm (and the two used by
+	 Gringotts are the best) will scramble the data in a very impredictable 
+	 manner, so there's NO way to guess the key without knowing the password. In
+	 a word: just pick a password and use it, and don't worry! :-)
+   * It's better not to leave files on the hard drive, anyway. Store them in
+     something you can protect such as a CD, a USB flash drive, etc, and keep it
+	 safe. Remember to securely wipe files from hard disk when you delete them!
+
+Q: Is there something I should know about keydisks?
+
+A: Using floppy disks as passwords can effectively improve safety of your data.
+   If you choose the disk carefully, it's very unlikely that an opponent can
+   find one *exactly* equal to yours. Again, here are some considerations:
+
+   * choose non-standard disks. Avoid use of default linux boot disks, for
+     example. They can easily be downloaded on the Internet. Use a disk for a
+     while, add files to it, remove them, read some more -- and then use it.
+   * the good thing of this feature is that as long as an attacker can't access
+     the "keydisk", he can't access the data, either. The bad case would be if
+     the disks in your collection are few. So: don't let the keydisk hang around
+     on your desktop! Hide it in a safe place!
+   * magnetic media are delicate: dust, heat or a weak magnetic field can make
+     your data unrecoverable. BEWARE! Store the disk in a cool place, wrapped,
+	 and far from magnetic fields.
+   * ...and make backups! In UNIX, it's simply a matter of
+
+        cat /dev/fd0 > floppy.img
+
+     then you can protect the image as you like: compress it, copy it to other
+     disks (make backups of your disk and hide them; it's the best solution),
+     store it on a safe and less error-prone CD-R.. only, take care not to leave
+	 the image file on the hard disk, and to wipe it securely. It can be
+	 restored with
+
+        cat floppy.img > /dev/fd0
+
+
+Q: Anything else?
+
+A: Please be aware that the most common way to crack a password isn't done
+   analyzing the file, but analyzing the owner! Don't use obvious passwords, and
+   please, please don't write them in paper sheets, booklets, unprotected PDAs..
+   In a word: be careful!
+
+
+Q: What if I lose the password/passfile/keydisk?
+
+A: Short answer: no way back. Please, be careful with it.
+   Long answer: there can't be a way back, in a safe system. Gringotts could do
+   two things to grant a solution: tell you the password, and be able to recover
+   the data with another one, or without any. In the first case, the password
+   should be stored in the file, and an attacker could retrieve it pretending to
+   be you. The only way to prevent this would be to protect it... with another
+   password. So what's the use? The second solution is really stupid: if you can
+   access to the data without the password, anyone could.
+   Another short answer: protect Your Password!!!
+
+
+			-=         Configurations        =-
+
+
+Q: What's that `strong random' stuff, in ./configure and/or commandline?
+
+A: You can make the program use /dev/random instead of /dev/urandom as the
+   source of random data. I mean with `strong randomness'. You do this by
+   specifying the option `--enable-strong-random' in ./configure for
+   Gringotts <= 1.2.0, or by passing the commandline option `--strong-random' in
+   later versions.
+   /dev/random returns only true random data; when no more random data are
+   available, it stops and waits for the entropy sources.
+   In such cases, it will block the application. When alot of random data is 
+   required (i.e. in saving and loading of files, etc), it can be a real pain.
+   Using /dev/urandom will provide a constant stream of numbers, calculating
+   them with a cryptographically strong algorythm based on the true random data
+   available. This means that it's almost as secure as the other method, but
+   much faster.
+
+
+Q: Why are there many algorithms to choose among. What are they used for?
+
+A: There are three types of algorithms to choose. Basically, the data you submit
+   to Grg are compressed, then encrypted using a key. This key is obtained by
+   hashing the password you provide. You can choose the algorithms used to
+   perform these three operations: encrypting, hashing and compressing. Of
+   course, you can also decide the compression ratio. "0" actually means that
+   you didn't use any compression algorithm.
+
+
+Q: Which is the best encryption algorithm to use?
+
+A: Your mileage may vary. Basically, all the algorithms used are safe ones.
+   They are chosen among the contestants to be AES; LOKI97, SAFER+ and CAST-256
+   which didn't get to the final phase; first was Rijndael (128), that was
+   designed to be the AES. Second prize went to Serpent, while Twofish was
+   third. Rijndael 256 is a 256-bit-block version of Rijndael, thus a little
+   safer. 3DES (Triple DES) was the algorithm of choice before AES, after DES
+   was proved to be unsafe.
+   Serpent is thought to be the safest, while Rijndael is the best tradeoff
+   between speed and safety. Recent attacks seem to have cast doubts on both of
+   them, while Twofish seems to be unaffected. But no one knows for sure if
+   these attacks are really exploitable.
+   For more information see http://www.counterpane.com/crypto-gram-0209.html#1
+   and http://www.counterpane.com/crypto-gram-0210.html#2
+   Anyways, we are in the field of theoretical speculation, since no one has yet
+   found a real, effective attack that breaks these algorithms. Choose one, and
+   be happy! :)
+
+
+Q: Which is the best hashing algorithm to use?
+
+A: Again, it's a matter of personal preference. Both SHA1 and RIPEMD-160 are
+   designed to be safe, and no one yet has proved they aren't. 
+   Just pick one of them: SHA1 is american, and Ripemd-160 is european, if this
+   means something to you.
+
+
+Q: Which is the best compression algorithm to use?
+
+A: This is a more interesting question. BZip2 is slower, but ZLib (gzip) grants
+   lower compression rates. If you prefer to have smaller files, you'll probably
+   want to choose BZip2; on the other hand, if you don't have a powerful PC, or
+   you just don't care, ZLib will be your choice. Notice that if you have few
+   data to encode, ZLib will still generate smaller files than BZip2.
+
+
+			  -=         Internals         =-
+
+
+Q: Why didn't you use SHA-256 for hashing?
+
+A: To generate the key, Gringotts use the P2K (Password-to-Key) algorithm used
+   by OpenPGP. Using 256-bit hashes would not improve the security, compared to
+   use of 160-bit ones; and since Grg already uses SHA1, it would be somehow a
+   duplication.
+
+
+Q: How does the secure file erasing tool work?
+
+A: First, it overwrites the file data several times, using random data. You can
+   control how many times to repeat the process. Then it unlinks the file, and
+   actually deletes it. This way, the previously written data should be
+   impossible to recover.
+
+
+Q: Haven't you read the Gutmann paper? You don't do as he says! Are you mad?
+
+A: I've read it. Before calling me names ;-), read it again to the end: it
+   clearly states that 35 passages are just too many for modern drives. Being
+   almost all (E)PRML drives, `a few passages of random scrubbing is the best
+   you can do' (sic). Gringotts allows you to make up to 32 of such passes...
+   Ops... don't you know what the Gutmann paper is? It's a document called
+   `Securing deletion of data from magnetic and solid-state memory', by Peter
+   Gutmann, of Auckland University (NZ). It's really good; you can find it at
+   http://www.cs.auckland.ac.nz/~pgut001/pubs/secure_del.html
+
+
+Q: Nice! So this feature is perfect! :)
+
+A: :( Aw, no. As you can read in the man page of shred(1), of which it obviously
+   shares the concept, it works under an important assumption: the filesystem
+   must overwrite the files "in place". This is the case of, for example, Ext2
+   and FAT, but not of some modern journalling FSs (such as ReiserFS, XFS, JFS)
+   nor of network file systems. Moreover, a network file system could store a
+   copy of the file somewhere remotely, and that one wouldn't be properly wiped.
+   This is valid also for RAID systems, of course. Be careful.
+
+
+Q: Aw! It's SLOW! :( What's up with it?
+
+A: Unfortunately, it is. If you save large amounts of data, the various
+   operations involved in encoding them took quite a lot of time. The actual
+   performances varies depending on the system you use: on my K6-3 466 saving a
+   1 Mb file takes as long as 1.5 minutes, on my Athlon XP1600 about 15 seconds.
+   It depends on many factors: memory speed, processor speed, hard disk speed...
+   anyway, there's much to do for speed, so expect consistent speedups as new
+   versions are released.
+
+Q: Hey, I can't use [ gdb | Electric Fence | something else ] to debug it!
+
+A: The security measures grg adopts have the effect to corrupt the way it
+   behaves with debuggers. Gdb should work fine, as long as you launch it on a
+   non-SUID binary; on the other hand, grg won't produce core dumps, so you must
+   gdb it "on the fly". It erases also the environmental variables, so programs
+   like Electric Fence will get confused; compile with the --disable-env-check
+   switch to ./configure to disable this erasure -- you won't be able to debug
+   the very env validation code, tough. Finally, ptrace and strace won't work on
+   SUID binaries, just like gdb.
+
+
+			  -=      Future releases      =-
+
+
+Q: How can I know when a new version of Gringotts is released?
+
+A: Subscribe to the project in Freshmeat (http://freshmeat.net). I'll update the
+   record regularly.
+
+
+Q: Will Grg be ever ported to other systems?
+
+A: It should be reasonably compatible with many UNIXes. If it isn't, please tell
+   me. It is currently supported in Linux (RedHat, Mandrake, Gentoo, Debian) and
+   FreeBSD.
+   I don't think I'll ever port it to native Windows systems. They lack many of
+   the special features Gringotts uses to ensure data safety. I simply don't 
+   want to spend time to find workarounds for them. Anyway, maybe it can be
+   ported to the cygwin environment; stay tuned! ;)
+   Gringotts could be ported easily to PHP, and published on the web, providing
+   to have a good random number generator. I'll consider it.
+   I have also an idea of porting it to Python, making it a little bit more
+   cross-platform. It depends on the effective availability of libmcrypt and
+   mhash for that platform, tough. We'll see :)
+
+
+Q: Will you implement asymmetric (public/private) key encryption?
+
+A: No. It's not in the scope of Grg. But, as many people are asking me it, I'm
+   beginning to consider the possibility. Please tell me if you'd like this, and
+   I'll consider it further... :)
+
+
+Q: What about console/commandline operability?
+
+A: This is another thing people keep asking. In latest versions, some basic
+   functionalities have been added; I'd like to add some more, but I don't know
+   how exactly to design them. Every suggestion is greatly appreciated... what
+   would you like to be able to do, exactly?
+
+
+        --thanks, thanks, thanks to Dan Frezza for correcting
+          my english!! :-)

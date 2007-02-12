@@ -1,0 +1,139 @@
+Hi! :)
+	A short preamble: Gringotts is the name of the inviolable wizard bank in a
+famous children book series, known in all the wizardry world for the truculent
+fate that awaits all the wannabe robbers. I think it's a quite fitting name for
+a program which purpose is to secure sensitive data, isn't it? :-)
+
+Gringotts is a small utility for Linux and other unices that allows you to jot
+down sensitive data (passwords, credit card numbers, PINs, friends' addresses)
+in an easy-to-read, easy-to-access, and most of all very secure form. It is
+inspired by a similar program for Windows (sorry, I can't remember its name)
+that I used for quite a while (when I was a windows-ist)... it was very useful!
+
+For encryptions, Gringotts makes use of the libGringotts library, that is based
+upon libMCrypt and MHash by Nikos Mavroyanopoulos; in addition, it uses GTK+ 2
+for the interface. Actually, it was born as a programming exercise for these
+libraries, but the program itself is quite cute and useful all the same... in my
+humble opinion!
+
+Being Free Sofware, you're *encouraged* to take the code and do just whatever
+you want with it.. as long as you retain the original copyright note, of course.
+Every contribution is more than welcome! Now it's time to read INSTALL, or if
+you want to step into the project. Please, do!
+
+Have a nice day, and thank you very much,
+
+    Mano :)
+
+------------------------------------------------------------------------
+
+
+	Features
+
+This application aims to be as complete and (ehm) feature-ful (?) as possible, 
+with a stress on lightness and simplicity. Currently it features:
+
+    * Fast, lightweight GTK2 interface
+    * Good integration with GNOME; still, it's not a GNOME application, so it's
+      perfectly integrated in all the others environments as well
+    * High stress on safety & security
+    * Not only "normal" string passwords can be used, but any file can be the
+	  password to your data (see FAQ on this). You can even use entire floppy
+	  disks!
+	* It features a "password-expiration" system, that warns you when the
+	  password gets too old.
+    * Highly customizable
+    * 8 encryption algorithms are available (via libGringotts):
+          o The AES winner:
+                + RIJNDAEL-128
+          o AES finalists:
+                + SERPENT
+                + TWOFISH
+          o Other AES contestants:
+                + CAST 256
+                + SAFER+
+                + LOKI97
+          o Other strong algorithms:
+                + 3DES
+                + RIJNDAEL-256
+    * 2 160-bit hash algorithms, used to generate the key
+          o SHA1
+          o RIPEMD 160
+    * 2 compression types, with 4 compression levels each
+          o ZLib
+          o BZip2
+    * Complete & easy management of entries' order
+	* Small files can be embedded into any entry
+    * Complete Search function.
+    * Very intuitive usability, you won't need any manual (yet :)
+    * The standard linux file utility identifies Gringotts files correctly, from
+      version 3.38
+
+Of course, the program lacks of many, many features, still.. please feel free to
+write me <mailto:mano78@users.sourceforge.net> if you have some particular wish!
+
+------------------------------------------------------------------------
+
+
+	Authors
+
+This program has been originally designed & written by Germano Rizzo (aka Mano)
+(aka me :-) <mano78@users.sourceforge.net>. I also translated it into italian.
+
+Additional (precious :-) coding and french translation by Nicholas Pouillon (aka
+Nipo) <nipo@ssji.net>.
+
+German translation by Hermann J. Beckers <hjb-rheine@t-online.de>.
+
+Nice patches and a major bugfix by James Antill	<james@and.org>.
+
+Many other people have given their unvaluable contribution to this project. Not
+in any particular order:
+
+	Bob Mathews <bobmathews@alumni.calpoly.edu>
+	Anders Nordby <anders@FreeBSD.org>
+	Gabriele Giorgetti <gabriele_giorgetti@tin.it>
+	Lawrence MacIntyre <lpz@ornl.gov>
+	Gianluca Montecchi <gianluca@pluto.linux.it>
+	Kurt Hindenburg <khindenburg@iquest.net>
+	Christos Zoulas <christos@zoulas.com>
+	William McVey <wam@cisco.com>
+	Dan Frezza <dan@frezza.org>
+	Sebastien Bonnegent <sbonnegent@mediapps.com>
+	Rene Puls <rene.puls@gmxpro.de>
+	Phillip Hofmeister <plhofmei@zionlth.org>
+	Kevin Tucker <kevintucker@optushome.com.au>
+	Christian Lang <email@christian-lang.de>
+	Pavel Tavoda <tavoda@thr.sk>
+	Sherwin J. Singer <singer@chemistry.ohio-state.edu>
+	Terry Nightingale <tnight@pobox.com>
+	Antonella Beccaria <shalom@linux.it>
+	Pierluigi Perri <perri@netjus.org>
+	Leonardo Boshell <p@kapcoweb.com>
+	Ted Rolle <ted@php.net>
+	Davide Savazzi <davide.savazzi@corefandango.net>
+	Patrick <pit@netvigator.com>
+	Karl Lattimer <k.lattimer@nnc-consultancy.co.uk>
+	Massimiliano Bini <maxbini@inwind.it>
+	Jason Hildebrand <jason@peaceworks.ca>
+	Goetz Waschk <waschk@informatik.uni-rostock.de>
+	Timothy H. Keitt <tkeitt@mail.utexas.edu>
+
+------------------------------------------------------------------------
+
+
+	Copyright notes
+
+The "Gringotts" application itself is (c) (better, copyleft) 2002 by 
+Germano Rizzo <mano78@users.sourceforge.net>.
+
+You can use, modify and redistribute them /as you wish/ (it's free software! :),
+under the terms of the GNU General Public License
+<http://www.gnu.org/copyleft/gpl.html>, v.2 or later.
+
+My deepest thanks to the Free Software Foundation <http://www.fsf.org> and the
+GNU project <http://www.gnu.org>for having created such a wonderful concept!
+
+Being quoted by Joanna K. Rowling's books, the very name Gringotts could be (c),
+(r) or (tm) by her or by someone in her behalf, altough I'm not aware of it. In
+case I'm violating any right, just let me know.

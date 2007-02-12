@@ -1,0 +1,35 @@
+    --------------------------------
+   --- Changes from release 1.2.8 ---
+    --------------------------------
+
+2005-05-14 Mano <mano78@users.sourceforge.net>
+
+	* applied shlomif-3 patches, which enable compilation on newer
+          systems and add a few nice features
+	* added russian and polish translations
+	* improved german translation
+	* the spec file isn't maintained anymore directly by me
+
+2006-03-28 Shlomi Fish <shlomif@iglu.org.il>
+	* Fix a data corruption bug with the search function.
+	* Fix the "Find again" functionality.
+	* Eliminate many compilation warnings caused due to a confusion between 
+	signed and unsigned char strings.
+	* Integrated a patch by wwp that:
+		* Fixes proto for find() in src/grg_entries_vis.h (not really used anyway)
+		* Fixes compilation on FC3 (missing #includes to stdio.h)
+		* Adds sensitivity to HTAB environment variable to change the 
+		horizontal tab value in the main edition widget (default: 8)
+
+2006-04-04 Shlomi Fish <shlomif@iglu.org.il>
+	* Fix a data corruption bug caused by the previous data corruption bug
+	fix, in which before the search the entry's widget's text was not synced 
+	into memory.
+
+2007-01-01 Shlomi Fish <shlomif@iglu.org.il>
+	* Made sure that the "Preferences" dialog does not crash gringotss, due
+	to saying "g_free (fdesc)" instead of 
+	"pango_font_description_free (fdesc)".
+	* Released as gringotts-shlomif-0.4.4
+
+

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=@GRG_CAP_NAME@
+GenericName=Electronic "Strongbox"
+Comment=An electronic strongbox
+Version=1.0
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/gringotts.xpm
+Exec=gringotts
+Terminal=false
+Type=Application
+TryExec=
+X-GNOME-DocPath=
+Name[it_IT]=@GRG_CAP_NAME@
+GenericName[it_IT]="Cassaforte" elettronica
+Comment[it_IT]=Una cassaforte elettronica
+Name[fr]=@GRG_CAP_NAME@
+GenericName[fr]="Coffre-fort" électronique
+Comment[fr]=Un coffre-fort électronique
+Name[de]=@GRG_CAP_NAME@
+GenericName[de]=Elektronischer "Tresor"
+Comment[de]=Ein elektronischer "Tresor"

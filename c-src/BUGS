@@ -1,0 +1,23 @@
+If you remove a floppy disk during reading, the program will exit with a
+SIGBUS error. Not so kind of it, uhu?
+
+It all occupies just too much memory. Moreover, it's mlock()ed, so the
+program lives always on the edge... :(
+
+If you open the pref windows and press OK without change anything, the file
+becomes saveable even if you didn't actually make any modification. I'm sorry, 
+but the severity of the problem isn't worth the complexity of the fix, IMHO.
+
+When opening files with non-latin1 filenames, the title of the window in some
+cases (i.e. in RH 8.0+) won't display properly. This seems to be more GTK+ than
+Gringotts-related.
+
+If you open a file, and switching to a different sheet, without making
+modifications and saving it again, and then re-open it - then gringotts will
+load the original sheet. This is because the current sheet identifier is stored
+in the file, and the file is not saved. For now, a temporary workaround is to
+make a small and meaningless modification in the new sheet, and then save the
+file.
+
+With some 2.6.9 and 2.6.10 kernels, Gringotts segfaults. Please remove the
+setuid bit from the executable when running on such systems.

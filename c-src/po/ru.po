@@ -1,0 +1,1043 @@
+# russian translation of Gringotts.
+# Copyright (C) 2003 THE Gringotts'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Gringotts package.
+# Unatine <unatine@zmail.ru>, 2003.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: gringotts 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-05-14 10:34+0200\n"
+"PO-Revision-Date: 2004-02-06 09:44+0300\n"
+"Last-Translator: Unatine <unatine@zmail.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/grg_entries.c:393
+msgid "Invalid entry number"
+msgstr "Неверный номер записи"
+
+#: src/grg_entries.c:495 src/gringotts.c:508 src/gringotts.c:747
+msgid "assembling data"
+msgstr "сборка данных"
+
+#: src/grg_entries.c:504 src/grg_attachs.c:268
+msgid "saving"
+msgstr "сохранение"
+
+#: src/grg_entries.c:509 src/gringotts.c:511 src/gringotts.c:750
+msgid "cleaning up"
+msgstr "очистка"
+
+#: src/grg_entries.c:632
+msgid ""
+"The file has been created with a newer version of Gringotts. If you save it "
+"using this one, some formatting can be lost."
+msgstr ""
+"Файл был создан в более новой версии Gringotts. Если вы сохраните его "
+"используя данную версию, некоторое форматирование может быть потеряно."
+
+#: src/grg_entries_vis.c:248
+msgid "The text searched could not be found!"
+msgstr "Искомый текст не может быть найден!"
+
+#: src/grg_entries_vis.c:255
+msgid "Wrap around?"
+msgstr "Переносить?"
+
+#: src/grg_entries_vis.c:256
+msgid "Text not found. Continue search from beginning?"
+msgstr "Текст не найден. Продолжить с начала?"
+
+#: src/grg_list.c:95
+msgid " Index "
+msgstr " Список"
+
+#: src/grg_list.c:103
+msgid " Title "
+msgstr " Название"
+
+#: src/grg_list.c:213
+msgid "Index of entries"
+msgstr "Список записей"
+
+#: src/grg_list.c:247
+msgid "Move up"
+msgstr "Переместить вверх"
+
+#: src/grg_list.c:251
+msgid "Move down"
+msgstr "Переместить вниз"
+
+#: src/grg_menus.c:110
+#, fuzzy
+msgid "_New"
+msgstr "Новый"
+
+#: src/grg_menus.c:113
+#, fuzzy
+msgid "_Open"
+msgstr "Открыть"
+
+#: src/grg_menus.c:115
+#, fuzzy
+msgid "_Save"
+msgstr "Сохранить"
+
+#: src/grg_menus.c:117
+#, fuzzy
+msgid "Save _As"
+msgstr "Сохранить как"
+
+#: src/grg_menus.c:119
+#, fuzzy
+msgid "_Revert"
+msgstr "Вернуть"
+
+#: src/grg_menus.c:121
+#, fuzzy
+msgid "_Close"
+msgstr "Закрыть"
+
+#: src/grg_menus.c:132
+#, fuzzy
+msgid "_Quit"
+msgstr "Выйти"
+
+#: src/grg_menus.c:136
+#, fuzzy
+msgid "_File"
+msgstr "Файл"
+
+#: src/grg_menus.c:149
+msgid "Add"
+msgstr "Добавить"
+
+#: src/grg_menus.c:151
+msgid "Remove"
+msgstr "Удалить"
+
+#: src/grg_menus.c:154
+#, fuzzy
+msgid "Cu_t"
+msgstr "Вырезать"
+
+#: src/grg_menus.c:156
+#, fuzzy
+msgid "_Copy"
+msgstr "Копировать"
+
+#: src/grg_menus.c:158
+#, fuzzy
+msgid "_Paste"
+msgstr "Вставить"
+
+#: src/grg_menus.c:162
+#, fuzzy
+msgid "_Find"
+msgstr "Найти"
+
+#: src/grg_menus.c:164
+#, fuzzy
+msgid "Find a_gain"
+msgstr "Найти снова"
+
+#: src/grg_menus.c:167
+#, fuzzy
+msgid "Change Pass_word"
+msgstr "Изменить пароль"
+
+#: src/grg_menus.c:171
+#, fuzzy
+msgid "P_references"
+msgstr "Настройки"
+
+#: src/grg_menus.c:174
+#, fuzzy
+msgid "_Edit"
+msgstr "Правка"
+
+#: src/grg_menus.c:187
+#, fuzzy
+msgid "_First"
+msgstr "Первый"
+
+#: src/grg_menus.c:190
+#, fuzzy
+msgid "_Back"
+msgstr "Назад"
+
+#: src/grg_menus.c:193
+#, fuzzy
+msgid "For_ward"
+msgstr "Вперед"
+
+#: src/grg_menus.c:197
+#, fuzzy
+msgid "_Last"
+msgstr "Последний"
+
+#: src/grg_menus.c:201
+#, fuzzy
+msgid "_Index"
+msgstr "Список"
+
+#: src/grg_menus.c:205
+#, fuzzy
+msgid "_Navigation"
+msgstr "Навигация"
+
+#: src/grg_menus.c:218
+#, fuzzy
+msgid "_Wipe file"
+msgstr "Уничтожить файл"
+
+#: src/grg_menus.c:222
+#, fuzzy
+msgid "_Tools"
+msgstr "Инструменты"
+
+#: src/grg_menus.c:235
+#, fuzzy
+msgid "_Security monitor"
+msgstr "Монитор безопасности"
+
+#: src/grg_menus.c:244
+#, fuzzy
+msgid "_About"
+msgstr "О программе"
+
+#: src/grg_menus.c:247
+#, fuzzy
+msgid "_Help"
+msgstr "Помощь"
+
+#: src/grg_widgets.c:66
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/grg_widgets.c:241
+msgid "Find a string"
+msgstr "Найти строку"
+
+#: src/grg_widgets.c:254
+msgid "Enter the string to find:"
+msgstr "Введите строку для поиска:"
+
+#: src/grg_widgets.c:264
+msgid "Search only in this entry"
+msgstr "Искать только в данной записи"
+
+#: src/grg_widgets.c:268
+msgid "Case sensitive"
+msgstr "Чувствительность к регистру"
+
+#: src/grg_widgets.c:315 src/grg_widgets.c:317 src/grg_widgets.c:354
+msgid "Please wait"
+msgstr "Пожайлуста ждите"
+
+#: src/grg_widgets.c:393 src/gringotts.c:1395 src/grg_pwd.c:112
+#: src/grg_popt.c:283
+msgid "The file does not exist"
+msgstr "Файл не существует"
+
+#: src/gringotts.c:138
+msgid " version "
+msgstr " версия "
+
+#: src/gringotts.c:139 src/gringotts.c:152 src/gringotts.c:154
+#: src/gringotts.c:156 src/gringotts.c:1767
+msgid "(c)"
+msgstr "©"
+
+#: src/gringotts.c:141
+msgid "Authors"
+msgstr "Авторы"
+
+#: src/gringotts.c:145
+msgid ""
+"Gringotts is a small but (hopely ;) useful utility that stores sensitive "
+"data (passwords, credit card numbers, friends' addresses) in an organized "
+"and most of all very secure form.\n"
+"It uses libmcrypt and libmhash to provide a strong level of encryption, just "
+"trying to be as trustworthy as possible.\n"
+"\n"
+"This program is released under the GNU GPL, v.2 or later\n"
+"See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
+msgstr ""
+"Gringotts это маленькая (надеюсь) полезная утилита, которая хранит важные "
+"данные (пароли, номера кредитных карт, адреса друзей) в организованной и в "
+"очень безопасной форме.\n"
+"Она использует libmcrypt и limhash что бы предоставить высокий уровень "
+"шифрования, просто попробуйте довериться ей.\n"
+"\n"
+"Эта программа выпущена под лицензией GNU GPL v.2 или более поздней\n"
+"Смотрите файл COPYING или http://www.gnu.org/copyleft/gpl.html"
+
+#: src/gringotts.c:155
+msgid "the name"
+msgstr "имя"
+
+#: src/gringotts.c:267 src/gringotts.c:627 src/gringotts.c:935
+#: src/gringotts.c:1149
+msgid "New file"
+msgstr "Новый файл"
+
+#: src/gringotts.c:416
+msgid "Save?"
+msgstr "Сохранить?"
+
+#: src/gringotts.c:418
+msgid ""
+"Some changes have not been saved.\n"
+"Do you wish to save them now?"
+msgstr ""
+"Некоторые изменения не сохранены.\n"
+"Вы хотите сохранить их сейчас?"
+
+#: src/gringotts.c:470 src/gringotts.c:1337
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: src/gringotts.c:471
+msgid ""
+"You'll lose all the changes from\n"
+"last save! Are you sure?"
+msgstr ""
+"Вы потеряете все изменения с\n"
+"последнего сохранения! Вы уверены?"
+
+#: src/gringotts.c:475 src/gringotts.c:735
+msgid "loading"
+msgstr "загрузка"
+
+#: src/gringotts.c:484 src/gringotts.c:613 src/grg_popt.c:65
+msgid "You've selected a directory or a symlink"
+msgstr "Вы выбрали директорию или символическую ссылку"
+
+#: src/gringotts.c:491 src/gringotts.c:620 src/grg_popt.c:61
+msgid "The selected file doesn't exists"
+msgstr "Выбранный файл не существует"
+
+#: src/gringotts.c:529 src/gringotts.c:573 src/gringotts.c:680
+#: src/gringotts.c:715 src/gringotts.c:768 src/gringotts.c:798
+#: src/gringotts.c:1069 src/gringotts.c:1112 src/grg_popt.c:83
+#: src/grg_popt.c:107 src/grg_popt.c:138 src/grg_popt.c:154
+msgid "Gringotts internal error. Cannot finish operation."
+msgstr "Внутренняя ошибка Gringotts. Не могу закончить операцию."
+
+#: src/gringotts.c:541 src/gringotts.c:697 src/grg_popt.c:98
+msgid "The file appears to be corrupted!"
+msgstr "Файл выглядит поврежденным!"
+
+#: src/gringotts.c:548 src/gringotts.c:705 src/grg_popt.c:102
+msgid "File is too big"
+msgstr "Файл слишком большой"
+
+#: src/gringotts.c:555 src/gringotts.c:688 src/grg_popt.c:93
+msgid "Uh-oh! I can't read from the file!"
+msgstr "Не могу прочитать из файла"
+
+#: src/gringotts.c:563 src/gringotts.c:781 src/gringotts.c:1094
+#: src/grg_popt.c:148
+msgid "Problem with libmcrypt, probably a faulty installation"
+msgstr "Проблема с libmcrypt, возможно повреждена исталляция"
+
+#: src/gringotts.c:586 src/gringotts.c:834
+msgid ""
+"The current password is expired.\n"
+"You should change it, or modify this setting in the preferences"
+msgstr ""
+"Срок действия данного пароля истек.\n"
+"Вы должны его изменить, или изменить этот параметр в настройках"
+
+#: src/gringotts.c:662 src/grg_popt.c:89
+msgid "This file doesn't seem to be a valid Gringotts one!"
+msgstr "Этот файл не выглядит файлом Gringotts!"
+
+#: src/gringotts.c:775 src/grg_popt.c:142
+msgid "Wrong password! Re-enter it"
+msgstr "Неверный пароль! Введите его еще раз"
+
+#: src/gringotts.c:788 src/grg_popt.c:162
+msgid "Saved data contain invalid UTF-8 chars"
+msgstr "Сохраненные данные содержать неверные UTF-8 символы"
+
+#: src/gringotts.c:849 src/grg_pwd.c:79
+msgid "Open..."
+msgstr "Открыть..."
+
+#: src/gringotts.c:927 src/grg_popt.c:117
+msgid "You must enter a valid password!"
+msgstr "Вы должны ввести правильный пароль!"
+
+#: src/gringotts.c:945
+msgid "My first page"
+msgstr "Моя первая страница"
+
+#: src/gringotts.c:960
+msgid "New title..."
+msgstr "Новый заголовок..."
+
+#: src/gringotts.c:961
+msgid "New title for this entry:"
+msgstr "Новый заголовок для данной записи:"
+
+#: src/gringotts.c:1012
+msgid "I can't overwrite a directory or a symlink"
+msgstr "Не могу перезаписать директорию или символическую ссылку"
+
+#: src/gringotts.c:1020
+msgid "Overwrite?"
+msgstr "Перезаписать?"
+
+#: src/gringotts.c:1022
+msgid "Do you want to overwrite the existing file?"
+msgstr "Вы хотитет перезаписать существующий файл?"
+
+#: src/gringotts.c:1036
+msgid "Couldn't backup old file"
+msgstr "Не могу создать резервный файл"
+
+#: src/gringotts.c:1077
+msgid "Error in compression! Probably a zlib problem"
+msgstr "Ошибка компрессии! Возможно проблема zlib"
+
+#: src/gringotts.c:1085
+msgid "Uh-oh! I can't write to the file!"
+msgstr "Не могу записать в файл!"
+
+#: src/gringotts.c:1102
+msgid "Too many data to write"
+msgstr "Слишком много данных для записи"
+
+#: src/gringotts.c:1130 src/gringotts.c:1358
+msgid "Save as...."
+msgstr "Сохранить как..."
+
+#: src/gringotts.c:1163
+msgid "Title..."
+msgstr "Заголовок..."
+
+#: src/gringotts.c:1164
+msgid "Title for the new entry:"
+msgstr "Заголовок для новой записи:"
+
+#: src/gringotts.c:1165
+msgid "New"
+msgstr "Новый"
+
+#: src/gringotts.c:1189 src/gringotts.c:1400
+msgid "Confirm..."
+msgstr "Подтвердите..."
+
+#: src/gringotts.c:1190
+msgid "Are you sure you want to remove this entry?"
+msgstr "Вы уверены что хотите удалить эту запись?"
+
+#: src/gringotts.c:1213
+msgid "Wrong password"
+msgstr "Неверный пароль"
+
+#: src/gringotts.c:1230
+msgid "Password successfully changed"
+msgstr "Пароль успешно изменен"
+
+#: src/gringotts.c:1314 src/grg_prefs.c:365
+msgid "Select file..."
+msgstr "Выберите файл..."
+
+#: src/gringotts.c:1339
+msgid ""
+"After this, there's no way to\n"
+"recover the file. Are you sure?"
+msgstr ""
+"После этого не будет пути\n"
+"восстановить файл. Вы уверены?"
+
+#: src/gringotts.c:1380
+msgid "File to wipe"
+msgstr "Файл для уничтожения"
+
+#: src/gringotts.c:1401 src/grg_popt.c:286
+msgid ""
+"Are you sure you want to wipe this file?\n"
+"Its content will be securely erased, so no\n"
+"recover is possible."
+msgstr ""
+"Вы уверены что хотите уничтожить данный файл?\n"
+"Его содержимое будет уничтожено, так что \n"
+"не будет возможности восстановить."
+
+#: src/gringotts.c:1409
+msgid "wiping file"
+msgstr "уничтожение файла"
+
+#: src/gringotts.c:1418 src/grg_popt.c:301
+msgid "File wiping failed"
+msgstr "Ошибка уничтожение файла"
+
+#: src/gringotts.c:1502
+#, fuzzy
+msgid "E_dit..."
+msgstr "_Правка..."
+
+#: src/gringotts.c:1522
+msgid "Go to last entry"
+msgstr "Перейти к последней записи"
+
+#: src/gringotts.c:1525
+msgid "Go to next entry"
+msgstr "Перейти к следующей записи"
+
+#: src/gringotts.c:1531
+msgid "View index"
+msgstr "Посмотреть список"
+
+#: src/gringotts.c:1537
+msgid "Go to previous entry"
+msgstr "Перейти к предыдущей записи"
+
+#: src/gringotts.c:1540
+msgid "Go to first entry"
+msgstr "Перейти к первой записи"
+
+#: src/gringotts.c:1554
+#, c-format
+msgid "Security level: %s"
+msgstr "Уровень безопасности: %s"
+
+#: src/gringotts.c:1558 src/grg_prefs.c:590
+msgid "Security"
+msgstr "Безопасность"
+
+#: src/gringotts.c:1573
+msgid "New document"
+msgstr "Новый документ"
+
+#: src/gringotts.c:1578
+msgid "Open document"
+msgstr "Открыть документ"
+
+#: src/gringotts.c:1580
+msgid "Save document"
+msgstr "Сохранить документ"
+
+#: src/gringotts.c:1582
+msgid "Close document"
+msgstr "Закрыть документ"
+
+#: src/gringotts.c:1587
+msgid "Cut selection"
+msgstr "Вырезать выделение"
+
+#: src/gringotts.c:1589
+msgid "Copy selection"
+msgstr "Копировать выделение"
+
+#: src/gringotts.c:1592
+msgid "Paste selection"
+msgstr "Вставить выделение"
+
+#: src/gringotts.c:1598
+msgid "Search for text"
+msgstr "Поиск текста"
+
+#: src/gringotts.c:1603
+msgid "Add an entry"
+msgstr "Добавить запись"
+
+#: src/gringotts.c:1605
+msgid "Remove this entry"
+msgstr "Удалить данную запись"
+
+#: src/gringotts.c:1610 src/grg_prefs.c:411
+msgid "Preferences"
+msgstr "Настройки"
+
+#: src/gringotts.c:1615
+msgid "Quit Gringotts"
+msgstr "Выход"
+
+#: src/gringotts.c:1632
+msgid "Attached files"
+msgstr "Вложенные файлы"
+
+#: src/gringotts.c:1643
+msgid "Add a new attachment"
+msgstr "Добавить новое вложение"
+
+#: src/gringotts.c:1645
+msgid "Remove this attachment"
+msgstr "Удалить данное вложение"
+
+#: src/gringotts.c:1648
+msgid "Save this attachment"
+msgstr "Сохранить данное вложение"
+
+#: src/gringotts.c:1651
+msgid "Info on this attachment"
+msgstr "Информация о данном вложении"
+
+#: src/gringotts.c:1653
+msgid "Change comment"
+msgstr "Изменить комментарий"
+
+#: src/gringotts.c:1678
+msgid "List of attached files"
+msgstr "Список вложенный файлов"
+
+#: src/gringotts.c:1767
+msgid "version"
+msgstr "версия"
+
+#: src/gringotts.c:1769
+msgid "released under GNU General Public License (GPL) v.2 or later"
+msgstr "выпущено под GNU General Public License (GPL) v.2 или более поздней"
+
+#: src/gringotts.c:1771
+msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
+msgstr "Смотрите COPYING или http://www.gnu.org/copyleft/gpl.html"
+
+#: src/gringotts.c:1785 src/grg_prefs.c:148
+msgid "Invalid preferences file. Resetting to defaults."
+msgstr "Неверный файл настроек. Сброс к настройкам по умолчанию."
+
+#: src/gringotts.c:1811
+msgid "File to load does not exists or it is invalid"
+msgstr "Файл для открытия не существует или поврежден"
+
+#: src/grg_prefs.c:198
+#, c-format
+msgid " Block size: %d bits"
+msgstr "Размер блока: %d бит"
+
+#: src/grg_prefs.c:201
+#, c-format
+msgid " Key length: %d bits"
+msgstr "Длина ключа: %d бит"
+
+#: src/grg_prefs.c:423
+msgid "Encryption"
+msgstr "Шифрование"
+
+#: src/grg_prefs.c:468
+msgid "Hashing"
+msgstr "Хеширование"
+
+#: src/grg_prefs.c:481
+msgid "Compression"
+msgstr "Компрессия"
+
+#: src/grg_prefs.c:496
+msgid "None"
+msgstr "Нет"
+
+#: src/grg_prefs.c:501
+msgid "Fast"
+msgstr "Быстрое"
+
+#: src/grg_prefs.c:505
+msgid "Good"
+msgstr "Хорошее"
+
+#: src/grg_prefs.c:509
+msgid "Best"
+msgstr "Лучшее"
+
+#: src/grg_prefs.c:513
+msgid "Algorithms"
+msgstr "Алгоритм"
+
+#: src/grg_prefs.c:520
+msgid "General options"
+msgstr "Основные опции"
+
+#: src/grg_prefs.c:522
+msgid "Editor font"
+msgstr "Шрифт редактора"
+
+#: src/grg_prefs.c:527
+msgid "Click to change the editor font"
+msgstr "Нажмите для изменения шрифта редактора"
+
+#: src/grg_prefs.c:537
+msgid "Decorations"
+msgstr "Оформление"
+
+#: src/grg_prefs.c:545
+msgid "Splash screen"
+msgstr "Заставка"
+
+#: src/grg_prefs.c:550
+msgid "File to open at startup"
+msgstr "Файл для открытия при старте"
+
+#: src/grg_prefs.c:569
+msgid "File saving"
+msgstr "Сохранение файла"
+
+#: src/grg_prefs.c:576
+msgid "Make backups of files"
+msgstr "Создание резервных копий"
+
+#: src/grg_prefs.c:582
+msgid "Ask when overwriting files"
+msgstr "Спрашивать при перезаписывании файлов"
+
+#: src/grg_prefs.c:592
+msgid "Password expiration"
+msgstr "Истечение пароля"
+
+#: src/grg_prefs.c:599
+msgid "Password expires in"
+msgstr "Пароль истекает через"
+
+#: src/grg_prefs.c:603
+msgid "days"
+msgstr "дней"
+
+#. this means "passes in wiping a file", not "wipe the passes" :)
+#: src/grg_prefs.c:615
+msgid "Wipe passes"
+msgstr "Проходы уничтожения"
+
+#: src/grg_prefs.c:621
+msgid ""
+"Number of overwritings with random\n"
+"data, when wiping a file:"
+msgstr ""
+"Количество перезаписываний случайными\n"
+"данными при уничтожении файла:"
+
+#: src/grg_prefs.c:634
+msgid "Clipboard"
+msgstr "Буфер"
+
+#: src/grg_prefs.c:642
+msgid "Clear clipboard on closing file"
+msgstr "Очищать буфер при закрытии файла"
+
+#: src/grg_prefs.c:649
+msgid "Clear clipboard on exit"
+msgstr "Очищать буфер при выходе"
+
+#: src/grg_pwd.c:118
+msgid "You must specify a regular file"
+msgstr "Вы должны указать обычный файл"
+
+#: src/grg_pwd.c:127
+msgid "reading file"
+msgstr "чтение файла"
+
+#: src/grg_pwd.c:158
+msgid "Please insert a disk in the first floppy drive"
+msgstr "Вставьте диск в дисковод"
+
+#: src/grg_pwd.c:170
+msgid "The disk is not write protected. For security reasons, I'll not use it."
+msgstr "Этот диск не защищен от записи. Не используйте ее для безопасности."
+
+#: src/grg_pwd.c:180
+msgid "reading floppy"
+msgstr "чтение дискеты"
+
+#: src/grg_pwd.c:212
+msgid "Enter new password"
+msgstr "Введите новый пароль"
+
+#: src/grg_pwd.c:220 src/grg_pwd.c:732
+msgid "Choose file"
+msgstr "Выберите файл"
+
+#: src/grg_pwd.c:228 src/grg_pwd.c:597
+msgid "Insert a disk and press Ok"
+msgstr "Вставьте диск и нажмите OK"
+
+#: src/grg_pwd.c:306
+msgid "New password"
+msgstr "Новый пароль"
+
+#: src/grg_pwd.c:320 src/grg_pwd.c:561 src/grg_pwd.c:698
+msgid "Choose password type:"
+msgstr "Выберите тип пароля:"
+
+#: src/grg_pwd.c:323 src/grg_pwd.c:563 src/grg_pwd.c:698
+msgid "String"
+msgstr "Строка"
+
+#: src/grg_pwd.c:327 src/grg_pwd.c:567 src/grg_pwd.c:698
+msgid "File"
+msgstr "Файл"
+
+#: src/grg_pwd.c:332 src/grg_pwd.c:572 src/grg_pwd.c:699
+msgid "Disk"
+msgstr "Дискета"
+
+#: src/grg_pwd.c:337
+msgid "Enter new password:"
+msgstr "Введите новый пароль:"
+
+#: src/grg_pwd.c:345
+msgid "Enter it again for confirmation:"
+msgstr "Введите его еще раз для подтверждения:"
+
+#: src/grg_pwd.c:382
+msgid "password quality"
+msgstr "качество пароля"
+
+#: src/grg_pwd.c:422
+msgid "The password is too short, it must be at least 4 chars"
+msgstr "Пароль очень короткий, он должен быть минимум 4 символа"
+
+#: src/grg_pwd.c:434
+msgid "The two passwords are different"
+msgstr "Два пароля разные"
+
+#: src/grg_pwd.c:548 src/grg_pwd.c:714
+msgid "Enter password"
+msgstr "Введите пароль"
+
+#: src/grg_pwd.c:699
+msgid "Quit"
+msgstr "Выйти"
+
+#: src/grg_pwd.c:702
+msgid "Choice"
+msgstr "Выбор"
+
+#: src/grg_pwd.c:752
+msgid "Bye, then!"
+msgstr "До свидания!"
+
+#: src/grg_safe.c:80
+msgid "The process is setuid root, but I can't lock memory paging"
+msgstr "Процесс запущен с SUID, но не возможно залочить страницу памяти"
+
+#: src/grg_safe.c:102
+msgid ""
+"Cannot drop root user privileges. Someone is hacking this process. I cannot "
+"go on"
+msgstr ""
+"Не могу сбросить привелегии рута. Что-то мешает этому процессу. Не могу "
+"продолжать."
+
+#: src/grg_safe.c:115
+msgid ""
+"Cannot drop root group privileges. Someone is hacking this process. I cannot "
+"go on"
+msgstr ""
+"Не могу сбросить привелегии рута. Что-то мешает этому процессу. Не могу "
+"продолжать."
+
+#: src/grg_safe.c:148 src/grg_safe.c:154
+msgid "For security reasons, you cannot run Gringotts as root user."
+msgstr "Для безопасности, вы не можете запускать Gringotts как root."
+
+#: src/grg_safe.c:150
+msgid "Try to compile with --disable-root-filter in ./configure"
+msgstr ""
+"Попробуйте скомпилитровать с опцией --disable-root-filter в ./configure"
+
+#: src/grg_safe.c:155
+msgid "Try using -s"
+msgstr "Попробуйте использовать -s"
+
+#: src/grg_safe.c:175
+msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
+msgstr "stdin, stdout и/или stderr неверны. Продолжение невозможно."
+
+#: src/grg_safe.c:199
+msgid "Invalid environment variables. They could have been manipulated."
+msgstr "Неверные переменные окружения. Они могли быть изменены."
+
+#: src/grg_safe.c:300
+msgid "optimal"
+msgstr "оптимальный"
+
+#: src/grg_safe.c:302
+msgid "good"
+msgstr "хороший"
+
+#: src/grg_safe.c:305
+msgid "low"
+msgstr "низкий"
+
+#: src/grg_safe.c:325
+msgid "Security monitor"
+msgstr "Монитор безопасности"
+
+#: src/grg_safe.c:340 src/grg_safe.c:344 src/grg_safe.c:347
+msgid "Running without root privileges"
+msgstr "Запущено без привилегий рута."
+
+#: src/grg_safe.c:353 src/grg_safe.c:356
+msgid "Memory protection from core dumps"
+msgstr "Защита памяти против сброса памяти"
+
+#: src/grg_safe.c:364 src/grg_safe.c:367
+msgid "Memory protection from swap writings"
+msgstr "Защита памяти против записи в своп"
+
+#: src/grg_safe.c:372 src/grg_safe.c:375
+msgid "Memory protection from ptrace spying"
+msgstr "Защита памяти против слежения ptrace"
+
+#: src/grg_safe.c:379 src/grg_safe.c:382
+msgid "Environmental variables validation"
+msgstr "Проверка переменных окружения"
+
+#: src/grg_safe.c:385
+msgid "stdout/stdin/stderr validation"
+msgstr "Проверка stdout/stdin/stderr"
+
+#: src/grg_safe.c:388 src/grg_safe.c:391
+msgid "Enforced use of /dev/random"
+msgstr "Принудительное использование  /dev/random"
+
+#: src/grg_safe.c:395 src/grg_safe.c:398
+msgid "Strict prohibition to root user"
+msgstr "Строгое запрещение для пользователя root"
+
+#: src/grg_popt.c:53
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: src/grg_popt.c:55
+msgid "it isn't possible to hide password typing; be extremely careful!"
+msgstr "невозможно скрыть набор пароля; будьте очень осторожны!"
+
+#: src/grg_popt.c:195
+msgid "shows the help"
+msgstr "показать помощь"
+
+#: src/grg_popt.c:198
+msgid "specify the input file to open"
+msgstr "укажите входной файл для открытия"
+
+#: src/grg_popt.c:198 src/grg_popt.c:212
+msgid "FILE"
+msgstr "ФАЙЛ"
+
+#: src/grg_popt.c:201
+msgid "allow usage as root -- DANGEROUS"
+msgstr "разрешено использование под рутом -- ОПАСНО"
+
+#: src/grg_popt.c:204
+msgid "force use of /dev/random -- slower"
+msgstr "принудительное использование /dev/random -- медленно"
+
+#: src/grg_popt.c:206
+msgid "dump the content of a file"
+msgstr "сброс содержания файла"
+
+#: src/grg_popt.c:208
+msgid "index of the entry to dump"
+msgstr "список записей для сброса"
+
+#: src/grg_popt.c:208 src/grg_popt.c:214
+msgid "NUM"
+msgstr "NUM"
+
+#: src/grg_popt.c:210
+msgid "title of the entry to dump"
+msgstr "заголовок записи для сброса"
+
+#: src/grg_popt.c:210
+msgid "TXT"
+msgstr "TXT"
+
+#: src/grg_popt.c:212
+msgid "securely wipe a file"
+msgstr "безопасное уничтожение файла"
+
+#: src/grg_popt.c:214
+msgid "passes in file wiping"
+msgstr "проходов при уничтожении файла"
+
+#: src/grg_popt.c:269
+msgid ""
+"It isn't possible to redirect data to stdin, as it is a potential security "
+"flaw."
+msgstr ""
+"Нет возможности перенаправить данные в stdin, так как это потенциальный "
+"недостаток в безопасности"
+
+#: src/grg_popt.c:310
+msgid "You must specify a file to dump (with the -f switch)"
+msgstr "Вы должны указать файл для сброса (с ключом -f)"
+
+#: src/grg_attachs.c:68
+msgid "Cannot open file to attach."
+msgstr "Не могу открыть файл для вложения."
+
+#: src/grg_attachs.c:75
+msgid "Only regular files can be attached."
+msgstr "Только обычный файл может быть присоединен."
+
+#: src/grg_attachs.c:87
+msgid "Sorry, currently you can attach files only up to 2 Mb"
+msgstr "Извините, вы можете вложить файлов только на 2 Мб."
+
+#: src/grg_attachs.c:95 src/grg_attachs.c:339
+msgid "Enter comment"
+msgstr "Введите комментарий"
+
+#: src/grg_attachs.c:97 src/grg_attachs.c:340
+msgid ""
+"Please enter a comment for this\n"
+"file (max. 32 chars)"
+msgstr ""
+"Введите комментарий для этого\n"
+"файла (макс. 32 символа)"
+
+#: src/grg_attachs.c:107 src/grg_attachs.c:347
+msgid "none"
+msgstr "нет"
+
+#: src/grg_attachs.c:117
+msgid "attaching"
+msgstr "вложение"
+
+#: src/grg_attachs.c:125
+msgid "Cannot encode tempfile."
+msgstr "Не могу закодировать временный файл."
+
+#: src/grg_attachs.c:194 src/grg_attachs.c:273
+msgid "Cannot decode tempfile."
+msgstr "Не могу декодировать временный файл."
+
+#: src/grg_attachs.c:284
+msgid "Cannot create file, or file already existent."
+msgstr "Не могу создать файл, или он уже существует."
+
+#: src/grg_attachs.c:316
+msgid "File name"
+msgstr "Имя файла"
+
+#: src/grg_attachs.c:317
+msgid "Dimension"
+msgstr "Размер"
+
+#: src/grg_attachs.c:317 src/grg_attachs.c:386
+msgid "bytes"
+msgstr "байт"
+
+#: src/grg_attachs.c:318
+msgid "Comment"
+msgstr "Комментарий"
+
+#: src/grg_attachs.c:394
+msgid "Kb"
+msgstr "Кб"
+
+#: src/grg_attachs.c:400
+msgid "Mb"
+msgstr "Мб"
+
+#: src/grg_attachs.c:432
+msgid "<no file attached>"
+msgstr "<файл не присоединен>"

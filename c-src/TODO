@@ -1,0 +1,40 @@
+-- 1.3 --
+
+* in next FILE SUBFORMAT, comment of attached files shouldn't default to
+  "none" when not present: it gets translation-dependent.
+* remove the many commented parts in (i.e.) gringotts.c
+* possibility to consistenly use other devices than /dev/fd0
+* "structured" spreadsheet-style pages with "masked" text
+* HUGE check for memory leaks and overruns, part. for structures
+* fix problem with editor bgcolor when switching fonts
+* attach controls in a separate window
+
+-- 1.X --
+
+* remap menu key bindings
+* help
+* apply stiles to fonts (bold, italic, underl., teletype)
+* undo command
+
+-- ?.? --
+
+* display MD5 of attachments
+* handling of signals
+* assertions
+* check if another instance is using a file, if so quit
+* check that argv[0] is the executable itself
+* alert when new versions are available
+* hide also the entries' text, when in memory
+
+-- 2 consider --
+
+* add eterm and opera to doc managers; add stg for windows, too?
+* find a better way to visualize docs
+* b64ize the attached files immediately
+* possibility to use more than one pwd type (bad 4 cmdline...)
+* possibility to add fields, etc.
+* don't load all in memory
+* update to xml-i18n-tools
+* multiple document model
+* add possibility to set max file size (in ./configure or elsewhere)
+* `paned' window, no nav toolbar, entry list at the left edge

@@ -1,0 +1,22 @@
+2005-05-14  Mano <mano78@users.sourceforge.net>
+
+	* added ru.po
+	* added pl.po
+	* updated de.po
+
+2002-04-01  Hermann J. Beckers <hjb-rheine@t-online.de>
+
+	* added de.po
+
+2002-03-14  Nipo <nipo@ssji.net>
+
+	* added fr.po
+
+2002-03-03  Mano <mano78@users.sourceforge.net>
+
+	* added it.po
+
+2002-03-03  gettextize  <bug-gnu-utils@gnu.org>
+
+	* Makefile.in.in: Upgrade to gettext-0.10.38.
+
