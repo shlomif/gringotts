@@ -23,6 +23,7 @@
 #define GRG_WIDGETS_H
 
 #include "grg_defs.h"
+#include <gtk/gtk.h>
 
 gboolean mapIsUTF;
 
@@ -61,11 +62,8 @@ GtkWidget *
 grg_toolbar_insert_stock(GtkToolbar *toolbar,
     const gchar *stock_id,
     const char *tooltip_text,
-    const char *tooltip_private_text,
     GtkSignalFunc callback,
     gpointer user_data,
     gint position);
-
-extern GtkTooltips * tooltips;
 
 #endif

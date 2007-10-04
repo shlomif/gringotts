@@ -244,12 +244,12 @@ grg_list_run (void)
 				   GTK_ICON_SIZE_LARGE_TOOLBAR);
 #endif
 	bup = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), GTK_STOCK_GO_UP,
-					_("Move up"), "",
+					_("Move up"),
 					(GtkSignalFunc) move_row,
 					GINT_TO_POINTER (TRUE), -1);
 	bdown = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar),
 					  GTK_STOCK_GO_DOWN, _("Move down"),
-					  "", (GtkSignalFunc) move_row,
+					  (GtkSignalFunc) move_row,
 					  GINT_TO_POINTER (FALSE), -1);
 
 	hbox = gtk_hbox_new (FALSE, GRG_PAD);

@@ -70,28 +70,38 @@
 static void
 meta_browse (GtkWidget * data, GtkWidget * entry)
 {
-	GtkWidget *file_selector;
+    GtkWidget *file_chooser;
+	gint response;
+
 	GtkWidget *dlg =
 		GTK_WIDGET (GTK_WIDGET ((GTK_WIDGET (data->parent))->parent)->
 			    parent);
 	gint res;
 
-	file_selector = gtk_file_selection_new (_("Open..."));
-	gtk_window_set_transient_for (GTK_WINDOW (file_selector),
-				      GTK_WINDOW (dlg));
-	gtk_widget_show (file_selector);
-	res = gtk_dialog_run (GTK_DIALOG (file_selector));
-	if (res == GTK_RESPONSE_OK)
+    file_chooser = gtk_file_chooser_dialog_new (_("Open..."),
+            GTK_WINDOW (dlg),
+            GTK_FILE_CHOOSER_ACTION_OPEN,
+            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            NULL);
+
+	response = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    if (response == GTK_RESPONSE_ACCEPT)
 	{
+        gchar *filename;
+
+        filename = gtk_file_chooser_get_filename (
+                GTK_FILE_CHOOSER (file_chooser)
+                );
+
 		gchar *ufile =
-			g_filename_to_utf8 (gtk_file_selection_get_filename
-					    (GTK_FILE_SELECTION
-					     (file_selector)), -1, NULL, NULL,
+			g_filename_to_utf8 (filename, -1, NULL, NULL,
 					    NULL);
+        g_free(filename);
 		gtk_entry_set_text (GTK_ENTRY (entry), ufile);
 		g_free (ufile);
 	}
-	gtk_widget_destroy (file_selector);
+    gtk_widget_destroy (file_chooser);
 }
 
 static GRG_KEY

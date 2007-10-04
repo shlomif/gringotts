@@ -410,7 +410,6 @@ GtkWidget *
 grg_toolbar_insert_stock(GtkToolbar *toolbar,
     const gchar *stock_id,
     const char *tooltip_text,
-    const char *tooltip_private_text,
     GtkSignalFunc callback,
     gpointer user_data,
     gint position)
@@ -419,8 +418,7 @@ grg_toolbar_insert_stock(GtkToolbar *toolbar,
 
     item = gtk_tool_button_new_from_stock(stock_id);
 
-    gtk_tool_item_set_tooltip (item, tooltips,
-            tooltip_text, tooltip_private_text);
+    gtk_tool_item_set_tooltip_text (item, tooltip_text);
 
     g_signal_connect (item, "clicked",
 			          callback, user_data);

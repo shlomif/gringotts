@@ -53,17 +53,17 @@
 //appends a stock item to a toolbar
 #define	TOOLBAR_INS_STOCK(tbar, stock, callback, tooltip) \
 	grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
-		"", (GtkSignalFunc) callback, NULL, -1)
+		(GtkSignalFunc) callback, NULL, -1)
 
 //appends a stock item to a toolbar, assigning it to a widget
 #define	TOOLBAR_INS_STOCK_WIDGET(tbar, stock, callback, tooltip, wid) \
 	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
-		"", (GtkSignalFunc) callback, NULL, -1)
+		(GtkSignalFunc) callback, NULL, -1)
 
 //appends a stock item to a toolbar, assigning it to a widget and passing a value to the callback
 #define	TOOLBAR_INS_STOCK_WIDGET_SIGNAL(tbar, stock, callback, tooltip, signal, wid) \
 	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
-		"", (GtkSignalFunc) callback, GINT_TO_POINTER (signal), -1)
+		(GtkSignalFunc) callback, GINT_TO_POINTER (signal), -1)
 
 //appends a space to a toolbar
 #define TOOLBAR_INS_SPACE(tbar) \
@@ -98,8 +98,6 @@ GList *garbage = NULL;
 
 GRG_CTX gctx = NULL;
 glong pwdbirth = 0;
-
-GtkTooltips * tooltips = NULL;
 
 static void
 my_toolbar_append_space (GtkToolbar * toolbar)
@@ -845,26 +843,36 @@ load_file (gchar * filename)
 void
 meta_load (void)
 {
-	GtkWidget *file_selector;
+    GtkWidget *file_chooser;
 	gint response;
-	file_selector = gtk_file_selection_new (_("Open..."));
-	gtk_window_set_transient_for (GTK_WINDOW (file_selector),
-				      GTK_WINDOW (win1));
-	gtk_widget_show (file_selector);
-	response = gtk_dialog_run (GTK_DIALOG (file_selector));
-	if (response == GTK_RESPONSE_OK)
-	{
-		//it may appear a stupid duplication, but it's very important
-		//to avoid two file selectors at the same time, so one should
-		//be destroyed *before* calling load_file
-		gchar *fname = strdup (gtk_file_selection_get_filename
-				       (GTK_FILE_SELECTION (file_selector)));
-		gtk_widget_destroy (file_selector);
-		load_file (fname);
-		g_free (fname);
-	}
-	else
-		gtk_widget_destroy (file_selector);
+
+    file_chooser = gtk_file_chooser_dialog_new (_("Open..."),
+            GTK_WINDOW(win1),
+            GTK_FILE_CHOOSER_ACTION_OPEN,
+            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            NULL);
+
+	response = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    if (response == GTK_RESPONSE_ACCEPT)
+    {
+		/*
+         * It may appear a stupid duplication, but it's very important
+         * to avoid two file selectors at the same time, so one should
+         * be destroyed *before* calling load_file
+         * */
+        char *fname;
+
+        fname = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
+        gtk_widget_destroy (file_chooser);
+        load_file (fname);
+
+        g_free (fname);
+    }
+    else
+    {
+        gtk_widget_destroy (file_chooser);
+    }
 }
 
 /**
@@ -1126,17 +1134,26 @@ save_as (const gchar * fpath)
 void
 meta_save_as (void)
 {
-	GtkWidget *file_selector;
-	gint response;
-	file_selector = gtk_file_selection_new (_("Save as...."));
-	gtk_window_set_transient_for (GTK_WINDOW (file_selector),
-				      GTK_WINDOW (win1));
-	gtk_widget_show (file_selector);
-	response = gtk_dialog_run (GTK_DIALOG (file_selector));
-	if (response == GTK_RESPONSE_OK)
-		save_as (gtk_file_selection_get_filename
-			 (GTK_FILE_SELECTION (file_selector)));
-	gtk_widget_destroy (file_selector);
+    GtkWidget *file_chooser;
+    gint response;
+    file_chooser = gtk_file_chooser_dialog_new (_("Save as...."),
+                                      GTK_WINDOW(win1),
+                                      GTK_FILE_CHOOSER_ACTION_SAVE,
+                                      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                      GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                      NULL);
+    gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (file_chooser), TRUE);
+    response = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    if (response == GTK_RESPONSE_ACCEPT)
+    {
+        char * filename;
+
+        filename = gtk_file_chooser_get_filename
+            (GTK_FILE_CHOOSER (file_chooser));
+        save_as (filename);
+        g_free(filename);
+    }
+    gtk_widget_destroy (file_chooser);
 }
 
 /**
@@ -1306,22 +1323,32 @@ grg_splash (GtkWidget * parent)
 static void
 attach_file (void)
 {
-	GtkWidget *file_selector;
+    GtkWidget *file_chooser;
 	gint response;
 	gchar *selection = NULL;
 
 	sync_entry ();
 
-	file_selector = gtk_file_selection_new (_("Select file..."));
-	gtk_window_set_transient_for (GTK_WINDOW (file_selector),
-				      GTK_WINDOW (win1));
-	gtk_widget_show (file_selector);
-	response = gtk_dialog_run (GTK_DIALOG (file_selector));
-	if (response == GTK_RESPONSE_OK)
-		selection = g_strdup (gtk_file_selection_get_filename
-				      (GTK_FILE_SELECTION (file_selector)));
-	gtk_widget_destroy (file_selector);
-	if (response != GTK_RESPONSE_OK)
+    file_chooser = gtk_file_chooser_dialog_new (_("Select file..."),
+            GTK_WINDOW(win1),
+            GTK_FILE_CHOOSER_ACTION_OPEN,
+            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            NULL);
+
+    response = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    if (response == GTK_RESPONSE_ACCEPT)
+    {
+		/*
+         * It may appear a stupid duplication, but it's very important
+         * to avoid two file selectors at the same time, so one should
+         * be destroyed *before* calling load_file
+         * */
+        selection = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (file_chooser));
+    }
+
+    gtk_widget_destroy (file_chooser);
+	if (response != GTK_RESPONSE_ACCEPT)
 		return;
 	response = grg_attach_file (selection, win1);
 	GRGAFREE (selection);
@@ -1352,21 +1379,28 @@ detach_file (void)
 static void
 save_attached_file (void)
 {
-	GtkWidget *file_selector;
-	gint response;
-	gchar *selection = NULL;
+    GtkWidget *file_chooser;
+    gint response;
+    gchar *selection = NULL;
 
-	file_selector = gtk_file_selection_new (_("Save as...."));
-	gtk_window_set_transient_for (GTK_WINDOW (file_selector),
-				      GTK_WINDOW (win1));
-	gtk_widget_show (file_selector);
-	response = gtk_dialog_run (GTK_DIALOG (file_selector));
-	if (response == GTK_RESPONSE_OK)
-		selection = g_strdup (gtk_file_selection_get_filename
-				      (GTK_FILE_SELECTION (file_selector)));
-	gtk_widget_destroy (file_selector);
-	if (response != GTK_RESPONSE_OK)
+    file_chooser = gtk_file_chooser_dialog_new (_("Save as...."),
+                                      GTK_WINDOW(win1),
+                                      GTK_FILE_CHOOSER_ACTION_SAVE,
+                                      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                      GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                      NULL);
+
+    response = gtk_dialog_run (GTK_DIALOG (file_chooser));
+	if (response == GTK_RESPONSE_ACCEPT)
+    {
+		selection = gtk_file_chooser_get_filename
+            (GTK_FILE_CHOOSER (file_chooser));
+    }
+	gtk_widget_destroy (file_chooser);
+	if (response != GTK_RESPONSE_ACCEPT)
+    {
 		return;
+    }
 	grg_save_attachment (selection, win1);
 	GRGAFREE (selection);
 }
@@ -1374,21 +1408,31 @@ save_attached_file (void)
 void
 wipe_file (void)
 {
-	GtkWidget *file_selector, *wait;
+    GtkWidget *file_chooser, *wait;
 	gint response;
-	gchar *selection = NULL;
+    gchar *selection = NULL;
 
-	file_selector = gtk_file_selection_new (_("File to wipe"));
-	gtk_window_set_transient_for (GTK_WINDOW (file_selector),
-				      GTK_WINDOW (win1));
-	gtk_widget_show (file_selector);
-	response = gtk_dialog_run (GTK_DIALOG (file_selector));
-	if (response == GTK_RESPONSE_OK)
-		selection = g_strdup (gtk_file_selection_get_filename
-				      (GTK_FILE_SELECTION (file_selector)));
-	gtk_widget_destroy (file_selector);
-	if (response != GTK_RESPONSE_OK)
+    file_chooser = gtk_file_chooser_dialog_new (_("File to wipe"),
+            GTK_WINDOW(win1),
+            GTK_FILE_CHOOSER_ACTION_OPEN,
+            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            NULL);
+
+	response = gtk_dialog_run (GTK_DIALOG (file_chooser));
+    if (response == GTK_RESPONSE_ACCEPT)
+    {
+		selection = gtk_file_chooser_get_filename (
+                GTK_FILE_CHOOSER (file_chooser)
+                );
+    }
+
+    gtk_widget_destroy (file_chooser);
+
+	if (response != GTK_RESPONSE_ACCEPT)
+    {
 		return;
+    }
 
 	if (!g_file_test (selection, G_FILE_TEST_IS_REGULAR))
 	{
@@ -1466,8 +1510,6 @@ grg_interface (void)
 	gchar *str, *fdesc;
 	PangoFontDescription *pfd;
     GtkCellRenderer *cell;
-
-    tooltips = gtk_tooltips_new();
 
 	// window
 	win1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -1558,8 +1600,7 @@ grg_interface (void)
         GtkToolItem * button;
         button = gtk_tool_button_new (grg_get_security_button(), _("Security"));
 
-        gtk_tool_item_set_tooltip (button, tooltips,
-            str, NULL);
+        gtk_tool_item_set_tooltip_text (button, str);
         
         g_signal_connect (button, "clicked",
             grg_security_monitor, NULL);
@@ -1632,8 +1673,7 @@ grg_interface (void)
         gtk_container_add (GTK_CONTAINER (button), 
                 gtk_label_new (_("Attached files")));
         
-        gtk_tool_item_set_tooltip (button, tooltips,
-            "", "");
+        gtk_tool_item_set_tooltip_text (button, "");
 
         gtk_toolbar_insert (GTK_TOOLBAR (tbar_attach), button, -1);
     }
@@ -1675,8 +1715,7 @@ grg_interface (void)
         gtk_container_add (GTK_CONTAINER (button), 
                 GTK_WIDGET (combo_attach));
         
-        gtk_tool_item_set_tooltip (button, tooltips,
-            _("List of attached files"), "");
+        gtk_tool_item_set_tooltip_text (button, _("List of attached files"));
 
         gtk_toolbar_insert (GTK_TOOLBAR (tbar_attach), button, -1);
     }
