@@ -50,3 +50,5 @@
 	## DP: to-be-freed verkey is not NULL.
 	}}}}}}
 	* Replaced C++-style comments ("//") with C-style comments ("/* ... */").
+	* Eliminated some warnings (by inspiration and code from
+	13_compiler_warnings.dpatch from the Debian package).

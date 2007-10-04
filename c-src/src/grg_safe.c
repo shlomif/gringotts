@@ -129,7 +129,7 @@ grg_mlockall_and_drop_root_privileges(void)
                 g_critical(_("Increase the memory locking limit to at least "
                              "%d bytes. Current limit: %d bytes.\n"
                              "See /usr/share/doc/gringotts/README.Debian for directions."),
-                           minbytes, rl.rlim_cur);
+                           minbytes, (int)rl.rlim_cur);
                 return FALSE;
             }
         }

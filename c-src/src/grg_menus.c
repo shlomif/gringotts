@@ -48,7 +48,7 @@
 		menu[number] = gtk_menu_item_new_with_mnemonic(txt); \
 		gtk_menu_shell_insert (GTK_MENU_SHELL (file), menu[number], 9+number); \
 		g_signal_connect (menu[number], "activate", G_CALLBACK(meta_load_file), text_copy); \
-		g_list_append (garbage, text_copy); \
+		garbage = g_list_append (garbage, text_copy); \
 		g_free(txt); g_free (ufile); \
 	}
 

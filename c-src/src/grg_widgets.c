@@ -220,7 +220,7 @@ grg_window_set_icon (GtkWindow * w)
 	GdkPixbuf *gp = gdk_pixbuf_new_from_xpm_data (gringotts_xpm);
 	GList *gl = NULL;
 
-	g_list_append (gl, gp);
+	gl = g_list_append (gl, gp);
 	gtk_window_set_icon (w, gp);
 	gtk_window_set_default_icon_list (gl);
 
