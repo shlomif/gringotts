@@ -1,10 +1,8 @@
 SUBDIRS = src pixmaps po
 
-gringottsdocdir = $(datadir)/doc/gringotts-@VERSION@
+doc_DATA = BUGS FAQ README AUTHORS ChangeLog TODO NEWS COPYING
 
-gringottsdoc_DATA = BUGS FAQ README AUTHORS ChangeLog TODO NEWS COPYING
-
-EXTRA_DIST = gringotts.spec.in gringotts.desktop.in $(gringottsdoc_DATA)
+EXTRA_DIST = gringotts.spec.in gringotts.desktop.in $(doc_DATA)
 EXTRA_DIST += autogen.sh
 
 Dsktpdir = $(datadir)/gnome/apps/Utilities
