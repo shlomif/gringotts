@@ -2,7 +2,7 @@ INCLUDES = \
 	@DEFS@ @GTK2_CFLAGS@ @GDKPIX_CFLAGS@ @LIBGRG_CFLAGS@	\
 	-DG_LOG_DOMAIN=\"gringotts\" 			\
 	-DLOCALEDIR=\"$(datadir)/locale\" \
-	-DDOCDIR=\"$(datadir)/doc/gringotts-@VERSION@\" \
+	-DDOCDIR=\"$(docdir)\" \
 	-DG_DISABLE_DEPRECATED 					\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED 		\
 	-DGDK_DISABLE_DEPRECATED 				\
