@@ -52,3 +52,6 @@
 	* Replaced C++-style comments ("//") with C-style comments ("/* ... */").
 	* Eliminated some warnings (by inspiration and code from
 	13_compiler_warnings.dpatch from the Debian package).
+	* Fixed the load_file() function - abs_filename could have been
+	NULL if the path was already absolute. This was a regression caused
+	by applying a Debian patch. "Save" (not "Save as") now works.

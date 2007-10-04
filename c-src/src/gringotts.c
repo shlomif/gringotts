@@ -634,7 +634,11 @@ load_file (gchar * input_filename)
 		goto cleanup;
 	}
 
-	if (!g_path_is_absolute (input_filename))
+	if (g_path_is_absolute (input_filename))
+    {
+        abs_filename = g_strdup(input_filename);
+    }
+    else
 	{
 		abs_filename = (gchar *) grg_malloc (PATH_MAX);
 
