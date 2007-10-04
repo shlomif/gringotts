@@ -594,31 +594,32 @@ revert (void)
  * Loads a gringotts file.
  */
 static void
-load_file (gchar * filename)
+load_file (gchar * input_filename)
 {
 	GtkWidget *wait;
 	GRG_KEY tmpkey;
 	gint err, fd;
 	gchar *res;
 	struct stat buf1, buf2;
+    gchar * abs_filename = NULL;
 
-	if (!filename || !*filename)
-		return;
+	if (!input_filename || !*input_filename)
+		goto cleanup;
 
-	fd = grg_safe_open (filename);
+	fd = grg_safe_open (input_filename);
 
 	if (fd == GRG_OPEN_FILE_IRREGULAR)
 	{
 		grg_msg (_("You've selected a directory or a symlink"),
 			 GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 
 	if (fd < 3)
 	{
 		grg_msg (_("The selected file doesn't exists"),
 			 GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 
 	/* if this and the opened one are the very same file, fall back on revert() */
@@ -630,21 +631,18 @@ load_file (gchar * filename)
 	{
 		close (fd);
 		revert ();
-		return;
+		goto cleanup;
 	}
 
-	if (!g_path_is_absolute (filename))
+	if (!g_path_is_absolute (input_filename))
 	{
-		gchar *tmpfname = (gchar *) grg_malloc (PATH_MAX);
+		abs_filename = (gchar *) grg_malloc (PATH_MAX);
 
-		realpath (filename, tmpfname);
-		g_free (filename);
-		filename = tmpfname;
-		tmpfname = NULL;
+		realpath (input_filename, abs_filename);
 	}
 
 	if (file_close () == GRG_CANCEL)
-		return;
+		goto cleanup;
 
 	err = grg_validate_file_direct (gctx, fd);
 
@@ -660,7 +658,7 @@ load_file (gchar * filename)
 		grg_msg (_
 			 ("This file doesn't seem to be a valid Gringotts one!"),
 			 GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 
 	case GRG_MEM_ALLOCATION_ERR:
@@ -678,7 +676,7 @@ load_file (gchar * filename)
 		grg_msg (_
 			 ("Gringotts internal error. Cannot finish operation."),
 			 GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 
 	case GRG_READ_FILE_ERR:
@@ -686,7 +684,7 @@ load_file (gchar * filename)
 		close (fd);
 		grg_msg (_("Uh-oh! I can't read from the file!"),
 			 GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 
 	case GRG_READ_CRC_ERR:
@@ -695,14 +693,14 @@ load_file (gchar * filename)
 		close (fd);
 		grg_msg (_("The file appears to be corrupted!"),
 			 GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 #ifdef GRG_READ_TOO_BIG_ERR
 	case GRG_READ_TOO_BIG_ERR:
 	{
 		close (fd);
 		grg_msg (_("File is too big"), GTK_MESSAGE_ERROR, win1);
-		return;
+		goto cleanup;
 	}
 #endif
 	default:
@@ -713,7 +711,7 @@ load_file (gchar * filename)
 			grg_msg (_
 				 ("Gringotts internal error. Cannot finish operation."),
 				 GTK_MESSAGE_ERROR, win1);
-			return;
+			goto cleanup;
 		}
 	}
 	}
@@ -728,12 +726,12 @@ load_file (gchar * filename)
 		if (!tmpkey)
 		{
 			close (fd);
-			return;
+			goto cleanup;
 		}
 
 		wait = grg_wait_msg (_("loading"), win1);
 
-		err = grg_load_wrapper (&res, tmpkey, fd, filename);
+		err = grg_load_wrapper (&res, tmpkey, fd, abs_filename);
 
 		if (err < 0)
 			gtk_widget_destroy (wait);
@@ -807,7 +805,7 @@ load_file (gchar * filename)
 		{
 			close (fd);
 			grg_key_free (gctx, tmpkey);
-			return;
+			goto cleanup;
 		}
 
 		if (exit)
@@ -819,7 +817,7 @@ load_file (gchar * filename)
 	g_free (grgfile);
 	grgfile = NULL;
 
-	grgfile = g_strdup (filename);
+	grgfile = g_strdup (abs_filename);
 	grg_key_free (gctx, key);
 	key = grg_key_clone (tmpkey);
 	grg_key_free (gctx, tmpkey);
@@ -833,6 +831,13 @@ load_file (gchar * filename)
 			 ("The current password is expired.\nYou should change it, or modify this "
 			  "setting in the preferences"), GTK_MESSAGE_WARNING,
 			 win1);
+
+cleanup:
+    if (abs_filename)
+    {
+        g_free (abs_filename);
+    }
+    return;
 }
 
 /**
@@ -1227,12 +1232,15 @@ chpwd (void)
 	verkey = grg_ask_pwd_dialog (win1);
 
 	if (!verkey || !grg_key_compare (verkey, key))
-	{
-		grg_msg (_("Wrong password"), GTK_MESSAGE_ERROR, win1);
-		grg_key_free (gctx, verkey);
-		verkey = NULL;
-		return;
-	}
+    {
+        grg_msg (_("Wrong password"), GTK_MESSAGE_ERROR, win1);
+        if (verkey)
+        {
+            grg_key_free (gctx, verkey);
+            verkey = NULL;
+        }
+        return;
+    }
 
 	grg_key_free (gctx, verkey);
 	verkey = NULL;

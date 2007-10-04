@@ -43,3 +43,9 @@
 	* Applied a modified version of 07_check_ulimit.dpatch from the Debian
 	package. This makes sure that there is a good enough
 	RLIMIT_MEMLOCK in the ulimit for the mlockall operation.
+	* Applied a modified version of 09_check_key.dpatch from the Debian
+	package. The description reads:
+	{{{{{{
+	## DP: Fix invalid gfree() from load_file. And make sure the
+	## DP: to-be-freed verkey is not NULL.
+	}}}}}}
