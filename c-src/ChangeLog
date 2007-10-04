@@ -27,9 +27,10 @@
 	into memory.
 
 2007-01-01 Shlomi Fish <shlomif@iglu.org.il>
-	* Made sure that the "Preferences" dialog does not crash gringotss, due
+	* Made sure that the "Preferences" dialog does not crash gringotts, due
 	to saying "g_free (fdesc)" instead of 
 	"pango_font_description_free (fdesc)".
 	* Released as gringotts-shlomif-0.4.4
 
-
+2007-10-04 Shlomi Fish <shlomif@iglu.org.il>
+	* Added the autogen.sh file to generate the autotools helpers.
