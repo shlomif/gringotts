@@ -35,3 +35,5 @@
 2007-10-04 Shlomi Fish <shlomif@iglu.org.il>
 	* Added the autogen.sh file to generate the autotools helpers.
 	* Ported the source code to gtk+-2.12.
+	* Applied 02_pixmap_32x32.dpatch from the Debian package. It adds
+	a gringotts-32.xpm pixmap.

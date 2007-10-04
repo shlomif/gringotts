@@ -2,4 +2,4 @@ EXTRA_DIST = gringotts.xpm
 
 pixmapdir = $(datadir)/pixmaps
 
-pixmap_DATA = gringotts.xpm
+pixmap_DATA = gringotts.xpm gringotts-32.xpm
