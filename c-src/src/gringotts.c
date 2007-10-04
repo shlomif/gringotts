@@ -50,38 +50,38 @@
 
 #include "gringotts.h"
 
-//appends a stock item to a toolbar
+/* appends a stock item to a toolbar */
 #define	TOOLBAR_INS_STOCK(tbar, stock, callback, tooltip) \
 	grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
 		(GtkSignalFunc) callback, NULL, -1)
 
-//appends a stock item to a toolbar, assigning it to a widget
+/* appends a stock item to a toolbar, assigning it to a widget */
 #define	TOOLBAR_INS_STOCK_WIDGET(tbar, stock, callback, tooltip, wid) \
 	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
 		(GtkSignalFunc) callback, NULL, -1)
 
-//appends a stock item to a toolbar, assigning it to a widget and passing a value to the callback
+/* appends a stock item to a toolbar, assigning it to a widget and passing a value to the callback */
 #define	TOOLBAR_INS_STOCK_WIDGET_SIGNAL(tbar, stock, callback, tooltip, signal, wid) \
 	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
 		(GtkSignalFunc) callback, GINT_TO_POINTER (signal), -1)
 
-//appends a space to a toolbar
+/* appends a space to a toolbar */
 #define TOOLBAR_INS_SPACE(tbar) \
 	my_toolbar_append_space (GTK_TOOLBAR (tbar))
 
 /* - some menu buttons are never deactivated (i.e. Quit), so their widgets aren't really needed
  */
 
-// general
+/*  general */
 static GtkWidget *title, *win1, *edit, *lbl;
 
-// toolbar Navigation
+/*  toolbar Navigation */
 static GtkWidget *bfirst, *bback, *bfor, *blast, *bind;
 
-// others
+/*  others */
 static GtkWidget *btitle;
 
-// main toolbar 
+/*  main toolbar  */
 static GtkWidget *tnew, *topen, *tsave, *tclose;
 static GtkWidget *tadd, *trem, *tcut, *tcopy, *tpast, *tfind, *tpref;
 static GtkWidget *batadd, *batrem, *batsav, *batinf, *batchco;
@@ -279,7 +279,7 @@ backup_file (gchar * filename)
 	gint res;
 
 	res = lstat (filename, &s);
-	if ((res < 0) || !S_ISREG (s.st_mode))	//file non-existent or non-regular
+	if ((res < 0) || !S_ISREG (s.st_mode))	/*file non-existent or non-regular */
 		return TRUE;
 
 	bak_name = g_strconcat (filename, BACKUP_SUFFIX, NULL);
@@ -333,7 +333,7 @@ update (void)
 	gboolean moreThan1 = grg_entries_n_el () > 1;
 
 	update_combo_attach ();
-	//current_attach_ID gets aligned only after grg_attach_get_menu
+	/*current_attach_ID gets aligned only after grg_attach_get_menu */
 	isAttachSelected = current_attach_ID > -1;
 
 	gtk_widget_set_sensitive (btitle, isStuffed);
@@ -1000,7 +1000,7 @@ save_as (const gchar * fpath)
 #endif
 	gchar *tmpfile;
 	gint err, fd;
-	gboolean is_current = STR_EQ (fpath, grgfile);	//Am I saving the current file?
+	gboolean is_current = STR_EQ (fpath, grgfile);	/*Am I saving the current file? */
 
 	tmpfile = g_strdup (fpath);
 
@@ -1360,7 +1360,7 @@ attach_file (void)
 		return;
 	response = grg_attach_file (selection, win1);
 	GRGAFREE (selection);
-	if (response < 0)	//didn't change anything
+	if (response < 0)	/*didn't change anything */
 		return;
 
 	update_saveable (GRG_SAVE_ACTIVE);
@@ -1519,7 +1519,7 @@ grg_interface (void)
 	PangoFontDescription *pfd;
     GtkCellRenderer *cell;
 
-	// window
+	/* window */
 	win1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	grg_window_set_icon (GTK_WINDOW (win1));
 
@@ -1533,7 +1533,7 @@ grg_interface (void)
 	g_signal_connect (G_OBJECT (win1), "destroy", G_CALLBACK (meta_quit),
 			  NULL);
 
-	// the multi-line text widget
+	/* the multi-line text widget */
 	scroll = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scroll),
 					     GTK_SHADOW_ETCHED_IN);
@@ -1547,7 +1547,7 @@ grg_interface (void)
 	
 	gtk_container_add (GTK_CONTAINER (scroll), edit);
 
-	// the title widget
+	/* the title widget */
 	title = gtk_label_new ("");
 	gtk_misc_set_alignment (GTK_MISC (title), 0.1, 0.5);
 	btitle = gtk_button_new_with_mnemonic (_("E_dit..."));
@@ -1559,7 +1559,7 @@ grg_interface (void)
 	pango_font_description_free (pfd);
 	lbl = gtk_label_new ("");
 
-	// the "navigation" lateral toolbar
+	/* the "navigation" lateral toolbar */
 	tbar_nav = gtk_toolbar_new ();
 	gtk_toolbar_set_style (GTK_TOOLBAR (tbar_nav), GTK_TOOLBAR_ICONS);
 	gtk_toolbar_set_orientation (GTK_TOOLBAR (tbar_nav),
@@ -1591,12 +1591,12 @@ grg_interface (void)
 					 move_around, _("Go to first entry"),
 					 GRG_MV_FIRST, bfirst);
 
-	// size group for "left column"
+	/* size group for "left column" */
 	resizer = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 	gtk_size_group_add_widget (resizer, btitle);
 	gtk_size_group_add_widget (resizer, tbar_nav);
 
-	//the "main" toolbar
+	/*the "main" toolbar */
 	tbar_main = gtk_toolbar_new ();
 	gtk_toolbar_set_style (GTK_TOOLBAR (tbar_main), GTK_TOOLBAR_ICONS);
 	handle_main = gtk_handle_box_new ();
@@ -1664,7 +1664,7 @@ grg_interface (void)
 	TOOLBAR_INS_STOCK (tbar_main, GTK_STOCK_QUIT, meta_quit,
 			   _("Quit Gringotts"));
 
-	//attachment handling toolbar
+	/*attachment handling toolbar */
 	tbar_attach = gtk_toolbar_new ();
 	gtk_toolbar_set_style (GTK_TOOLBAR (tbar_attach), GTK_TOOLBAR_ICONS);
 	handle_attach = gtk_handle_box_new ();
@@ -1784,7 +1784,7 @@ gint
 main (gint argc, gchar ** argv)
 {
 	gchar *file2load = NULL, *file2loadInArgv = NULL, *finalfile = NULL;
-	guchar *version = grg_get_version (); //libgringotts version
+	guchar *version = grg_get_version (); /* libgringotts version */
 	gint prefs_err;
 	gboolean root = FALSE;
 
@@ -1793,7 +1793,7 @@ main (gint argc, gchar ** argv)
 
 	gctx = grg_context_initialize_defaults ((guchar*)"GRG");
 
-	//parse cmdline args
+	/*parse cmdline args */
 	grg_parse_argv (argc, argv, &file2loadInArgv, &root);
 
 	if (!grg_security_filter (root))
@@ -1825,7 +1825,7 @@ main (gint argc, gchar ** argv)
 
 	grg_interface ();
 
-	//if the preferences file is invalid, saves a default
+	/*if the preferences file is invalid, saves a default */
 	if (prefs_err < 0)
 	{
 		g_warning ("%s",
@@ -1835,7 +1835,7 @@ main (gint argc, gchar ** argv)
 		grg_save_prefs ();
 	}
 
-	//loads (ev.) a startup file
+	/*loads (ev.) a startup file */
 	file2load = get_pref_file ();
 
 	if (file2loadInArgv)

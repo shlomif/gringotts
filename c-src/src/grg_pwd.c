@@ -162,7 +162,7 @@ read_pwd_disk (GtkWidget * dlg, gboolean X)
 
 	fd = open (BLOCK_DEV, O_RDONLY);
 
-	//check 4 disk presence
+	/*check 4 disk presence*/
 	if (fd < 0)
 	{
 		report_err (_
@@ -172,7 +172,7 @@ read_pwd_disk (GtkWidget * dlg, gboolean X)
 	}
 
 #if defined(BLOCK_DEV_IS_FLOPPY) && defined(HAVE_LINUX_FD_H)
-	//check for write protection
+	/*check for write protection*/
 	ioctl (fd, FDGETDRVSTAT, &fstruct);
 
 	if ((fstruct.flags >> FD_DISK_WRITABLE_BIT) & 1)
@@ -396,10 +396,10 @@ grg_new_pwd_dialog (GtkWidget * parent)
 	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
 				     quality);
 
-	//show all...
+	/*show all...*/
 	gtk_widget_grab_focus (question);
 	gtk_widget_show_all (GTK_DIALOG (dialog)->vbox);
-	//...but the file selection part
+	/*...but the file selection part*/
 	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
 				     hbox_file);
 	gtk_box_reorder_child (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox_file,

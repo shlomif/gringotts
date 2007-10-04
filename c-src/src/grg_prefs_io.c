@@ -58,14 +58,14 @@ grg_save_prefs (void)
 			 grg_ctx_get_comp_algo (gctx) |
 			 grg_ctx_get_comp_ratio (gctx));
 
-	//saves the algorithm
+	/*saves the algorithm */
 	row = g_strdup_printf
 		("<!-- You'd better not to modify these values manually, anyway -->\n\n<!-- Not human-readable -->\n<algo_code>\n%02x\n</algo_code>\n\n",
 		 algo);
 	write (fd, row, strlen (row));
 	g_free (row);
 
-	//saves the startup file
+	/*saves the startup file */
 	grg_pref_file_local = get_pref_file ();
 	if (grg_pref_file_local)
 	{
@@ -77,42 +77,42 @@ grg_save_prefs (void)
 		g_free (row);
 	}
 
-	//saves the backup files preference
+	/*saves the backup files preference */
 	row = g_strdup_printf
 		("<!-- 0/1 -->\n<bak_files>\n%c\n</bak_files>\n\n",
 		 grg_prefs_bak_files ? '1' : '0');
 	write (fd, row, strlen (row));
 	g_free (row);
 
-	//saves the file overwriting warning preference
+	/*saves the file overwriting warning preference */
 	row = g_strdup_printf
 		("<!-- 0/1 -->\n<overwrite_warn>\n%c\n</overwrite_warn>\n\n",
 		 grg_prefs_warn4overwrite ? '1' : '0');
 	write (fd, row, strlen (row));
 	g_free (row);
 
-	//saves the splash screen preference
+	/*saves the splash screen preference */
 	row = g_strdup_printf
 		("<!-- 0/1 -->\n<display_splash_screen>\n%c\n</display_splash_screen>\n\n",
 		 grg_prefs_splash ? '1' : '0');
 	write (fd, row, strlen (row));
 	g_free (row);
 
-	//saves the password expiration time preference
+	/*saves the password expiration time preference */
 	row = g_strdup_printf
 		("<!-- %d-%d, negative = off -->\n<xpiration_time>\n%d\n</xpiration_time>\n\n",
 		 EXP_TIME_MIN, EXP_TIME_MAX, grg_prefs_xpire);
 	write (fd, row, strlen (row));
 	g_free (row);
 
-	//saves the wipe passes preference
+	/*saves the wipe passes preference */
 	row = g_strdup_printf
 		("<!-- %d-%d -->\n<wipe_passes>\n%d\n</wipe_passes>\n\n",
 		 WIPE_PASSES_MIN, WIPE_PASSES_MAX, grg_prefs_wipe_passes);
 	write (fd, row, strlen (row));
 	g_free (row);
 
-	//saves the font for the editor
+	/*saves the font for the editor */
 	grg_pref_font_string_local = get_pref_font_string ();
 	if (grg_pref_font_string_local)
 	{
@@ -124,7 +124,7 @@ grg_save_prefs (void)
 		g_free (row);
 	}
 
-	//saves the clipboard clearing pref
+	/*saves the clipboard clearing pref */
 	{
 		char policy =
 			grg_prefs_clip_clear_on_close ? '2'
@@ -175,11 +175,11 @@ collect_pref (GMarkupParseContext * context,
 	{
 		gchar algo1 = 0, algo2 = 0, algo;
 		gint i, pos = 0;
-		for (i = 0; i < text_len; i++)	//strips whitespaces
+		for (i = 0; i < text_len; i++)	/*strips whitespaces*/
 			if ((text[i] != ' ') && (text[i] != '\t')
 			    && (text[i] != '\n'))
 			{
-				if (!pos)	//pos=0
+				if (!pos)	/*pos=0*/
 					algo1 = text[i];
 				else
 					algo2 = text[i];
@@ -192,16 +192,16 @@ collect_pref (GMarkupParseContext * context,
 		    || !(((algo2 >= '0') && (algo2 <= '9'))
 			 || ((algo2 >= 'a') && (algo2 <= 'f'))))
 			break;
-		//form the algo byte and setup values
+		/*form the algo byte and setup values*/
 		if (algo1 < 'a')
 			algo1 -= '0';
 		else
-			algo1 -= 'W';	//'a'-10
+			algo1 -= 'W';	/*'a'-10*/
 
 		if (algo2 < 'a')
 			algo2 -= '0';
 		else
-			algo2 -= 'W';	//'a'-10
+			algo2 -= 'W';	/*'a'-10*/
 
 		algo = 0;
 		algo |= (guchar) ((algo1 << 4) & 0xf0);

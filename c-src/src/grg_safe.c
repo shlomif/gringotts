@@ -19,7 +19,7 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#define __USE_GNU		// to use the global variable "environ" in stdlib.h
+#define __USE_GNU		/* to use the global variable "environ" in stdlib.h*/
 
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -95,28 +95,28 @@ static gboolean grg_kver_ge (int a, int b, int c) {
 gboolean
 grg_mlockall_and_drop_root_privileges(void)
 {
-    // drop eventual group root privileges
+    /* drop eventual group root privileges */
     setgid(getgid());
-    setgid(getgid());		// twice for counter "saved IDs", cfr.
-				// Secure Programming HowTo
+    setgid(getgid());		/* twice for counter "saved IDs", cfr. */
+				/* Secure Programming HowTo */
 #ifdef HAVE_SYS_FSUID_H
     setfsgid(getgid());
     setfsgid(getgid());
 #endif
 
     if (!geteuid())
-	// the process is (ev. SUID) root. I can mlockall() the memory in
-	// order to avoid swapping.
+	/* the process is (ev. SUID) root. I can mlockall() the memory in */
+	/* order to avoid swapping. */
     {
 #ifdef HAVE_MLOCKALL
 #ifdef linux
         if (grg_kver_ge(2, 6, 9)) {
-            // since Linux 2.6.9, the memlock amount of unprivileged processes
-            // is limited to the soft limit of RLIMIT_MEMLOCK
-            // Check if there is at least 50000 KB available (which should be
-            // ok for most usages). Else there can be nasty segmentation
-            // faults due to failing malloc() calls and missing NULL checks in
-            // unrelated libraries (eg. libX11 functions).
+            /* since Linux 2.6.9, the memlock amount of unprivileged processes */
+            /* is limited to the soft limit of RLIMIT_MEMLOCK */
+            /* Check if there is at least 50000 KB available (which should be */
+            /* ok for most usages). Else there can be nasty segmentation */
+            /* faults due to failing malloc() calls and missing NULL checks in */
+            /* unrelated libraries (eg. libX11 functions). */
             struct rlimit rl;
             gint res = getrlimit(RLIMIT_MEMLOCK, &rl);
             gint minbytes = 50000*1024;
@@ -145,7 +145,7 @@ grg_mlockall_and_drop_root_privileges(void)
 	    mem_safe = TRUE;
 #endif
 
-	// drop root privileges
+	/* drop root privileges */
 	setuid(getuid());
 	setuid(getuid());
 #ifdef HAVE_SYS_FSUID_H
@@ -214,7 +214,7 @@ grg_security_filter(gboolean rootCheck)
     gchar          *htab;
 
     if (!rootCheck && (!getuid() || !geteuid()))
-	// forbid usage as root user
+	/* forbid usage as root user */
     {
 #ifdef ROOT_FILTER
 	g_critical("%s %s",
@@ -231,17 +231,17 @@ grg_security_filter(gboolean rootCheck)
 	return FALSE;
     }
 
-    // set and check core dump generation
+    /* set and check core dump generation */
     rl = (struct rlimit *) grg_malloc(sizeof(struct rlimit));
     rl->rlim_cur = rl->rlim_max = 0;
     setrlimit(RLIMIT_CORE, rl);
     getrlimit(RLIMIT_CORE, rl);
-    if (rl->rlim_cur || rl->rlim_max)	// no need to give any message, it 
-					// should be impossible
+    if (rl->rlim_cur || rl->rlim_max)	/* no need to give any message, it */
+					/* should be impossible */
 	return FALSE;
     g_free(rl);
 
-    // checks that stderr, stdin & stdout are opened
+    /* checks that stderr, stdin & stdout are opened */
     canary = open("/dev/null", O_RDONLY);
     if (canary < 3) {
 	g_critical("%s",
@@ -252,14 +252,14 @@ grg_security_filter(gboolean rootCheck)
     }
     close(canary);
 
-    // extract needed environmental vars, validate, erase environment,
-    // and re-set them (see Secure Programming HowTo, sect.4.2)
+    /* extract needed environmental vars, validate, erase environment, */
+    /* and re-set them (see Secure Programming HowTo, sect.4.2) */
 
-    // extract
+    /* extract */
     lang = getenv("LANG");
     htab = getenv("HTAB");
 #ifdef ENV_CHECK
-    // validate
+    /* validate */
     if (lang) {
         grg_compile_re(&regexp, "^[[:alpha:]][-[:alnum:]_,+@.=]*$",
                        REG_EXTENDED|REG_NOSUB);
@@ -288,12 +288,12 @@ grg_security_filter(gboolean rootCheck)
     }
 #endif
 
-    // don't know why, but it seems necessary
+    /* don't know why, but it seems necessary */
     setlocale(LC_ALL, lang);
     mapIsUTF = g_get_charset(NULL);
 
 #ifdef ENV_CHECK
-    // erase
+    /* erase */
 #ifdef HAVE_CLEARENV
     clearenv();
 #else
@@ -306,7 +306,7 @@ grg_security_filter(gboolean rootCheck)
 #endif
 #endif
 
-    // re-set (warning: don't free() the g_strconcat'ed strings)
+    /* re-set (warning: don't free() the g_strconcat'ed strings) */
     if (lang != NULL)
 	putenv(g_strconcat("LANG=", lang, NULL));
     if (display != NULL)
@@ -319,18 +319,18 @@ grg_security_filter(gboolean rootCheck)
     putenv(g_strconcat("HOME=", g_get_home_dir(), NULL));
 #endif
 
-    // necessary to handle files correctly
+    /* necessary to handle files correctly */
     if (!mapIsUTF)
 	putenv("G_BROKEN_FILENAMES=1");
 
-    // this enables a stronger check on malloc() routines
+    /* this enables a stronger check on malloc() routines */
 #ifdef MAINTAINER_MODE
     putenv("MALLOC_CHECK_=2");
 #else
     putenv("MALLOC_CHECK_=0");
 #endif
 
-    // initializes the security level indicator
+    /* initializes the security level indicator */
     if (!(geteuid() && getegid() && getuid() && getgid()))
 	change_sec_level(GRG_UNSAFE);
 
@@ -449,7 +449,7 @@ grg_security_monitor(void)
     g_free(rl);
 
 #ifdef HAVE_MLOCKALL
-    // the pwd isn't stored in cleartext anyway
+    /* the pwd isn't stored in cleartext anyway */
     if (mem_safe) {
 	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
 		      _("Memory protection from swap writings"), green);
@@ -546,7 +546,7 @@ grg_malloc(gulong length)
     gpointer        ret = g_try_malloc(length);
 
 #ifdef MAINTAINER_MODE
-    // warn if a malloc(0) is attempted
+    /* warn if a malloc(0) is attempted */
     if (!length)
 	g_warning("zero-length malloc() requested!");
 #endif
@@ -559,7 +559,7 @@ grg_malloc(gulong length)
 	   "to exit cleanly...");
     emergency_quit();
 
-    // never really reached ;-)
+    /* never really reached ;-) */
     return NULL;
 }
 
@@ -572,7 +572,7 @@ grg_realloc(gpointer ptr, gulong length)
     gpointer        ret = g_try_realloc(ptr, length);
 
 #ifdef MAINTAINER_MODE
-    // warn if a realloc(0) is attempted
+    /* warn if a realloc(0) is attempted */
     if (!length)
 	g_warning("zero-length realloc() requested!");
 #endif

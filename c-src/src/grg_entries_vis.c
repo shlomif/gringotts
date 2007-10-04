@@ -85,7 +85,7 @@ void entries_vis_init (void){
 	GtkCellRenderer *cr1, *cr2, *cr3;
 */
 	clip = gtk_clipboard_get (GDK_NONE);
-	if (clip) //why shouldn't it?
+	if (clip) /*why shouldn't it?*/
 		isThereAClip = TRUE;
 
 	entryBuf = gtk_text_buffer_new (NULL);
@@ -336,7 +336,7 @@ void entries_vis_deinit (void){
 
 GtkWidget 
 *get_updated_sheet (gboolean hasData){
-	//if (current_mode == SIMPLE_ENTRY) {
+	/*if (current_mode == SIMPLE_ENTRY) {*/
 		g_signal_handler_block (entryBuf, simpleSigID);
 		gtk_text_buffer_set_text (entryBuf,
 				  hasData ? grg_entries_get_Body () : "",
@@ -458,9 +458,11 @@ find (GtkWidget *widget, gpointer callback_data)
 			gtk_text_buffer_set_text (entryBuf, buf, -1);
 			g_signal_handler_unblock (entryBuf, simpleSigID);
 
-			//to avoid that searching again and again the same text finds
-			//the same portion, we set the cursor AFTER the found text
-			/* And this time really do it -- Shlomi Fish */
+			/*
+             * To avoid that searching again and again the same text finds
+			 * the same portion, we set the cursor AFTER the found text
+			 * And this time really do it -- Shlomi Fish
+             * */
 			cursor = gtk_text_buffer_get_mark (entryBuf,
 							   "insert");
 			gtk_text_buffer_get_iter_at_mark (entryBuf, &position,

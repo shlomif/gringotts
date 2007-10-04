@@ -65,7 +65,7 @@ report_err (gchar * msg, gboolean X, gboolean doquit, GtkWidget * parent)
 	{
 		fprintf (stderr, "%s: %s\n", _("Error"), msg);
 		if (doquit)
-			emergency_quit (); //should suffice quit(1), but just in case... ;-)
+			emergency_quit (); /*should suffice quit(1), but just in case... ;-) */
 	}
 }
 
@@ -383,7 +383,7 @@ grg_display_file (gchar * file)
 		"xterm -e less %s &>/dev/null",
 		"/usr/X11R6/bin/xterm -e less %s &>/dev/null",
 		NULL
-	};			//add eterm, opera
+	};			/*add eterm, opera */
 
 	gchar *command = NULL;
 	gint resp = -1, i = 0;
@@ -394,7 +394,7 @@ grg_display_file (gchar * file)
 		return;
 	}
 
-	//iterates on the available visualizers list until it finds stng useable
+	/*iterates on the available visualizers list until it finds stng useable */
 	while (resp && commands[i])
 	{
 		gchar *quote = g_shell_quote (file);

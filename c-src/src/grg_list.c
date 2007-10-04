@@ -118,7 +118,7 @@ add_columns (GtkTreeView * treeview)
 
 	gtk_tree_view_column_set_widget (column, img_att);
 	g_object_set (G_OBJECT (renderer), "xalign", (gfloat) 0.5, NULL);
-	//needed at least in GTK 2.0.6, anyways doing it seems stupid 2 me
+	/*needed at least in GTK 2.0.6, anyways doing it seems stupid 2 me*/
 	gtk_widget_show (img_att);
 	gtk_tree_view_column_pack_start (column, renderer, TRUE);
 	gtk_tree_view_column_add_attribute (column, renderer, "text",

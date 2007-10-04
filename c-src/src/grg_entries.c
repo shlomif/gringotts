@@ -367,7 +367,7 @@ grg_entries_free (void)
 static void
 meta_print (gpointer data, gpointer user_data)
 {
-	static int i = 0;	//it's used only for one call of grg_entries_print; it works only if so
+	static int i = 0;	/*it's used only for one call of grg_entries_print; it works only if so*/
 	int j = GPOINTER_TO_UINT (user_data);
 	struct grg_entry *entry = (struct grg_entry *) data;
 	g_print ("   **********\n%d: %s\n   **********\n\n",
@@ -390,7 +390,7 @@ grg_entries_print (gint ennum, gchar * enpage)
 	if (ennum > -1)
 	{
 		if (ennum > grg_entries_n_el () || ennum == 0)
-			report_err (_("Invalid entry number"), 0, 1, NULL);	//and quit
+			report_err (_("Invalid entry number"), 0, 1, NULL);	/*and quit*/
 		grg_entries_nth (ennum - 1);
 		meta_print (current->data, GUINT_TO_POINTER (ennum));
 		return;
@@ -520,7 +520,7 @@ grg_entries_save (gchar * file, GRG_KEY key, GtkWidget * parent)
 	return GRG_OK;
 }
 
-//the letter denoting the field is the first of the tag text
+/*the letter denoting the field is the first of the tag text*/
 #define	VERS_FIELD		's'
 #define TITLE_FIELD		't'
 #define BODY_FIELD		'b'

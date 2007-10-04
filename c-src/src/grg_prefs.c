@@ -54,7 +54,7 @@ static GtkWidget *file_entry;
 
 static gboolean active_flag = FALSE;
 
-//radio buttons & other things to update
+/*radio buttons & other things to update */
 static GtkWidget *rij1_but, *ser_but, *twof_but, *cast_but, *safer_but;
 static GtkWidget *rij2_but, *tdes_but, *loki_but, *sha_but, *ripe_but;
 static GtkWidget *zlib_but, *bz_but, *r0_but, *r3_but, *r6_but, *r9_but;
@@ -68,7 +68,7 @@ gboolean grg_prefs_bak_files = TRUE;
 gboolean grg_prefs_splash = TRUE;
 gboolean grg_prefs_clip_clear_on_close = FALSE;
 gboolean grg_prefs_clip_clear_on_quit = TRUE;
-gint grg_prefs_xpire = EXP_TIME_DEF;	//abs(x)= num of days; < 0 = never
+gint grg_prefs_xpire = EXP_TIME_DEF;	/*abs(x)= num of days; < 0 = never */
 gint grg_prefs_wipe_passes = WIPE_PASSES_DEF;
 
 gchar *
@@ -424,7 +424,7 @@ grg_pref_dialog (GtkWidget * parent)
 					     GTK_STOCK_CANCEL,
 					     GTK_RESPONSE_CANCEL, NULL);
 
-	//first page: algorithms
+	/*first page: algorithms */
 	tab1 = gtk_table_new (3, 2, FALSE);
 
 	frame1 = gtk_frame_new (_("Encryption"));
@@ -521,7 +521,7 @@ grg_pref_dialog (GtkWidget * parent)
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (prefs)->vbox), notebook,
 			    TRUE, TRUE, GRG_PAD);
 
-	//second page: General options
+	/*second page: General options */
 	tab2 = gtk_vbox_new (FALSE, GRG_PAD);
 	gtk_notebook_append_page (GTK_NOTEBOOK (notebook), tab2,
 				  gtk_label_new (_("General options")));
@@ -591,7 +591,7 @@ grg_pref_dialog (GtkWidget * parent)
 			  G_CALLBACK (modify_over), NULL);
 	gtk_box_pack_start (GTK_BOX (box_save), over_check, FALSE, TRUE, 1);
 
-	//third page: Security
+	/*third page: Security */
 	tab3 = gtk_vbox_new (FALSE, GRG_PAD);
 	gtk_notebook_append_page (GTK_NOTEBOOK (notebook), tab3,
 				  gtk_label_new (_("Security")));
@@ -618,7 +618,7 @@ grg_pref_dialog (GtkWidget * parent)
 	gtk_box_pack_start (GTK_BOX (box_xpire), xpire_spin, FALSE, TRUE, 1);
 	gtk_box_pack_start (GTK_BOX (box_xpire), xpire_lbl, FALSE, TRUE, 1);
 
-	//this means "passes in wiping a file", not "wipe the passes" :)
+	/*this means "passes in wiping a file", not "wipe the passes" :) */
 	frame_passes = gtk_frame_new (_("Wipe passes"));
 	gtk_box_pack_start (GTK_BOX (tab3), frame_passes, FALSE, TRUE, 1);
 
@@ -658,7 +658,7 @@ grg_pref_dialog (GtkWidget * parent)
 			  G_CALLBACK (modify_qclip), NULL);
 	gtk_box_pack_start (GTK_BOX (box_clip), qclip_check, FALSE, TRUE, 1);
 
-	//end of last tab
+	/*end of last tab */
 	active_flag = TRUE;
 	reset_values (prefs);
 	update_buttons ();

@@ -22,7 +22,7 @@
 #ifndef GRG_LIST_H
 #define GRG_LIST_H
 
-//Creates, manages and displays a dialog with the entry list
+/*Creates, manages and displays a dialog with the entry list*/
 void grg_list_run (void);
 
 #endif

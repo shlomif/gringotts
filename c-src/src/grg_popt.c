@@ -152,7 +152,7 @@ dump_content (gchar * fname, gint ennum, gchar * enpage)
 				    ("Problem with libmcrypt, probably a faulty installation"),
 				    0, 1, NULL);
 
-		//just to be sure...
+		/*just to be sure... */
 		default:
 			if (err < 0)
 				report_err (_("Gringotts internal error. Cannot finish operation."),
@@ -262,9 +262,9 @@ grg_parse_argv (gint argc, gchar * argv[], gchar ** filename,
 		return;
 	}
 
-//wipe and dump operations are processed without returning to main()
+/*wipe and dump operations are processed without returning to main() */
 
-//FIXME this should be in grg_safe.c
+/*FIXME this should be in grg_safe.c */
 #ifdef HAVE_ISATTY
 	if (!isatty (STDIN))
 	{

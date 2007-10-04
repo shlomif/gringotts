@@ -42,8 +42,9 @@
 #define STR_EQ(s1, s2) \
         (strcmp (s1, s2) == 0)
 
-//mimick the behavour of isatty () if
-//system doesn't have it but has ttyname ()
+/* mimick the behavour of isatty () if
+ system doesn't have it but has ttyname ()
+ */
 #ifndef HAVE_ISATTY
 #ifdef HAVE_TTYNAME
 #define isatty(fd) \
@@ -52,7 +53,7 @@
 #endif
 #endif
 
-//limits for preferences
+/*limits for preferences*/
 #define EXP_TIME_MIN	1
 #define EXP_TIME_MAX	730
 #define EXP_TIME_DEF	30
@@ -61,26 +62,26 @@
 #define WIPE_PASSES_MAX	32
 #define WIPE_PASSES_DEF	8
 
-//file descriptors
+/*file descriptors*/
 #define STDIN	0
 #define STDOUT	1
 #define STDERR	2
 
-//time for the dialog to be redrawn
-#define GRG_VISUAL_LATENCY 333	//ms
-//time for the splash screen display
-#define GRG_SPLASH_TIMEOUT 1750	//ms
+/*time for the dialog to be redrawn*/
+#define GRG_VISUAL_LATENCY 333	/*ms*/
+/*time for the splash screen display*/
+#define GRG_SPLASH_TIMEOUT 1750	/*ms*/
 
-//errors in grg_safe_open
+/*errors in grg_safe_open*/
 #define GRG_OPEN_FILE_NOT_FOUND	-171
 #define GRG_OPEN_FILE_IRREGULAR	-172
 #define GRG_OPEN_SECURITY_FAULT	-173
 
-//types of entry
+/*types of entry*/
 #define SIMPLE_ENTRY	0
 #define STRUCT_ENTRY	1
 
-//models an entry item
+/*models an entry item*/
 struct grg_entry
 {
 	gchar *entryID;
@@ -88,7 +89,7 @@ struct grg_entry
 	GList *attach;
 };
 
-//models an attached file
+/*models an attached file*/
 struct grg_attachment
 {
 	gint ID;
@@ -98,7 +99,7 @@ struct grg_attachment
 	GRG_TMPFILE pointer;
 };
 
-//response
+/*response*/
 typedef enum
 {
 	GRG_YES,
@@ -107,7 +108,7 @@ typedef enum
 }
 grg_response;
 
-//saveability
+/*saveability*/
 typedef enum
 {
 	GRG_SAVE_INACTIVE,
@@ -116,7 +117,7 @@ typedef enum
 }
 grg_saveable;
 
-//cut/copy/paste
+/*cut/copy/paste*/
 typedef enum
 {
 	GRG_CUT,
@@ -125,26 +126,26 @@ typedef enum
 }
 grg_clip_action;
 
-//returned OK
+/*returned OK*/
 #define GRG_OK			0
 
-//error
+/*error*/
 #define GRG_READ_INVALID_CHARSET_ERR	-101
 
-//interface-specific constants
+/*interface-specific constants*/
 #define GRG_PAD			4
 
-//internal encryption algorithm
+/*internal encryption algorithm*/
 #define SESSION_ALGO	MCRYPT_RIJNDAEL_128
 
-//suffix to Gringotts files
+/*suffix to Gringotts files*/
 #define SUFFIX		".grg"
 #define SUFFIX_LEN	4
 
-//suffix to add to backup files
+/*suffix to add to backup files*/
 #define BACKUP_SUFFIX	".bak"
 
-//direction to move to
+/*direction to move to*/
 #define GRG_MV_FIRST	1
 #define GRG_MV_NEXT		2
 #define GRG_MV_PREV		3

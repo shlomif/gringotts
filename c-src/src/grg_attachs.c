@@ -47,7 +47,7 @@ gint
 grg_attach_file (gchar * path, GtkWidget * parent)
 {
 	GtkWidget *wait;
-	GList *ceal = ((struct grg_entry *) current->data)->attach;	//Current Entry Attachment List
+	GList *ceal = ((struct grg_entry *) current->data)->attach;	/*Current Entry Attachment List*/
 	struct grg_attachment *newatt;
 	gint fd, ID;
 	glong fdim;
@@ -320,7 +320,7 @@ grg_info_attachment (GtkWidget * parent)
 	GRGAFREE (msg);
 }
 
-//true if the action gets performed
+/*true if the action gets performed*/
 gboolean
 grg_attachment_change_comment (GtkWidget * parent)
 {

@@ -49,3 +49,4 @@
 	## DP: Fix invalid gfree() from load_file. And make sure the
 	## DP: to-be-freed verkey is not NULL.
 	}}}}}}
+	* Replaced C++-style comments ("//") with C-style comments ("/* ... */").

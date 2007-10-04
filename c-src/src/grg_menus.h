@@ -24,22 +24,22 @@
 
 #include <gtk/gtk.h>
 
-// menu File
+/* menu File */
 GtkWidget *bnew, *bopen, *bsave, *bsas, *brev, *bclose, *bquit;
 
-// menu Edit
+/* menu Edit */
 GtkWidget *badd, *brem, *bcut, *bcop, *bpaste, *bfind, *bfinda, *bpwd, *bpref;
 
-// menu Navigation
+/* menu Navigation */
 GtkWidget *bmfirst, *bmback, *bmfor, *bmlast, *bmind;
 
-// menu Tools
+/* menu Tools */
 GtkWidget *bwipe;
 
-// menu Help
+/* menu Help */
 GtkWidget *babo;
 
-//Makes a menubar, within a handlebox, and returns the GtkWidget
+/*Makes a menubar, within a handlebox, and returns the GtkWidget */
 GtkWidget *grg_menu_create (GtkWidget * window);
 
 void grg_menu_update (void);
