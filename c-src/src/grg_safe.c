@@ -33,6 +33,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 #include <regex.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -45,6 +46,9 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/resource.h>
+#ifdef linux
+#include <sys/utsname.h>
+#endif
 #include <sys/stat.h>
 #include <stdio.h>
 
@@ -55,6 +59,38 @@
 static gboolean mem_safe = FALSE,
                 ptrace_safe = FALSE;
 static gint     safety_level = GRG_SAFE;
+
+#ifdef linux
+/* check if current kernel release X.Y.Z is greater or equal than a.b.c */
+static gboolean grg_kver_ge (int a, int b, int c) {
+    struct utsname uval;
+    char *s1, *s2, *s3;
+    char* release;
+    int X, Y, Z;
+    uname(&uval);
+    release = uval.release;
+    s1 = strsep(&release, ".");
+    s2 = strsep(&release, ".");
+    s3 = strsep(&release, ".");
+    if (s1==NULL || s2==NULL || s3==NULL) {
+        /* unknown kernel version, assume FALSE */
+        return FALSE;
+    }
+    X = atoi(s1);
+    Y = atoi(s2);
+    Z = atoi(s3);
+    return 
+        ((X > a) ||
+            (
+                (X ==a) &&
+                (
+                    (Y > b) ||
+                    ((Y == b) && (Z >= c))
+                )
+            )
+        );
+}
+#endif
 
 gboolean
 grg_mlockall_and_drop_root_privileges(void)
@@ -73,6 +109,31 @@ grg_mlockall_and_drop_root_privileges(void)
 	// order to avoid swapping.
     {
 #ifdef HAVE_MLOCKALL
+#ifdef linux
+        if (grg_kver_ge(2, 6, 9)) {
+            // since Linux 2.6.9, the memlock amount of unprivileged processes
+            // is limited to the soft limit of RLIMIT_MEMLOCK
+            // Check if there is at least 50000 KB available (which should be
+            // ok for most usages). Else there can be nasty segmentation
+            // faults due to failing malloc() calls and missing NULL checks in
+            // unrelated libraries (eg. libX11 functions).
+            struct rlimit rl;
+            gint res = getrlimit(RLIMIT_MEMLOCK, &rl);
+            gint minbytes = 50000*1024;
+            if (res) {
+                g_critical(_("Cannot get MEMLOCK resource limit: %s"),
+                           strerror(errno));
+                return FALSE;
+            }
+            if (rl.rlim_cur < minbytes) {
+                g_critical(_("Increase the memory locking limit to at least "
+                             "%d bytes. Current limit: %d bytes.\n"
+                             "See /usr/share/doc/gringotts/README.Debian for directions."),
+                           minbytes, rl.rlim_cur);
+                return FALSE;
+            }
+        }
+#endif
 	gint res = mlockall(MCL_CURRENT | MCL_FUTURE);
 
 	if (res) {

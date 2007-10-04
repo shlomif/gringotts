@@ -40,3 +40,6 @@
 	* Applied 06_check_regcomp_ret.dpatch from the Debian package. It
 	makes the regular expression check for the environment variables in
 	grg_safe.c more robust, and fixes a bug with the display environment.
+	* Applied a modified version of 07_check_ulimit.dpatch from the Debian
+	package. This makes sure that there is a good enough
+	RLIMIT_MEMLOCK in the ulimit for the mlockall operation.
