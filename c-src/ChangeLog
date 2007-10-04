@@ -37,3 +37,6 @@
 	* Ported the source code to gtk+-2.12.
 	* Applied 02_pixmap_32x32.dpatch from the Debian package. It adds
 	a gringotts-32.xpm pixmap.
+	* Applied 06_check_regcomp_ret.dpatch from the Debian package. It
+	makes the regular expression check for the environment variables in
+	grg_safe.c more robust, and fixes a bug with the display environment.

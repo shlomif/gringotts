@@ -127,14 +127,25 @@ change_sec_level(gint newval)
 	safety_level = newval;
 }
 
+static void
+grg_compile_re (regex_t* regex, const char* pat, int cflags)
+{
+    int err = regcomp(regex, pat, cflags);
+    if (err) {
+        char errbuf[1024];
+        regerror(err, regex, errbuf, 1024);
+        g_critical("pattern `%s': %s", pat, errbuf);
+        emergency_quit();
+    }
+}
+
 gboolean
 grg_security_filter(gboolean rootCheck)
 {
     gint            canary;
     struct rlimit  *rl;
 #ifdef ENV_CHECK
-    regex_t         regexp1,
-                    regexp2;
+    regex_t regexp;
     gchar          *display,
                    *xauth;
 #endif
@@ -187,20 +198,32 @@ grg_security_filter(gboolean rootCheck)
     lang = getenv("LANG");
     htab = getenv("HTAB");
 #ifdef ENV_CHECK
-    display = getenv("DISPLAY");
-    xauth = getenv("XAUTHORITY");
     // validate
-    regcomp(&regexp1, "[[:alpha:]][[:alnum:]_,+@\\-\\.=]*", REG_EXTENDED);
-    regcomp(&regexp2,
-	    "[[:digit:]{1,3}\\.[:digit:]{1,3}\\.[:digit:]{1,3}\\.[:digit:]{1,3}]?:[[:digit:]\\.]+",
-	    REG_EXTENDED);
-    if (((lang != NULL) && (regexec(&regexp1, lang, 0, NULL, 0)))
-	|| ((xauth != NULL) && (!g_file_test(xauth, G_FILE_TEST_EXISTS)))
-	|| ((display != NULL) && (regexec(&regexp2, display, 0, NULL, 0)))) {
-	g_critical("%s",
-		   _
-		   ("Invalid environment variables. They could have been manipulated."));
-	return FALSE;
+    if (lang) {
+        grg_compile_re(&regexp, "^[[:alpha:]][-[:alnum:]_,+@.=]*$",
+                       REG_EXTENDED|REG_NOSUB);
+        if (regexec(&regexp, lang, 0, NULL, 0)) {
+            g_critical("%s `%s'",
+                       _("Invalid LANG environment variable:"), lang);
+            return FALSE;
+        }
+    }
+    xauth = getenv("XAUTHORITY");
+    if (xauth && !g_file_test(xauth, G_FILE_TEST_EXISTS)) {
+        g_critical("%s `%s'",
+                   _("Invalid XAUTHORITY environment variable:"), xauth);
+        return FALSE;
+    }
+    display = getenv("DISPLAY");
+    if (display) {
+        grg_compile_re(&regexp,
+                       ":[[:digit:]]+(\\.[[:digit:]]+)?$",
+                       REG_EXTENDED|REG_NOSUB);
+        if (regexec(&regexp, display, 0, NULL, 0)) {
+            g_critical("%s `%s'", _("Invalid DISPLAY environment variable:"),
+                       display);
+            return FALSE;
+        }
     }
 #endif
 
@@ -225,6 +248,8 @@ grg_security_filter(gboolean rootCheck)
     // re-set (warning: don't free() the g_strconcat'ed strings)
     if (lang != NULL)
 	putenv(g_strconcat("LANG=", lang, NULL));
+    if (display != NULL)
+        putenv(g_strconcat("DISPLAY=", display, NULL));
     if (htab != NULL)
 	putenv(g_strconcat("HTAB=", htab, NULL));
     putenv(g_strconcat("DISPLAY=", display, NULL));
