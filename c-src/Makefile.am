@@ -5,6 +5,7 @@ gringottsdocdir = $(datadir)/doc/gringotts-@VERSION@
 gringottsdoc_DATA = BUGS FAQ README AUTHORS ChangeLog TODO NEWS COPYING
 
 EXTRA_DIST = gringotts.spec.in gringotts.desktop.in $(gringottsdoc_DATA)
+EXTRA_DIST += autogen.sh
 
 Dsktpdir = $(datadir)/gnome/apps/Utilities
 Dsktp_in_files = gringotts.desktop.in
