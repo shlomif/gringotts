@@ -1,0 +1,15 @@
+#include "template.wml"
+
+<latemp_subject "Links" />
+<latemp_version_control_id "$Id$" />
+
+<h2>Latemp Related Links</h2>
+
+<ul>
+<li>
+<a href="http://web-cpan.berlios.de/latemp/">The Latemp Homepage</a>
+</li>
+<li>
+<a href="http://thewml.org/">Web Meta Language</a>
+</li>
+</ul>

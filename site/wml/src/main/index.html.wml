@@ -1,0 +1,5 @@
+#include "template.wml"
+
+<latemp_subject "My Subject" />
+<latemp_version_control_id "$Id$" />
+

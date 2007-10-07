@@ -1,0 +1,7 @@
+---
+prefix: /home/shlomi/apps/latemp/
+program:
+  author: Shlomi Fish
+  name: Latemp
+version: 0.4.0
+versioning_scheme: 0

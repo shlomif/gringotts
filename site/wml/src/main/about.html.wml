@@ -1,0 +1,10 @@
+#include "template.wml"
+
+<latemp_subject "About this site" />
+<latemp_version_control_id "$Id$" />
+
+<p>
+Here you should put information about this site. A good idea may be moving
+it to about/index.html.wml.
+</p>
+
