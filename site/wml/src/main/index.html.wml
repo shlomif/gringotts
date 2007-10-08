@@ -1,5 +1,24 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "Gringotts - a Safebox for your Data" />
 <latemp_version_control_id "$Id$" />
+
+<p>
+Gringotts is a secure notes manager for Linux and other UNIX-like systems.
+It is based on libgringotts, which provides a backend for managing the
+data files on the disk.
+</p>
+
+<p>
+Gringotts was originally written by Germano Rizzo with contributions from 
+other people. It is currently maintained by Shlomi Fish.
+</p>
+
+<h2 id="download">Download</h2>
+
+<p>
+For downloads see
+<a href="http://developer.berlios.de/project/showfiles.php?group_id=8036">the
+Berlios page</a>.
+</p>
 
