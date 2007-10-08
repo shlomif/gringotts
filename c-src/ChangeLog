@@ -55,3 +55,6 @@
 	* Fixed the load_file() function - abs_filename could have been
 	NULL if the path was already absolute. This was a regression caused
 	by applying a Debian patch. "Save" (not "Save as") now works.
+
+2007-10-08 Shlomi Fish <shlomif@iglu.org.il>
+	* Tagged and released gringotts-1.2.9pre2
