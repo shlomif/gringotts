@@ -13,6 +13,10 @@
 <latemp_author "John Smith" />
 
 <latemp_webmaster>
+<p>
+Webmaster and maintainer: <a href="http://www.shlomifish.org/">Shlomi Fish</a>
+(<a href="mailto:shlomif@iglu.org.il">shlomif@iglu.org.il</a>).
+</p>
 </latemp_webmaster>
 
 <latemp_license>
