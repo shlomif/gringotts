@@ -1,0 +1,12 @@
+<define-tag about_brief>
+<p>
+Gringotts is a secure notes manager for Linux and other UNIX-like systems.
+It is based on libgringotts, which provides a backend for managing the
+data files on the disk.
+</p>
+
+<p>
+Gringotts was originally written by Germano Rizzo with contributions from 
+other people. It is currently maintained by Shlomi Fish.
+</p>
+</define-tag>
