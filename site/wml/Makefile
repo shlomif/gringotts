@@ -35,4 +35,4 @@ $(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
 
 upload: all
 	cd $(ALL_DEST_BASE)/main && \
-	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/gringotts/htdocs/
+	$(RSYNC) -r * shlomif2@shell.berlios.de:/home/groups/gringotts/htdocs/
