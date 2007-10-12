@@ -9,7 +9,7 @@ my $hosts =
 {
     'main' =>
     {
-        'base_url' => "http://myhost.mydomain/",
+        'base_url' => "http://gringotts.berlios.de/",
     },
 };
 
@@ -49,7 +49,7 @@ my $tree_contents =
         },
         {
             'text' => "About",
-            'url' => "about.html",
+            'url' => "about/",
         },
         get_news_category(),
         {
