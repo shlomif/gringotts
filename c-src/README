@@ -74,6 +74,83 @@ write me <mailto:mano78@users.sourceforge.net> if you have some particular wish!
 
 ------------------------------------------------------------------------
 
+Troubleshooting for common problems with Gringotts
+==================================================
+
+(((((((
+Taken from README.Debian by:
+
+-- Bastian Kleineidam <calvin@debian.org>
+)))))))
+
+Startup failure
+---------------
+
+If gringotts crashes on startup with a segmentation fault or the message                            
+"gringotts-CRITICAL **: Increase the memory locking limit to at least                            
+51200000 bytes. Current limit: <n> bytes.", you have to increase the
+locked memory on your system.
+
+One option would be to copy the gringotts executable and make it not 
+SUID-root. If you're interested in the other option - read on.
+
+It might also be a good idea to switch to check if your login manager
+properly supports PAM (for example the wdm login program does not
+support PAM).
+
+a) Replace 'mylogin' with your username, and add the lines below
+   to /etc/security/limits.conf. See the documentation at the
+   beginning of limits.conf for more info about these values.
+
+#<domain>      <type>  <item>         <value>
+mylogin         soft    memlock        50000
+mylogin         hard    memlock        50000
+
+b) Enable the pam_limits.so module in all PAM login managers, for
+   example in /etc/pam.d/{login,xdm,gdm,ssh}.
+
+c) Log out, and log in again. Now your memlock limit should be
+   50000 KBytes (or roughly 50MB). Verify this by executing ulimit:
+   $ ulimit -l
+   50000
+
+If you want to understand the above steps, read along.
+
+Since kernel 2.6.9, the amount of locked memory is limited
+for normal users. But gringotts needs locked memory, lots of it.
+And when it does not get enough locked memory gringotts just exits.
+
+So the above steps increase the amount of locked memory each user
+is allowed to have.
+
+a) The limits.conf configures resource limits. See the documentation
+   at the beginning of the file what each entry means.
+
+b) The limits.conf directory is activated by the pam_limits.so PAM
+   module. So the module has to be enabled in all PAM applications
+   you use to login into your machine.
+
+c) After logging in again, the limits should be set.
+
+
+Note that Gringotts can only use memory locking when it has the setuid
+bit set in its permissions. If you do not want memory locking enabled anyway,
+use dpkg-statoverride(8) to remove the setuid bit. But I do not recommend
+this.
+
+
+Gringotts is very slow
+----------------------
+You most certainly have a debug build of gringotts which enables
+mudflap support. This slows down gringotts a lot. To disable mudflap,
+set this environment variable:
+$ export MUDFLAP_OPTIONS="-mode-nop"
+For more information about mudflap, see
+http://gcc.gnu.org/wiki/Mudflap%20Pointer%20Debugging
+
+
+
+===================================================
 
 	Authors
 

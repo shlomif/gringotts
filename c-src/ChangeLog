@@ -58,3 +58,6 @@
 
 2007-10-08 Shlomi Fish <shlomif@iglu.org.il>
 	* Tagged and released gringotts-1.2.9pre2
+
+2007-12-07 Shlomi Fish <shlomif@iglu.org.il>
+	* Integrated the README.Debian into the README with a note of my own.
