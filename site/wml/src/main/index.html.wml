@@ -14,3 +14,17 @@ For downloads see
 Berlios page</a>.
 </p>
 
+<h2 id="news">News</h2>
+
+<h3 id="2007_10_12_1.2.9pre2">Gringotts 1.2.9pre2 was Released</h3>
+
+<p>
+Gringotts 1.2.9pre2 was released. This version incorporates many bug-fixes,
+including the recent Gringotts-Shlomif patch, the patches from the
+Debian package, and other patches. If all goes well, it will become
+gringotts-1.2.9.
+</p>
+
+<p>
+gringotts-1.2.9pre2 now requires gtk+-2.12.x, or a compatible version. 
+</p>
