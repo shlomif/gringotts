@@ -128,7 +128,9 @@ grg_mlockall_and_drop_root_privileges(void)
             if (rl.rlim_cur < minbytes) {
                 g_critical(_("Increase the memory locking limit to at least "
                              "%d bytes. Current limit: %d bytes.\n"
-                             "See /usr/share/doc/gringotts/README.Debian for directions."),
+                             "See /usr/share/doc/gringotts/README for \n"
+                             "directions or alternatively make gringotts\n"
+                             "non-SUID-root\n"),
                            minbytes, (int)rl.rlim_cur);
                 return FALSE;
             }
