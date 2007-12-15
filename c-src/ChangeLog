@@ -63,3 +63,6 @@
 	* Integrated the README.Debian into the README with a note of my own.
 	* Added a note about the SUID-root problem to the error message of the
 	mlock-memory.
+
+2007-12-15 Shlomi Fish <shlomif@iglu.org.il>
+	* Tagged and released gringotts-1.2.9pre3

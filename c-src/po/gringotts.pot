@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-04 20:59+0200\n"
+"POT-Creation-Date: 2007-12-15 16:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -776,98 +776,100 @@ msgstr ""
 msgid ""
 "Increase the memory locking limit to at least %d bytes. Current limit: %d "
 "bytes.\n"
-"See /usr/share/doc/gringotts/README.Debian for directions."
+"See /usr/share/doc/gringotts/README for \n"
+"directions or alternatively make gringotts\n"
+"non-SUID-root\n"
 msgstr ""
 
-#: src/grg_safe.c:142
+#: src/grg_safe.c:144
 msgid "The process is setuid root, but I can't lock memory paging"
 msgstr ""
 
-#: src/grg_safe.c:164
+#: src/grg_safe.c:166
 msgid ""
 "Cannot drop root user privileges. Someone is hacking this process. I cannot "
 "go on"
 msgstr ""
 
-#: src/grg_safe.c:177
+#: src/grg_safe.c:179
 msgid ""
 "Cannot drop root group privileges. Someone is hacking this process. I cannot "
 "go on"
 msgstr ""
 
-#: src/grg_safe.c:222 src/grg_safe.c:228
+#: src/grg_safe.c:224 src/grg_safe.c:230
 msgid "For security reasons, you cannot run Gringotts as root user."
 msgstr ""
 
-#: src/grg_safe.c:224
+#: src/grg_safe.c:226
 msgid "Try to compile with --disable-root-filter in ./configure"
 msgstr ""
 
-#: src/grg_safe.c:229
+#: src/grg_safe.c:231
 msgid "Try using -s"
 msgstr ""
 
-#: src/grg_safe.c:249
+#: src/grg_safe.c:251
 msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
 msgstr ""
 
-#: src/grg_safe.c:268
+#: src/grg_safe.c:270
 msgid "Invalid LANG environment variable:"
 msgstr ""
 
-#: src/grg_safe.c:275
+#: src/grg_safe.c:277
 msgid "Invalid XAUTHORITY environment variable:"
 msgstr ""
 
-#: src/grg_safe.c:284
+#: src/grg_safe.c:286
 msgid "Invalid DISPLAY environment variable:"
 msgstr ""
 
-#: src/grg_safe.c:391
+#: src/grg_safe.c:393
 msgid "optimal"
 msgstr ""
 
-#: src/grg_safe.c:393
+#: src/grg_safe.c:395
 msgid "good"
 msgstr ""
 
-#: src/grg_safe.c:396
+#: src/grg_safe.c:398
 msgid "low"
 msgstr ""
 
-#: src/grg_safe.c:416
+#: src/grg_safe.c:418
 msgid "Security monitor"
 msgstr ""
 
-#: src/grg_safe.c:431 src/grg_safe.c:435 src/grg_safe.c:438
+#: src/grg_safe.c:433 src/grg_safe.c:437 src/grg_safe.c:440
 msgid "Running without root privileges"
 msgstr ""
 
-#: src/grg_safe.c:444 src/grg_safe.c:447
+#: src/grg_safe.c:446 src/grg_safe.c:449
 msgid "Memory protection from core dumps"
 msgstr ""
 
-#: src/grg_safe.c:455 src/grg_safe.c:458
+#: src/grg_safe.c:457 src/grg_safe.c:460
 msgid "Memory protection from swap writings"
 msgstr ""
 
-#: src/grg_safe.c:463 src/grg_safe.c:466
+#: src/grg_safe.c:465 src/grg_safe.c:468
 msgid "Memory protection from ptrace spying"
 msgstr ""
 
-#: src/grg_safe.c:470 src/grg_safe.c:473
+#: src/grg_safe.c:472 src/grg_safe.c:475
 msgid "Environmental variables validation"
 msgstr ""
 
-#: src/grg_safe.c:476
+#: src/grg_safe.c:478
 msgid "stdout/stdin/stderr validation"
 msgstr ""
 
-#: src/grg_safe.c:479 src/grg_safe.c:482
+#: src/grg_safe.c:481 src/grg_safe.c:484
 msgid "Enforced use of /dev/random"
 msgstr ""
 
-#: src/grg_safe.c:486 src/grg_safe.c:489
+#: src/grg_safe.c:488 src/grg_safe.c:491
 msgid "Strict prohibition to root user"
 msgstr ""
 
