@@ -31,6 +31,7 @@ gboolean grg_prefs_clip_clear_on_close;
 gboolean grg_prefs_clip_clear_on_quit;
 gint grg_prefs_xpire;
 gint grg_prefs_wipe_passes;
+gint grg_prefs_mainwin_width, grg_prefs_mainwin_height;
 
 gchar *get_pref_file (void);
 void set_pref_file (const gchar * newval);

@@ -453,6 +453,9 @@ meta_quit (void)
 	if (file_close () == GRG_CANCEL)
 		return;
 
+	/* TODO: see mainwin_resize() */
+	grg_save_prefs();
+
 	quit (0);
 }
 
@@ -1507,6 +1510,19 @@ set_editor_font (const gchar * font_desc)
 	pango_font_description_free (fdesc);
 }
 
+static void
+mainwin_resize (GtkWidget *widget, GtkAllocation *allocation)
+{
+	g_return_if_fail(allocation != NULL);
+
+	grg_prefs_mainwin_width = allocation->width;
+	grg_prefs_mainwin_height = allocation->height;
+	/* TODO: in theory, prefs saveable status should be updated with GRG_SET_ACTIVE here,
+	but because current prefs design doesn't make the difference between GUI-prefs
+	dirty status and open-file dirty status, grg_save_prefs() is unconditionally
+	called when leaving */
+}
+
 /**
  * grg_interface:
  *
@@ -1522,6 +1538,7 @@ grg_interface (void)
 	gchar *str, *fdesc;
 	PangoFontDescription *pfd;
     GtkCellRenderer *cell;
+	GdkGeometry geometry;
 
 	/* window */
 	win1 = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -1544,8 +1561,6 @@ grg_interface (void)
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scroll),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
-	
-	gtk_widget_set_size_request (scroll, 400, 300);
 	
 	edit = get_updated_sheet (FALSE);
 	
@@ -1769,8 +1784,21 @@ grg_interface (void)
 
 	update ();
 
+	/* set minimum size hints to the main window */
+	geometry.min_width = 460;
+	geometry.min_height = 460;
+	gtk_window_set_geometry_hints (GTK_WINDOW (win1), NULL,
+									&geometry, GDK_HINT_MIN_SIZE);
+	/* and apply custom size preferences */
+	gtk_widget_set_size_request (win1, grg_prefs_mainwin_width,	
+									grg_prefs_mainwin_height);
+	g_signal_connect (G_OBJECT (win1), "size_allocate", G_CALLBACK (mainwin_resize),
+			  NULL);
+
 	started = TRUE;
 	gtk_widget_show_all (win1);
+
+
 	if (grg_prefs_splash)
 		gtk_widget_show_all (grg_splash (win1));
 }

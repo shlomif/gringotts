@@ -66,3 +66,7 @@
 
 2007-12-15 Shlomi Fish <shlomif@iglu.org.il>
 	* Tagged and released gringotts-1.2.9pre3
+
+2008-01-04 Shlomi Fish <shlomif@iglu.org.il>
+	* Applied a patch from wwp to remember the main window size
+	better invocations.

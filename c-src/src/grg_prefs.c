@@ -70,6 +70,7 @@ gboolean grg_prefs_clip_clear_on_close = FALSE;
 gboolean grg_prefs_clip_clear_on_quit = TRUE;
 gint grg_prefs_xpire = EXP_TIME_DEF;	/*abs(x)= num of days; < 0 = never */
 gint grg_prefs_wipe_passes = WIPE_PASSES_DEF;
+gint grg_prefs_mainwin_width = -1, grg_prefs_mainwin_height = -1;
 
 gchar *
 get_pref_file (void)

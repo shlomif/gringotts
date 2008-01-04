@@ -124,6 +124,18 @@ grg_save_prefs (void)
 		g_free (row);
 	}
 
+	/*saves the main window size preference */
+	row = g_strdup_printf
+		("<!-- -1 or a valid window width -->\n<Width_of_main_window>\n%d\n</Width_of_main_window>\n\n",
+		 grg_prefs_mainwin_width);
+	write (fd, row, strlen (row));
+	g_free (row);
+	row = g_strdup_printf
+		("<!-- -1 or a valid window height -->\n<Height_of_main_window>\n%d\n</Height_of_main_window>\n\n",
+		 grg_prefs_mainwin_height);
+	write (fd, row, strlen (row));
+	g_free (row);
+
 	/*saves the clipboard clearing pref */
 	{
 		char policy =
@@ -151,6 +163,8 @@ grg_save_prefs (void)
 #define WIPE_PASSES	'w'
 #define EDITOR_FONT	'f'
 #define CLIPCLEAR	'c'
+#define MAINWIN_WIDTH 'W'
+#define MAINWIN_HEIGHT 'H'
 
 static void
 introduce_pref (GMarkupParseContext * context,
@@ -309,6 +323,26 @@ collect_pref (GMarkupParseContext * context,
 			i++;
 		grg_prefs_clip_clear_on_close = (text[i] == '2');
 		grg_prefs_clip_clear_on_quit = !(text[i] == '0');
+		break;
+	}
+	case MAINWIN_WIDTH:
+	{
+		int i = 0;
+		while ((text[i] < '1' || text[i] > '9') && text[i] != '-')
+			i++;
+		grg_prefs_mainwin_width = atoi (text + i);
+		if (grg_prefs_mainwin_width < -1)
+			grg_prefs_mainwin_width = -1;
+		break;
+	}
+	case MAINWIN_HEIGHT:
+	{
+		int i = 0;
+		while ((text[i] < '1' || text[i] > '9') && text[i] != '-')
+			i++;
+		grg_prefs_mainwin_height = atoi (text + i);
+		if (grg_prefs_mainwin_height < -1)
+			grg_prefs_mainwin_height = -1;
 		break;
 	}
 	}
