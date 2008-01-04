@@ -70,3 +70,6 @@
 2008-01-04 Shlomi Fish <shlomif@iglu.org.il>
 	* Applied a patch from wwp to remember the main window size
 	better invocations.
+	* Fixed "configure.ac" (and by implication - "configure") to require
+	gtk+ version 2.12.0 and above, to avoid compilation problems with
+	older and incompatible gtk+'s.
