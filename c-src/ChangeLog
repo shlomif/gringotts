@@ -73,3 +73,4 @@
 	* Fixed "configure.ac" (and by implication - "configure") to require
 	gtk+ version 2.12.0 and above, to avoid compilation problems with
 	older and incompatible gtk+'s.
+	* Tagged and released gringotts-1.2.9pre4
