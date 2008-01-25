@@ -453,7 +453,6 @@ meta_quit (void)
 	if (file_close () == GRG_CANCEL)
 		return;
 
-	/* TODO: see mainwin_resize() */
 	grg_save_prefs();
 
 	quit (0);
@@ -1524,10 +1523,6 @@ mainwin_resize (GtkWidget *widget, GtkAllocation *allocation)
 
 	grg_prefs_mainwin_width = allocation->width;
 	grg_prefs_mainwin_height = allocation->height;
-	/* TODO: in theory, prefs saveable status should be updated with GRG_SET_ACTIVE here,
-	but because current prefs design doesn't make the difference between GUI-prefs
-	dirty status and open-file dirty status, grg_save_prefs() is unconditionally
-	called when leaving */
 }
 
 /**

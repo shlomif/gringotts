@@ -162,11 +162,29 @@ static void
 apply_values (void)
 {
 	gchar *utf;
-	grg_ctx_set_crypt_algo (gctx, tmp_pref_crypto);
-	grg_ctx_set_hash_algo (gctx, tmp_pref_hash);
-	grg_ctx_set_comp_algo (gctx, tmp_pref_comp);
-	grg_ctx_set_comp_ratio (gctx, tmp_pref_ratio);
-	g_free (grg_pref_file);
+	gboolean dirty = FALSE;
+
+	if (grg_ctx_get_crypt_algo(gctx) != tmp_pref_crypto)
+	{
+		dirty = TRUE;
+		grg_ctx_set_crypt_algo (gctx, tmp_pref_crypto);
+	}
+	if (grg_ctx_get_hash_algo(gctx) != tmp_pref_hash)
+	{
+		dirty = TRUE;
+		grg_ctx_set_hash_algo (gctx, tmp_pref_hash);
+	}
+	if (grg_ctx_get_comp_algo(gctx) != tmp_pref_comp)
+	{
+		dirty = TRUE;
+		grg_ctx_set_comp_algo (gctx, tmp_pref_comp);
+	}
+	if (grg_ctx_get_comp_ratio(gctx) != tmp_pref_ratio)
+	{
+		dirty = TRUE;
+		grg_ctx_set_comp_ratio (gctx, tmp_pref_ratio);
+	}
+
 	grg_pref_file =
 		g_strdup (gtk_entry_get_text (GTK_ENTRY (file_entry)));
 	utf = g_filename_from_utf8 (grg_pref_file, -1, NULL, NULL, NULL);
@@ -184,7 +202,10 @@ apply_values (void)
 				(gtk_bin_get_child (GTK_BIN (but_font))))));
 	set_editor_font (grg_prefs_editor_font);
 
-	update_saveable (GRG_SAVE_ACTIVE);
+	if (dirty)
+		update_saveable (GRG_SAVE_ACTIVE);
+
+	/* unconditionally save prefs */
 	grg_save_prefs ();
 }
 
