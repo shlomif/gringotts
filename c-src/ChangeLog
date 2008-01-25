@@ -74,3 +74,7 @@
 	gtk+ version 2.12.0 and above, to avoid compilation problems with
 	older and incompatible gtk+'s.
 	* Tagged and released gringotts-1.2.9pre4
+
+2008-01-25 Shlomi Fish <shlomif@iglu.org.il>
+	* Tagged and released gringotts-1.2.9. (With no significant changes 
+	since gringotts-1.2.9pre4).
