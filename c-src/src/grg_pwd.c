@@ -76,7 +76,6 @@ meta_browse (GtkWidget * data, GtkWidget * entry)
 	GtkWidget *dlg =
 		GTK_WIDGET (GTK_WIDGET ((GTK_WIDGET (data->parent))->parent)->
 			    parent);
-	gint res;
 
     file_chooser = gtk_file_chooser_dialog_new (_("Open..."),
             GTK_WINDOW (dlg),
@@ -305,7 +304,7 @@ vis_quality (gpointer ignore, gpointer type)
  * Returns: the new password, or NULL if user Cancel-ed
  */
 GRG_KEY
-grg_new_pwd_dialog (GtkWidget * parent)
+grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 {
 	GtkWidget *dialog, *label2;
 	GtkWidget *chk_file, *chk_pwd, *chk_disk;
@@ -318,9 +317,9 @@ grg_new_pwd_dialog (GtkWidget * parent)
 					      GTK_WINDOW (parent),
 					      GTK_DIALOG_MODAL |
 					      GTK_DIALOG_DESTROY_WITH_PARENT,
+					      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 					      GTK_STOCK_OK, GTK_RESPONSE_OK,
-					      GTK_STOCK_CANCEL,
-					      GTK_RESPONSE_CANCEL, NULL);
+						  NULL);
 
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog),
 					 GTK_RESPONSE_OK);
@@ -412,8 +411,12 @@ grg_new_pwd_dialog (GtkWidget * parent)
 		grg_key_free (gctx, key);
 		key = NULL;
 
-		if (res == GTK_RESPONSE_CANCEL)
+		if (res != GTK_RESPONSE_OK)
+		{
+			if (cancelled)
+				*cancelled = TRUE;
 			break;
+		}
 
 		switch (curr_type_pwd_chg)
 		{
@@ -546,13 +549,11 @@ toggle_pwd_file (GtkWidget * data, gpointer value)
 }
 
 GRG_KEY
-grg_ask_pwd_dialog (GtkWidget * parent)
+grg_ask_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 {
-	gint response;
 	GtkWidget *dlg;
 	GtkWidget *chk_file, *chk_pwd, *chk_disk;
 	GRG_KEY key = NULL;
-	gboolean exit = FALSE;
 
 	curr_type_pwd_req = TYPE_PWD;
 
@@ -560,9 +561,9 @@ grg_ask_pwd_dialog (GtkWidget * parent)
 					   GTK_WINDOW (parent),
 					   GTK_DIALOG_MODAL |
 					   GTK_DIALOG_DESTROY_WITH_PARENT,
+					   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 					   GTK_STOCK_OK, GTK_RESPONSE_OK,
-					   GTK_STOCK_CANCEL,
-					   GTK_RESPONSE_CANCEL, NULL);
+					   NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg),
 					 GTK_RESPONSE_CANCEL);
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 3);
@@ -615,13 +616,20 @@ grg_ask_pwd_dialog (GtkWidget * parent)
 
 	while (TRUE)
 	{
+		gboolean exit;
+		gint response;
 		clear_entry (NULL, entry);
 		response = gtk_dialog_run (GTK_DIALOG (dlg));
+		exit = FALSE;
 		grg_key_free (gctx, key);
 		key = NULL;
 
-		if (response == GTK_RESPONSE_CANCEL)
+		if (response != GTK_RESPONSE_OK)
+		{
+			if (cancelled)
+				*cancelled = TRUE;
 			break;
+		}
 
 		switch (curr_type_pwd_req)
 		{

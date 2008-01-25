@@ -78,3 +78,22 @@
 2008-01-25 Shlomi Fish <shlomif@iglu.org.il>
 	* Tagged and released gringotts-1.2.9. (With no significant changes 
 	since gringotts-1.2.9pre4).
+
+    --------------------------------
+   --- Changes from release 1.2.9 ---
+    --------------------------------
+
+	* Few fixes in the ask password and define password dialogs:
+	* change button order to be HIG compliant (GNOME, XFce and others)
+    * fix behaviour of dialogs when pressing Esc by watching the right
+      gtk_dialog response type
+    * fix few logics issues when asking for password and not checking
+      if the dialog has been cancelled
+    * fix possible mis-initialization of exit flag in loop
+    * fix a warning (res defined but not used)
+
+	* In some other dialogs that use gtk_dialog:
+      - make button order HIG compliant
+      - fix scope of few variables
+
+	* Thanks to wwp for the patch.

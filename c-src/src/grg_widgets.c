@@ -101,10 +101,10 @@ grg_input_dialog (gchar * title, gchar * qtext, gchar * preset,
 	gint res;
 
 	dialog = gtk_dialog_new_with_buttons (title, GTK_WINDOW (parent),
-					      GTK_DIALOG_MODAL, GTK_STOCK_OK,
-					      GTK_RESPONSE_OK,
-					      GTK_STOCK_CANCEL,
-					      GTK_RESPONSE_CANCEL, NULL);
+					      GTK_DIALOG_MODAL,
+					      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					      GTK_STOCK_OK, GTK_RESPONSE_OK,
+					      NULL);
 
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog),
 					 GTK_RESPONSE_OK);

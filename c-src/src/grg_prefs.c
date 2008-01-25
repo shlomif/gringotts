@@ -409,7 +409,6 @@ grg_pref_dialog (GtkWidget * parent)
 	GtkWidget *frame_xpire, *box_xpire, *xpire_lbl;
 	GtkWidget *frame_passes, *box_passes, *lbl_passes;
 	GtkWidget *frame_clip, *box_clip;
-	gint response;
 
 	PangoFontDescription *fdesc;
 
@@ -419,11 +418,10 @@ grg_pref_dialog (GtkWidget * parent)
 	prefs = gtk_dialog_new_with_buttons (_("Preferences"),
 					     GTK_WINDOW (parent),
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
+					     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					     GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
 					     GTK_STOCK_OK, GTK_RESPONSE_OK,
-					     GTK_STOCK_APPLY,
-					     GTK_RESPONSE_APPLY,
-					     GTK_STOCK_CANCEL,
-					     GTK_RESPONSE_CANCEL, NULL);
+					     NULL);
 
 	/*first page: algorithms */
 	tab1 = gtk_table_new (3, 2, FALSE);
@@ -669,7 +667,7 @@ grg_pref_dialog (GtkWidget * parent)
 	while (TRUE)
 	{
 		gboolean exit = TRUE;
-		response = gtk_dialog_run (GTK_DIALOG (prefs));
+		gint response = gtk_dialog_run (GTK_DIALOG (prefs));
 
 		switch (response)
 		{
@@ -680,7 +678,6 @@ grg_pref_dialog (GtkWidget * parent)
 			apply_values ();
 			exit = FALSE;
 			break;
-		case GTK_RESPONSE_CANCEL:
 		default:
 			break;
 		}

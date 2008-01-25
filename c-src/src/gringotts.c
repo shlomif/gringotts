@@ -726,11 +726,12 @@ load_file (gchar * input_filename)
 	while (TRUE)
 	{
 		gboolean doret = FALSE, exit = FALSE;
+		gboolean cancelled = FALSE;
 		gchar *msg = NULL;
 
-		tmpkey = grg_ask_pwd_dialog (win1);
+		tmpkey = grg_ask_pwd_dialog (win1, &cancelled);
 
-		if (!tmpkey)
+		if (!tmpkey || cancelled)
 		{
 			close (fd);
 			goto cleanup;
@@ -935,16 +936,18 @@ void
 do_new (void)
 {
 	GRG_KEY tmpkey;
+	gboolean cancelled = FALSE;
 
 	if (file_close () == GRG_CANCEL)
 		return;
 
 	g_assert (GTK_IS_WIDGET (win1));
 
-	tmpkey = grg_new_pwd_dialog (GTK_WIDGET (win1));
+	tmpkey = grg_new_pwd_dialog (GTK_WIDGET (win1), &cancelled);
 
 	if (!tmpkey)
 	{
+		if (!cancelled)
 		grg_msg (_("You must enter a valid password!"),
 			 GTK_MESSAGE_ERROR, win1);
 		return;
@@ -1235,8 +1238,12 @@ void
 chpwd (void)
 {
 	GRG_KEY tmpkey, verkey;
+	gboolean cancelled = FALSE;
 
-	verkey = grg_ask_pwd_dialog (win1);
+	verkey = grg_ask_pwd_dialog (win1, &cancelled);
+
+	if (cancelled)
+		return;
 
 	if (!verkey || !grg_key_compare (verkey, key))
     {
@@ -1252,7 +1259,7 @@ chpwd (void)
 	grg_key_free (gctx, verkey);
 	verkey = NULL;
 
-	tmpkey = grg_new_pwd_dialog (win1);
+	tmpkey = grg_new_pwd_dialog (win1, NULL);
 
 	if (tmpkey)
 	{

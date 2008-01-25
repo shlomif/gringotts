@@ -25,9 +25,9 @@
 #include <gtk/gtk.h>
 
 /*Asks for a new password, validating it.*/
-GRG_KEY grg_new_pwd_dialog (GtkWidget * parent);
+GRG_KEY grg_new_pwd_dialog (GtkWidget * parent, gboolean *cancelled);
 
-GRG_KEY grg_ask_pwd_dialog (GtkWidget * parent);
+GRG_KEY grg_ask_pwd_dialog (GtkWidget * parent, gboolean *cancelled);
 
 GRG_KEY grg_get_cmdline_key (void);
 #endif
