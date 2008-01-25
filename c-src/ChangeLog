@@ -100,7 +100,7 @@
 
 	* Fix for the prefs, so that file-save dirty flag is set only when 
 	appropriate (when file format options has changed and been applied).
-	(thanks to wwwp for the patch.)
+	(thanks to wwp for the patch.)
 
-
-
+	* Applied a patch from wwp that enforces the parsing of prefs 
+	(when loading), and makes it a real tag parser. (Thanks to wwp).
