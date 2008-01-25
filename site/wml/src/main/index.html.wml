@@ -16,6 +16,16 @@ Berlios page</a>.
 
 <h2 id="news">News</h2>
 
+<h3 id="news_2008_01_25_1.2.9">25-Jan-2008 - Gringots 1.2.9 was Released</h3>
+
+<p>
+Gringotts 1.2.9 was released. This version is the first non-pre release since
+1.2.8 was released a long time ago, and incporates many patches by Germano
+Rizzo, Shlomi Fish, wwp and others. These are mostly bug-fixes, but there
+are also a few enhancements. More information can be found in the ChangeLog
+file in the distribution.
+</p>
+
 <h3 id="news_2007_12_15_1.2.9pre3">Gringotts 1.2.9pre3 was Released</h3>
 
 <p>
