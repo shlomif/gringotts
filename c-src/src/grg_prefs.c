@@ -28,6 +28,7 @@
 #include "grg_prefs_io.h"
 #include "gringotts.h"
 #include "grg_widgets.h"
+#include "grg_prefs.h"
 
 #define NEW_RADIO_BUTTON(widget, list, call, value, label, box) \
 	widget = gtk_radio_button_new_with_label(list, label); \
@@ -185,13 +186,11 @@ apply_values (void)
 		grg_ctx_set_comp_ratio (gctx, tmp_pref_ratio);
 	}
 
-	grg_pref_file =
-		g_strdup (gtk_entry_get_text (GTK_ENTRY (file_entry)));
+	set_pref_file (gtk_entry_get_text (GTK_ENTRY (file_entry)));
 	utf = g_filename_from_utf8 (grg_pref_file, -1, NULL, NULL, NULL);
 	if (!g_file_test (utf, G_FILE_TEST_IS_REGULAR))
 	{
-		g_free (grg_pref_file);
-		grg_pref_file = NULL;
+		grg_prefs_free ();
 		gtk_entry_set_text (GTK_ENTRY (file_entry), "");
 	}
 	g_free (utf);

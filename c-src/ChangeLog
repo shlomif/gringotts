@@ -104,3 +104,6 @@
 
 	* Applied a patch from wwp that enforces the parsing of prefs 
 	(when loading), and makes it a real tag parser. (Thanks to wwp).
+
+	* Applied a patch from wwp as a correction to a previous patch of
+	his to eliminate a possible memory leak.
