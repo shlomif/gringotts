@@ -107,3 +107,7 @@
 
 	* Applied a patch from wwp as a correction to a previous patch of
 	his to eliminate a possible memory leak.
+
+2008-02-02 Shlomi Fish <shlomif@iglu.org.il>
+
+	* Tagged and released gringotts-1.2.10pre1.
