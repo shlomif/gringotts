@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-04 15:47+0200\n"
+"POT-Creation-Date: 2008-02-02 15:44+0200\n"
 "PO-Revision-Date: 2003-03-16 22:36GMT\n"
 "Last-Translator: Hermann J. Beckers <hjb-rheine@t-online.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Invalid entry number"
 msgstr "Üngültige Eintragsnummer"
 
-#: src/grg_entries.c:495 src/gringotts.c:510 src/gringotts.c:751
+#: src/grg_entries.c:495 src/gringotts.c:509 src/gringotts.c:751
 msgid "assembling data"
 msgstr "Daten zusammenstellen"
 
@@ -28,7 +28,7 @@ msgstr "Daten zusammenstellen"
 msgid "saving"
 msgstr "Speichere"
 
-#: src/grg_entries.c:509 src/gringotts.c:513 src/gringotts.c:754
+#: src/grg_entries.c:509 src/gringotts.c:512 src/gringotts.c:754
 msgid "cleaning up"
 msgstr "Bereinigung"
 
@@ -244,7 +244,7 @@ msgstr "Gross-/Kleinschreibung beachten"
 msgid "Please wait"
 msgstr "Bitte warten"
 
-#: src/grg_widgets.c:393 src/gringotts.c:1455 src/grg_pwd.c:123
+#: src/grg_widgets.c:393 src/gringotts.c:1461 src/grg_pwd.c:122
 #: src/grg_popt.c:287
 msgid "The file does not exist"
 msgstr "Die Datei existiert nicht"
@@ -254,7 +254,7 @@ msgid " version "
 msgstr " Version "
 
 #: src/gringotts.c:140 src/gringotts.c:153 src/gringotts.c:155
-#: src/gringotts.c:157 src/gringotts.c:1847
+#: src/gringotts.c:157 src/gringotts.c:1849
 msgid "(c)"
 msgstr "©"
 
@@ -289,8 +289,8 @@ msgstr ""
 msgid "the name"
 msgstr "der Name"
 
-#: src/gringotts.c:268 src/gringotts.c:630 src/gringotts.c:956
-#: src/gringotts.c:1179
+#: src/gringotts.c:268 src/gringotts.c:629 src/gringotts.c:958
+#: src/gringotts.c:1181
 msgid "New file"
 msgstr "Neue Datei"
 
@@ -306,11 +306,11 @@ msgstr ""
 "Einige Änderungen wurden noch nicht gesichert.\n"
 "Möchten Sie sie jetzt speichern?"
 
-#: src/gringotts.c:472 src/gringotts.c:1380
+#: src/gringotts.c:471 src/gringotts.c:1386
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: src/gringotts.c:473
+#: src/gringotts.c:472
 msgid ""
 "You'll lose all the changes from\n"
 "last save! Are you sure?"
@@ -318,43 +318,43 @@ msgstr ""
 "Sie verlieren alle Änderungen seit \n"
 "der letzten Sicherung! Sind Sie sicher?"
 
-#: src/gringotts.c:477 src/gringotts.c:739
+#: src/gringotts.c:476 src/gringotts.c:739
 msgid "loading"
 msgstr "Lade"
 
-#: src/gringotts.c:486 src/gringotts.c:616 src/grg_popt.c:65
+#: src/gringotts.c:485 src/gringotts.c:615 src/grg_popt.c:65
 msgid "You've selected a directory or a symlink"
 msgstr "Sie haben ein Verzeichnis oder einen SymLink gewählt"
 
-#: src/gringotts.c:493 src/gringotts.c:623 src/grg_popt.c:61
+#: src/gringotts.c:492 src/gringotts.c:622 src/grg_popt.c:61
 msgid "The selected file doesn't exists"
 msgstr "Die ausgewählte Datei existiert nicht"
 
-#: src/gringotts.c:531 src/gringotts.c:575 src/gringotts.c:684
-#: src/gringotts.c:719 src/gringotts.c:772 src/gringotts.c:802
-#: src/gringotts.c:1090 src/gringotts.c:1133 src/grg_popt.c:83
+#: src/gringotts.c:530 src/gringotts.c:574 src/gringotts.c:683
+#: src/gringotts.c:718 src/gringotts.c:772 src/gringotts.c:802
+#: src/gringotts.c:1092 src/gringotts.c:1135 src/grg_popt.c:83
 #: src/grg_popt.c:107 src/grg_popt.c:142 src/grg_popt.c:158
 msgid "Gringotts internal error. Cannot finish operation."
 msgstr "interner Gringotts-Fehler. Kann Operation nicht beenden."
 
-#: src/gringotts.c:543 src/gringotts.c:701 src/grg_popt.c:98
+#: src/gringotts.c:542 src/gringotts.c:700 src/grg_popt.c:98
 msgid "The file appears to be corrupted!"
 msgstr "Die Datei scheint defekt zu sein!"
 
-#: src/gringotts.c:550 src/gringotts.c:709 src/grg_popt.c:102
+#: src/gringotts.c:549 src/gringotts.c:708 src/grg_popt.c:102
 msgid "File is too big"
 msgstr "Datei ist zu groß"
 
-#: src/gringotts.c:557 src/gringotts.c:692 src/grg_popt.c:93
+#: src/gringotts.c:556 src/gringotts.c:691 src/grg_popt.c:93
 msgid "Uh-oh! I can't read from the file!"
 msgstr "Uh-oh! Ich kann nicht aus dieser Datei lesen!"
 
-#: src/gringotts.c:565 src/gringotts.c:785 src/gringotts.c:1115
+#: src/gringotts.c:564 src/gringotts.c:785 src/gringotts.c:1117
 #: src/grg_popt.c:152
 msgid "Problem with libmcrypt, probably a faulty installation"
 msgstr "Problem mit libmcrypt, wahrscheinlich eine fehlerhafte Installation"
 
-#: src/gringotts.c:588 src/gringotts.c:838
+#: src/gringotts.c:587 src/gringotts.c:838
 msgid ""
 "The current password is expired.\n"
 "You should change it, or modify this setting in the preferences"
@@ -362,7 +362,7 @@ msgstr ""
 "Das aktuelle Passwort ist abgelaufen.\n"
 "Sie sollten es ändern oder den Wert in den Einstellungen ändern"
 
-#: src/gringotts.c:666 src/grg_popt.c:89
+#: src/gringotts.c:665 src/grg_popt.c:89
 msgid "This file doesn't seem to be a valid Gringotts one!"
 msgstr "Diese Datei scheint keine gültige Gringotts-Datei zu sein!"
 
@@ -374,91 +374,91 @@ msgstr "Falsches Passwort! Bitte neu eingeben"
 msgid "Saved data contain invalid UTF-8 chars"
 msgstr "Gespeicherte Daten enthalten ungültige UTF-8-Zeichen"
 
-#: src/gringotts.c:861 src/grg_pwd.c:81
+#: src/gringotts.c:861 src/grg_pwd.c:80
 msgid "Open..."
 msgstr "Öffnen..."
 
-#: src/gringotts.c:948 src/grg_popt.c:117
+#: src/gringotts.c:950 src/grg_popt.c:117
 msgid "You must enter a valid password!"
 msgstr "Sie müssen ein gültiges Passwort eingeben!"
 
-#: src/gringotts.c:966
+#: src/gringotts.c:968
 msgid "My first page"
 msgstr "Meine erste Seite"
 
-#: src/gringotts.c:981
+#: src/gringotts.c:983
 msgid "New title..."
 msgstr "Neuer Titel..."
 
-#: src/gringotts.c:982
+#: src/gringotts.c:984
 msgid "New title for this entry:"
 msgstr "Neuer Titel für diesen Eintrag:"
 
-#: src/gringotts.c:1033
+#: src/gringotts.c:1035
 msgid "I can't overwrite a directory or a symlink"
 msgstr "Ich kann ein Verzeichnis oder SymLink nicht überschreiben"
 
-#: src/gringotts.c:1041
+#: src/gringotts.c:1043
 msgid "Overwrite?"
 msgstr "Überschreiben?"
 
-#: src/gringotts.c:1043
+#: src/gringotts.c:1045
 msgid "Do you want to overwrite the existing file?"
 msgstr "Möchten Sie die existierende Datei überschreiben?"
 
-#: src/gringotts.c:1057
+#: src/gringotts.c:1059
 msgid "Couldn't backup old file"
 msgstr "Konnte alte Datei nicht sichern"
 
-#: src/gringotts.c:1098
+#: src/gringotts.c:1100
 msgid "Error in compression! Probably a zlib problem"
 msgstr "Fehler beim Komprimieren! Wahrscheinlich ein zlib-Problem"
 
-#: src/gringotts.c:1106
+#: src/gringotts.c:1108
 msgid "Uh-oh! I can't write to the file!"
 msgstr "Uh-oh! Ich kann diese Datei nicht schreiben!"
 
-#: src/gringotts.c:1123
+#: src/gringotts.c:1125
 msgid "Too many data to write"
 msgstr "Zu viele Daten zum Schreiben"
 
-#: src/gringotts.c:1151 src/gringotts.c:1401
+#: src/gringotts.c:1153 src/gringotts.c:1407
 msgid "Save as...."
 msgstr "Speichern als..."
 
-#: src/gringotts.c:1193
+#: src/gringotts.c:1195
 msgid "Title..."
 msgstr "Titel..."
 
-#: src/gringotts.c:1194
+#: src/gringotts.c:1196
 msgid "Title for the new entry:"
 msgstr "Titel für den neuen Eintrag:"
 
-#: src/gringotts.c:1195
+#: src/gringotts.c:1197
 msgid "New"
 msgstr "Neu"
 
-#: src/gringotts.c:1219 src/gringotts.c:1460
+#: src/gringotts.c:1221 src/gringotts.c:1466
 msgid "Confirm..."
 msgstr "Bestätigung..."
 
-#: src/gringotts.c:1220
+#: src/gringotts.c:1222
 msgid "Are you sure you want to remove this entry?"
 msgstr "Sind Sie sicher, das Sie diesen Eintrag entfernen wollen?"
 
-#: src/gringotts.c:1243
+#: src/gringotts.c:1249
 msgid "Wrong password"
 msgstr "Falsches Passwort"
 
-#: src/gringotts.c:1263
+#: src/gringotts.c:1269
 msgid "Password successfully changed"
 msgstr "Passwort geändert"
 
-#: src/gringotts.c:1347 src/grg_prefs.c:367
+#: src/gringotts.c:1353 src/grg_prefs.c:387
 msgid "Select file..."
 msgstr "Datei wählen..."
 
-#: src/gringotts.c:1382
+#: src/gringotts.c:1388
 msgid ""
 "After this, there's no way to\n"
 "recover the file. Are you sure?"
@@ -466,11 +466,11 @@ msgstr ""
 "Hiernach besteht keine Möglichkeit, die \n"
 "Datei wiederherzustellen. Sind Sie sicher?"
 
-#: src/gringotts.c:1430
+#: src/gringotts.c:1436
 msgid "File to wipe"
 msgstr "zu überschreibende Datei"
 
-#: src/gringotts.c:1461 src/grg_popt.c:290
+#: src/gringotts.c:1467 src/grg_popt.c:290
 msgid ""
 "Are you sure you want to wipe this file?\n"
 "Its content will be securely erased, so no\n"
@@ -480,240 +480,240 @@ msgstr ""
 "Der Inhalt wird sicher gelöscht, daher ist \n"
 "keine Wiederherstellung möglich."
 
-#: src/gringotts.c:1469
+#: src/gringotts.c:1475
 msgid "wiping file"
 msgstr "überschreibe Datei"
 
-#: src/gringotts.c:1478 src/grg_popt.c:305
+#: src/gringotts.c:1484 src/grg_popt.c:305
 msgid "File wiping failed"
 msgstr "Dateiüberschreibung fehlerhaft"
 
-#: src/gringotts.c:1572
+#: src/gringotts.c:1574
 #, fuzzy
 msgid "E_dit..."
 msgstr "_Editieren..."
 
-#: src/gringotts.c:1592
+#: src/gringotts.c:1594
 msgid "Go to last entry"
 msgstr "Gehe zum letzten Eintrag"
 
-#: src/gringotts.c:1595
+#: src/gringotts.c:1597
 msgid "Go to next entry"
 msgstr "Gehe zum nächsten Eintrag"
 
-#: src/gringotts.c:1601
+#: src/gringotts.c:1603
 msgid "View index"
 msgstr "Index ansehen"
 
-#: src/gringotts.c:1607
+#: src/gringotts.c:1609
 msgid "Go to previous entry"
 msgstr "Gehe zum vorherigen Eintrag"
 
-#: src/gringotts.c:1610
+#: src/gringotts.c:1612
 msgid "Go to first entry"
 msgstr "Gehe zum ersten Eintrag"
 
-#: src/gringotts.c:1624
+#: src/gringotts.c:1626
 #, c-format
 msgid "Security level: %s"
 msgstr "Sicherheitsstufe: %s"
 
-#: src/gringotts.c:1628 src/grg_prefs.c:598
+#: src/gringotts.c:1630 src/grg_prefs.c:616
 msgid "Security"
 msgstr "Sicherheit"
 
-#: src/gringotts.c:1642
+#: src/gringotts.c:1644
 msgid "New document"
 msgstr "Neues Dokument"
 
-#: src/gringotts.c:1647
+#: src/gringotts.c:1649
 msgid "Open document"
 msgstr "Öffne Dokument"
 
-#: src/gringotts.c:1649
+#: src/gringotts.c:1651
 msgid "Save document"
 msgstr "Speichere Dokument"
 
-#: src/gringotts.c:1651
+#: src/gringotts.c:1653
 msgid "Close document"
 msgstr "Schliesse Dokument"
 
-#: src/gringotts.c:1656
+#: src/gringotts.c:1658
 msgid "Cut selection"
 msgstr "Auswahl ausschneiden"
 
-#: src/gringotts.c:1658
+#: src/gringotts.c:1660
 msgid "Copy selection"
 msgstr "Auswahl kopieren"
 
-#: src/gringotts.c:1661
+#: src/gringotts.c:1663
 msgid "Paste selection"
 msgstr "Auswahl einfügen"
 
-#: src/gringotts.c:1667
+#: src/gringotts.c:1669
 msgid "Search for text"
 msgstr "Suche nach Text"
 
-#: src/gringotts.c:1672
+#: src/gringotts.c:1674
 msgid "Add an entry"
 msgstr "Eintrag hinzufügen"
 
-#: src/gringotts.c:1674
+#: src/gringotts.c:1676
 msgid "Remove this entry"
 msgstr "Diesen Eintrag entfernen"
 
-#: src/gringotts.c:1679 src/grg_prefs.c:419
+#: src/gringotts.c:1681 src/grg_prefs.c:438
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/gringotts.c:1684
+#: src/gringotts.c:1686
 msgid "Quit Gringotts"
 msgstr "Gringotts verlassen"
 
-#: src/gringotts.c:1701
+#: src/gringotts.c:1703
 msgid "Attached files"
 msgstr "Angehängte Dateien"
 
-#: src/gringotts.c:1711
+#: src/gringotts.c:1713
 msgid "Add a new attachment"
 msgstr "Neuen Anhang hinzufügen"
 
-#: src/gringotts.c:1713
+#: src/gringotts.c:1715
 msgid "Remove this attachment"
 msgstr "Diesen Anhang entfernen"
 
-#: src/gringotts.c:1716
+#: src/gringotts.c:1718
 msgid "Save this attachment"
 msgstr "Diesen Anhang speichern"
 
-#: src/gringotts.c:1719
+#: src/gringotts.c:1721
 msgid "Info on this attachment"
 msgstr "Information zu diesem Anhang"
 
-#: src/gringotts.c:1721
+#: src/gringotts.c:1723
 msgid "Change comment"
 msgstr "Kommentar ändern"
 
-#: src/gringotts.c:1745
+#: src/gringotts.c:1747
 msgid "List of attached files"
 msgstr "Liste der angehängten Dateien"
 
-#: src/gringotts.c:1847
+#: src/gringotts.c:1849
 msgid "version"
 msgstr "Version"
 
-#: src/gringotts.c:1849
+#: src/gringotts.c:1851
 msgid "released under GNU General Public License (GPL) v.2 or later"
 msgstr "veröffentlicht unter GNU General Public License (GPL) v.2 oder später"
 
-#: src/gringotts.c:1851
+#: src/gringotts.c:1853
 msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr "Siehe COPYING oder http://www.gnu.org/copyleft/gpl.html"
 
-#: src/gringotts.c:1865 src/grg_prefs.c:149
+#: src/gringotts.c:1867 src/grg_prefs.c:150
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "Ungültige Einstellungs-Datei. Fehlwerte werden benutzt."
 
-#: src/gringotts.c:1891
+#: src/gringotts.c:1893
 msgid "File to load does not exists or it is invalid"
 msgstr "Zu ladende Datei existiert nicht oder ist ungültigt"
 
-#: src/grg_prefs.c:199
+#: src/grg_prefs.c:219
 #, c-format
 msgid " Block size: %d bits"
 msgstr "Blockgröße %d Bits"
 
-#: src/grg_prefs.c:202
+#: src/grg_prefs.c:222
 #, c-format
 msgid " Key length: %d bits"
 msgstr " Schlüssellenge: %d Bits"
 
-#: src/grg_prefs.c:431
+#: src/grg_prefs.c:449
 msgid "Encryption"
 msgstr "Verschlüsselung"
 
-#: src/grg_prefs.c:476
+#: src/grg_prefs.c:494
 msgid "Hashing"
 msgstr "Hashing"
 
-#: src/grg_prefs.c:489
+#: src/grg_prefs.c:507
 msgid "Compression"
 msgstr "Kompression"
 
-#: src/grg_prefs.c:504
+#: src/grg_prefs.c:522
 msgid "None"
 msgstr "Keine"
 
-#: src/grg_prefs.c:509
+#: src/grg_prefs.c:527
 msgid "Fast"
 msgstr "Schnell"
 
-#: src/grg_prefs.c:513
+#: src/grg_prefs.c:531
 msgid "Good"
 msgstr "Gut"
 
-#: src/grg_prefs.c:517
+#: src/grg_prefs.c:535
 msgid "Best"
 msgstr "Beste"
 
-#: src/grg_prefs.c:521
+#: src/grg_prefs.c:539
 msgid "Algorithms"
 msgstr "Algorithmen"
 
-#: src/grg_prefs.c:528
+#: src/grg_prefs.c:546
 msgid "General options"
 msgstr "Allgemeine Optionen"
 
-#: src/grg_prefs.c:530
+#: src/grg_prefs.c:548
 msgid "Editor font"
 msgstr "Editor-Schrift"
 
-#: src/grg_prefs.c:535
+#: src/grg_prefs.c:553
 msgid "Click to change the editor font"
 msgstr "Zum Wechsel der Editor-Schrift klicken"
 
-#: src/grg_prefs.c:545
+#: src/grg_prefs.c:563
 msgid "Decorations"
 msgstr "Dekorationen"
 
-#: src/grg_prefs.c:553
+#: src/grg_prefs.c:571
 msgid "Splash screen"
 msgstr "Start-Bildschirm"
 
-#: src/grg_prefs.c:558
+#: src/grg_prefs.c:576
 msgid "File to open at startup"
 msgstr "Beim Start zu öffnende Datei"
 
-#: src/grg_prefs.c:577
+#: src/grg_prefs.c:595
 msgid "File saving"
 msgstr "Dateispeicherung"
 
-#: src/grg_prefs.c:584
+#: src/grg_prefs.c:602
 msgid "Make backups of files"
 msgstr "Datei-Sicherungskopie erstellen"
 
-#: src/grg_prefs.c:590
+#: src/grg_prefs.c:608
 msgid "Ask when overwriting files"
 msgstr "Dateiüberschreiben bestätigen"
 
-#: src/grg_prefs.c:600
+#: src/grg_prefs.c:618
 msgid "Password expiration"
 msgstr "Ablauf des Passwortes"
 
-#: src/grg_prefs.c:607
+#: src/grg_prefs.c:625
 msgid "Password expires in"
 msgstr "Passwort läuft ab in "
 
-#: src/grg_prefs.c:611
+#: src/grg_prefs.c:629
 msgid "days"
 msgstr "Tagen"
 
 #. this means "passes in wiping a file", not "wipe the passes" :)
-#: src/grg_prefs.c:623
+#: src/grg_prefs.c:641
 msgid "Wipe passes"
 msgstr "Anzahl Überschreibungen"
 
-#: src/grg_prefs.c:629
+#: src/grg_prefs.c:647
 msgid ""
 "Number of overwritings with random\n"
 "data, when wiping a file:"
@@ -721,105 +721,105 @@ msgstr ""
 "Anzahl Überschreibungen mit Zufalls-\n"
 "Daten beim Überschreiben einer Datei:"
 
-#: src/grg_prefs.c:642
+#: src/grg_prefs.c:660
 msgid "Clipboard"
 msgstr "Clipboard"
 
-#: src/grg_prefs.c:650
+#: src/grg_prefs.c:668
 msgid "Clear clipboard on closing file"
 msgstr "Beim Dateischliessen auch Clipboard löschen"
 
-#: src/grg_prefs.c:657
+#: src/grg_prefs.c:675
 msgid "Clear clipboard on exit"
 msgstr "Clipboard bei Programmende löschen"
 
-#: src/grg_pwd.c:129
+#: src/grg_pwd.c:128
 msgid "You must specify a regular file"
 msgstr "Sie müssen eine reguläre Datei angeben"
 
-#: src/grg_pwd.c:138
+#: src/grg_pwd.c:137
 msgid "reading file"
 msgstr "Lese Datei"
 
-#: src/grg_pwd.c:169
+#: src/grg_pwd.c:168
 msgid "Please insert a disk in the first floppy drive"
 msgstr "Bitte legen Sie eine Diskette in das erste Floppy-Laufwerk ein"
 
-#: src/grg_pwd.c:181
+#: src/grg_pwd.c:180
 msgid "The disk is not write protected. For security reasons, I'll not use it."
 msgstr ""
 "Die Diskette ist nicht schreibgeschützt. Aus Sicherheitsgründen wird sie "
 "nicht benutzt."
 
-#: src/grg_pwd.c:191
+#: src/grg_pwd.c:190
 msgid "reading floppy"
 msgstr "Lese Floppy"
 
-#: src/grg_pwd.c:223
+#: src/grg_pwd.c:222
 msgid "Enter new password"
 msgstr "Neues Passwort eingeben"
 
-#: src/grg_pwd.c:231 src/grg_pwd.c:743
+#: src/grg_pwd.c:230 src/grg_pwd.c:751
 msgid "Choose file"
 msgstr "Datei auswählen"
 
-#: src/grg_pwd.c:239 src/grg_pwd.c:608
+#: src/grg_pwd.c:238 src/grg_pwd.c:609
 msgid "Insert a disk and press Ok"
 msgstr "Legen Sie eine Diskette ein und klicken Sie OK"
 
-#: src/grg_pwd.c:317
+#: src/grg_pwd.c:316
 msgid "New password"
 msgstr "Neues Passwort"
 
-#: src/grg_pwd.c:331 src/grg_pwd.c:572 src/grg_pwd.c:709
+#: src/grg_pwd.c:330 src/grg_pwd.c:573 src/grg_pwd.c:717
 msgid "Choose password type:"
 msgstr "Passwort-Typ wählen:"
 
-#: src/grg_pwd.c:334 src/grg_pwd.c:574 src/grg_pwd.c:709
+#: src/grg_pwd.c:333 src/grg_pwd.c:575 src/grg_pwd.c:717
 msgid "String"
 msgstr "Zeichenkette"
 
-#: src/grg_pwd.c:338 src/grg_pwd.c:578 src/grg_pwd.c:709
+#: src/grg_pwd.c:337 src/grg_pwd.c:579 src/grg_pwd.c:717
 msgid "File"
 msgstr "Datei"
 
-#: src/grg_pwd.c:343 src/grg_pwd.c:583 src/grg_pwd.c:710
+#: src/grg_pwd.c:342 src/grg_pwd.c:584 src/grg_pwd.c:718
 msgid "Disk"
 msgstr "Diskette"
 
-#: src/grg_pwd.c:348
+#: src/grg_pwd.c:347
 msgid "Enter new password:"
 msgstr "Neues Passwort eingeben:"
 
-#: src/grg_pwd.c:356
+#: src/grg_pwd.c:355
 msgid "Enter it again for confirmation:"
 msgstr "Zur Bestätigung erneut eingeben:"
 
-#: src/grg_pwd.c:393
+#: src/grg_pwd.c:392
 msgid "password quality"
 msgstr "Passwort-Qualität"
 
-#: src/grg_pwd.c:433
+#: src/grg_pwd.c:436
 msgid "The password is too short, it must be at least 4 chars"
 msgstr "Das Passwort ist zu kurz, es müssen mindestens 4 Zeichen sein"
 
-#: src/grg_pwd.c:445
+#: src/grg_pwd.c:448
 msgid "The two passwords are different"
 msgstr "Die Passwörter sind verschieden"
 
-#: src/grg_pwd.c:559 src/grg_pwd.c:725
+#: src/grg_pwd.c:560 src/grg_pwd.c:733
 msgid "Enter password"
 msgstr "Passwort eingeben"
 
-#: src/grg_pwd.c:710
+#: src/grg_pwd.c:718
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/grg_pwd.c:713
+#: src/grg_pwd.c:721
 msgid "Choice"
 msgstr "Auswahl"
 
-#: src/grg_pwd.c:763
+#: src/grg_pwd.c:771
 msgid "Bye, then!"
 msgstr "Bis dann, Tschüs!"
 
