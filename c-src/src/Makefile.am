@@ -6,8 +6,11 @@ INCLUDES = \
 	-DG_DISABLE_DEPRECATED 					\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED 		\
 	-DGDK_DISABLE_DEPRECATED 				\
-	-DGTK_DISABLE_DEPRECATED -Wpointer-arith  \
+	-Wpointer-arith  \
 	-Werror-implicit-function-declaration -Wstrict-prototypes -Wall
+
+# Remming out from INCLUDES so it won't disturb us with gtk+-2.13.x
+#	-DGTK_DISABLE_DEPRECATED
 
 bin_PROGRAMS = gringotts
 
