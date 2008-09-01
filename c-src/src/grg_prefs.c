@@ -60,13 +60,14 @@ static GtkWidget *rij1_but, *ser_but, *twof_but, *cast_but, *safer_but;
 static GtkWidget *rij2_but, *tdes_but, *loki_but, *sha_but, *ripe_but;
 static GtkWidget *zlib_but, *bz_but, *r0_but, *r3_but, *r6_but, *r9_but;
 static GtkWidget *crypto_key_lbl, *crypto_block_lbl;
-static GtkWidget *bak_check, *over_check, *splash_check, *xpire_check;
+static GtkWidget *bak_check, *over_check, *splash_check, *tray_check, *xpire_check;
 static GtkWidget *xpire_spin, *passes_spin, *but_font;
 static GtkWidget *cclip_check, *qclip_check;
 
 gboolean grg_prefs_warn4overwrite = TRUE;
 gboolean grg_prefs_bak_files = TRUE;
 gboolean grg_prefs_splash = TRUE;
+gboolean grg_prefs_tray = TRUE;
 gboolean grg_prefs_clip_clear_on_close = FALSE;
 gboolean grg_prefs_clip_clear_on_quit = TRUE;
 gint grg_prefs_xpire = EXP_TIME_DEF;	/*abs(x)= num of days; < 0 = never */
@@ -287,6 +288,13 @@ static void
 modify_splash (GtkWidget * data, gpointer value)
 {
 	grg_prefs_splash =
+		gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (data));
+}
+
+static void
+modify_tray (GtkWidget * data, gpointer value)
+{
+	grg_prefs_tray =
 		gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (data));
 }
 
@@ -573,6 +581,14 @@ grg_pref_dialog (GtkWidget * parent)
 			  G_CALLBACK (modify_splash), NULL);
 	gtk_box_pack_start (GTK_BOX (box_misc), splash_check, FALSE, TRUE, 1);
 
+
+	NEW_ROW_SEPARATOR (tab2);
+
+	tray_check = gtk_check_button_new_with_label (_("Tray-Icon (Needs Gringotts restart to take affect)"));
+	g_signal_connect (G_OBJECT (tray_check), "toggled",
+			G_CALLBACK (modify_tray), NULL);
+	gtk_box_pack_start (GTK_BOX (box_misc), tray_check, FALSE, TRUE, 1);
+
 	frame_file = gtk_frame_new (_("File to open at startup"));
 	gtk_box_pack_start (GTK_BOX (tab2), frame_file, FALSE, TRUE, 1);
 
@@ -827,6 +843,8 @@ update_buttons (void)
 				      grg_prefs_warn4overwrite);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (splash_check),
 				      grg_prefs_splash);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (tray_check),
+					grg_prefs_tray);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (cclip_check),
 				      grg_prefs_clip_clear_on_close);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (qclip_check),

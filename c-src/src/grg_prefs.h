@@ -27,6 +27,7 @@
 gboolean grg_prefs_warn4overwrite;
 gboolean grg_prefs_bak_files;
 gboolean grg_prefs_splash;
+gboolean grg_prefs_tray;
 gboolean grg_prefs_clip_clear_on_close;
 gboolean grg_prefs_clip_clear_on_quit;
 gint grg_prefs_xpire;

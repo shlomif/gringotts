@@ -1803,6 +1803,105 @@ grg_interface (void)
 
 	if (grg_prefs_splash)
 		gtk_widget_show_all (grg_splash (win1));
+
+}
+
+
+void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data)
+{
+	gtk_widget_show_all(win1);
+	gtk_window_deiconify(GTK_WINDOW(win1));
+}
+
+static void trayView(GtkMenuItem *item, gpointer window)
+{
+	gtk_widget_show(GTK_WIDGET(window));
+	gtk_window_deiconify(GTK_WINDOW(window));
+}
+
+static void trayExit(GtkMenuItem *item, gpointer user_data)
+{
+	meta_quit();
+}
+
+static void trayAbout(GtkMenuItem *item, gpointer user_data)
+{
+	about();
+}
+
+static void trayIconPopup(GtkStatusIcon *status_icon, guint button, guint32 activate_time, gpointer popUpMenu)
+{
+	gtk_menu_popup(GTK_MENU(popUpMenu), NULL, NULL, gtk_status_icon_position_menu, status_icon, button, activate_time);
+}
+
+/* creates the trayicon: */
+static GtkStatusIcon *create_tray_icon(void)
+{
+	GtkStatusIcon *tray_icon;
+	char *my_tray_icon="/usr/share/pixmaps/gringotts.xpm";
+
+	tray_icon = gtk_status_icon_new();
+	g_signal_connect(G_OBJECT(tray_icon), "activate", G_CALLBACK(tray_icon_on_click), NULL);
+
+	FILE *fp = fopen(my_tray_icon,"r");
+	if( !fp ) {
+		FILE *fp = fopen("/usr/local/share/pixmaps/gringotts.xpm","r");
+		if( fp ) {
+			fclose(fp);
+			my_tray_icon="/usr/local/share/pixmaps/gringotts.xpm";
+		} else {
+			grg_msg (_("Couldn't find trayicon gringotts.xpm in \n /usr/share/pixmaps/ or in\n /usr/local/share/pixmaps/\n\nThis means you won't see any trayicon and you have installed gringotts in a not standard-compliance way."), GTK_MESSAGE_ERROR, win1);
+			}
+	}else {
+		fclose(fp);
+	}
+
+	gtk_status_icon_set_from_file(tray_icon, my_tray_icon);
+	gtk_status_icon_set_tooltip(tray_icon, "Gringotts");
+	gtk_status_icon_set_visible(tray_icon, FALSE);
+
+	return tray_icon;
+}
+
+/* our event-handler for the tray icon*/
+static gboolean window_state_event (GtkWidget *widget, GdkEventWindowState *event, gpointer trayIcon)
+{
+	if(event->changed_mask == GDK_WINDOW_STATE_ICONIFIED && (event->new_window_state == GDK_WINDOW_STATE_ICONIFIED || event->new_window_state == (GDK_WINDOW_STATE_ICONIFIED | GDK_WINDOW_STATE_MAXIMIZED)))
+	{
+		gtk_widget_hide (GTK_WIDGET(widget));
+		gtk_status_icon_set_visible(GTK_STATUS_ICON(trayIcon), TRUE);
+	}
+	else if(event->changed_mask == GDK_WINDOW_STATE_WITHDRAWN && (event->new_window_state == GDK_WINDOW_STATE_ICONIFIED || event->new_window_state == (GDK_WINDOW_STATE_ICONIFIED | GDK_WINDOW_STATE_MAXIMIZED)))
+	{
+		gtk_status_icon_set_visible(GTK_STATUS_ICON(trayIcon), FALSE);
+	}
+	return TRUE;
+} 
+
+GtkStatusIcon *tray_icon;
+void tray_icon_init(void)
+{
+	GtkWidget *menu, *menuItemView, *menuItemExit, *menuItemAbout, *menuItemSeparator;
+	tray_icon = create_tray_icon();
+
+	menu = gtk_menu_new();
+	menuItemView = gtk_menu_item_new_with_label ("View");
+	menuItemAbout = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT,NULL);
+	menuItemExit = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT,NULL);
+	menuItemSeparator = gtk_separator_menu_item_new ();
+
+	g_signal_connect (G_OBJECT (menuItemView), "activate", G_CALLBACK (trayView), win1);
+	g_signal_connect (G_OBJECT (menuItemExit), "activate", G_CALLBACK (trayExit), NULL);
+	g_signal_connect (G_OBJECT (menuItemAbout), "activate", G_CALLBACK (trayAbout), NULL);
+
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuItemView);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuItemSeparator);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuItemAbout);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuItemExit);
+	gtk_widget_show_all (menu);
+
+	g_signal_connect (G_OBJECT (win1), "window-state-event", G_CALLBACK (window_state_event), tray_icon);
+	g_signal_connect(GTK_STATUS_ICON (tray_icon), "popup-menu", GTK_SIGNAL_FUNC (trayIconPopup), menu);
 }
 
 /**
@@ -1821,6 +1920,7 @@ main (gint argc, gchar ** argv)
 	guchar *version = grg_get_version (); /* libgringotts version */
 	gint prefs_err;
 	gboolean root = FALSE;
+	
 
 	if (!grg_mlockall_and_drop_root_privileges ())
 		exit (1);
@@ -1895,6 +1995,9 @@ main (gint argc, gchar ** argv)
 	}
 
 	gtk_loop_started = TRUE;
+
+	if (grg_prefs_tray)
+			tray_icon_init();
 	gtk_main ();
 
 	return 0;

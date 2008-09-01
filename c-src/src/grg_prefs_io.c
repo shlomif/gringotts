@@ -40,6 +40,7 @@
 #define PREFS_TAG_OVERWRITE_WARN			"overwrite_warn"
 #define PREFS_TAG_BACKUP_FILES				"bak_files"
 #define PREFS_TAG_DISPLAY_SPLASH_SCREEN		"display_splash_screen"
+#define PREFS_TAG_Trayicon			"enable_trayicon"
 #define PREFS_TAG_PASSWORD_EXPIRATION_TIME	"xpiration_time"
 #define PREFS_TAG_WIPE_PASSES				"wipe_passes"
 #define PREFS_TAG_EDITOR_FONT				"font_for_editor"
@@ -123,6 +124,16 @@ grg_save_prefs (void)
 		 "%c\n"
 		 "</" PREFS_TAG_DISPLAY_SPLASH_SCREEN ">\n\n",
 		 grg_prefs_splash ? '1' : '0');
+	write (fd, row, strlen (row));
+	g_free (row);
+
+	/*saves the tray-icon preference */
+	row = g_strdup_printf
+		("<!-- 0/1 -->\n"
+		 "<" PREFS_TAG_Trayicon ">\n"
+		 "%c\n"
+		 "</" PREFS_TAG_Trayicon ">\n\n",
+		grg_prefs_tray ? '1' : '0');
 	write (fd, row, strlen (row));
 	g_free (row);
 
@@ -317,6 +328,14 @@ collect_pref (GMarkupParseContext * context,
 		       || text[i] == 13)
 			i++;
 		grg_prefs_splash = !(text[i] == '0');
+	} else
+	if (strcmp(*(gchar **) user_data, PREFS_TAG_Trayicon)==0)
+	{
+		int i = 0;
+		while (text[i] == 10 || text[i] == ' ' || text[i] == '\t'
+			|| text[i] == 13)
+			i++;
+		grg_prefs_tray = !(text[i] == '0');
 	} else
 	if (strcmp(*(gchar **) user_data, PREFS_TAG_PASSWORD_EXPIRATION_TIME)==0)
 	{
