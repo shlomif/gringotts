@@ -27,7 +27,6 @@
 
 #include "grg_defs.h"
 #include "grg_pix.h"
-#include "../pixmaps/gringotts.xpm"
 #include "gringotts.h"
 #include "grg_widgets.h"
 

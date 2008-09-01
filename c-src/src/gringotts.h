@@ -105,5 +105,6 @@ gchar *get_editor_font (void);
 void set_editor_font (const gchar * font_desc);
 
 void update (void);
+extern const char *gringotts_xpm[115];
 
 #endif

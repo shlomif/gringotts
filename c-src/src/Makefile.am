@@ -29,6 +29,7 @@ gringotts_SOURCES = 						\
 	grg_popt.c			grg_popt.h			\
 	grg_pix.c			grg_pix.h			\
 	grg_attachs.c		grg_attachs.h		\
+	grg_xpm.c                               \
 	grg_defs.h
 
 gringotts_LDADD = @POPT@ @GTK2_LIBS@ @GDKPIX_LIBS@ @LIBGRG_LIBS@

@@ -1843,22 +1843,11 @@ static GtkStatusIcon *create_tray_icon(void)
 	tray_icon = gtk_status_icon_new();
 	g_signal_connect(G_OBJECT(tray_icon), "activate", G_CALLBACK(tray_icon_on_click), NULL);
 
-	FILE *fp = fopen(my_tray_icon,"r");
-	if( !fp ) {
-		FILE *fp = fopen("/usr/local/share/pixmaps/gringotts.xpm","r");
-		if( fp ) {
-			fclose(fp);
-			my_tray_icon="/usr/local/share/pixmaps/gringotts.xpm";
-		} else {
-			grg_msg (_("Couldn't find trayicon gringotts.xpm in \n /usr/share/pixmaps/ or in\n /usr/local/share/pixmaps/\n\nThis means you won't see any trayicon and you have installed gringotts in a not standard-compliance way."), GTK_MESSAGE_ERROR, win1);
-			}
-	}else {
-		fclose(fp);
-	}
-
-	gtk_status_icon_set_from_file(tray_icon, my_tray_icon);
+	GdkPixbuf *gp = gdk_pixbuf_new_from_xpm_data (gringotts_xpm);
+	gtk_status_icon_set_from_pixbuf(tray_icon, gp);
 	gtk_status_icon_set_tooltip(tray_icon, "Gringotts");
 	gtk_status_icon_set_visible(tray_icon, FALSE);
+	g_object_unref (G_OBJECT (gp));
 
 	return tray_icon;
 }
