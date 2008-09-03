@@ -111,3 +111,10 @@
 2008-02-02 Shlomi Fish <shlomif@iglu.org.il>
 
 	* Tagged and released gringotts-1.2.10pre1.
+
+2008-09-03 Shlomi Fish <shlomif@iglu.org.il>
+
+	* Applied a series of patches by Rorschach to add an optional 
+	"minimize-to-tray-icon" feature for gringotts.
+
+	* Tagged and relased gringotts-1.2.10pre2.

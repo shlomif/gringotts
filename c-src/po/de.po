@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-02 15:44+0200\n"
+"POT-Creation-Date: 2008-09-03 23:21+0300\n"
 "PO-Revision-Date: 2003-03-16 22:36GMT\n"
 "Last-Translator: Hermann J. Beckers <hjb-rheine@t-online.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
@@ -220,31 +220,31 @@ msgstr "Über"
 msgid "_Help"
 msgstr "Hilfe"
 
-#: src/grg_widgets.c:66
+#: src/grg_widgets.c:65
 msgid "Error"
 msgstr "Fehler"
 
-#: src/grg_widgets.c:241
+#: src/grg_widgets.c:240
 msgid "Find a string"
 msgstr "Zeichenkette suchen"
 
-#: src/grg_widgets.c:254
+#: src/grg_widgets.c:253
 msgid "Enter the string to find:"
 msgstr "Zu suchende Zeichenkette eingeben:"
 
-#: src/grg_widgets.c:264
+#: src/grg_widgets.c:263
 msgid "Search only in this entry"
 msgstr "Nur in diesem Eintrag suchen"
 
-#: src/grg_widgets.c:268
+#: src/grg_widgets.c:267
 msgid "Case sensitive"
 msgstr "Gross-/Kleinschreibung beachten"
 
-#: src/grg_widgets.c:315 src/grg_widgets.c:317 src/grg_widgets.c:354
+#: src/grg_widgets.c:314 src/grg_widgets.c:316 src/grg_widgets.c:353
 msgid "Please wait"
 msgstr "Bitte warten"
 
-#: src/grg_widgets.c:393 src/gringotts.c:1461 src/grg_pwd.c:122
+#: src/grg_widgets.c:392 src/gringotts.c:1461 src/grg_pwd.c:122
 #: src/grg_popt.c:287
 msgid "The file does not exist"
 msgstr "Die Datei existiert nicht"
@@ -254,7 +254,7 @@ msgid " version "
 msgstr " Version "
 
 #: src/gringotts.c:140 src/gringotts.c:153 src/gringotts.c:155
-#: src/gringotts.c:157 src/gringotts.c:1849
+#: src/gringotts.c:157 src/gringotts.c:1945
 msgid "(c)"
 msgstr "©"
 
@@ -454,7 +454,7 @@ msgstr "Falsches Passwort"
 msgid "Password successfully changed"
 msgstr "Passwort geändert"
 
-#: src/gringotts.c:1353 src/grg_prefs.c:387
+#: src/gringotts.c:1353 src/grg_prefs.c:395
 msgid "Select file..."
 msgstr "Datei wählen..."
 
@@ -518,7 +518,7 @@ msgstr "Gehe zum ersten Eintrag"
 msgid "Security level: %s"
 msgstr "Sicherheitsstufe: %s"
 
-#: src/gringotts.c:1630 src/grg_prefs.c:616
+#: src/gringotts.c:1630 src/grg_prefs.c:632
 msgid "Security"
 msgstr "Sicherheit"
 
@@ -562,7 +562,7 @@ msgstr "Eintrag hinzufügen"
 msgid "Remove this entry"
 msgstr "Diesen Eintrag entfernen"
 
-#: src/gringotts.c:1681 src/grg_prefs.c:438
+#: src/gringotts.c:1681 src/grg_prefs.c:446
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -598,122 +598,126 @@ msgstr "Kommentar ändern"
 msgid "List of attached files"
 msgstr "Liste der angehängten Dateien"
 
-#: src/gringotts.c:1849
+#: src/gringotts.c:1945
 msgid "version"
 msgstr "Version"
 
-#: src/gringotts.c:1851
+#: src/gringotts.c:1947
 msgid "released under GNU General Public License (GPL) v.2 or later"
 msgstr "veröffentlicht unter GNU General Public License (GPL) v.2 oder später"
 
-#: src/gringotts.c:1853
+#: src/gringotts.c:1949
 msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr "Siehe COPYING oder http://www.gnu.org/copyleft/gpl.html"
 
-#: src/gringotts.c:1867 src/grg_prefs.c:150
+#: src/gringotts.c:1963 src/grg_prefs.c:151
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "Ungültige Einstellungs-Datei. Fehlwerte werden benutzt."
 
-#: src/gringotts.c:1893
+#: src/gringotts.c:1989
 msgid "File to load does not exists or it is invalid"
 msgstr "Zu ladende Datei existiert nicht oder ist ungültigt"
 
-#: src/grg_prefs.c:219
+#: src/grg_prefs.c:220
 #, c-format
 msgid " Block size: %d bits"
 msgstr "Blockgröße %d Bits"
 
-#: src/grg_prefs.c:222
+#: src/grg_prefs.c:223
 #, c-format
 msgid " Key length: %d bits"
 msgstr " Schlüssellenge: %d Bits"
 
-#: src/grg_prefs.c:449
+#: src/grg_prefs.c:457
 msgid "Encryption"
 msgstr "Verschlüsselung"
 
-#: src/grg_prefs.c:494
+#: src/grg_prefs.c:502
 msgid "Hashing"
 msgstr "Hashing"
 
-#: src/grg_prefs.c:507
+#: src/grg_prefs.c:515
 msgid "Compression"
 msgstr "Kompression"
 
-#: src/grg_prefs.c:522
+#: src/grg_prefs.c:530
 msgid "None"
 msgstr "Keine"
 
-#: src/grg_prefs.c:527
+#: src/grg_prefs.c:535
 msgid "Fast"
 msgstr "Schnell"
 
-#: src/grg_prefs.c:531
+#: src/grg_prefs.c:539
 msgid "Good"
 msgstr "Gut"
 
-#: src/grg_prefs.c:535
+#: src/grg_prefs.c:543
 msgid "Best"
 msgstr "Beste"
 
-#: src/grg_prefs.c:539
+#: src/grg_prefs.c:547
 msgid "Algorithms"
 msgstr "Algorithmen"
 
-#: src/grg_prefs.c:546
+#: src/grg_prefs.c:554
 msgid "General options"
 msgstr "Allgemeine Optionen"
 
-#: src/grg_prefs.c:548
+#: src/grg_prefs.c:556
 msgid "Editor font"
 msgstr "Editor-Schrift"
 
-#: src/grg_prefs.c:553
+#: src/grg_prefs.c:561
 msgid "Click to change the editor font"
 msgstr "Zum Wechsel der Editor-Schrift klicken"
 
-#: src/grg_prefs.c:563
+#: src/grg_prefs.c:571
 msgid "Decorations"
 msgstr "Dekorationen"
 
-#: src/grg_prefs.c:571
+#: src/grg_prefs.c:579
 msgid "Splash screen"
 msgstr "Start-Bildschirm"
 
-#: src/grg_prefs.c:576
+#: src/grg_prefs.c:587
+msgid "Tray-Icon (Needs Gringotts restart to take affect)"
+msgstr ""
+
+#: src/grg_prefs.c:592
 msgid "File to open at startup"
 msgstr "Beim Start zu öffnende Datei"
 
-#: src/grg_prefs.c:595
+#: src/grg_prefs.c:611
 msgid "File saving"
 msgstr "Dateispeicherung"
 
-#: src/grg_prefs.c:602
+#: src/grg_prefs.c:618
 msgid "Make backups of files"
 msgstr "Datei-Sicherungskopie erstellen"
 
-#: src/grg_prefs.c:608
+#: src/grg_prefs.c:624
 msgid "Ask when overwriting files"
 msgstr "Dateiüberschreiben bestätigen"
 
-#: src/grg_prefs.c:618
+#: src/grg_prefs.c:634
 msgid "Password expiration"
 msgstr "Ablauf des Passwortes"
 
-#: src/grg_prefs.c:625
+#: src/grg_prefs.c:641
 msgid "Password expires in"
 msgstr "Passwort läuft ab in "
 
-#: src/grg_prefs.c:629
+#: src/grg_prefs.c:645
 msgid "days"
 msgstr "Tagen"
 
 #. this means "passes in wiping a file", not "wipe the passes" :)
-#: src/grg_prefs.c:641
+#: src/grg_prefs.c:657
 msgid "Wipe passes"
 msgstr "Anzahl Überschreibungen"
 
-#: src/grg_prefs.c:647
+#: src/grg_prefs.c:663
 msgid ""
 "Number of overwritings with random\n"
 "data, when wiping a file:"
@@ -721,15 +725,15 @@ msgstr ""
 "Anzahl Überschreibungen mit Zufalls-\n"
 "Daten beim Überschreiben einer Datei:"
 
-#: src/grg_prefs.c:660
+#: src/grg_prefs.c:676
 msgid "Clipboard"
 msgstr "Clipboard"
 
-#: src/grg_prefs.c:668
+#: src/grg_prefs.c:684
 msgid "Clear clipboard on closing file"
 msgstr "Beim Dateischliessen auch Clipboard löschen"
 
-#: src/grg_prefs.c:675
+#: src/grg_prefs.c:691
 msgid "Clear clipboard on exit"
 msgstr "Clipboard bei Programmende löschen"
 

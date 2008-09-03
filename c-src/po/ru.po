@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gringotts 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-02 15:44+0200\n"
+"POT-Creation-Date: 2008-09-03 23:21+0300\n"
 "PO-Revision-Date: 2004-02-06 09:44+0300\n"
 "Last-Translator: Unatine <unatine@zmail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -219,31 +219,31 @@ msgstr "О программе"
 msgid "_Help"
 msgstr "Помощь"
 
-#: src/grg_widgets.c:66
+#: src/grg_widgets.c:65
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/grg_widgets.c:241
+#: src/grg_widgets.c:240
 msgid "Find a string"
 msgstr "Найти строку"
 
-#: src/grg_widgets.c:254
+#: src/grg_widgets.c:253
 msgid "Enter the string to find:"
 msgstr "Введите строку для поиска:"
 
-#: src/grg_widgets.c:264
+#: src/grg_widgets.c:263
 msgid "Search only in this entry"
 msgstr "Искать только в данной записи"
 
-#: src/grg_widgets.c:268
+#: src/grg_widgets.c:267
 msgid "Case sensitive"
 msgstr "Чувствительность к регистру"
 
-#: src/grg_widgets.c:315 src/grg_widgets.c:317 src/grg_widgets.c:354
+#: src/grg_widgets.c:314 src/grg_widgets.c:316 src/grg_widgets.c:353
 msgid "Please wait"
 msgstr "Пожайлуста ждите"
 
-#: src/grg_widgets.c:393 src/gringotts.c:1461 src/grg_pwd.c:122
+#: src/grg_widgets.c:392 src/gringotts.c:1461 src/grg_pwd.c:122
 #: src/grg_popt.c:287
 msgid "The file does not exist"
 msgstr "Файл не существует"
@@ -253,7 +253,7 @@ msgid " version "
 msgstr " версия "
 
 #: src/gringotts.c:140 src/gringotts.c:153 src/gringotts.c:155
-#: src/gringotts.c:157 src/gringotts.c:1849
+#: src/gringotts.c:157 src/gringotts.c:1945
 msgid "(c)"
 msgstr "©"
 
@@ -450,7 +450,7 @@ msgstr "Неверный пароль"
 msgid "Password successfully changed"
 msgstr "Пароль успешно изменен"
 
-#: src/gringotts.c:1353 src/grg_prefs.c:387
+#: src/gringotts.c:1353 src/grg_prefs.c:395
 msgid "Select file..."
 msgstr "Выберите файл..."
 
@@ -514,7 +514,7 @@ msgstr "Перейти к первой записи"
 msgid "Security level: %s"
 msgstr "Уровень безопасности: %s"
 
-#: src/gringotts.c:1630 src/grg_prefs.c:616
+#: src/gringotts.c:1630 src/grg_prefs.c:632
 msgid "Security"
 msgstr "Безопасность"
 
@@ -558,7 +558,7 @@ msgstr "Добавить запись"
 msgid "Remove this entry"
 msgstr "Удалить данную запись"
 
-#: src/gringotts.c:1681 src/grg_prefs.c:438
+#: src/gringotts.c:1681 src/grg_prefs.c:446
 msgid "Preferences"
 msgstr "Настройки"
 
@@ -594,122 +594,126 @@ msgstr "Изменить комментарий"
 msgid "List of attached files"
 msgstr "Список вложенный файлов"
 
-#: src/gringotts.c:1849
+#: src/gringotts.c:1945
 msgid "version"
 msgstr "версия"
 
-#: src/gringotts.c:1851
+#: src/gringotts.c:1947
 msgid "released under GNU General Public License (GPL) v.2 or later"
 msgstr "выпущено под GNU General Public License (GPL) v.2 или более поздней"
 
-#: src/gringotts.c:1853
+#: src/gringotts.c:1949
 msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr "Смотрите COPYING или http://www.gnu.org/copyleft/gpl.html"
 
-#: src/gringotts.c:1867 src/grg_prefs.c:150
+#: src/gringotts.c:1963 src/grg_prefs.c:151
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "Неверный файл настроек. Сброс к настройкам по умолчанию."
 
-#: src/gringotts.c:1893
+#: src/gringotts.c:1989
 msgid "File to load does not exists or it is invalid"
 msgstr "Файл для открытия не существует или поврежден"
 
-#: src/grg_prefs.c:219
+#: src/grg_prefs.c:220
 #, c-format
 msgid " Block size: %d bits"
 msgstr "Размер блока: %d бит"
 
-#: src/grg_prefs.c:222
+#: src/grg_prefs.c:223
 #, c-format
 msgid " Key length: %d bits"
 msgstr "Длина ключа: %d бит"
 
-#: src/grg_prefs.c:449
+#: src/grg_prefs.c:457
 msgid "Encryption"
 msgstr "Шифрование"
 
-#: src/grg_prefs.c:494
+#: src/grg_prefs.c:502
 msgid "Hashing"
 msgstr "Хеширование"
 
-#: src/grg_prefs.c:507
+#: src/grg_prefs.c:515
 msgid "Compression"
 msgstr "Компрессия"
 
-#: src/grg_prefs.c:522
+#: src/grg_prefs.c:530
 msgid "None"
 msgstr "Нет"
 
-#: src/grg_prefs.c:527
+#: src/grg_prefs.c:535
 msgid "Fast"
 msgstr "Быстрое"
 
-#: src/grg_prefs.c:531
+#: src/grg_prefs.c:539
 msgid "Good"
 msgstr "Хорошее"
 
-#: src/grg_prefs.c:535
+#: src/grg_prefs.c:543
 msgid "Best"
 msgstr "Лучшее"
 
-#: src/grg_prefs.c:539
+#: src/grg_prefs.c:547
 msgid "Algorithms"
 msgstr "Алгоритм"
 
-#: src/grg_prefs.c:546
+#: src/grg_prefs.c:554
 msgid "General options"
 msgstr "Основные опции"
 
-#: src/grg_prefs.c:548
+#: src/grg_prefs.c:556
 msgid "Editor font"
 msgstr "Шрифт редактора"
 
-#: src/grg_prefs.c:553
+#: src/grg_prefs.c:561
 msgid "Click to change the editor font"
 msgstr "Нажмите для изменения шрифта редактора"
 
-#: src/grg_prefs.c:563
+#: src/grg_prefs.c:571
 msgid "Decorations"
 msgstr "Оформление"
 
-#: src/grg_prefs.c:571
+#: src/grg_prefs.c:579
 msgid "Splash screen"
 msgstr "Заставка"
 
-#: src/grg_prefs.c:576
+#: src/grg_prefs.c:587
+msgid "Tray-Icon (Needs Gringotts restart to take affect)"
+msgstr ""
+
+#: src/grg_prefs.c:592
 msgid "File to open at startup"
 msgstr "Файл для открытия при старте"
 
-#: src/grg_prefs.c:595
+#: src/grg_prefs.c:611
 msgid "File saving"
 msgstr "Сохранение файла"
 
-#: src/grg_prefs.c:602
+#: src/grg_prefs.c:618
 msgid "Make backups of files"
 msgstr "Создание резервных копий"
 
-#: src/grg_prefs.c:608
+#: src/grg_prefs.c:624
 msgid "Ask when overwriting files"
 msgstr "Спрашивать при перезаписывании файлов"
 
-#: src/grg_prefs.c:618
+#: src/grg_prefs.c:634
 msgid "Password expiration"
 msgstr "Истечение пароля"
 
-#: src/grg_prefs.c:625
+#: src/grg_prefs.c:641
 msgid "Password expires in"
 msgstr "Пароль истекает через"
 
-#: src/grg_prefs.c:629
+#: src/grg_prefs.c:645
 msgid "days"
 msgstr "дней"
 
 #. this means "passes in wiping a file", not "wipe the passes" :)
-#: src/grg_prefs.c:641
+#: src/grg_prefs.c:657
 msgid "Wipe passes"
 msgstr "Проходы уничтожения"
 
-#: src/grg_prefs.c:647
+#: src/grg_prefs.c:663
 msgid ""
 "Number of overwritings with random\n"
 "data, when wiping a file:"
@@ -717,15 +721,15 @@ msgstr ""
 "Количество перезаписываний случайными\n"
 "данными при уничтожении файла:"
 
-#: src/grg_prefs.c:660
+#: src/grg_prefs.c:676
 msgid "Clipboard"
 msgstr "Буфер"
 
-#: src/grg_prefs.c:668
+#: src/grg_prefs.c:684
 msgid "Clear clipboard on closing file"
 msgstr "Очищать буфер при закрытии файла"
 
-#: src/grg_prefs.c:675
+#: src/grg_prefs.c:691
 msgid "Clear clipboard on exit"
 msgstr "Очищать буфер при выходе"
 

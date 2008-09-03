@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-02 15:44+0200\n"
+"POT-Creation-Date: 2008-09-03 23:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,31 +190,31 @@ msgstr ""
 msgid "_Help"
 msgstr ""
 
-#: src/grg_widgets.c:66
+#: src/grg_widgets.c:65
 msgid "Error"
 msgstr ""
 
-#: src/grg_widgets.c:241
+#: src/grg_widgets.c:240
 msgid "Find a string"
 msgstr ""
 
-#: src/grg_widgets.c:254
+#: src/grg_widgets.c:253
 msgid "Enter the string to find:"
 msgstr ""
 
-#: src/grg_widgets.c:264
+#: src/grg_widgets.c:263
 msgid "Search only in this entry"
 msgstr ""
 
-#: src/grg_widgets.c:268
+#: src/grg_widgets.c:267
 msgid "Case sensitive"
 msgstr ""
 
-#: src/grg_widgets.c:315 src/grg_widgets.c:317 src/grg_widgets.c:354
+#: src/grg_widgets.c:314 src/grg_widgets.c:316 src/grg_widgets.c:353
 msgid "Please wait"
 msgstr ""
 
-#: src/grg_widgets.c:393 src/gringotts.c:1461 src/grg_pwd.c:122
+#: src/grg_widgets.c:392 src/gringotts.c:1461 src/grg_pwd.c:122
 #: src/grg_popt.c:287
 msgid "The file does not exist"
 msgstr ""
@@ -224,7 +224,7 @@ msgid " version "
 msgstr ""
 
 #: src/gringotts.c:140 src/gringotts.c:153 src/gringotts.c:155
-#: src/gringotts.c:157 src/gringotts.c:1849
+#: src/gringotts.c:157 src/gringotts.c:1945
 msgid "(c)"
 msgstr ""
 
@@ -407,7 +407,7 @@ msgstr ""
 msgid "Password successfully changed"
 msgstr ""
 
-#: src/gringotts.c:1353 src/grg_prefs.c:387
+#: src/gringotts.c:1353 src/grg_prefs.c:395
 msgid "Select file..."
 msgstr ""
 
@@ -465,7 +465,7 @@ msgstr ""
 msgid "Security level: %s"
 msgstr ""
 
-#: src/gringotts.c:1630 src/grg_prefs.c:616
+#: src/gringotts.c:1630 src/grg_prefs.c:632
 msgid "Security"
 msgstr ""
 
@@ -509,7 +509,7 @@ msgstr ""
 msgid "Remove this entry"
 msgstr ""
 
-#: src/gringotts.c:1681 src/grg_prefs.c:438
+#: src/gringotts.c:1681 src/grg_prefs.c:446
 msgid "Preferences"
 msgstr ""
 
@@ -545,136 +545,140 @@ msgstr ""
 msgid "List of attached files"
 msgstr ""
 
-#: src/gringotts.c:1849
+#: src/gringotts.c:1945
 msgid "version"
 msgstr ""
 
-#: src/gringotts.c:1851
+#: src/gringotts.c:1947
 msgid "released under GNU General Public License (GPL) v.2 or later"
 msgstr ""
 
-#: src/gringotts.c:1853
+#: src/gringotts.c:1949
 msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr ""
 
-#: src/gringotts.c:1867 src/grg_prefs.c:150
+#: src/gringotts.c:1963 src/grg_prefs.c:151
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr ""
 
-#: src/gringotts.c:1893
+#: src/gringotts.c:1989
 msgid "File to load does not exists or it is invalid"
 msgstr ""
 
-#: src/grg_prefs.c:219
+#: src/grg_prefs.c:220
 #, c-format
 msgid " Block size: %d bits"
 msgstr ""
 
-#: src/grg_prefs.c:222
+#: src/grg_prefs.c:223
 #, c-format
 msgid " Key length: %d bits"
 msgstr ""
 
-#: src/grg_prefs.c:449
+#: src/grg_prefs.c:457
 msgid "Encryption"
 msgstr ""
 
-#: src/grg_prefs.c:494
+#: src/grg_prefs.c:502
 msgid "Hashing"
 msgstr ""
 
-#: src/grg_prefs.c:507
+#: src/grg_prefs.c:515
 msgid "Compression"
 msgstr ""
 
-#: src/grg_prefs.c:522
+#: src/grg_prefs.c:530
 msgid "None"
 msgstr ""
 
-#: src/grg_prefs.c:527
+#: src/grg_prefs.c:535
 msgid "Fast"
 msgstr ""
 
-#: src/grg_prefs.c:531
+#: src/grg_prefs.c:539
 msgid "Good"
 msgstr ""
 
-#: src/grg_prefs.c:535
+#: src/grg_prefs.c:543
 msgid "Best"
 msgstr ""
 
-#: src/grg_prefs.c:539
+#: src/grg_prefs.c:547
 msgid "Algorithms"
 msgstr ""
 
-#: src/grg_prefs.c:546
+#: src/grg_prefs.c:554
 msgid "General options"
 msgstr ""
 
-#: src/grg_prefs.c:548
+#: src/grg_prefs.c:556
 msgid "Editor font"
 msgstr ""
 
-#: src/grg_prefs.c:553
+#: src/grg_prefs.c:561
 msgid "Click to change the editor font"
 msgstr ""
 
-#: src/grg_prefs.c:563
+#: src/grg_prefs.c:571
 msgid "Decorations"
 msgstr ""
 
-#: src/grg_prefs.c:571
+#: src/grg_prefs.c:579
 msgid "Splash screen"
 msgstr ""
 
-#: src/grg_prefs.c:576
+#: src/grg_prefs.c:587
+msgid "Tray-Icon (Needs Gringotts restart to take affect)"
+msgstr ""
+
+#: src/grg_prefs.c:592
 msgid "File to open at startup"
 msgstr ""
 
-#: src/grg_prefs.c:595
+#: src/grg_prefs.c:611
 msgid "File saving"
 msgstr ""
 
-#: src/grg_prefs.c:602
+#: src/grg_prefs.c:618
 msgid "Make backups of files"
 msgstr ""
 
-#: src/grg_prefs.c:608
+#: src/grg_prefs.c:624
 msgid "Ask when overwriting files"
 msgstr ""
 
-#: src/grg_prefs.c:618
+#: src/grg_prefs.c:634
 msgid "Password expiration"
 msgstr ""
 
-#: src/grg_prefs.c:625
+#: src/grg_prefs.c:641
 msgid "Password expires in"
 msgstr ""
 
-#: src/grg_prefs.c:629
+#: src/grg_prefs.c:645
 msgid "days"
 msgstr ""
 
 #. this means "passes in wiping a file", not "wipe the passes" :)
-#: src/grg_prefs.c:641
+#: src/grg_prefs.c:657
 msgid "Wipe passes"
 msgstr ""
 
-#: src/grg_prefs.c:647
+#: src/grg_prefs.c:663
 msgid ""
 "Number of overwritings with random\n"
 "data, when wiping a file:"
 msgstr ""
 
-#: src/grg_prefs.c:660
+#: src/grg_prefs.c:676
 msgid "Clipboard"
 msgstr ""
 
-#: src/grg_prefs.c:668
+#: src/grg_prefs.c:684
 msgid "Clear clipboard on closing file"
 msgstr ""
 
-#: src/grg_prefs.c:675
+#: src/grg_prefs.c:691
 msgid "Clear clipboard on exit"
 msgstr ""
 
