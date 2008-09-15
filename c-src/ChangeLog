@@ -118,3 +118,8 @@
 	"minimize-to-tray-icon" feature for gringotts.
 
 	* Tagged and relased gringotts-1.2.10pre2.
+
+2008-09-15 Shlomi Fish <shlomif@iglu.org.il>
+
+	* Applied another patch by Rorschach to fix the tray icon functionality.
+	wwp suggested it.

@@ -1809,8 +1809,14 @@ grg_interface (void)
 
 void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data)
 {
-	gtk_widget_show_all(win1);
-	gtk_window_deiconify(GTK_WINDOW(win1));
+	if(gdk_window_get_state(GTK_WIDGET(win1)->window)==1 ||gdk_window_get_state(GTK_WIDGET(win1)->window)==2) {
+		/* The window is either iconified, or on another workspace */
+		gtk_widget_show_all(win1);
+		gtk_window_deiconify(GTK_WINDOW(win1));
+	}else{  
+		gtk_widget_hide(win1);
+		gtk_status_icon_set_visible(GTK_STATUS_ICON(status_icon), TRUE);
+	}
 }
 
 void tray_button_view(GtkMenuItem *item, gpointer window)
@@ -1834,46 +1840,29 @@ void trayIconPopup(GtkStatusIcon *status_icon, guint button, guint32 activate_ti
 	gtk_menu_popup(GTK_MENU(popUpMenu), NULL, NULL, gtk_status_icon_position_menu, status_icon, button, activate_time);
 }
 
-/* Creates the trayicon: */
-static GtkStatusIcon *create_tray_icon(void)
+/* Creates a GTK-Tray-icon: */
+GtkStatusIcon *create_tray_icon(void)
 {
 	GtkStatusIcon *tray_icon;
 
 	tray_icon = gtk_status_icon_new();
-	g_signal_connect(G_OBJECT(tray_icon), "activate", G_CALLBACK(tray_icon_on_click), NULL);
-
 	GdkPixbuf *gp = gdk_pixbuf_new_from_xpm_data (gringotts_xpm);
 	gtk_status_icon_set_from_pixbuf(tray_icon, gp);
 	gtk_status_icon_set_tooltip(tray_icon, "Gringotts");
-	gtk_status_icon_set_visible(tray_icon, FALSE);
+	gtk_status_icon_set_visible(tray_icon, TRUE);
 	g_object_unref (G_OBJECT (gp));
 
 	return tray_icon;
 }
 
-/* Our event-handler for the tray icon*/
-gboolean window_state_event (GtkWidget *widget, GdkEventWindowState *event, gpointer trayIcon)
-{
-	/* If minimized ... */
-	if(event->changed_mask == GDK_WINDOW_STATE_ICONIFIED && (event->new_window_state == GDK_WINDOW_STATE_ICONIFIED || event->new_window_state == (GDK_WINDOW_STATE_ICONIFIED | GDK_WINDOW_STATE_MAXIMIZED)))
-	{
-		gtk_widget_hide (GTK_WIDGET(widget));
-		gtk_status_icon_set_visible(GTK_STATUS_ICON(trayIcon), TRUE);
-	}
-	/* Else if not minimized (anymore)... */
-	else if(event->changed_mask == GDK_WINDOW_STATE_WITHDRAWN && (event->new_window_state == GDK_WINDOW_STATE_ICONIFIED || event->new_window_state == (GDK_WINDOW_STATE_ICONIFIED | GDK_WINDOW_STATE_MAXIMIZED)))
-	{
-		gtk_status_icon_set_visible(GTK_STATUS_ICON(trayIcon), FALSE);
-	}
-	return TRUE;
-} 
-
+/* Initiates the Tray-icon: */
 void tray_icon_init(void)
 {
 	GtkWidget *menu, *menuItemView, *menuItemExit, *menuItemAbout, *menuItemSeparator;
-    GtkStatusIcon *tray_icon;
-    
-    tray_icon = create_tray_icon();
+	GtkStatusIcon *tray_icon;
+
+	/* Tray-icon is created and shown */
+	tray_icon = create_tray_icon();
 
 	/* Right-click menu for trayicon */
 	menu = gtk_menu_new();
@@ -1894,8 +1883,7 @@ void tray_icon_init(void)
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuItemExit);
 	gtk_widget_show_all (menu);
 
-	/* other signal-handler for left/right-click on the icon itself and for the window state */
-	g_signal_connect (G_OBJECT (win1), "window-state-event", G_CALLBACK (window_state_event), tray_icon);
+	/* other signal-handler for left/right-click on the icon itself */
 	g_signal_connect(GTK_STATUS_ICON (tray_icon), "popup-menu", GTK_SIGNAL_FUNC (trayIconPopup), menu);
 	g_signal_connect(G_OBJECT(tray_icon), "activate", G_CALLBACK(tray_icon_on_click), NULL);
 }
