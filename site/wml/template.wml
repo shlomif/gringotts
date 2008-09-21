@@ -24,3 +24,36 @@ Webmaster and maintainer: <a href="http://www.shlomifish.org/">Shlomi Fish</a>
 
 <latemp_affiliations_buttons>
 </latemp_affiliations_buttons>
+
+<define-tag gringotts_links>
+<preserve title />
+<set-var %attributes />
+
+<h2 id="links"><get-var title /></h2>
+
+
+<ul>
+
+<li>
+<a href="https://developer.berlios.de/projects/gringotts/">Project Page
+at Berlios.de</a> - contains Subversion information, downloads and other
+resources.
+</li>
+
+<li>
+<a href="http://freshmeat.net/projects/gringotts/">Freshmeat.net Record</a>
+</li>
+
+<li>
+<a href="http://www.nohaven.net/projects/java/jafe/index.html">Jafe</a> -
+a portable strongbox for one's data by the same original author as gringotts.
+</li>
+
+<li>
+<a href="http://www.gtk.org/">Gtk+</a> - the GUI library used by gringotts.
+</li>
+
+</ul>
+<restore title />
+</define-tag>
+
