@@ -16,6 +16,15 @@ Berlios page</a>.
 
 <h2 id="news">News</h2>
 
+<h3 id="news_2009_06_13_1.2.10">13-Jun-2009 - Gringotts 1.2.10 was Released</h3>
+
+<p>
+Gringotts 1.2.10 was released. It is identical to 1.2.10pre3. This version
+features beter GNOME HIG compliance, a fix for the preferences parser, and
+an optional minimise to tray-icon option. Thanks ot Rorschach and wwp for
+their contributions.
+</p>
+
 <h3 id="news_2008_09_03_1.2.10pre2">03-Sep-2008 - Gringotts 1.2.10pre2 was Released</h3>
 
 <p>
