@@ -1,4 +1,4 @@
-AC_INIT(gringotts, 1.2.10pre3, mano78@users.sourceforge.net)
+AC_INIT(gringotts, 1.2.10, shlomif@iglu.org.il)
 
 GRG_NAME=$PACKAGE_NAME
 GRG_CAP_NAME=Gringotts

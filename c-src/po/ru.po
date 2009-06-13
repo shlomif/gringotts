@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gringotts 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 23:21+0300\n"
+"POT-Creation-Date: 2008-09-15 19:57+0300\n"
 "PO-Revision-Date: 2004-02-06 09:44+0300\n"
 "Last-Translator: Unatine <unatine@zmail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -253,7 +253,7 @@ msgid " version "
 msgstr " версия "
 
 #: src/gringotts.c:140 src/gringotts.c:153 src/gringotts.c:155
-#: src/gringotts.c:157 src/gringotts.c:1945
+#: src/gringotts.c:157 src/gringotts.c:1933
 msgid "(c)"
 msgstr "©"
 
@@ -594,23 +594,23 @@ msgstr "Изменить комментарий"
 msgid "List of attached files"
 msgstr "Список вложенный файлов"
 
-#: src/gringotts.c:1945
+#: src/gringotts.c:1933
 msgid "version"
 msgstr "версия"
 
-#: src/gringotts.c:1947
+#: src/gringotts.c:1935
 msgid "released under GNU General Public License (GPL) v.2 or later"
 msgstr "выпущено под GNU General Public License (GPL) v.2 или более поздней"
 
-#: src/gringotts.c:1949
+#: src/gringotts.c:1937
 msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr "Смотрите COPYING или http://www.gnu.org/copyleft/gpl.html"
 
-#: src/gringotts.c:1963 src/grg_prefs.c:151
+#: src/gringotts.c:1951 src/grg_prefs.c:151
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "Неверный файл настроек. Сброс к настройкам по умолчанию."
 
-#: src/gringotts.c:1989
+#: src/gringotts.c:1977
 msgid "File to load does not exists or it is invalid"
 msgstr "Файл для открытия не существует или поврежден"
 
