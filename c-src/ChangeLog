@@ -129,3 +129,12 @@
 2009-06-13 Shlomi Fish <shlomif@iglu.org.il>
 
 	* Tagged and released gringotts-1.2.10.
+
+	----------------------------------
+	--- Changes from release 1.2.10 ---
+	----------------------------------
+
+2009-06-14 Shlomi Fish <shlomif@iglu.org.il>
+
+	* Updated the German Translation courtesy of Hermann J. Beckers.
+	* Updated his E-mail in the README.
