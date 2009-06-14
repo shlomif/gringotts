@@ -155,7 +155,7 @@ http://gcc.gnu.org/wiki/Mudflap%20Pointer%20Debugging
 	Authors
 
 This program has been originally designed & written by Germano Rizzo (aka Mano)
-(aka me :-) <mano78@users.sourceforge.net>. I also translated it into italian.
+<mano78@users.sourceforge.net>. I also translated it into italian.
 
 Additional (precious :-) coding and french translation by Nicholas Pouillon (aka
 Nipo) <nipo@ssji.net>.
@@ -163,6 +163,8 @@ Nipo) <nipo@ssji.net>.
 German translation by "Hermann J. Beckers" <hj.beckers@onlinehome.de>
 
 Nice patches and a major bugfix by James Antill	<james@and.org>.
+
+Now maintained by Shlomi Fish ( http://www.shlomifish.org/ ).
 
 Many other people have given their unvaluable contribution to this project. Not
 in any particular order:
