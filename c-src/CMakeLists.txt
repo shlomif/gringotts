@@ -1,3 +1,7 @@
+# This CMakeLists.txt file is based on the one from sakura:
+# 
+# http://www.pleyades.net/david/sakura.php
+
 CMAKE_MINIMUM_REQUIRED (VERSION 2.4 FATAL_ERROR)
 IF (COMMAND CMAKE_POLICY)	
 	CMAKE_POLICY(SET CMP0005 OLD)
