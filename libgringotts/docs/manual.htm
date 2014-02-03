@@ -522,7 +522,6 @@ Confused? Don't be! It's simple! :-) Here is a couple of examples of how to tie 
 
 	<i>//always remember to clean up leftovers...</i>
 	grg_key_free (context, keyholder);
-	grg_free (context, plaintext, txtlen); <i>//also here, txtlen could be -1</i>
 	grg_context_free (context);
 }
 
@@ -548,7 +547,7 @@ To decode, things are even simpler:
 
 	<i>//here the library will put the decoded data</i>
 	unsigned char *plaintext;
-	unsigned int txtlen;
+	long int txtlen;
 
 	<i>//we are ready to perform the decryption</i>
 	grg_decrypt_file (context, keyholder, filepath, &amp;plaintext, &amp;txtlen);
@@ -580,7 +579,7 @@ To decode, things are even simpler:
 	GRG_CTX gctx = grg_context_initialize_defaults ("tRy");
 	GRG_TMPFILE tf = grg_tmpfile_gen (gctx);
 	unsigned char *try;
-	long dim;
+	long int dim;
 
 	<i>//writes some stupid data</i>
 	grg_tmpfile_write (gctx, tf, "S0M3 S7UP1D DA7A", 16);
@@ -588,14 +587,14 @@ To decode, things are even simpler:
 	<i>[...]</i>
 
 	<i>//then reads it. Simple...</i>
-	grg_tmpfile_read (gctx, tf, &amp;tyr, NULL);
+	grg_tmpfile_read (gctx, tf, &amp;try, &dim);
 
 	<i>//Freedom... freedom... freedom... ;-)</i>
 	grg_tmpfile_close (gctx, tf);
 	grg_context_free (gctx);
 
 	<i>//Use those data!</i>
-	printf("Data were %s, of length %u\n", tyr, dim);
+	printf("Data were %s, of length %ld\n", try, dim);
 }
 
 <i>[...]</i>

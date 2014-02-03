@@ -5,6 +5,7 @@
 2014-02-02 Shlomi Fish <shlomif@cpan.org>
 	* Apply patch to get rid of gcc warnings due to signedness mistmatch.
 		- Sent by Jose G. López, the Debian maintainer.
+	* Apply patch to the documentation by Jose, the Debian maintainer.
 
     --------------------------------
    --- Changes from 1.2.0 release ---
