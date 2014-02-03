@@ -118,7 +118,7 @@ typedef struct _grg_tmpfile *GRG_TMPFILE;
 
 // General purpose functions
 
-unsigned char *grg_get_version (void);
+char *grg_get_version (void);
 unsigned int grg_get_int_version (void);
 
 // Security related functions
@@ -128,16 +128,16 @@ void grg_rnd_seq_direct (const GRG_CTX gctx, unsigned char *toOverwrite,
 	const unsigned int size);
 unsigned char grg_rnd_chr (const GRG_CTX gctx);
 void grg_free (const GRG_CTX gctx, void *alloc_data, const long dim);
-double grg_ascii_pwd_quality (const unsigned char *pwd, const long pwd_len);
-double grg_file_pwd_quality (const unsigned char *pwd_path);
+double grg_ascii_pwd_quality (const char *pwd, const long pwd_len);
+double grg_file_pwd_quality (const char *pwd_path);
 
 // libGringotts context (GRG_CTX) related functions
 
-GRG_CTX grg_context_initialize (const unsigned char *header,
+GRG_CTX grg_context_initialize (const char *header,
 				const grg_crypt_algo crypt_algo, const grg_hash_algo hash_algo,
 				const grg_comp_algo comp_algo, const grg_comp_ratio comp_lvl,
 				const grg_security_lvl sec_lvl);
-GRG_CTX grg_context_initialize_defaults (const unsigned char *header);
+GRG_CTX grg_context_initialize_defaults (const char *header);
 void grg_context_free (GRG_CTX gctx);
 
 grg_crypt_algo grg_ctx_get_crypt_algo (const GRG_CTX gctx);
@@ -160,19 +160,19 @@ unsigned int grg_get_block_size (const GRG_CTX gctx);
 
 // libGringotts keyholder (GRG_KEY) related functions
 
-GRG_KEY grg_key_gen (const unsigned char *pwd, const int pwd_len);
+GRG_KEY grg_key_gen (const char *pwd, const int pwd_len);
 GRG_KEY grg_key_clone (const GRG_KEY src);
 int grg_key_compare (const GRG_KEY k1, const GRG_KEY k2);
 void grg_key_free (const GRG_CTX gctx, GRG_KEY key);
 
 // File encryption/decryption functions
-int grg_validate_file (const GRG_CTX gctx, const unsigned char *path);
-int grg_update_gctx_from_file (GRG_CTX gctx, const unsigned char *path);
+int grg_validate_file (const GRG_CTX gctx, const char *path);
+int grg_update_gctx_from_file (GRG_CTX gctx, const char *path);
 int grg_decrypt_file (const GRG_CTX gctx, const GRG_KEY keystruct,
-		      const unsigned char *path, unsigned char **origData,
+		      const char *path, unsigned char **origData,
 		      long *origDim);
 int grg_encrypt_file (const GRG_CTX gctx, const GRG_KEY keystruct,
-		      const unsigned char *path,
+		      const char *path,
 		      const unsigned char *origData, const long origDim);
 
 // Their "direct" versions, requiring a file descriptor instead of a path

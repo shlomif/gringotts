@@ -127,10 +127,10 @@ grg_memconcat (const int count, ...)
  *
  * Returns: a newly-allocated string, to be free()'d afterwards
  */
-unsigned char *
+char *
 grg_get_version (void)
 {
-	return (unsigned char *) strdup (LIBGRG_VERSION);
+	return (char *) strdup (LIBGRG_VERSION);
 }
 
 /**
@@ -222,7 +222,7 @@ grg_rnd_seq_direct (const GRG_CTX gctx, unsigned char *toOverwrite,
 		return;
 
 	if (csize < 0)
-		csize = strlen (toOverwrite);
+		csize = strlen ((char *)toOverwrite);
 	
 #ifdef HAVE__DEV_RANDOM
 	read (gctx->rnd, toOverwrite, csize);
@@ -304,7 +304,7 @@ grg_free (const GRG_CTX gctx, void *alloc_data, const long dim)
 		return;
 	
 	if (gctx)
-		grg_rnd_seq_direct (gctx, pntr, (dim >= 0) ? dim : strlen (pntr));
+		grg_rnd_seq_direct (gctx, (unsigned char *)pntr, (dim >= 0) ? dim : strlen (pntr));
 
 	free (pntr);
 }
@@ -346,7 +346,7 @@ grg_unsafe_free (void *alloc_data)
  * Returns: a double between 0 and 1, inclusive
  */
 double
-grg_ascii_pwd_quality (const unsigned char *pwd, const long pwd_len)
+grg_ascii_pwd_quality (const char *pwd, const long pwd_len)
 {
 	int A = FALSE, a = FALSE, n = FALSE, p = FALSE;
 	long i = 0;
@@ -434,7 +434,7 @@ grg_ascii_pwd_quality (const unsigned char *pwd, const long pwd_len)
  * Returns: a double between 0 and 1, inclusive
  */
 double
-grg_file_pwd_quality (const unsigned char *pwd_path)
+grg_file_pwd_quality (const char *pwd_path)
 {
 	double ret;
 	int pdf;
@@ -487,7 +487,7 @@ grg_encode64 (const unsigned char *in, const int inlen,
 	if (!in)
 		return NULL;
 
-	origlen = (inlen >= 0) ? inlen : strlen (in);
+	origlen = (inlen >= 0) ? inlen : strlen ((char *)in);
 	olen = (origlen + 2) / 3 * 4 + 1;
 	out = (unsigned char *) malloc (olen);
 	if (!out)
@@ -533,7 +533,7 @@ grg_decode64 (const unsigned char *in, const int inlen,
 	if (!in)
 		return NULL;
 
-	tmpinlen = (inlen >= 0) ? inlen : strlen (in); 
+	tmpinlen = (inlen >= 0) ? inlen : strlen ((char *)in); 
 
 	olen = tmpinlen / 4 * 3;
 	if (in[tmpinlen - 1] == '=')
@@ -586,7 +586,7 @@ grg_decode64 (const unsigned char *in, const int inlen,
 
 	ret[olen] = '\0';
 
-	return ret;
+	return (unsigned char *)ret;
 }
 
 int
@@ -643,7 +643,7 @@ grg_file_shred (const char *path, const int npasses)
 			grg_rnd_seq_direct (gctx, mem + j - SHRED_BLOCK_SIZE, SHRED_BLOCK_SIZE);
 		grg_rnd_seq_direct (gctx, mem + dim - rem, rem);
 */
-		grg_rnd_seq_direct (gctx, mem, dim);
+		grg_rnd_seq_direct (gctx, (unsigned char *)mem, dim);
 		fsync (fd);
 	}
 

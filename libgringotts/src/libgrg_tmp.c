@@ -106,7 +106,7 @@ grg_tmpfile_write (const GRG_CTX gctx, GRG_TMPFILE tf,
 	if (mcrypt_generic_init (tf->crypt, tf->key, tf->dKey, tf->IV) < 0)
 		return GRG_WRITE_ENC_INIT_ERR;
 
-	dim = (data_len < 0) ? strlen (data) : data_len;
+	dim = (data_len < 0) ? strlen ((char *)data) : data_len;
 
 	tocrypt = grg_memconcat (2, gctx->header, HEADER_LEN, data, dim);
 	if (!tocrypt)

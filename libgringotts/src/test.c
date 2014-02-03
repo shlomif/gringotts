@@ -143,7 +143,8 @@ static int test5()
 
 static int test6()
 {//base-64 coding and decoding of a very long binary string at random
-	int ret, olen;
+	int ret;
+	unsigned int olen;
 	unsigned char *orig, *based, *debased;
 
 	olen = TEST_DIM;
@@ -152,7 +153,7 @@ static int test6()
 	based = grg_encode64 (orig, olen, NULL);
 	debased = grg_decode64 (based, -1, &olen);
 	
-	if (strncmp (orig, debased, olen) == 0)
+	if (strncmp ((char *)orig, (char *)debased, olen) == 0)
 		ret = OK;
 	else
 		ret = KO;
@@ -177,8 +178,8 @@ static int test7()
 	if (r1 == r2 && r2 == r3)
 		return KO;
 
-	rs1 = grg_rnd_seq (gctx, TEST_DIM);
-	rs2 = grg_rnd_seq (gctx, TEST_DIM);
+	rs1 = (char *)grg_rnd_seq (gctx, TEST_DIM);
+	rs2 = (char *)grg_rnd_seq (gctx, TEST_DIM);
 
 	if (memcmp (rs1, rs2, TEST_DIM) == 0) {
 		free (rs1);
@@ -187,7 +188,7 @@ static int test7()
 	}
 
 	memcpy (rs1, rs2, TEST_DIM);
-	grg_rnd_seq_direct (gctx, rs1, TEST_DIM);
+	grg_rnd_seq_direct (gctx, (unsigned char *)rs1, TEST_DIM);
 
 	if (memcmp (rs1, rs2, TEST_DIM) == 0)
 		ret = KO;
@@ -254,7 +255,7 @@ static int testA()
 		p6 = grg_ascii_pwd_quality (PWD6, -1),
 		p7 = grg_ascii_pwd_quality (PWD7, -1),
 		p8 = grg_ascii_pwd_quality (PWD8, -1);
-	char *PWD9 = grg_rnd_seq (gctx, 256);
+	char *PWD9 = (char *)grg_rnd_seq (gctx, 256);
 	double p9 = grg_ascii_pwd_quality (PWD9, 256);
 
 	free (PWD9);
@@ -334,10 +335,9 @@ static int testE()
 {//data encoding and decoding in memory
 	unsigned char *data = grg_rnd_seq (gctx, TEST_DIM), *data2;
 	void *stone = NULL;
-	int ret, rval, d;
+	int ret, rval;
 	long fdim, ffdim;
 
-	d=TEST_DIM;
 	ret=grg_encrypt_mem(gctx, key, &stone, &fdim, data, TEST_DIM);
 	if (ret < 0){
 		free (data);
@@ -515,7 +515,7 @@ static int testM()
 	int ret, rval;
 	unsigned int fdim;
 	long ffdim;
-	unsigned char *data = grg_decode64(ENC_STRING, -1, &fdim), *data2;
+	unsigned char *data = grg_decode64((unsigned char *)ENC_STRING, -1, &fdim), *data2;
 
 	ret=grg_decrypt_mem(gctx, key, data, fdim, &data2, &ffdim);
 	if (ret < 0){

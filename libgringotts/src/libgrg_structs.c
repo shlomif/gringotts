@@ -60,7 +60,7 @@ reinit_random (GRG_CTX gctx)
 }
 
 GRG_CTX
-grg_context_initialize (const unsigned char *header,
+grg_context_initialize (const char *header,
 			const grg_crypt_algo crypt_algo,
 			const grg_hash_algo hash_algo,
 			const grg_comp_algo comp_algo,
@@ -101,7 +101,7 @@ grg_context_initialize (const unsigned char *header,
 }
 
 GRG_CTX
-grg_context_initialize_defaults (const unsigned char *header)
+grg_context_initialize_defaults (const char *header)
 {
 	return grg_context_initialize (header, GRG_SERPENT, GRG_RIPEMD_160,
 				       GRG_ZLIB, GRG_LVL_BEST,
@@ -195,7 +195,7 @@ grg_ctx_set_security_lvl (GRG_CTX gctx, const grg_security_lvl sec_level)
 }
 
 GRG_KEY
-grg_key_gen (const unsigned char *pwd, const int pwd_len)
+grg_key_gen (const char *pwd, const int pwd_len)
 {
 	GRG_KEY key;
 	int real_pwd_len;

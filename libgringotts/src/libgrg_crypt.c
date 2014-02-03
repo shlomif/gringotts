@@ -132,7 +132,7 @@ compare_CRC32 (const unsigned char *CRC, const unsigned char *toCheck,
 	return ret;
 }
 
-unsigned char *
+char *
 grg2mcrypt (const grg_crypt_algo algo)
 {
 	switch (algo)
@@ -170,13 +170,13 @@ static int
 validate_mem (const GRG_CTX gctx, const void *mem, const long memDim)
 {
 	unsigned char vers;
-	char *tmp;
+	unsigned char *tmp;
 	long rem;
 
 	if (!gctx || !mem)
 		return GRG_ARGUMENT_ERR;
 
-	tmp = (char *) mem;
+	tmp = (unsigned char *) mem;
 	rem = (memDim >= 0) ? memDim : strlen (mem);
 
 	//checks the ID header
@@ -222,13 +222,13 @@ select_key (const GRG_CTX gctx, const GRG_KEY keystruct, int *dim)
 
 	if (gctx->hash_algo == GRG_SHA1)
 		key = grg_memdup (((*dim ==
-				     24) ? keystruct->
-				    key_192_sha : keystruct->key_256_sha),
+				     24) ? (unsigned char *)keystruct->
+				    key_192_sha : (unsigned char *)keystruct->key_256_sha),
 				   *dim);
 	else
 		key = grg_memdup (((*dim ==
-				     24) ? keystruct->
-				    key_192_ripe : keystruct->key_256_ripe),
+				     24) ? (unsigned char *)keystruct->
+				    key_192_ripe : (unsigned char *)keystruct->key_256_ripe),
 				   *dim);
 	
 	return key;
@@ -241,14 +241,14 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 	unsigned char *IV, *ecdata, *curdata, *dimdata, *key, *CRC32b;
 	int dIV, len, curlen, keylen, err;
 	char *tmp;
-	long oDim;
+	unsigned long oDim;
 	MCRYPT mod;
 
 	len = memDim - LIBGRG_DATA_POS;
 	tmp = ((char *) mem) + LIBGRG_DATA_POS;
 	
 	dIV = grg_get_block_size_static (gctx->crypt_algo);
-	IV = grg_memdup (tmp, dIV);
+	IV = grg_memdup ((unsigned char *)tmp, dIV);
 	if (!IV){
 		return GRG_MEM_ALLOCATION_ERR;
 	}
@@ -256,7 +256,7 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 	tmp += dIV;
 	len -= dIV;
 
-	ecdata = grg_memdup (tmp, len);
+	ecdata = grg_memdup ((unsigned char *)tmp, len);
 	if (!ecdata)
 	{
 		grg_unsafe_free (IV);
@@ -347,10 +347,13 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 		}
 		
 		if (gctx->comp_algo)	//bz2
-			err = BZ2_bzBuffToBuffDecompress ((unsigned char *)
-							  tmpData, (unsigned int *) &oDim,
-							  (unsigned char *) curdata, curlen,
+		{
+			unsigned int uint_oDim = oDim;
+			err = BZ2_bzBuffToBuffDecompress ((char *)tmpData, &uint_oDim,
+							  (char *) curdata, curlen,
 							  USE_BZ2_SMALL_MEM, 0);
+			oDim = uint_oDim;
+		}
 		else		//zlib
 			err = uncompress (tmpData, &oDim, curdata, curlen);
 
@@ -387,7 +390,8 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 		 long *memDim, const unsigned char *origData,
 		 const long origDim)
 {
-	unsigned char *compData, *chunk, *toCRC1, *CRC1, *toEnc, *key, *IV,
+	char *compData;
+	unsigned char *chunk, *toCRC1, *CRC1, *toEnc, *key, *IV,
 		*toCRC2, *CRC2, algo;
 	unsigned int dIV, dKey, err;
 	long compDim, uncDim;
@@ -396,7 +400,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 	if (!gctx || !keystruct || !origData)
 			return GRG_ARGUMENT_ERR;
 
-	uncDim = (origDim < 0) ? strlen (origData) : origDim;
+	uncDim = (origDim < 0) ? strlen ((char *)origData) : origDim;
 
 	if (gctx->comp_lvl)
 	{
@@ -411,15 +415,18 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 
 		//compress the data
 		if (gctx->comp_algo)	//bz2
+		{
+			unsigned int uint_compDim = compDim;
 			err = BZ2_bzBuffToBuffCompress (compData,
-							(unsigned int *)
-							&compDim,
-							(unsigned char *)
+							&uint_compDim,
+							(char *)
 							origData, uncDim,
 							gctx->comp_lvl * 3, 0,
 							0);
+			compDim = uint_compDim;
+		}
 		else
-			err = compress2 (compData, &compDim, origData, uncDim,
+			err = compress2 ((Bytef *)compData, (uLongf *)&compDim, origData, uncDim,
 					 gctx->comp_lvl * 3);
 
 		if (err < 0)
@@ -433,7 +440,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 	else
 	{
 		compDim = uncDim;
-		compData = grg_memdup (origData, uncDim);
+		compData = (char *)grg_memdup (origData, uncDim);
 		if (!compData)
 			return GRG_MEM_ALLOCATION_ERR;
 	}
@@ -488,7 +495,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 		return GRG_MEM_ALLOCATION_ERR;
 	}
 
-	key = select_key (gctx, keystruct, &dKey);
+	key = select_key (gctx, keystruct, (int *)&dKey);
 	if (!key)
 	{
 		grg_unsafe_free (IV);
@@ -591,7 +598,7 @@ grg_validate_file_direct (const GRG_CTX gctx, const int fd)
 }
 
 int
-grg_validate_file (const GRG_CTX gctx, const unsigned char *path)
+grg_validate_file (const GRG_CTX gctx, const char *path)
 {
 	int fd, res;
 
@@ -639,7 +646,7 @@ grg_update_gctx_from_file_direct (GRG_CTX gctx, const int fd)
 }
 
 int
-grg_update_gctx_from_file (GRG_CTX gctx, const unsigned char *path)
+grg_update_gctx_from_file (GRG_CTX gctx, const char *path)
 {
 	int fd, res;
 
@@ -691,7 +698,7 @@ grg_decrypt_file_direct (const GRG_CTX gctx, const GRG_KEY keystruct,
 
 int
 grg_decrypt_file (const GRG_CTX gctx, const GRG_KEY keystruct,
-		  const unsigned char *path, unsigned char **origData,
+		  const char *path, unsigned char **origData,
 		  long *origDim)
 {
 	int fd, res;
@@ -743,7 +750,7 @@ grg_encrypt_file_direct (const GRG_CTX gctx, const GRG_KEY keystruct,
 
 int
 grg_encrypt_file (const GRG_CTX gctx, const GRG_KEY keystruct,
-		  const unsigned char *path, const unsigned char *origData,
+		  const char *path, const unsigned char *origData,
 		  const long origDim)
 {
 	int fd, res;

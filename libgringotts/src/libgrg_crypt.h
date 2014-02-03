@@ -50,6 +50,6 @@
 #define FALSE	0
 #define TRUE	!FALSE
 
-unsigned char *grg2mcrypt (const grg_crypt_algo algo);
+char *grg2mcrypt (const grg_crypt_algo algo);
 
 #endif
