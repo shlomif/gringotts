@@ -1,0 +1,10 @@
+# pkgconfig file for libGringotts
+prefix=@prefix@
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libGringotts
+Description: Library for strong encoding of any data
+Version: @VERSION@
+Libs: -L${libdir} -lgringotts
+Cflags: -I${includedir}

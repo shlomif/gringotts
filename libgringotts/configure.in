@@ -1,0 +1,90 @@
+AC_INIT(libgringotts, 1.2.1, mano@pluto.linux.it)
+
+LIBGRG_NAME=$PACKAGE_NAME
+LIBGRG_VERSION=$PACKAGE_VERSION
+
+LIBGRG_FILE_VERSION=3
+
+LIBGRG_INTERFACE=2
+LIBGRG_RELEASE=7
+LIBGRG_AGE=0
+
+AM_INIT_AUTOMAKE($LIBGRG_NAME, $LIBGRG_VERSION)
+AC_PROG_LIBTOOL
+
+AC_CONFIG_SRCDIR(src/libgrg_crypt.c)
+AM_CONFIG_HEADER(config.h)
+
+AC_DEFINE_UNQUOTED(LIBGRG_NAME, "$LIBGRG_NAME", The library name)
+AC_DEFINE_UNQUOTED(LIBGRG_VERSION, "$LIBGRG_VERSION", The library version)
+AC_DEFINE_UNQUOTED(LIBGRG_FILE_VERSION, $LIBGRG_FILE_VERSION, The file format version)
+
+AC_SUBST(LIBGRG_INTERFACE)
+AC_SUBST(LIBGRG_RELEASE)
+AC_SUBST(LIBGRG_AGE)
+
+dnl Checks for programs.
+AC_PROG_CC
+
+AC_ARG_WITH(pkg-config-files,
+AC_HELP_STRING([--with-pkg-config-files[=ARG]],[The directory to put the pkg-config .pc files into(default=LIBDIR/pkgconfig)]),
+pcdir="$withval", pcdir=${libdir}/pkgconfig)
+AC_SUBST(pcdir)
+
+dnl Checks for libraries.
+
+AC_PATH_XTRA
+
+AC_CHECK_FILES(/dev/random)
+
+AC_CHECK_LIB(z, compress2,
+  [AC_CHECK_HEADER(zlib.h, LIBZ='-lz',
+	[AC_MSG_ERROR(*** ERROR: ZLib header files not found ***)])],
+      [AC_MSG_ERROR(*** ERROR: ZLib library not found ***)])
+AC_SUBST(LIBZ)
+
+AC_CHECK_LIB(bz2, BZ2_bzBuffToBuffCompress,
+  [AC_CHECK_HEADER(bzlib.h, LIBBZ2='-lbz2',
+	[AC_MSG_ERROR(*** ERROR: LibBZ2 header files not found ***)])],
+      [AC_MSG_ERROR(*** ERROR: LibBZ2 library not found ***)])
+AC_SUBST(LIBBZ2)
+
+AC_MSG_CHECKING(for libmcrypt)
+if libmcrypt-config --libs > /dev/null 2>&1
+then
+    AC_MSG_RESULT(yes)
+    MCRYPT_CFLAGS=`libmcrypt-config --cflags`
+    MCRYPT_LIBS=`libmcrypt-config --libs`
+    AC_SUBST(MCRYPT_CFLAGS)
+    AC_SUBST(MCRYPT_LIBS)
+else
+    AC_MSG_RESULT(no)
+    AC_MSG_ERROR(*** ERROR: MCrypt library not found ***)
+fi
+
+dnl Test for mhash
+AC_CHECK_LIB(mhash, mhash_keygen,
+  [AC_CHECK_HEADER(mhash.h, MHASH='-lmhash',
+	[AC_MSG_ERROR(*** ERROR: Mhash header files not found ***)])],
+      [AC_MSG_ERROR(*** ERROR: Mhash library not found ***)])
+AC_SUBST(MHASH)
+
+dnl Checks for header files.
+AC_HEADER_STAT
+AC_HEADER_STDC
+
+AC_CHECK_HEADERS(sys/types.h fcntl.h signal.h unistd.h utime.h)
+AC_CHECK_FUNCS(fcntl fsync lstat stat umask utime memmove)
+AC_TYPE_SIZE_T
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+dnl Checks for library functions.
+
+AC_CONFIG_FILES(Makefile)
+AC_CONFIG_FILES(src/Makefile)
+AC_CONFIG_FILES(docs/Makefile)
+AC_CONFIG_FILES(libgringotts.spec)
+AC_CONFIG_FILES(libgringotts.pc)
+AC_OUTPUT

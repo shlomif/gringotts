@@ -1,0 +1,104 @@
+			-= libGringotts installation instructions =-
+
+Hi!
+	you may have downloaded libgringotts mainly in three forms: the
+CVS repository image, the tarball or an RPM file. Here is how to handle
+each of them:
+
+							-= CVS=-
+							
+You can access to cvs repository of Pluto-devel with these data:
+
+CVSROOT:	:pserver:anonymous@cvs.pluto.linux.it:/Devel
+password:	anonymous
+
+the directory to checkout is called "gringotts". If you download
+libGringotts from CVS, it will miss all the various files generated
+by the GNU build tools. So, you need to re-create them. In order
+to do this, you'll need:
+
+  Autoconf >= 2.52
+  Automake  = 1.4
+
+now, cd to the libgringotts dir and type:
+
+  sh autogen.sh
+  ./configure
+  make dist
+
+after these steps, you should have in your current directory a file
+called libgringotts-x.y.z.tar.gz. Please read the next section to
+learn how to handle it.
+
+						  -= Tarball =-
+
+So, you have a tar file, hm? These instructions will deal with a
+
+libgringotts-x.y.z.tar.gz
+
+file; if you've a .tar.bz2 one, you should know how to adapt them to
+it. If not, just do a
+
+  bunzip2 libgringotts-x.y.z.tar.bz2
+  gzip --best libgringotts-x.y.z.tar
+
+to convert it. Well, please unarchive it and go to its dir:
+
+  tar xzf libgringotts-x.y.z.tar.gz
+  cd libgringotts-x.y.z
+
+in order to compile it, you will need:
+
+  libmcrypt (>= 2.4.21)
+    http://mcrypt.hellug.gr
+
+  mhash (>= 0.8.13)
+    http://mhash.sf.net
+
+the specified package versions are simply those I use; if you have
+older versions, libGringotts may or may not compile. Once checked this,
+do a simple
+
+  ./configure
+  make
+  make check
+  make install
+
+sequence to build, check and install it.
+
+To build an RPM package from the tarball, simply do:
+
+  rpm -tb --clean libgringotts-x.y.z.tar.bz2
+
+or, in a rpm 4.1-based system such as RedHat 8.0,
+
+  rpmbuild -tb --clean libgringotts-x.y.z.tar.bz2
+
+to build a binary package; notice that you'll need the bz2 tarball
+(simply recompress it if you have a gz one). "-ts" will build a
+source RPM. After this, read on.
+
+							-= RPM =-
+
+Finally, let's suppose you have an RPM. libGringotts behave just normally,
+so to compile a source RPM you'll do:
+
+  rpm --rebuild libgringotts-x.y.z-1.src.rpm
+
+or, in a rpm 4.1-based system such as RedHat 8.0,
+
+  rpmbuild --rebuild libgringotts-x.y.z-1.src.rpm
+
+To specify some configure flags for the compilation process, set the
+variable $GRG_COMPILE_FLAGS:
+
+  GRG_COMPILE_FLAGS="--with-gnu-ld" rpm --rebuild [...]
+
+To install the binary ones, you can do:
+
+  rpm -Uvh libgringotts-x.y.z-1.i386.rpm
+  rpm -Uvh libgringotts-devel-x.y.z-1.i386.rpm
+
+easy, ain't it? Here we are, have fun!
+
+	-- Mano :)

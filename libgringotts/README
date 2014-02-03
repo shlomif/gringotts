@@ -1,0 +1,94 @@
+Hi! :)
+	A short preamble: Gringotts is the name of the inviolable wizard bank in a
+famous children book series, known in all the wizardry world for the truculent
+fate that awaits all the wannabe robbers. I think it's a quite fitting name for
+a program which purpose is to secure sensitive data, isn't it? :-)
+
+libGringotts is a small, easy-to-use, thread-safe C library originally
+developed for Gringotts; its purpose is to encapsulate data (generic: ASCII,
+but also binary data) in an encrypted and compressed structure, to be written
+in a file or used elseway. It makes use of strong encryption algorithms, to
+ensure the data are as safe as possible, and allow the user to have the complete
+control over all the algorithms used in the process.
+
+For encryptions, libGringotts makes use of the MCrypt and MHash libs by
+Nikos Mavroyanopoulos, two really powerful and easy to use C libraries.
+
+Being Free Sofware, you're *encouraged* to take the code and do just
+whatever you want with it... as long as you retain the original
+copyright note, of course. Every contribution is more than welcome! Now
+it's time to read INSTALL and the HTML manual!
+
+Have a nice day, and thank you very much,
+
+    Mano :)
+
+------------------------------------------------------------------------
+
+
+Features
+
+This library aims to be as complete as possible, but with a stress on 
+lightness and simplicity. Currently it features:
+
+    * High stress on safety & security
+    * Any data sequence can be used as password and as data, in any
+      combination. You can use files as passwords, for example.
+	* Highly customizable & easy to use
+    * 8 encryption algorithms are available:
+          o The AES winner:
+                + RIJNDAEL-128
+          o AES finalists:
+                + SERPENT
+                + TWOFISH
+          o Other AES contestants:
+                + CAST 256
+                + SAFER+
+                + LOKI97
+          o Other strong algorithms:
+                + 3DES
+                + RIJNDAEL-256
+    * 2 160-bit hash algorithms, used to generate the key
+          o SHA1
+          o RIPEMD 160
+    * 2 compression types, with 4 compression levels each
+          o ZLib
+          o BZip2
+	* Encapsulated data can be left in memory, or written securely
+	  to files, with a convenient and minimalistic API.
+    * Provides functions to write data to temporary files in a
+	  totally secure way, with the same strong encryption of the
+	  data files.
+    * pkg-config support
+    * it's easy to write a magic file for the GNU file utility
+
+------------------------------------------------------------------------
+The authors
+
+This library has been originally designed & written by Germano Rizzo
+(aka Mano) (aka me :-) <mano@pluto.linux.it>
+
+Nice patches and a major bugfix by James Antill	<james@and.org>.
+
+Good ideas from Marcin Gibula <sh@xcom.pl>.
+
+File format 3 comes from a very interesting discussion with Bob Mathews
+<bobmathews@alumni.calpoly.edu>.
+
+------------------------------------------------------------------------
+Copyright notes
+
+The "libGringotts" library itself is (c) (better, copyleft) 2002 by 
+Germano Rizzo <mano@pluto.linux.it>.
+
+You can use, modify and redistribute them /as you wish/ (it's free
+software! :), under the terms of the GNU General Public License
+<http://www.gnu.org/copyleft/gpl.html>, v.2 or later.
+
+My deepest thanks to the Free Software Foundation <http://www.fsf.org>
+and the GNU project <http://www.gnu.org>for having created such a
+wonderful concept!
+
+Being quoted by Joanna K. Rowling's books, the very name Gringotts could
+be (c), (r) or (tm) by her or someone in her behalf, altough I'm not aware 
+of it. In case I'm violating any law, just let me know.

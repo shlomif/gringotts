@@ -1,0 +1,674 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>libGringotts manual</title>
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-15">
+</head>
+<body BGCOLOR="#EAE8E3">
+<h1 align="center">libGringotts manual</h1>
+<p>As we said, libGringotts provides a simple way to process your data, or save them to some file, in an higly configurable and completely secure way, using strong encryption and hashing algorithms to ensure no one will ever be able to read them (well... as long as they don't know the password... ;-). It includes some other useful features, like generation of encrypted temporary files, secure memory management, and functions for the evaluation of password quality.</p>
+<p>Here is a complete documentation on libGringotts' interface and internals. First, you'll be presented with the various non-standard <a href="#tdefs">data structures</a> and <a href="#ecodes">codes</a> you'll use; after these, the <a href="#fx">functions</a> will be introduced. Maybe you'll want to step right to the <a href="#ie">examples</a>, which are a sort of tutorial; finally, the very <a href="#formats">file format</a> will be described.</p>
+<h3>Table of contents</h3>
+<ul>
+<li><a href="#tdefs">Typedefs &amp; enumerations</a></li>
+<ul>
+<li><a href="#enums">Enumerations</a></li>
+<li><a href="#encaps">Encapsulations ("objects")</a></li>
+</ul>
+<li><a href="#ecodes">Error codes</a></li>
+<li><a href="#fx">Functions</a></li>
+<ul>
+<li><a href="#gpf">General purpose functions</a></li>
+<li><a href="#lcrf">libGringotts context-related functions</a></li>
+<li><a href="#lkrf">libGringotts keyholder-related functions</a></li>
+<li><a href="#mtmedf">Memory-to-memory encryption/decryption functions</a></li>
+<li><a href="#fedf">File encryption/decryption functions</a></li>
+<li><a href="#etfrf">Encrypted Temporary File-related functions</a></li>
+<li><a href="#muf">Miscellaneous utility functions</a></li>
+</ul>
+<li><a href="#ie">An example is better than 10<sup>3</sup> words</a></li>
+<li><a href="#formats">In depth: the file formats</a></li>
+<ul>
+<li><a href="#v3">libGringotts file format, version 3</a></li>
+<li><a href="#v2">libGringotts file format, version 2</a></li>
+<li><a href="#v1">libGringotts file format, version 1</a></li>
+</ul>
+</ul>
+
+<a name="tdefs"><h3>Typedefs &amp; enumerations</h3></a>
+<p>In the various functions, you'll use the following types. Some are enumerations,
+that can take fixed values (also described below), some other just encapsulations,
+that keep a bunch of data about the context, or other info.</p>
+<a name="enums"><h4>Enumerations</h4></a>
+<p>The default values are shown in <b>bold text</b>.</p>
+<table cellpadding="2" cellspacing="2" border="0">
+  <tbody>
+    <tr>
+      <th valign="top" align="left"><a name="grg_crypt_algo"></a>grg_crypt_algo</th>
+      <td valign="middle" rowspan="1" colspan="2"><i><small>this parameter describes the algorithm used for encryption.</small></i></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_RIJNDAEL_128</td>
+      <td valign="middle" rowspan="2" colspan="1">The AES winner, <b>Rijndael</b>.</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_AES</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top"><b>GRG_SERPENT</b></td>
+      <td valign="top">The AES finalist <b>Serpent</b></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_TWOFISH</td>
+      <td valign="top">The AES finalist <b>Twofish</b></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_CAST_256</td>
+      <td valign="top">The AES contestant<b> CAST 256</b></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_SAFERPLUS</td>
+      <td valign="top">The AES contestant <b>Safer+</b></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_LOKI97</td>
+      <td valign="top">The AES contestant <b>Loki 97</b></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_3DES</td>
+      <td valign="top"><b>Triple DES</b> algorithm</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_RIJNDAEL_256</td>
+      <td valign="top"><b>Rijndael</b>, with 256-bit block size</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left"><a name="grg_hash_algo">grg_hash_algo</a></th>
+      <td valign="middle" rowspan="1" colspan="2"><i><small>the algorithm used to hash the password to obtain the encryption key</small></i></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_SHA1</td>
+      <td valign="top"><b>SHA-1</b> 160-bit hash algorithm</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top"><b>GRG_RIPEMD_160</b></td>
+      <td valign="top"><b>RIPEMD-160</b> 160-bit hash algorithm</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left"><a name="grg_comp_algo"></a>grg_comp_algo</th>
+      <td valign="middle" rowspan="1" colspan="2"><small><i>the algorithm used to compress data before saving it</i></small></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top"><b>GRG_ZLIB</b></td>
+      <td valign="top"><b>ZLib</b> deflate algorithm</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_BZIP</td>
+      <td valign="top"><b>BZip2</b> algorithm (more efficient, slower)</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left"><a name="grg_comp_ratio"></a>grg_comp_ratio</th>
+      <td valign="middle" rowspan="1" colspan="2"><small><i>the compression ratio</i></small></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_LVL_NONE</td>
+      <td valign="top">No compression stage at all</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_LVL_FAST</td>
+      <td valign="top">Compression, level 3</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_LVL_GOOD</td>
+      <td valign="top">Compression, level 6</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top"><b>GRG_LVL_BEST</b></td>
+      <td valign="top">Compression, level 9</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left"><a name="grg_security_lvl"></a>grg_security_lvl</th>
+      <td valign="middle" rowspan="1" colspan="2"><small><i>fine-tuning of some details regarding security</i></small></td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top"><b>GRG_SEC_NORMAL</b></td>
+      <td valign="top">Normal behavior, enough for all purposes.</td>
+    </tr>
+    <tr>
+      <td valign="top"></td>
+      <td valign="top">GRG_SEC_PARANOIA</td>
+      <td valign="top">Paranoid settings. For now, it uses <tt>/dev/random</tt> instead of <tt>/dev/urandom</tt>, slowing things a good deal.</td>
+    </tr>
+  </tbody>
+</table>
+<a name="encaps"><h4>Encapsulations ("objects")</h4></a>
+<table cellpadding="2" cellspacing="2" border="0">
+  <tbody>
+    <tr>
+      <th valign="top" align="left"><a name="GRG_CTX">GRG_CTX</a></th>
+      <td valign="top">An object that represent the "context" of the usage
+of the libraries. It should be created at the beginning of the application,
+as it  contains all the parameters that regulate the behaviour of the encryption
+process. Anyway, most of these parameters can be changed at runtime, i.e.
+to specify different algorithms according to the user's choices.</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left"><a name="GRG_KEY"></a>GRG_KEY</th>
+      <td valign="top">An object that encapsulates the encryption key (a
+"keyholder"). It's created starting from a password, and must be re-created
+anytime the password changes. The password itself isn't stored in memory
+in plaintext, this way, as it's immediately hashed.</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left"><a name="GRG_TMPFILE"></a>GRG_TMPFILE</th>
+      <td valign="top">This objects represents an encrypted temporary file, and must be used to indentify a particular instance of it in the various operations. Encrypted temporary files haven't a name in the filesystem, but the reference is only held by the program; they are encrypted with a random key, so lurkers can't retrieve data from raw readings of the filesystem. Anyway, they aren't compressed, for sake of speed. An enc. temp file can be created, and written once; then you have read-only access on the data.</td>
+    </tr>
+   </tbody>
+</table>
+<h3><a name="ecodes">Error codes</a></h3>
+<p>When the value returned by a encryption/decryption function is negative,
+it represents an error. The following values may be used to compare the code
+with, and find its cause.</p>
+<table cellpadding="2" cellspacing="2" border="0">
+  <tbody>
+    <tr align="left">
+      <th valign="top" align="left">GRG_OK</th>
+      <td valign="top">All went fine! :-)</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_WRITE_COMP_ERR</th>
+      <td valign="top">Can't compress data. Probably a fault or misinstallation
+of the compression libraries used.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_WRITE_ENC_INIT_ERR</th>
+      <td valign="top">Can't initialize libMCrypt for compression. Probably
+a wrong installation</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_WRITE_FILE_ERR</th>
+      <td valign="top">Can't open the file for writing. Check permissions...</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_TMP_NOT_WRITEABLE</th>
+      <td valign="top">A temporary file has been written once, and can't be written anymore. You can only read it, or close it and create another one.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_READ_FILE_ERR</th>
+      <td valign="top">Can't open the file for reading. Check permissions,
+or file existence.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_READ_MAGIC_ERR</th>
+      <td valign="top">The file doesn't start with the magic number ("header") provided. Probably wrong file type.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_READ_CRC_ERR</th>
+      <td valign="top">The CRC check failed. File corrupted...</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_READ_PWD_ERR</th>
+      <td valign="top">The supplied password was wrong</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_READ_ENC_INIT_ERR</th>
+      <td valign="top">Can't initialize libMCrypt for decompression. Probably a wrong installation.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_READ_UNSUPPORTED_VERSION</th>
+      <td valign="top">The file format version of the file you're attempting to read is not supported.</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left">GRG_READ_COMP_ERR</th>
+      <td valign="top">Can't decompress data. Probably a fault or misinstallation of the compression libraries used.</td>
+    </tr>
+    <tr>
+      <th valign="top" align="left">GRG_TMP_NOT_YET_WRITTEN</th>
+      <td valign="top">A temporary file can't be read, because it hasn't been written yet.</td>
+    </tr>
+  </tbody>
+</table>
+<p>The following can be returned by the fuction <code>grg_file_shred()</code>:</p>
+<table cellpadding="2" cellspacing="2" border="0">
+  <tbody>
+    <tr align="left">
+      <th valign="top" align="left">GRG_SHRED_CANT_OPEN_FILE</th>
+      <td valign="top">The function doesn't manage to open the file to wipe.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_SHRED_YET_LINKED</th>
+      <td valign="top">The file you're trying to wipe have more than one hard link. Overwriting it with random data would destroy also the other file.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_SHRED_CANT_MMAP</th>
+      <td valign="top">The system can't memory map the file. It's probably a system problem; see <code>man 2 mmap</code> for hints.</td>
+    </tr>
+  </tbody>
+</table>
+<p>The following are generic errors, that can be returned by all functions that return an <b>int</b>:</p>
+<table cellpadding="2" cellspacing="2" border="0">
+  <tbody>
+    <tr align="left">
+      <th valign="top" align="left">GRG_MEM_ALLOCATION_ERR</th>
+      <td valign="top">The system can't allocate memory. Probably memory is full, or there are serious system errors.</td>
+    </tr>
+    <tr align="left">
+      <th valign="top" align="left">GRG_ARGUMENT_ERR</th>
+      <td valign="top">An argument supplied to the function isn't valid; probably, you're supplying a NULL pointer when not allowed.</td>
+    </tr>
+  </tbody>
+</table>
+
+<a name="fx"><h3>Functions</h3></a>
+<p>So, here we are. At the very core :-)</p>
+<a name="gpf"><h4>General purpose functions</h4></a>
+<p>
+<code>unsigned char *<b>grg_get_version</b> (void);</code><br>
+<blockquote>
+This returns the version of the library, as a string. For example, "1.0.0" or "5.2.22". It's allocated, so you must <code>free()</code> it after use.
+</blockquote>
+</p>
+<p>
+<code>unsigned int <b>grg_get_int_version</b> (void);</code><br>
+<blockquote>
+The version, again, but as a number; this way, you can make comparisons between versions. For example, "1.0.0"=10000 and "5.2.22"=50222, so it's TRUE that 50222 &gt; 10000.
+</blockquote>
+</p>
+<a name="lcrf"><h4>libGringotts context (<a href="#GRG_CTX">GRG_CTX</a>) related functions</h4></a>
+<p>
+<code><a href="#GRG_CTX">GRG_CTX</a> <b>grg_context_initialize</b> (const unsigned char *<b>header</b>, const <a href="#grg_crypt_algo">grg_crypt_algo</a> <b>crypt_algo</b>, const <a href="#grg_hash_algo">grg_hash_algo</a> <b>hash_algo</b>, const <a href="#grg_comp_algo">grg_comp_algo</a> <b>comp_algo</b>, const <a href="#grg_comp_ratio">grg_comp_ratio</a> <b>comp_lvl</b>, const <a href="#grg_security_lvl">grg_security_lvl</a> <b>sec_lvl</b>);</code><br>
+<blockquote>
+Initializes a new libGringotts session, given its parameters. The <b>header</b> is a 3-letter string that specifies which will be the first three bytes of your files, to use as identifier. The other parameters are the algorithms and settings you want to use, as described in the "Enumerations" section, above. If the function returns <b>NULL</b>, an error occoured.</blockquote>
+</p>
+<p>
+<code><a href="#GRG_CTX">GRG_CTX</a> <b>grg_context_initialize_defaults</b> (const unsigned char *<b>header</b>);</code><br>
+<blockquote>
+Initializes a new libGringotts session, with some default values. The <b>header</b> is the same as the previous function, and like that one, if the return value is <b>NULL</b>, it indicates an error.</blockquote>
+</p>
+<p>
+<code>void <b>grg_context_free</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);</code><br>
+<blockquote>Frees the resources encapsulated in a <a href="#GRG_CTX">context</a> <b>gctx</b>. It MUST be always called, upon a session termination.
+</blockquote>
+</p>
+<p>
+<code><a href="#grg_crypt_algo">grg_crypt_algo</a> <b>grg_ctx_get_crypt_algo</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);<br>
+<a href="#grg_hash_algo">grg_hash_algo</a> <b>grg_ctx_get_hash_algo</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);<br>
+<a href="#grg_comp_algo">grg_comp_algo</a> <b>grg_ctx_get_comp_algo</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);<br>
+<a href="#grg_comp_ratio">grg_comp_ratio</a> <b>grg_ctx_get_comp_ratio</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);<br>
+<a href="#grg_security_lvl">grg_security_lvl</a> <b>grg_ctx_get_security_lvl</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);</code><br>
+<blockquote>
+Gets the various settings encapsulated in a <a href="#GRG_CTX">context</a>.
+</blockquote>
+</p>
+<p>
+<code>void <b>grg_ctx_set_crypt_algo</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#grg_crypt_algo">grg_crypt_algo</a> <b>crypt_algo</b>);<br>
+void <b>grg_ctx_set_hash_algo</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#grg_hash_algo">grg_hash_algo</a> <b>hash_algo</b>);<br>
+void <b>grg_ctx_set_comp_algo</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#grg_comp_algo">grg_comp_algo</a> <b>comp_algo</b>);<br>
+void <b>grg_ctx_set_comp_ratio</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#grg_comp_ratio">grg_comp_ratio</a> <b>comp_ratio</b>);<br>
+void <b>grg_ctx_set_security_lvl</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#grg_security_lvl">grg_security_lvl</a> <b>sec_level</b>);</code><br>
+<blockquote>
+These functions changes the settings for a given context, to adapt its future behaviour to the programmer's needings.
+</blockquote>
+</p>
+<p>
+<code>unsigned int <b>grg_get_key_size_static</b> (const <a href="#grg_crypt_algo">grg_crypt_algo</a> <b>crypt_algo</b>);<br>
+unsigned int <b>grg_get_key_size</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);<br>
+unsigned int <b>grg_get_block_size_static</b> (const <a href="#grg_crypt_algo">grg_crypt_algo</a> <b>crypt_algo</b>);<br>
+unsigned int <b>grg_get_block_size</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);</code><br>
+<blockquote>
+Intuitively enough, they obtain informations on the size of block and key of an ancryption algorithm; they can be obtained by the algorithm id (the <b>_static</b> version of each) or by the one encapsulated in a specific <a href="#GRG_CTX">context</a>.
+</blockquote>
+</p>
+<a name="lkrf"><h4>libGringotts keyholder (<a href="#GRG_KEY">GRG_KEY</a>) related functions</h4></a>
+<p>
+<code><a href="#GRG_KEY">GRG_KEY</a> <b>grg_key_gen</b> (const unsigned char *<b>pwd</b>, const int <b>pwd_len</b>);</code><br>
+<blockquote>
+Generates a new <a href="#GRG_KEY">keyholder</a>, from a password <b>pwd</b> (that can be any byte sequence), of length <b>pwd_len</b>. If <b>pwd_len</b> is <b>-1</b>, the length is autodetected, and the password must be NULL-terminated. It returns <b>NULL</b> on errors.<br>
+<i>Note: the password is not stored in plaintext, and the memory occupied by the keyholder is fixed and does not depend on the password size.</i>
+</blockquote>
+</p>
+<p>
+<code><a href="#GRG_KEY">GRG_KEY</a> <b>grg_key_clone</b> (const <a href="#GRG_KEY">GRG_KEY</a> <b>src</b>);</code><br>
+<blockquote>
+Clones a <a href="#GRG_KEY">keyholder</a> <b>src</b> into a new one.
+</blockquote>
+</p>
+<p>
+<code>int <b>grg_key_compare</b> (const <a href="#GRG_KEY">GRG_KEY</a> <b>k1</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>k2</b>);</code><br>
+<blockquote>
+Compares two <a href="#GRG_KEY">keyholders</a>, <b>k1</b> and <b>k2</b>. If they are equals, it returns <b>0</b>; else, <b>1</b>.
+</blockquote>
+</p>
+<p>
+<code>void <b>grg_key_free</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, <a href="#GRG_KEY">GRG_KEY</a> <b>key</b>);</code><br>
+<blockquote>Releases the resources associated with the <a href="#GRG_KEY">keyholder</a> <b>key</b>, using the <a href="#GRG_CTX">context</a> <b>gctx</b>. It securely wipes it, so no one can recover its data later on.
+</blockquote>
+</p>
+<a name="mtmedf"><h4>Memory-to-memory encryption/decryption functions</h4></a>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_validate_mem</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const void *<b>mem</b>, const long <b>memDim</b>);</code><br>
+<blockquote>
+Validates a memory segment containing libGringotts' data. In other words, it simply says if it's valid or not, and if not, why. Returns one of the <a href="#ecodes">error codes</a> described above. The memory address is located at <b>mem</b>, of length <b>memDim</b>.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_update_gctx_from_mem</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const void *<b>mem</b>, const long <b>memDim</b>);</code><br>
+<blockquote>
+Detects the algorithms used to produce a libGringotts-encoded memory segment (at <b>mem</b>, of length <b>memDim</b>), and updates the <a href="#GRG_CTX">context</a> <b>gctx</b> to contain these data.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_encrypt_mem</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>keystruct</b>, void **<b>mem</b>, long *<b>memDim</b>, const long <b>origDim</b>);</code><br>
+<blockquote>
+Encodes data to a memory region. The encryption is performed with the password contained in <b>keystruct</b> and the settings specified in <b>gctx</b>. The encoded data produced will be written to a newly-allocated (to free after use) memory region, pointed by *<b>mem</b>, and its length will be written to *<b>memDim</b>. <b>origData</b> and <b>origDim</b> are, respectively, the data to be encoded (which can be any byte sequence, not just strings) and their length. As ever, if <b>origDim</b> = -1 the length is autodetected, and <b>origData</b> must be NULL-terminated. The return value is a libGringotts <a href="#ecodes">error code</a>, to compare in the table above.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_decrypt_mem</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>keystruct</b>, const void *<b>mem</b>, const long <b>memDim</b>, unsigned char **<b>origData</b>, long *<b>origDim</b>);</code><br>
+<blockquote>
+Reads data from a libGringotts-encoded data sequence, located at <b>mem</b> (of size <b>memDim</b>), using the password in <b>keystruct</b>. The <a href="#GRG_CTX">context</a> <b>gctx</b> is adopted, and updated with the algorithms used to encrypt the file. It returns an <a href="#ecodes">error code</a> in case of errors. The read data are stored in <b>origData</b>, and their length in <b>origLen</b>, that can be NULL if you don't want to retrieve length. The former is allocated dinamically, so you'll want to <code>free()</code> (better, <code><a href="#grg_free">grg_free()</a></code> ;-) it after use.
+</blockquote>
+</p>
+<a name="fedf"><h4>File encryption/decryption functions (finally ;-)</h4></a>
+<p>
+These are basically the same functions as above, but they read and save data from files instead than memory. If you work with files, please use these, because they are more integrated than operating with memory and then interface it on files, resulting in faster &amp; safer I/O.
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_validate_file</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const unsigned char *<b>path</b>);</code><br>
+<blockquote>
+Validates a libGringotts' file (at <b>path</b>). In other words, it simply says if it's valid or not, and if not, why. Returns one of the <a href="#ecodes">error codes</a> described above.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_update_gctx_from_file</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const unsigned char *<b>path</b>);</code><br>
+<blockquote>
+Detects the algorithms used to produce a file (at <b>path</b>), and updates the <a href="#GRG_CTX">context</a> <b>gctx</b> to contain these data.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_encrypt_file</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>keystruct</b>, const unsigned char *<b>path</b>, const unsigned char *<b>origData</b>, const long <b>origDim</b>);</code><br>
+<blockquote>
+Writes data to a new libGringotts file. The encryption is performed with the password contained in <b>keystruct</b> and the settings specified in <b>gctx</b>; the file produced will be written to <b>path</b>. <b>origData</b> and <b>origDim</b> are, respectively, the data to be encoded (which can be any byte sequence, not just strings) and their length. As ever, if <b>origDim</b> = -1 the length is autodetected, and <b>origData</b> must be NULL-terminated. The return value is a libGringotts <a href="#ecodes">error code</a>, to compare in the table above.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_decrypt_file</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>keystruct</b>, const unsigned char *<b>path</b>, unsigned char **<b>origData</b>, long *<b>origDim</b>);</code><br>
+<blockquote>
+Reads data from an encrypted file located at <b>path</b>, using the password in <b>keystruct</b>. The <a href="#GRG_CTX">context</a> <b>gctx</b> is adopted, and updated with the algorithms used to encrypt the file. It returns an <a href="#ecodes">error code</a> in case of errors. The read data are stored in <b>origData</b>, and their length in <b>origLen</b>, that can be NULL if you don't want to retrieve length. The former is allocated dinamically, so you'll want to <code>free()</code> (better, <code><a href="#grg_free">grg_free()</a></code> ;-) it after use.
+</blockquote>
+</p>
+<p>There is also a "direct" version of each of these functions, that accepts an already opened file descriptor instead of a filename. This may be desirable to avoid race conditions, i.e. when validating a file before actually opening it. <b>Notice</b> that these don't close the file descriptor; that operation is up to you.</b></p>
+<p><code>
+<a href="#ecodes">int</a> <b>grg_validate_file_direct</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const int <b>fd</b>);<br>
+<a href="#ecodes">int</a> <b>grg_update_gctx_from_file_direct</b> (<a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const int <b>fd</b>);<br>
+<a href="#ecodes">int</a> <b>grg_encrypt_file_direct</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>keystruct</b>, const int <b>fd</b>, const unsigned char *<b>origData</b>, const long <b>origDim</b>);<br>
+<a href="#ecodes">int</a> <b>grg_decrypt_file_direct</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const <a href="#GRG_KEY">GRG_KEY</a> <b>keystruct</b>, const int <b>fd</b>, unsigned char **<b>origData</b>, long *<b>origDim</b>);
+</code></p>
+<a name="etfrf"><h4>Encrypted Temporary File-related functions</h4></a>
+<p>
+<code><a href="#GRG_TMPFILE">GRG_TMPFILE</a> <b>grg_tmpfile_gen</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);</code><br>
+<blockquote>
+Creates a new encrypted tempfile, and returns an handler to it. The file will be written with the encryption algorithm contained in the context <em>at this time</em>; any modification to it will not be reflected on the file. The file is encrypted with a random key, unavailable to the user. The handler will be used to write (once) data to the file, and retrieve them later.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_tmpfile_write</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, <a href="#GRG_TMPFILE">GRG_TMPFILE</a> tf, const unsigned char *<b>data</b>, long <b>data_len</b>);</code><br>
+<blockquote>
+This function is used to write <b>data</b> (of length <b>data_len</b>, <b>-1</b> as ever if <b>data</b> is NULL-terminated) in the temporary file represented by <b>tf</b>. This can be done only once. The file, after this, becomes read-only. Returns an <a href="#ecodes">error code</a> as usual.
+</blockquote>
+</p>
+<p>
+<code><a href="#ecodes">int</a> <b>grg_tmpfile_read</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, <a href="#GRG_TMPFILE">GRG_TMPFILE</a> tf, unsigned char **<b>data</b>, long *<b>data_len</b>);</code><br>
+<blockquote>
+This function is used to read <b>data</b> from a temporary file. The length is stored in <b>data_len</b>, but you can specify NULL if you don't want to retrieve it. This operation can be done only after a successful writing. Returns an <a href="#ecodes">error code</a> as usual.
+</blockquote>
+</p>
+<p>
+<code>void <b>grg_tmpfile_close</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, <a href="#GRG_TMPFILE">GRG_TMPFILE</a> tf);</code><br>
+<blockquote>
+Releases all the resources incapsulated in the tmpfile handler, in a secure way.
+</blockquote>
+</p>
+<a name="muf"><h4>Miscellaneous utility functions</h4></a>
+<p>
+<code>unsigned char *<b>grg_rnd_seq</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, const unsigned int <b>size</b>);</code><br>
+<code>void <b>grg_rnd_seq_direct</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, unsigned char *<b>toOverwrite</b>, const unsigned int <b>size</b>);</code><br>
+<blockquote>
+Returns a random byte sequence, basing on the <a href="#GRG_CTX">context</a> <b>gctx</b>, of size <b>size</b>. The <code>_direct</code> version overwrites a (valid) string provided by the user (it's his responsibility to check that string and <b>size</b> are coherent; if <b>size</b> = -1 it will be autodetected), the other allocates a new string, to <code>free()</code> afterwards.
+</blockquote>
+</p>
+<p>
+<code>unsigned char <b>grg_rnd_chr</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>);</code><br>
+<blockquote>
+Returns a random byte.
+</blockquote>
+</p>
+<p>
+<code>void <a name="grg_free"></a><b>grg_free</b> (const <a href="#GRG_CTX">GRG_CTX</a> <b>gctx</b>, void *<b>alloc_data</b>, const long <b>dim</b>);</code><br>
+<blockquote>
+Frees allocated memory (pointed by <b>alloc_data</b>), overwriting it with random trash. Precious when you have sensitive data in memory, and you do want to ensure that they aren't readable in any way, afterwards. <b>dim</b> is the dimension of the data to wipe, or <b>-1</b> if it's NULL-terminated.
+</blockquote>
+</p>
+<p>
+<code>double <b>grg_ascii_pwd_quality</b> (const unsigned char *<b>pwd</b>, const long <b>pwd_len</b>);</code><br>
+<blockquote>
+Gives an estimation of the quality of a string password, on a scale from 0 to 1. <b>pwd_len</b> is the length of the password <b>pwd</b>; you can specify <b>-1</b> if it's NULL-terminated.
+</blockquote>
+</p>
+<p>
+<code>double <b>grg_file_pwd_quality</b> (const unsigned char *<b>pwd_path</b>);</code><br>
+<blockquote>
+Gives an estimation of the quality of a file (on the disk, at <b>pwd_path</b>), when using it as a password, on a scale from 0 to 1.
+</blockquote>
+</p>
+
+<p><code>
+unsigned char* <b>grg_encode64</b> (const unsigned char *<b>in</b>, const unsigned int <b>inlen</b>, unsigned int *<b>outlen</b>);<br>
+unsigned char* <b>grg_decode64</b> (const unsigned char *<b>in</b>, const unsigned int <b>inlen</b>, unsigned int *<b>outlen</b>);<br>
+</code>
+<blockquote>
+These function convert a generic sequence of bytes to/from the base64 format. Useful for email sending, xml storing, etc.
+</blockquote>
+</p>
+<p>
+<code>int <b>grg_file_shred</b> (const char *<b>path</b>, const int <b>npasses</b>);</code><br>
+<blockquote>
+Securely wipes a file, overwriting it <b>npasses</b> times with random data. The data can't be recovered, once done this; be careful. This option still have some limitations, as it takes the assumption that the filesystem overwrites files <i>in place</i>: for some FSs this isn't true. See <code>man 1 shred</code> for details.
+</blockquote>
+</p>
+<a name="ie"><h3>An example is better than a 10<sup>3</sup> words</h3></a>
+<p>
+Confused? Don't be! It's simple! :-) Here is a couple of examples of how to tie it all together. This is a piece of code that writes data to a file:
+<pre>
+#include &lt;libgringotts.h&gt;
+#include &lt;string.h&gt;
+
+<i>[...]</i>
+
+{
+	<i>//initialization of structures</i>
+	GRG_CTX context = grg_context_initialize_defaults ("TRY");
+	GRG_KEY keyholder = grg_key_gen ("This is a nice password", -1);
+
+	<i>//let's produce some data to encode</i>
+	unsigned char *plaintext = "These are some valuable and important data!";
+	unsigned int txtlen = strlen (plaintext);
+	unsigned char *filepath = "/home/mano/somefile.try"; <i>//extension is not relevant</i>
+
+	<i>//now we change some settings, and leave the others as defaults</i>
+	grg_ctx_set_crypt_algo (context, GRG_TWOFISH);
+	grg_ctx_set_comp_algo (context, GRG_BZIP);
+
+	<i>//finally, let's save!</i>
+	grg_encrypt_file (context, keyholder, filepath, plaintext, txtlen); <i>//txtlen could be -1</i>
+
+	<i>//always remember to clean up leftovers...</i>
+	grg_key_free (context, keyholder);
+	grg_free (context, plaintext, txtlen); <i>//also here, txtlen could be -1</i>
+	grg_context_free (context);
+}
+
+<i>[...]</i>
+
+</pre>
+<p>
+To decode, things are even simpler:
+</p>
+<pre>
+#include &lt;libgringotts.h&gt;
+#include &lt;stdio.h&gt;
+
+<i>[...]</i>
+
+{
+	<i>//again, initialization of structures
+	//or you can reuse the same as before</i>
+	GRG_CTX context = grg_context_initialize_defaults ("TRY");
+	GRG_KEY keyholder = grg_key_gen ("This is a nice password", -1);
+
+	unsigned int *filepath = "/home/mano/somefile.try";
+
+	<i>//here the library will put the decoded data</i>
+	unsigned char *plaintext;
+	unsigned int txtlen;
+
+	<i>//we are ready to perform the decryption</i>
+	grg_decrypt_file (context, keyholder, filepath, &amp;plaintext, &amp;txtlen);
+
+	<i>//now, data are stored in the two variables and in the
+	//context, that's changed accordingly. Let's use them...</i>
+	printf ("Decrypted data are %d long, and are \"%s\"\n", txtlen, plaintext);
+	if (grg_ctx_get_crypt_algo (context) == GRG_TWOFISH)
+		printf ("You encrypted the file with Twofish\n");
+	else
+		printf ("You didn't encrypt the file with Twofish\n");
+
+	<i>//as always, remember to clean up leftovers...</i>
+	grg_key_free (context, keyholder);
+	grg_free (context, plaintext, txtlen);
+	grg_context_free (context);
+}
+
+<i>[...]</i>
+
+</pre>
+<p>This silly thing writes some stuff to a temporary file, then reads it.</p>
+<pre>
+
+<i>[...]</i>
+
+{
+	<i>//init of structs</i>
+	GRG_CTX gctx = grg_context_initialize_defaults ("tRy");
+	GRG_TMPFILE tf = grg_tmpfile_gen (gctx);
+	unsigned char *try;
+	long dim;
+
+	<i>//writes some stupid data</i>
+	grg_tmpfile_write (gctx, tf, "S0M3 S7UP1D DA7A", 16);
+
+	<i>[...]</i>
+
+	<i>//then reads it. Simple...</i>
+	grg_tmpfile_read (gctx, tf, &amp;tyr, NULL);
+
+	<i>//Freedom... freedom... freedom... ;-)</i>
+	grg_tmpfile_close (gctx, tf);
+	grg_context_free (gctx);
+
+	<i>//Use those data!</i>
+	printf("Data were %s, of length %u\n", tyr, dim);
+}
+
+<i>[...]</i>
+
+</pre>
+<a name="formats"><h3>In depth: the file formats</h3></a>
+<p>A description of the inners of the libGringotts File Format follows. Please use it... in any way you like! ;-)</p>
+<a name="v3"><h4>libGringotts file format, version 3</h4></a>
+<p>A file has this structure:</p>
+<font size="+1">
+<pre>
+HEADER | VERSION | CRC32 | ALGO | IV | <i>CRC32</i> | <i>DATA_LEN</i> | <b>DATA</b>
+</pre>
+</font>
+<ul>
+<li>the part written in <i>italic</i> is encrypted;</li>
+<li>the part written in <b>bold</b> is compressed and encrypted</li>
+</ul>
+<ul>
+<li><b>HEADER</b>: an unique file format ID [it <b>must</b> be 3 bytes long]</li>
+<li><b>VERSION</b>: the file format version ("3") [1b]</li>
+<li><b>CRC32</b>: the CRC32 of the remaining file part [4b]<br>
+    <i>The second is used to check the correctness of the password</i></li>
+<li><b>ALGO</b> is a bitfield defined as follow:
+<pre>
+   IAAABCDD
+MSB^      ^LSB
+</pre>
+  where:
+  <ul>
+    <li><b>I</b>: ignored, set it to <b>0</b></li>
+    <li><b>A</b>: encryption algorithm</li>
+    <ul>
+      <li>000 -&gt; AES (Rjindael-128)</li>
+      <li><b>001 -&gt; Serpent</b></li>
+      <li>010 -&gt; Twofish</li>
+      <li>011 -&gt; CAST-256</li>
+      <li>100 -&gt; SAFER+</li>
+      <li>101 -&gt; LOKI97</li>
+      <li>110 -&gt; 3DES</li>
+      <li>111 -&gt; Rjindael-256</li>
+    </ul>
+    <li><b>B</b>: hashing algorithm</li>
+    <ul>
+      <li>0 -&gt; SHA-1</li>
+      <li><b>1 -&gt; RIPEMD-160</b></li>
+    </ul>
+    <li><b>C</b>: compression type</li>
+    <ul>
+      <li><b>0 -&gt; ZLib</b></li>
+      <li>1 -&gt; libBZ2</li>
+    </ul>
+    <li><b>D</b>: compression level</li>
+    <ul>
+      <li>00 -&gt; none (0)</li>
+      <li>01 -&gt; fast (3)</li>
+      <li>10 -&gt; good (6)</li>
+      <li><b>11 -&gt; best (9)</b></li>
+    </ul>
+  </ul>
+  in <b>bold</b> the defaults (0 001 1 0 11 = 0x1b).</li>
+<li><b>IV</b> is the Initialization Vector of the encryption function. It's randomly generated at file encryption, and its dimension varies from 8 to 32 bytes accordingly to encryption algorithm block size</li>
+<li><b>DATA_LEN</b>: the length of the <i>uncompressed</i> DATA [4b]</li>
+<li><b>DATA</b>: the data stored in this file</li>
+</ul>
+<p>
+This way, the final file length is typically (compressed DATA)+33b, and this format allows <i>compressed</i> data size up to 512 Mb ( 2<sup>4*8</sup> ). Fair enough.</p>
+<p>
+The data are encrypted using the given algorithm with a key derived from the password. This key is calculated hashing the password data with the chosen algorithm, for the length required by the encryption algorithm, and using the S2K algorithm <code>KEYGEN_S2K_SIMPLE</code> of MHash. The key obtained is XOR'ed with the IV, repeated as many times as needed; this way, I have a different key for each saving of the file, increasing security.</p>
+<a name="v2"><h4>libGringotts file format, version 2</h4></a>
+<p>This was analogous to format 3,  but used KEYGEN_MCRYPT for key generation; Bob Mathews found that this had a minor weakness, so I changed it. It isn't supported anymore from libGringotts 1.0.0; use Gringotts 0.7.0 to convert an old file in this format.</p>
+<a name="v1"><h4>libGringotts file format, version 1</h4></a>
+<p>It didn't allow any choice of the algorithms; it used SHA-256 for hashing, and SERPENT for encryption.</p>
+<p>It isn't supported anymore, starting from libGringotts 2 (Gringotts 0.6.0). If you still have some file encrypted with this, use an older Gringotts (between 0.4.2 and 0.5.9) to convert it to v2, and then Gringotts 0.7.0 to convert to v3.</p>
+</body>
+</html>

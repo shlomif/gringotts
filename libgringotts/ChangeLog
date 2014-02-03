@@ -1,0 +1,15 @@
+    --------------------------------
+   --- Changes from 1.2.0 release ---
+    --------------------------------
+
+2003-04-24 Mano <mano@pluto.linux.it>
+	* removed 16Mb data limit
+	* in case of encryption errors, the file isn't created
+
+2003-04-18 Mano <mano@pluto.linux.it>
+	* included Dag Wieers' specfile
+
+2003-03-16 Mano <mano@pluto.linux.it>
+	* the test program is now built inside make check. As a
+	  side effect, this solved the parallel compilation issue signaled by
+	  Goetz Waschk.

@@ -1,0 +1,8 @@
+-- ?? --
+* a "make check" facility
+* write docs for newly-added funtions
+* use less memory!
+* endianity independance
+* check libMCrypt consistency
+* improve quality of random number generator in case without /dev/(u)random
+* incorporate the mcrypt & mhash functions
