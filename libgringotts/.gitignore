@@ -1,0 +1,12 @@
+Makefile
+config.h
+config.log
+config.status
+libgringotts.pc
+libtool
+src/*.lo
+src/*.o
+src/.libs
+src/Makefile
+src/libgringotts.la
+stamp-h1
