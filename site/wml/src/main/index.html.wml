@@ -30,7 +30,7 @@ their contributions.
 <p>
 Gringotts 1.2.10pre2 was released. This version fixes the behaviour of some
 dialogs to make them more GNOME HIG compliant and behave more consistently and
-in a less buggy way. It also fixes the preferences parser (Thanks to wwp for 
+in a less buggy way. It also fixes the preferences parser (Thanks to wwp for
 the patches.) Finally, a patch was applied to add an optional tray icon
 for gringotts so it can be minimised to tray. (Thanks to Rorschach).
 </p>
@@ -48,7 +48,7 @@ file in the distribution.
 <h3 id="news_2007_12_15_1.2.9pre3">Gringotts 1.2.9pre3 was Released</h3>
 
 <p>
-Gringotts 1.2.9pre3 was released. This version incorporates the 
+Gringotts 1.2.9pre3 was released. This version incorporates the
 relevant parts of <tt>README.Debian</tt> into the <tt>README</tt> file,
 and clarifies the error message when it is invoked as SUID-root without
 enough lockable memory. If all goes well, it will become gringotts-1.2.9.
@@ -64,7 +64,7 @@ gringotts-1.2.9.
 </p>
 
 <p>
-gringotts-1.2.9pre2 now requires gtk+-2.12.x, or a compatible version. 
+gringotts-1.2.9pre2 now requires gtk+-2.12.x, or a compatible version.
 </p>
 
 <gringotts_links title="Links" />
