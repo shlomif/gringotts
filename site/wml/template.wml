@@ -1,4 +1,4 @@
-# Read all the latemp macros 
+# Read all the latemp macros
 #include "latemp/latemp-prelude.wml"
 
 # You can put some customizations here
@@ -35,8 +35,13 @@ Webmaster and maintainer: <a href="http://www.shlomifish.org/">Shlomi Fish</a>
 <ul>
 
 <li>
-<a href="https://developer.berlios.de/projects/gringotts/">Project Page
-at Berlios.de</a> - contains Subversion information, downloads and other
+<a href="https://github.com/shlomif/gringotts">GitHub repository page</a> -
+version control and other resources.
+</li>
+
+<li>
+<a href="http://sourceforge.net/projects/gringotts.berlios/">Project Page
+at SourceForge.net</a> - contains downloads and other
 resources.
 </li>
 
