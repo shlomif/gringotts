@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-11 13:39+0200\n"
+"POT-Creation-Date: 2014-10-11 12:17+0300\n"
 "PO-Revision-Date: 2009-06-14 15:56+0200\n"
 "Last-Translator: Hermann J. Beckers <hj.beckers@onlinehome.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -16,158 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-msgid "Error"
-msgstr "Fehler"
-
-msgid "Find a string"
-msgstr "Zeichenkette suchen"
-
-msgid "Enter the string to find:"
-msgstr "Zu suchende Zeichenkette eingeben:"
-
-msgid "Search only in this entry"
-msgstr "Nur in diesem Eintrag suchen"
-
-msgid "Case sensitive"
-msgstr "Gross-/Kleinschreibung beachten"
-
-msgid "Please wait"
-msgstr "Bitte warten"
-
-msgid "The file does not exist"
-msgstr "Die Datei existiert nicht"
-
-msgid "Invalid entry number"
-msgstr "Üngültige Eintragsnummer"
-
-msgid "assembling data"
-msgstr "Daten zusammenstellen"
-
-msgid "saving"
-msgstr "Speichere"
-
-msgid "cleaning up"
-msgstr "Bereinigung"
-
-msgid ""
-"The file has been created with a newer version of Gringotts. If you save it "
-"using this one, some formatting can be lost."
-msgstr ""
-"Diese Datei wurde mit einer neueren Version von Gringotts erstellt. Wenn Sie "
-"diese Datei mit dieser Version speichern, kann Formatier-Information "
-"verloren gehen."
-
-msgid " Index "
-msgstr " Index "
-
-msgid " Title "
-msgstr " Titel "
-
-msgid "Index of entries"
-msgstr "Index der Einträge"
-
-msgid "Move up"
-msgstr "Aufwärts"
-
-msgid "Move down"
-msgstr "Abwärts"
-
-#, c-format
-msgid "Cannot get MEMLOCK resource limit: %s"
-msgstr "MEMLOCK-Ressourcenbegrenzung kann nicht zugeordnet werden: %s"
-
-#, c-format
-msgid ""
-"Increase the memory locking limit to at least %d bytes. Current limit: %d "
-"bytes.\n"
-"See /usr/share/doc/gringotts/README for \n"
-"directions or alternatively make gringotts\n"
-"non-SUID-root\n"
-msgstr ""
-"Erhöhen Sie die Grenze für die Speicherreservierung auf mindestesn %d Byte. "
-"Derzeiteige Grenze %d Byte.\n"
-"Siehe /usr/share/doc/gringotts/README für eine \n"
-"Anleitung oder entfernen Sie alternativ das SUID-Bit \n"
-"von gringotts\n"
-
-msgid "The process is setuid root, but I can't lock memory paging"
-msgstr ""
-"Der Prozeß läuft mit Root-UserID, aber das Hauptspeicher-Paging kann nicht "
-"gesperrt werden."
-
-msgid ""
-"Cannot drop root user privileges. Someone is hacking this process. I cannot "
-"go on"
-msgstr ""
-"Kann Root-Rechte nicht aufgeben. Jemand manipuliert diesen Prozeß. Ich kann "
-"nicht weitermachen."
-
-msgid ""
-"Cannot drop root group privileges. Someone is hacking this process. I cannot "
-"go on"
-msgstr ""
-"Kann Root-Rechte nicht aufgeben. Jemand manipuliert diesen Prozeß. Ich kann "
-"nicht weitermachen."
-
-msgid "For security reasons, you cannot run Gringotts as root user."
-msgstr "Aus Sicherheitsgründen können Sie Gringotts nicht als root starten. "
-
-msgid "Try to compile with --disable-root-filter in ./configure"
-msgstr "Versuchen Sie die Übersetzung mit --disable-root-filter in ./configure"
-
-msgid "Try using -s"
-msgstr "Versuchen Sie -s"
-
-msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
-msgstr ""
-"Standardeingabe, -ausgabe und/oder -fehler sind ungültig. Kann nicht "
-"weitermachen."
-
-msgid "Invalid LANG environment variable:"
-msgstr "Ungültige LANG-Umgebungsvariable:"
-
-msgid "Invalid XAUTHORITY environment variable:"
-msgstr "Ungültige XAUTHORITY-Umgebungsvariable:"
-
-msgid "Invalid DISPLAY environment variable:"
-msgstr "Ungültige DISPLAY-Umgebungsvariable:"
-
-msgid "optimal"
-msgstr "optimal"
-
-msgid "good"
-msgstr "Gut"
-
-msgid "low"
-msgstr "niedrig"
-
-msgid "Security monitor"
-msgstr "Sicherheits-Monitor"
-
-msgid "Running without root privileges"
-msgstr "Arbeite ohne Root-Privilegien"
-
-msgid "Memory protection from core dumps"
-msgstr "Speicherschutz vor Kernel-Dumps"
-
-msgid "Memory protection from swap writings"
-msgstr "Speicherschutz vor Swap-Überschreibung"
-
-msgid "Memory protection from ptrace spying"
-msgstr "Speicherschutz vor ptrace-Überwachung"
-
-msgid "Environmental variables validation"
-msgstr "Überprüfung der Umgebungsvariablen"
-
-msgid "stdout/stdin/stderr validation"
-msgstr "stdout/stdin/stderr-Überprüfung"
-
-msgid "Enforced use of /dev/random"
-msgstr "Benutzung von /dev/random erzwungen"
-
-msgid "Strict prohibition to root user"
-msgstr "Root-Wechsel absolut verboten"
 
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "Ungültige Einstellungs-Datei. Fehlwerte werden benutzt."
@@ -271,74 +119,27 @@ msgstr "Beim Dateischliessen auch Clipboard löschen"
 msgid "Clear clipboard on exit"
 msgstr "Clipboard bei Programmende löschen"
 
-msgid " version "
-msgstr " Version "
+msgid "Warning"
+msgstr "Warnung"
 
-msgid "(c)"
-msgstr "©"
-
-msgid "Authors"
-msgstr "Autoren"
-
-msgid ""
-"Gringotts is a small but (hopely ;) useful utility that stores sensitive "
-"data (passwords, credit card numbers, friends' addresses) in an organized "
-"and most of all very secure form.\n"
-"It uses libmcrypt and libmhash to provide a strong level of encryption, just "
-"trying to be as trustworthy as possible.\n"
-"\n"
-"This program is released under the GNU GPL, v.2 or later\n"
-"See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
+msgid "it isn't possible to hide password typing; be extremely careful!"
 msgstr ""
-"Gringotts ist ein kleines aber (hoffentlich ;) nützliches Programm, das "
-"sensible Daten (Passwörter, Kreditkarten-Nummern, Adressen der Freundin"
-"(nen)) in einer organisierten udn vor allem sehr sicheren Form speichert.\n"
-"Es benutzt libmcrypt und libmhash um einen starken Verschlüsselungs-Level zu "
-"bieten, und versucht so vertrauenswürdig wie nur eben möglich zu sein.\n"
-"\n"
-"This program is released under the GNU GPL, v.2 or later\n"
-"See COPYING or go to http://www.gnu.org/copyleft/gpl.html\n"
-"\n"
-"libmcrypt is (c) 1998,1999 Nikos Mavroyanopoulos\n"
-"libmhash is (c) 2001 Nikos Mavroyanopoulos"
-
-msgid "the name"
-msgstr "der Name"
-
-msgid "New file"
-msgstr "Neue Datei"
-
-msgid "Save?"
-msgstr "Speichern?"
-
-msgid ""
-"Some changes have not been saved.\n"
-"Do you wish to save them now?"
-msgstr ""
-"Einige Änderungen wurden noch nicht gesichert.\n"
-"Möchten Sie sie jetzt speichern?"
-
-msgid "Confirm"
-msgstr "Bestätigen"
-
-msgid ""
-"You'll lose all the changes from\n"
-"last save! Are you sure?"
-msgstr ""
-"Sie verlieren alle Änderungen seit \n"
-"der letzten Sicherung! Sind Sie sicher?"
-
-msgid "loading"
-msgstr "Lade"
-
-msgid "You've selected a directory or a symlink"
-msgstr "Sie haben ein Verzeichnis oder einen SymLink gewählt"
+"Die Passwort-Eingabe kann nicht versteckt werden; seien Sie sehr vorsichtig!"
 
 msgid "The selected file doesn't exists"
 msgstr "Die ausgewählte Datei existiert nicht"
 
+msgid "You've selected a directory or a symlink"
+msgstr "Sie haben ein Verzeichnis oder einen SymLink gewählt"
+
 msgid "Gringotts internal error. Cannot finish operation."
 msgstr "interner Gringotts-Fehler. Kann Operation nicht beenden."
+
+msgid "This file doesn't seem to be a valid Gringotts one!"
+msgstr "Diese Datei scheint keine gültige Gringotts-Datei zu sein!"
+
+msgid "Uh-oh! I can't read from the file!"
+msgstr "Uh-oh! Ich kann nicht aus dieser Datei lesen!"
 
 msgid "The file appears to be corrupted!"
 msgstr "Die Datei scheint defekt zu sein!"
@@ -346,207 +147,17 @@ msgstr "Die Datei scheint defekt zu sein!"
 msgid "File is too big"
 msgstr "Datei ist zu groß"
 
-msgid "Uh-oh! I can't read from the file!"
-msgstr "Uh-oh! Ich kann nicht aus dieser Datei lesen!"
-
-msgid "Problem with libmcrypt, probably a faulty installation"
-msgstr "Problem mit libmcrypt, wahrscheinlich eine fehlerhafte Installation"
-
-msgid ""
-"The current password is expired.\n"
-"You should change it, or modify this setting in the preferences"
-msgstr ""
-"Das aktuelle Passwort ist abgelaufen.\n"
-"Sie sollten es ändern oder den Wert in den Einstellungen ändern"
-
-msgid "This file doesn't seem to be a valid Gringotts one!"
-msgstr "Diese Datei scheint keine gültige Gringotts-Datei zu sein!"
+msgid "You must enter a valid password!"
+msgstr "Sie müssen ein gültiges Passwort eingeben!"
 
 msgid "Wrong password! Re-enter it"
 msgstr "Falsches Passwort! Bitte neu eingeben"
 
+msgid "Problem with libmcrypt, probably a faulty installation"
+msgstr "Problem mit libmcrypt, wahrscheinlich eine fehlerhafte Installation"
+
 msgid "Saved data contain invalid UTF-8 chars"
 msgstr "Gespeicherte Daten enthalten ungültige UTF-8-Zeichen"
-
-msgid "Open..."
-msgstr "Öffnen..."
-
-msgid "You must enter a valid password!"
-msgstr "Sie müssen ein gültiges Passwort eingeben!"
-
-msgid "My first page"
-msgstr "Meine erste Seite"
-
-msgid "New title..."
-msgstr "Neuer Titel..."
-
-msgid "New title for this entry:"
-msgstr "Neuer Titel für diesen Eintrag:"
-
-msgid "I can't overwrite a directory or a symlink"
-msgstr "Ich kann ein Verzeichnis oder SymLink nicht überschreiben"
-
-msgid "Overwrite?"
-msgstr "Überschreiben?"
-
-msgid "Do you want to overwrite the existing file?"
-msgstr "Möchten Sie die existierende Datei überschreiben?"
-
-msgid "Couldn't backup old file"
-msgstr "Konnte alte Datei nicht sichern"
-
-msgid "Error in compression! Probably a zlib problem"
-msgstr "Fehler beim Komprimieren! Wahrscheinlich ein zlib-Problem"
-
-msgid "Uh-oh! I can't write to the file!"
-msgstr "Uh-oh! Ich kann diese Datei nicht schreiben!"
-
-msgid "Too many data to write"
-msgstr "Zu viele Daten zum Schreiben"
-
-msgid "Save as...."
-msgstr "Speichern als..."
-
-msgid "Title..."
-msgstr "Titel..."
-
-msgid "Title for the new entry:"
-msgstr "Titel für den neuen Eintrag:"
-
-msgid "New"
-msgstr "Neu"
-
-msgid "Confirm..."
-msgstr "Bestätigung..."
-
-msgid "Are you sure you want to remove this entry?"
-msgstr "Sind Sie sicher, das Sie diesen Eintrag entfernen wollen?"
-
-msgid "Wrong password"
-msgstr "Falsches Passwort"
-
-msgid "Password successfully changed"
-msgstr "Passwort geändert"
-
-msgid ""
-"After this, there's no way to\n"
-"recover the file. Are you sure?"
-msgstr ""
-"Hiernach besteht keine Möglichkeit, die \n"
-"Datei wiederherzustellen. Sind Sie sicher?"
-
-msgid "File to wipe"
-msgstr "zu überschreibende Datei"
-
-msgid ""
-"Are you sure you want to wipe this file?\n"
-"Its content will be securely erased, so no\n"
-"recover is possible."
-msgstr ""
-"Möchten Sie diese Datei wirklich überschreiben?\n"
-"Der Inhalt wird sicher gelöscht, daher ist \n"
-"keine Wiederherstellung möglich."
-
-msgid "wiping file"
-msgstr "überschreibe Datei"
-
-msgid "File wiping failed"
-msgstr "Dateiüberschreibung fehlerhaft"
-
-msgid "E_dit..."
-msgstr "_Editieren ..."
-
-msgid "Go to last entry"
-msgstr "Gehe zum letzten Eintrag"
-
-msgid "Go to next entry"
-msgstr "Gehe zum nächsten Eintrag"
-
-msgid "View index"
-msgstr "Index ansehen"
-
-msgid "Go to previous entry"
-msgstr "Gehe zum vorherigen Eintrag"
-
-msgid "Go to first entry"
-msgstr "Gehe zum ersten Eintrag"
-
-#, c-format
-msgid "Security level: %s"
-msgstr "Sicherheitsstufe: %s"
-
-msgid "New document"
-msgstr "Neues Dokument"
-
-msgid "Open document"
-msgstr "Öffne Dokument"
-
-msgid "Save document"
-msgstr "Speichere Dokument"
-
-msgid "Close document"
-msgstr "Schliesse Dokument"
-
-msgid "Cut selection"
-msgstr "Auswahl ausschneiden"
-
-msgid "Copy selection"
-msgstr "Auswahl kopieren"
-
-msgid "Paste selection"
-msgstr "Auswahl einfügen"
-
-msgid "Search for text"
-msgstr "Suche nach Text"
-
-msgid "Add an entry"
-msgstr "Eintrag hinzufügen"
-
-msgid "Remove this entry"
-msgstr "Diesen Eintrag entfernen"
-
-msgid "Quit Gringotts"
-msgstr "Gringotts verlassen"
-
-msgid "Attached files"
-msgstr "Angehängte Dateien"
-
-msgid "Add a new attachment"
-msgstr "Neuen Anhang hinzufügen"
-
-msgid "Remove this attachment"
-msgstr "Diesen Anhang entfernen"
-
-msgid "Save this attachment"
-msgstr "Diesen Anhang speichern"
-
-msgid "Info on this attachment"
-msgstr "Information zu diesem Anhang"
-
-msgid "Change comment"
-msgstr "Kommentar ändern"
-
-msgid "List of attached files"
-msgstr "Liste der angehängten Dateien"
-
-msgid "version"
-msgstr "Version"
-
-msgid "released under GNU General Public License (GPL) v.2 or later"
-msgstr "veröffentlicht unter GNU General Public License (GPL) v.2 oder später"
-
-msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
-msgstr "Siehe COPYING oder http://www.gnu.org/copyleft/gpl.html"
-
-msgid "File to load does not exists or it is invalid"
-msgstr "Zu ladende Datei existiert nicht oder ist ungültigt"
-
-msgid "Warning"
-msgstr "Warnung"
-
-msgid "it isn't possible to hide password typing; be extremely careful!"
-msgstr ""
-"Die Passwort-Eingabe kann nicht versteckt werden; seien Sie sehr vorsichtig!"
 
 msgid "shows the help"
 msgstr "zeigt die Hilfe an"
@@ -590,6 +201,21 @@ msgid ""
 msgstr ""
 "Datenumleitung auf stdin ist nicht möglich, da dies ein Sicherheitsrisiko  "
 "ist."
+
+msgid "The file does not exist"
+msgstr "Die Datei existiert nicht"
+
+msgid ""
+"Are you sure you want to wipe this file?\n"
+"Its content will be securely erased, so no\n"
+"recover is possible."
+msgstr ""
+"Möchten Sie diese Datei wirklich überschreiben?\n"
+"Der Inhalt wird sicher gelöscht, daher ist \n"
+"keine Wiederherstellung möglich."
+
+msgid "File wiping failed"
+msgstr "Dateiüberschreibung fehlerhaft"
 
 msgid "You must specify a file to dump (with the -f switch)"
 msgstr "Sie müssen eine auszugebende Datei angeben (mit dem -f-Schalter)"
@@ -681,73 +307,270 @@ msgstr "_Über"
 msgid "_Help"
 msgstr "_Hilfe"
 
-msgid "Cannot open file to attach."
-msgstr "Kann anzuhängende Datei nicht öffnen."
+msgid "Error"
+msgstr "Fehler"
 
-msgid "Only regular files can be attached."
-msgstr "Es können nur normale Dateien angehängt werden."
+msgid "Find a string"
+msgstr "Zeichenkette suchen"
 
-msgid "Sorry, currently you can attach files only up to 2 Mb"
-msgstr ""
-"Tut mir leid, aber z. Z. können nur Dateien bis zu 2 Mb angehängt werden."
+msgid "Enter the string to find:"
+msgstr "Zu suchende Zeichenkette eingeben:"
 
-msgid "Enter comment"
-msgstr "Kommentar eingeben"
+msgid "Search only in this entry"
+msgstr "Nur in diesem Eintrag suchen"
+
+msgid "Case sensitive"
+msgstr "Gross-/Kleinschreibung beachten"
+
+msgid "Please wait"
+msgstr "Bitte warten"
+
+msgid " version "
+msgstr " Version "
+
+msgid "(c)"
+msgstr "©"
+
+msgid "Authors"
+msgstr "Autoren"
 
 msgid ""
-"Please enter a comment for this\n"
-"file (max. 32 chars)"
+"Gringotts is a small but (hopely ;) useful utility that stores sensitive "
+"data (passwords, credit card numbers, friends' addresses) in an organized "
+"and most of all very secure form.\n"
+"It uses libmcrypt and libmhash to provide a strong level of encryption, just "
+"trying to be as trustworthy as possible.\n"
+"\n"
+"This program is released under the GNU GPL, v.2 or later\n"
+"See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr ""
-"Bitte geben Sie einen Kommentar für\n"
-"diese Datei ein (max. 32 Zeichen)"
+"Gringotts ist ein kleines aber (hoffentlich ;) nützliches Programm, das "
+"sensible Daten (Passwörter, Kreditkarten-Nummern, Adressen der "
+"Freundin(nen)) in einer organisierten udn vor allem sehr sicheren Form "
+"speichert.\n"
+"Es benutzt libmcrypt und libmhash um einen starken Verschlüsselungs-Level zu "
+"bieten, und versucht so vertrauenswürdig wie nur eben möglich zu sein.\n"
+"\n"
+"This program is released under the GNU GPL, v.2 or later\n"
+"See COPYING or go to http://www.gnu.org/copyleft/gpl.html\n"
+"\n"
+"libmcrypt is (c) 1998,1999 Nikos Mavroyanopoulos\n"
+"libmhash is (c) 2001 Nikos Mavroyanopoulos"
 
-msgid "none"
-msgstr "Keine"
+msgid "the name"
+msgstr "der Name"
 
-msgid "attaching"
-msgstr "Hänge an"
+msgid "New file"
+msgstr "Neue Datei"
 
-msgid "Cannot encode tempfile."
-msgstr "Kann Zwischendatei nicht verschlüsseln."
+msgid "Save?"
+msgstr "Speichern?"
 
-msgid "Cannot decode tempfile."
-msgstr "Kann Zwischendatei nicht dekodieren."
+msgid ""
+"Some changes have not been saved.\n"
+"Do you wish to save them now?"
+msgstr ""
+"Einige Änderungen wurden noch nicht gesichert.\n"
+"Möchten Sie sie jetzt speichern?"
 
-msgid "Cannot create file, or file already existent."
-msgstr "Kann Datei nicht erstellen oder sie ist bereits vorhanden."
+msgid "Confirm"
+msgstr "Bestätigen"
 
-msgid "File name"
-msgstr "Dateiname"
+msgid ""
+"You'll lose all the changes from\n"
+"last save! Are you sure?"
+msgstr ""
+"Sie verlieren alle Änderungen seit \n"
+"der letzten Sicherung! Sind Sie sicher?"
 
-msgid "Dimension"
-msgstr "Dimension"
+msgid "loading"
+msgstr "Lade"
 
-msgid "bytes"
-msgstr "Bytes"
+msgid "assembling data"
+msgstr "Daten zusammenstellen"
 
-msgid "Comment"
-msgstr "Kommentar"
+msgid "cleaning up"
+msgstr "Bereinigung"
 
-msgid "Kb"
-msgstr "Kb"
+msgid ""
+"The current password is expired.\n"
+"You should change it, or modify this setting in the preferences"
+msgstr ""
+"Das aktuelle Passwort ist abgelaufen.\n"
+"Sie sollten es ändern oder den Wert in den Einstellungen ändern"
 
-msgid "Mb"
-msgstr "Mb"
+msgid "Open..."
+msgstr "Öffnen..."
 
-msgid "<no file attached>"
-msgstr "<keine Datei angehängt>"
+msgid "My first page"
+msgstr "Meine erste Seite"
 
-msgid "Tabs Width"
-msgstr "Tab-Breite"
+msgid "New title..."
+msgstr "Neuer Titel..."
 
-msgid "The text searched could not be found!"
-msgstr "Der gesuchte Text wurde nicht gefunden!"
+msgid "New title for this entry:"
+msgstr "Neuer Titel für diesen Eintrag:"
 
-msgid "Wrap around?"
-msgstr "Von vorn beginnen?"
+msgid "I can't overwrite a directory or a symlink"
+msgstr "Ich kann ein Verzeichnis oder SymLink nicht überschreiben"
 
-msgid "Text not found. Continue search from beginning?"
-msgstr "Text nicht gefunden. Suche vom Anfang starten?"
+msgid "Overwrite?"
+msgstr "Überschreiben?"
+
+msgid "Do you want to overwrite the existing file?"
+msgstr "Möchten Sie die existierende Datei überschreiben?"
+
+msgid "Couldn't backup old file"
+msgstr "Konnte alte Datei nicht sichern"
+
+msgid "Error in compression! Probably a zlib problem"
+msgstr "Fehler beim Komprimieren! Wahrscheinlich ein zlib-Problem"
+
+msgid "Uh-oh! I can't write to the file!"
+msgstr "Uh-oh! Ich kann diese Datei nicht schreiben!"
+
+msgid "Too many data to write"
+msgstr "Zu viele Daten zum Schreiben"
+
+msgid "Save as...."
+msgstr "Speichern als..."
+
+msgid "Title..."
+msgstr "Titel..."
+
+msgid "Title for the new entry:"
+msgstr "Titel für den neuen Eintrag:"
+
+msgid "New"
+msgstr "Neu"
+
+msgid "Confirm..."
+msgstr "Bestätigung..."
+
+msgid "Are you sure you want to remove this entry?"
+msgstr "Sind Sie sicher, das Sie diesen Eintrag entfernen wollen?"
+
+msgid "Wrong password"
+msgstr "Falsches Passwort"
+
+msgid "Password successfully changed"
+msgstr "Passwort geändert"
+
+msgid ""
+"After this, there's no way to\n"
+"recover the file. Are you sure?"
+msgstr ""
+"Hiernach besteht keine Möglichkeit, die \n"
+"Datei wiederherzustellen. Sind Sie sicher?"
+
+msgid "File to wipe"
+msgstr "zu überschreibende Datei"
+
+msgid "wiping file"
+msgstr "überschreibe Datei"
+
+msgid "E_dit..."
+msgstr "_Editieren ..."
+
+msgid "Go to last entry"
+msgstr "Gehe zum letzten Eintrag"
+
+msgid "Go to next entry"
+msgstr "Gehe zum nächsten Eintrag"
+
+msgid "View index"
+msgstr "Index ansehen"
+
+msgid "Go to previous entry"
+msgstr "Gehe zum vorherigen Eintrag"
+
+msgid "Go to first entry"
+msgstr "Gehe zum ersten Eintrag"
+
+#, c-format
+msgid "Security level: %s"
+msgstr "Sicherheitsstufe: %s"
+
+msgid "New document"
+msgstr "Neues Dokument"
+
+msgid "Open document"
+msgstr "Öffne Dokument"
+
+msgid "Save document"
+msgstr "Speichere Dokument"
+
+msgid "Close document"
+msgstr "Schliesse Dokument"
+
+msgid "Cut selection"
+msgstr "Auswahl ausschneiden"
+
+msgid "Copy selection"
+msgstr "Auswahl kopieren"
+
+msgid "Paste selection"
+msgstr "Auswahl einfügen"
+
+msgid "Search for text"
+msgstr "Suche nach Text"
+
+msgid "Add an entry"
+msgstr "Eintrag hinzufügen"
+
+msgid "Remove this entry"
+msgstr "Diesen Eintrag entfernen"
+
+msgid "Quit Gringotts"
+msgstr "Gringotts verlassen"
+
+msgid "Attached files"
+msgstr "Angehängte Dateien"
+
+msgid "Add a new attachment"
+msgstr "Neuen Anhang hinzufügen"
+
+msgid "Remove this attachment"
+msgstr "Diesen Anhang entfernen"
+
+msgid "Save this attachment"
+msgstr "Diesen Anhang speichern"
+
+msgid "Info on this attachment"
+msgstr "Information zu diesem Anhang"
+
+msgid "Change comment"
+msgstr "Kommentar ändern"
+
+msgid "List of attached files"
+msgstr "Liste der angehängten Dateien"
+
+msgid "version"
+msgstr "Version"
+
+msgid "released under GNU General Public License (GPL) v.2 or later"
+msgstr "veröffentlicht unter GNU General Public License (GPL) v.2 oder später"
+
+msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
+msgstr "Siehe COPYING oder http://www.gnu.org/copyleft/gpl.html"
+
+msgid "File to load does not exists or it is invalid"
+msgstr "Zu ladende Datei existiert nicht oder ist ungültigt"
+
+msgid " Index "
+msgstr " Index "
+
+msgid " Title "
+msgstr " Titel "
+
+msgid "Index of entries"
+msgstr "Index der Einträge"
+
+msgid "Move up"
+msgstr "Aufwärts"
+
+msgid "Move down"
+msgstr "Abwärts"
 
 msgid "You must specify a regular file"
 msgstr "Sie müssen eine reguläre Datei angeben"
@@ -816,6 +639,184 @@ msgstr "Auswahl"
 
 msgid "Bye, then!"
 msgstr "Bis dann, Tschüs!"
+
+msgid "Invalid entry number"
+msgstr "Üngültige Eintragsnummer"
+
+msgid "saving"
+msgstr "Speichere"
+
+msgid ""
+"The file has been created with a newer version of Gringotts. If you save it "
+"using this one, some formatting can be lost."
+msgstr ""
+"Diese Datei wurde mit einer neueren Version von Gringotts erstellt. Wenn Sie "
+"diese Datei mit dieser Version speichern, kann Formatier-Information "
+"verloren gehen."
+
+msgid "Tabs Width"
+msgstr "Tab-Breite"
+
+msgid "The text searched could not be found!"
+msgstr "Der gesuchte Text wurde nicht gefunden!"
+
+msgid "Wrap around?"
+msgstr "Von vorn beginnen?"
+
+msgid "Text not found. Continue search from beginning?"
+msgstr "Text nicht gefunden. Suche vom Anfang starten?"
+
+#, c-format
+msgid "Cannot get MEMLOCK resource limit: %s"
+msgstr "MEMLOCK-Ressourcenbegrenzung kann nicht zugeordnet werden: %s"
+
+#, c-format
+msgid ""
+"Increase the memory locking limit to at least %d bytes. Current limit: %d "
+"bytes.\n"
+"See /usr/share/doc/gringotts/README for \n"
+"directions or alternatively make gringotts\n"
+"non-SUID-root\n"
+msgstr ""
+"Erhöhen Sie die Grenze für die Speicherreservierung auf mindestesn %d Byte. "
+"Derzeiteige Grenze %d Byte.\n"
+"Siehe /usr/share/doc/gringotts/README für eine \n"
+"Anleitung oder entfernen Sie alternativ das SUID-Bit \n"
+"von gringotts\n"
+
+msgid "The process is setuid root, but I can't lock memory paging"
+msgstr ""
+"Der Prozeß läuft mit Root-UserID, aber das Hauptspeicher-Paging kann nicht "
+"gesperrt werden."
+
+msgid ""
+"Cannot drop root user privileges. Someone is hacking this process. I cannot "
+"go on"
+msgstr ""
+"Kann Root-Rechte nicht aufgeben. Jemand manipuliert diesen Prozeß. Ich kann "
+"nicht weitermachen."
+
+msgid ""
+"Cannot drop root group privileges. Someone is hacking this process. I cannot "
+"go on"
+msgstr ""
+"Kann Root-Rechte nicht aufgeben. Jemand manipuliert diesen Prozeß. Ich kann "
+"nicht weitermachen."
+
+msgid "For security reasons, you cannot run Gringotts as root user."
+msgstr "Aus Sicherheitsgründen können Sie Gringotts nicht als root starten. "
+
+msgid "Try to compile with --disable-root-filter in ./configure"
+msgstr "Versuchen Sie die Übersetzung mit --disable-root-filter in ./configure"
+
+msgid "Try using -s"
+msgstr "Versuchen Sie -s"
+
+msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
+msgstr ""
+"Standardeingabe, -ausgabe und/oder -fehler sind ungültig. Kann nicht "
+"weitermachen."
+
+msgid "Invalid LANG environment variable:"
+msgstr "Ungültige LANG-Umgebungsvariable:"
+
+msgid "Invalid XAUTHORITY environment variable:"
+msgstr "Ungültige XAUTHORITY-Umgebungsvariable:"
+
+msgid "Invalid DISPLAY environment variable:"
+msgstr "Ungültige DISPLAY-Umgebungsvariable:"
+
+msgid "optimal"
+msgstr "optimal"
+
+msgid "good"
+msgstr "Gut"
+
+msgid "low"
+msgstr "niedrig"
+
+msgid "Security monitor"
+msgstr "Sicherheits-Monitor"
+
+msgid "Running without root privileges"
+msgstr "Arbeite ohne Root-Privilegien"
+
+msgid "Memory protection from core dumps"
+msgstr "Speicherschutz vor Kernel-Dumps"
+
+msgid "Memory protection from swap writings"
+msgstr "Speicherschutz vor Swap-Überschreibung"
+
+msgid "Memory protection from ptrace spying"
+msgstr "Speicherschutz vor ptrace-Überwachung"
+
+msgid "Environmental variables validation"
+msgstr "Überprüfung der Umgebungsvariablen"
+
+msgid "stdout/stdin/stderr validation"
+msgstr "stdout/stdin/stderr-Überprüfung"
+
+msgid "Enforced use of /dev/random"
+msgstr "Benutzung von /dev/random erzwungen"
+
+msgid "Strict prohibition to root user"
+msgstr "Root-Wechsel absolut verboten"
+
+msgid "Cannot open file to attach."
+msgstr "Kann anzuhängende Datei nicht öffnen."
+
+msgid "Only regular files can be attached."
+msgstr "Es können nur normale Dateien angehängt werden."
+
+msgid "Sorry, currently you can attach files only up to 2 Mb"
+msgstr ""
+"Tut mir leid, aber z. Z. können nur Dateien bis zu 2 Mb angehängt werden."
+
+msgid "Enter comment"
+msgstr "Kommentar eingeben"
+
+msgid ""
+"Please enter a comment for this\n"
+"file (max. 32 chars)"
+msgstr ""
+"Bitte geben Sie einen Kommentar für\n"
+"diese Datei ein (max. 32 Zeichen)"
+
+msgid "none"
+msgstr "Keine"
+
+msgid "attaching"
+msgstr "Hänge an"
+
+msgid "Cannot encode tempfile."
+msgstr "Kann Zwischendatei nicht verschlüsseln."
+
+msgid "Cannot decode tempfile."
+msgstr "Kann Zwischendatei nicht dekodieren."
+
+msgid "Cannot create file, or file already existent."
+msgstr "Kann Datei nicht erstellen oder sie ist bereits vorhanden."
+
+msgid "File name"
+msgstr "Dateiname"
+
+msgid "Dimension"
+msgstr "Dimension"
+
+msgid "bytes"
+msgstr "Bytes"
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Kb"
+msgstr "Kb"
+
+msgid "Mb"
+msgstr "Mb"
+
+msgid "<no file attached>"
+msgstr "<keine Datei angehängt>"
 
 #~ msgid "Invalid environment variables. They could have been manipulated."
 #~ msgstr "Ungültige Umgebungsvariablen. Sie sind evtl. manipuliert."

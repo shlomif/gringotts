@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gringotts 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-11 13:39+0200\n"
+"POT-Creation-Date: 2014-10-11 12:17+0300\n"
 "PO-Revision-Date: 2004-02-06 09:44+0300\n"
 "Last-Translator: Unatine <unatine@zmail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -16,149 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid "Error"
-msgstr "Ошибка"
-
-msgid "Find a string"
-msgstr "Найти строку"
-
-msgid "Enter the string to find:"
-msgstr "Введите строку для поиска:"
-
-msgid "Search only in this entry"
-msgstr "Искать только в данной записи"
-
-msgid "Case sensitive"
-msgstr "Чувствительность к регистру"
-
-msgid "Please wait"
-msgstr "Пожайлуста ждите"
-
-msgid "The file does not exist"
-msgstr "Файл не существует"
-
-msgid "Invalid entry number"
-msgstr "Неверный номер записи"
-
-msgid "assembling data"
-msgstr "сборка данных"
-
-msgid "saving"
-msgstr "сохранение"
-
-msgid "cleaning up"
-msgstr "очистка"
-
-msgid ""
-"The file has been created with a newer version of Gringotts. If you save it "
-"using this one, some formatting can be lost."
-msgstr ""
-"Файл был создан в более новой версии Gringotts. Если вы сохраните его "
-"используя данную версию, некоторое форматирование может быть потеряно."
-
-msgid " Index "
-msgstr " Список"
-
-msgid " Title "
-msgstr " Название"
-
-msgid "Index of entries"
-msgstr "Список записей"
-
-msgid "Move up"
-msgstr "Переместить вверх"
-
-msgid "Move down"
-msgstr "Переместить вниз"
-
-#, c-format
-msgid "Cannot get MEMLOCK resource limit: %s"
-msgstr ""
-
-#, c-format
-msgid ""
-"Increase the memory locking limit to at least %d bytes. Current limit: %d "
-"bytes.\n"
-"See /usr/share/doc/gringotts/README for \n"
-"directions or alternatively make gringotts\n"
-"non-SUID-root\n"
-msgstr ""
-
-msgid "The process is setuid root, but I can't lock memory paging"
-msgstr "Процесс запущен с SUID, но не возможно залочить страницу памяти"
-
-msgid ""
-"Cannot drop root user privileges. Someone is hacking this process. I cannot "
-"go on"
-msgstr ""
-"Не могу сбросить привелегии рута. Что-то мешает этому процессу. Не могу "
-"продолжать."
-
-msgid ""
-"Cannot drop root group privileges. Someone is hacking this process. I cannot "
-"go on"
-msgstr ""
-"Не могу сбросить привелегии рута. Что-то мешает этому процессу. Не могу "
-"продолжать."
-
-msgid "For security reasons, you cannot run Gringotts as root user."
-msgstr "Для безопасности, вы не можете запускать Gringotts как root."
-
-msgid "Try to compile with --disable-root-filter in ./configure"
-msgstr ""
-"Попробуйте скомпилитровать с опцией --disable-root-filter в ./configure"
-
-msgid "Try using -s"
-msgstr "Попробуйте использовать -s"
-
-msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
-msgstr "stdin, stdout и/или stderr неверны. Продолжение невозможно."
-
-msgid "Invalid LANG environment variable:"
-msgstr ""
-
-msgid "Invalid XAUTHORITY environment variable:"
-msgstr ""
-
-msgid "Invalid DISPLAY environment variable:"
-msgstr ""
-
-msgid "optimal"
-msgstr "оптимальный"
-
-msgid "good"
-msgstr "хороший"
-
-msgid "low"
-msgstr "низкий"
-
-msgid "Security monitor"
-msgstr "Монитор безопасности"
-
-msgid "Running without root privileges"
-msgstr "Запущено без привилегий рута."
-
-msgid "Memory protection from core dumps"
-msgstr "Защита памяти против сброса памяти"
-
-msgid "Memory protection from swap writings"
-msgstr "Защита памяти против записи в своп"
-
-msgid "Memory protection from ptrace spying"
-msgstr "Защита памяти против слежения ptrace"
-
-msgid "Environmental variables validation"
-msgstr "Проверка переменных окружения"
-
-msgid "stdout/stdin/stderr validation"
-msgstr "Проверка stdout/stdin/stderr"
-
-msgid "Enforced use of /dev/random"
-msgstr "Принудительное использование  /dev/random"
-
-msgid "Strict prohibition to root user"
-msgstr "Строгое запрещение для пользователя root"
 
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "Неверный файл настроек. Сброс к настройкам по умолчанию."
@@ -262,71 +119,26 @@ msgstr "Очищать буфер при закрытии файла"
 msgid "Clear clipboard on exit"
 msgstr "Очищать буфер при выходе"
 
-msgid " version "
-msgstr " версия "
+msgid "Warning"
+msgstr "Предупреждение"
 
-msgid "(c)"
-msgstr "©"
-
-msgid "Authors"
-msgstr "Авторы"
-
-msgid ""
-"Gringotts is a small but (hopely ;) useful utility that stores sensitive "
-"data (passwords, credit card numbers, friends' addresses) in an organized "
-"and most of all very secure form.\n"
-"It uses libmcrypt and libmhash to provide a strong level of encryption, just "
-"trying to be as trustworthy as possible.\n"
-"\n"
-"This program is released under the GNU GPL, v.2 or later\n"
-"See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
-msgstr ""
-"Gringotts это маленькая (надеюсь) полезная утилита, которая хранит важные "
-"данные (пароли, номера кредитных карт, адреса друзей) в организованной и в "
-"очень безопасной форме.\n"
-"Она использует libmcrypt и limhash что бы предоставить высокий уровень "
-"шифрования, просто попробуйте довериться ей.\n"
-"\n"
-"Эта программа выпущена под лицензией GNU GPL v.2 или более поздней\n"
-"Смотрите файл COPYING или http://www.gnu.org/copyleft/gpl.html"
-
-msgid "the name"
-msgstr "имя"
-
-msgid "New file"
-msgstr "Новый файл"
-
-msgid "Save?"
-msgstr "Сохранить?"
-
-msgid ""
-"Some changes have not been saved.\n"
-"Do you wish to save them now?"
-msgstr ""
-"Некоторые изменения не сохранены.\n"
-"Вы хотите сохранить их сейчас?"
-
-msgid "Confirm"
-msgstr "Подтвердить"
-
-msgid ""
-"You'll lose all the changes from\n"
-"last save! Are you sure?"
-msgstr ""
-"Вы потеряете все изменения с\n"
-"последнего сохранения! Вы уверены?"
-
-msgid "loading"
-msgstr "загрузка"
-
-msgid "You've selected a directory or a symlink"
-msgstr "Вы выбрали директорию или символическую ссылку"
+msgid "it isn't possible to hide password typing; be extremely careful!"
+msgstr "невозможно скрыть набор пароля; будьте очень осторожны!"
 
 msgid "The selected file doesn't exists"
 msgstr "Выбранный файл не существует"
 
+msgid "You've selected a directory or a symlink"
+msgstr "Вы выбрали директорию или символическую ссылку"
+
 msgid "Gringotts internal error. Cannot finish operation."
 msgstr "Внутренняя ошибка Gringotts. Не могу закончить операцию."
+
+msgid "This file doesn't seem to be a valid Gringotts one!"
+msgstr "Этот файл не выглядит файлом Gringotts!"
+
+msgid "Uh-oh! I can't read from the file!"
+msgstr "Не могу прочитать из файла"
 
 msgid "The file appears to be corrupted!"
 msgstr "Файл выглядит поврежденным!"
@@ -334,207 +146,17 @@ msgstr "Файл выглядит поврежденным!"
 msgid "File is too big"
 msgstr "Файл слишком большой"
 
-msgid "Uh-oh! I can't read from the file!"
-msgstr "Не могу прочитать из файла"
-
-msgid "Problem with libmcrypt, probably a faulty installation"
-msgstr "Проблема с libmcrypt, возможно повреждена исталляция"
-
-msgid ""
-"The current password is expired.\n"
-"You should change it, or modify this setting in the preferences"
-msgstr ""
-"Срок действия данного пароля истек.\n"
-"Вы должны его изменить, или изменить этот параметр в настройках"
-
-msgid "This file doesn't seem to be a valid Gringotts one!"
-msgstr "Этот файл не выглядит файлом Gringotts!"
+msgid "You must enter a valid password!"
+msgstr "Вы должны ввести правильный пароль!"
 
 msgid "Wrong password! Re-enter it"
 msgstr "Неверный пароль! Введите его еще раз"
 
+msgid "Problem with libmcrypt, probably a faulty installation"
+msgstr "Проблема с libmcrypt, возможно повреждена исталляция"
+
 msgid "Saved data contain invalid UTF-8 chars"
 msgstr "Сохраненные данные содержать неверные UTF-8 символы"
-
-msgid "Open..."
-msgstr "Открыть..."
-
-msgid "You must enter a valid password!"
-msgstr "Вы должны ввести правильный пароль!"
-
-msgid "My first page"
-msgstr "Моя первая страница"
-
-msgid "New title..."
-msgstr "Новый заголовок..."
-
-msgid "New title for this entry:"
-msgstr "Новый заголовок для данной записи:"
-
-msgid "I can't overwrite a directory or a symlink"
-msgstr "Не могу перезаписать директорию или символическую ссылку"
-
-msgid "Overwrite?"
-msgstr "Перезаписать?"
-
-msgid "Do you want to overwrite the existing file?"
-msgstr "Вы хотитет перезаписать существующий файл?"
-
-msgid "Couldn't backup old file"
-msgstr "Не могу создать резервный файл"
-
-msgid "Error in compression! Probably a zlib problem"
-msgstr "Ошибка компрессии! Возможно проблема zlib"
-
-msgid "Uh-oh! I can't write to the file!"
-msgstr "Не могу записать в файл!"
-
-msgid "Too many data to write"
-msgstr "Слишком много данных для записи"
-
-msgid "Save as...."
-msgstr "Сохранить как..."
-
-msgid "Title..."
-msgstr "Заголовок..."
-
-msgid "Title for the new entry:"
-msgstr "Заголовок для новой записи:"
-
-msgid "New"
-msgstr "Новый"
-
-msgid "Confirm..."
-msgstr "Подтвердите..."
-
-msgid "Are you sure you want to remove this entry?"
-msgstr "Вы уверены что хотите удалить эту запись?"
-
-msgid "Wrong password"
-msgstr "Неверный пароль"
-
-msgid "Password successfully changed"
-msgstr "Пароль успешно изменен"
-
-msgid ""
-"After this, there's no way to\n"
-"recover the file. Are you sure?"
-msgstr ""
-"После этого не будет пути\n"
-"восстановить файл. Вы уверены?"
-
-msgid "File to wipe"
-msgstr "Файл для уничтожения"
-
-msgid ""
-"Are you sure you want to wipe this file?\n"
-"Its content will be securely erased, so no\n"
-"recover is possible."
-msgstr ""
-"Вы уверены что хотите уничтожить данный файл?\n"
-"Его содержимое будет уничтожено, так что \n"
-"не будет возможности восстановить."
-
-msgid "wiping file"
-msgstr "уничтожение файла"
-
-msgid "File wiping failed"
-msgstr "Ошибка уничтожение файла"
-
-#, fuzzy
-msgid "E_dit..."
-msgstr "_Правка..."
-
-msgid "Go to last entry"
-msgstr "Перейти к последней записи"
-
-msgid "Go to next entry"
-msgstr "Перейти к следующей записи"
-
-msgid "View index"
-msgstr "Посмотреть список"
-
-msgid "Go to previous entry"
-msgstr "Перейти к предыдущей записи"
-
-msgid "Go to first entry"
-msgstr "Перейти к первой записи"
-
-#, c-format
-msgid "Security level: %s"
-msgstr "Уровень безопасности: %s"
-
-msgid "New document"
-msgstr "Новый документ"
-
-msgid "Open document"
-msgstr "Открыть документ"
-
-msgid "Save document"
-msgstr "Сохранить документ"
-
-msgid "Close document"
-msgstr "Закрыть документ"
-
-msgid "Cut selection"
-msgstr "Вырезать выделение"
-
-msgid "Copy selection"
-msgstr "Копировать выделение"
-
-msgid "Paste selection"
-msgstr "Вставить выделение"
-
-msgid "Search for text"
-msgstr "Поиск текста"
-
-msgid "Add an entry"
-msgstr "Добавить запись"
-
-msgid "Remove this entry"
-msgstr "Удалить данную запись"
-
-msgid "Quit Gringotts"
-msgstr "Выход"
-
-msgid "Attached files"
-msgstr "Вложенные файлы"
-
-msgid "Add a new attachment"
-msgstr "Добавить новое вложение"
-
-msgid "Remove this attachment"
-msgstr "Удалить данное вложение"
-
-msgid "Save this attachment"
-msgstr "Сохранить данное вложение"
-
-msgid "Info on this attachment"
-msgstr "Информация о данном вложении"
-
-msgid "Change comment"
-msgstr "Изменить комментарий"
-
-msgid "List of attached files"
-msgstr "Список вложенный файлов"
-
-msgid "version"
-msgstr "версия"
-
-msgid "released under GNU General Public License (GPL) v.2 or later"
-msgstr "выпущено под GNU General Public License (GPL) v.2 или более поздней"
-
-msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
-msgstr "Смотрите COPYING или http://www.gnu.org/copyleft/gpl.html"
-
-msgid "File to load does not exists or it is invalid"
-msgstr "Файл для открытия не существует или поврежден"
-
-msgid "Warning"
-msgstr "Предупреждение"
-
-msgid "it isn't possible to hide password typing; be extremely careful!"
-msgstr "невозможно скрыть набор пароля; будьте очень осторожны!"
 
 msgid "shows the help"
 msgstr "показать помощь"
@@ -578,6 +200,21 @@ msgid ""
 msgstr ""
 "Нет возможности перенаправить данные в stdin, так как это потенциальный "
 "недостаток в безопасности"
+
+msgid "The file does not exist"
+msgstr "Файл не существует"
+
+msgid ""
+"Are you sure you want to wipe this file?\n"
+"Its content will be securely erased, so no\n"
+"recover is possible."
+msgstr ""
+"Вы уверены что хотите уничтожить данный файл?\n"
+"Его содержимое будет уничтожено, так что \n"
+"не будет возможности восстановить."
+
+msgid "File wiping failed"
+msgstr "Ошибка уничтожение файла"
 
 msgid "You must specify a file to dump (with the -f switch)"
 msgstr "Вы должны указать файл для сброса (с ключом -f)"
@@ -696,72 +333,267 @@ msgstr "О программе"
 msgid "_Help"
 msgstr "Помощь"
 
-msgid "Cannot open file to attach."
-msgstr "Не могу открыть файл для вложения."
+msgid "Error"
+msgstr "Ошибка"
 
-msgid "Only regular files can be attached."
-msgstr "Только обычный файл может быть присоединен."
+msgid "Find a string"
+msgstr "Найти строку"
 
-msgid "Sorry, currently you can attach files only up to 2 Mb"
-msgstr "Извините, вы можете вложить файлов только на 2 Мб."
+msgid "Enter the string to find:"
+msgstr "Введите строку для поиска:"
 
-msgid "Enter comment"
-msgstr "Введите комментарий"
+msgid "Search only in this entry"
+msgstr "Искать только в данной записи"
+
+msgid "Case sensitive"
+msgstr "Чувствительность к регистру"
+
+msgid "Please wait"
+msgstr "Пожайлуста ждите"
+
+msgid " version "
+msgstr " версия "
+
+msgid "(c)"
+msgstr "©"
+
+msgid "Authors"
+msgstr "Авторы"
 
 msgid ""
-"Please enter a comment for this\n"
-"file (max. 32 chars)"
+"Gringotts is a small but (hopely ;) useful utility that stores sensitive "
+"data (passwords, credit card numbers, friends' addresses) in an organized "
+"and most of all very secure form.\n"
+"It uses libmcrypt and libmhash to provide a strong level of encryption, just "
+"trying to be as trustworthy as possible.\n"
+"\n"
+"This program is released under the GNU GPL, v.2 or later\n"
+"See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
 msgstr ""
-"Введите комментарий для этого\n"
-"файла (макс. 32 символа)"
+"Gringotts это маленькая (надеюсь) полезная утилита, которая хранит важные "
+"данные (пароли, номера кредитных карт, адреса друзей) в организованной и в "
+"очень безопасной форме.\n"
+"Она использует libmcrypt и limhash что бы предоставить высокий уровень "
+"шифрования, просто попробуйте довериться ей.\n"
+"\n"
+"Эта программа выпущена под лицензией GNU GPL v.2 или более поздней\n"
+"Смотрите файл COPYING или http://www.gnu.org/copyleft/gpl.html"
 
-msgid "none"
-msgstr "нет"
+msgid "the name"
+msgstr "имя"
 
-msgid "attaching"
-msgstr "вложение"
+msgid "New file"
+msgstr "Новый файл"
 
-msgid "Cannot encode tempfile."
-msgstr "Не могу закодировать временный файл."
+msgid "Save?"
+msgstr "Сохранить?"
 
-msgid "Cannot decode tempfile."
-msgstr "Не могу декодировать временный файл."
-
-msgid "Cannot create file, or file already existent."
-msgstr "Не могу создать файл, или он уже существует."
-
-msgid "File name"
-msgstr "Имя файла"
-
-msgid "Dimension"
-msgstr "Размер"
-
-msgid "bytes"
-msgstr "байт"
-
-msgid "Comment"
-msgstr "Комментарий"
-
-msgid "Kb"
-msgstr "Кб"
-
-msgid "Mb"
-msgstr "Мб"
-
-msgid "<no file attached>"
-msgstr "<файл не присоединен>"
-
-msgid "Tabs Width"
+msgid ""
+"Some changes have not been saved.\n"
+"Do you wish to save them now?"
 msgstr ""
+"Некоторые изменения не сохранены.\n"
+"Вы хотите сохранить их сейчас?"
 
-msgid "The text searched could not be found!"
-msgstr "Искомый текст не может быть найден!"
+msgid "Confirm"
+msgstr "Подтвердить"
 
-msgid "Wrap around?"
-msgstr "Переносить?"
+msgid ""
+"You'll lose all the changes from\n"
+"last save! Are you sure?"
+msgstr ""
+"Вы потеряете все изменения с\n"
+"последнего сохранения! Вы уверены?"
 
-msgid "Text not found. Continue search from beginning?"
-msgstr "Текст не найден. Продолжить с начала?"
+msgid "loading"
+msgstr "загрузка"
+
+msgid "assembling data"
+msgstr "сборка данных"
+
+msgid "cleaning up"
+msgstr "очистка"
+
+msgid ""
+"The current password is expired.\n"
+"You should change it, or modify this setting in the preferences"
+msgstr ""
+"Срок действия данного пароля истек.\n"
+"Вы должны его изменить, или изменить этот параметр в настройках"
+
+msgid "Open..."
+msgstr "Открыть..."
+
+msgid "My first page"
+msgstr "Моя первая страница"
+
+msgid "New title..."
+msgstr "Новый заголовок..."
+
+msgid "New title for this entry:"
+msgstr "Новый заголовок для данной записи:"
+
+msgid "I can't overwrite a directory or a symlink"
+msgstr "Не могу перезаписать директорию или символическую ссылку"
+
+msgid "Overwrite?"
+msgstr "Перезаписать?"
+
+msgid "Do you want to overwrite the existing file?"
+msgstr "Вы хотитет перезаписать существующий файл?"
+
+msgid "Couldn't backup old file"
+msgstr "Не могу создать резервный файл"
+
+msgid "Error in compression! Probably a zlib problem"
+msgstr "Ошибка компрессии! Возможно проблема zlib"
+
+msgid "Uh-oh! I can't write to the file!"
+msgstr "Не могу записать в файл!"
+
+msgid "Too many data to write"
+msgstr "Слишком много данных для записи"
+
+msgid "Save as...."
+msgstr "Сохранить как..."
+
+msgid "Title..."
+msgstr "Заголовок..."
+
+msgid "Title for the new entry:"
+msgstr "Заголовок для новой записи:"
+
+msgid "New"
+msgstr "Новый"
+
+msgid "Confirm..."
+msgstr "Подтвердите..."
+
+msgid "Are you sure you want to remove this entry?"
+msgstr "Вы уверены что хотите удалить эту запись?"
+
+msgid "Wrong password"
+msgstr "Неверный пароль"
+
+msgid "Password successfully changed"
+msgstr "Пароль успешно изменен"
+
+msgid ""
+"After this, there's no way to\n"
+"recover the file. Are you sure?"
+msgstr ""
+"После этого не будет пути\n"
+"восстановить файл. Вы уверены?"
+
+msgid "File to wipe"
+msgstr "Файл для уничтожения"
+
+msgid "wiping file"
+msgstr "уничтожение файла"
+
+#, fuzzy
+msgid "E_dit..."
+msgstr "_Правка..."
+
+msgid "Go to last entry"
+msgstr "Перейти к последней записи"
+
+msgid "Go to next entry"
+msgstr "Перейти к следующей записи"
+
+msgid "View index"
+msgstr "Посмотреть список"
+
+msgid "Go to previous entry"
+msgstr "Перейти к предыдущей записи"
+
+msgid "Go to first entry"
+msgstr "Перейти к первой записи"
+
+#, c-format
+msgid "Security level: %s"
+msgstr "Уровень безопасности: %s"
+
+msgid "New document"
+msgstr "Новый документ"
+
+msgid "Open document"
+msgstr "Открыть документ"
+
+msgid "Save document"
+msgstr "Сохранить документ"
+
+msgid "Close document"
+msgstr "Закрыть документ"
+
+msgid "Cut selection"
+msgstr "Вырезать выделение"
+
+msgid "Copy selection"
+msgstr "Копировать выделение"
+
+msgid "Paste selection"
+msgstr "Вставить выделение"
+
+msgid "Search for text"
+msgstr "Поиск текста"
+
+msgid "Add an entry"
+msgstr "Добавить запись"
+
+msgid "Remove this entry"
+msgstr "Удалить данную запись"
+
+msgid "Quit Gringotts"
+msgstr "Выход"
+
+msgid "Attached files"
+msgstr "Вложенные файлы"
+
+msgid "Add a new attachment"
+msgstr "Добавить новое вложение"
+
+msgid "Remove this attachment"
+msgstr "Удалить данное вложение"
+
+msgid "Save this attachment"
+msgstr "Сохранить данное вложение"
+
+msgid "Info on this attachment"
+msgstr "Информация о данном вложении"
+
+msgid "Change comment"
+msgstr "Изменить комментарий"
+
+msgid "List of attached files"
+msgstr "Список вложенный файлов"
+
+msgid "version"
+msgstr "версия"
+
+msgid "released under GNU General Public License (GPL) v.2 or later"
+msgstr "выпущено под GNU General Public License (GPL) v.2 или более поздней"
+
+msgid "See COPYING or go to http://www.gnu.org/copyleft/gpl.html"
+msgstr "Смотрите COPYING или http://www.gnu.org/copyleft/gpl.html"
+
+msgid "File to load does not exists or it is invalid"
+msgstr "Файл для открытия не существует или поврежден"
+
+msgid " Index "
+msgstr " Список"
+
+msgid " Title "
+msgstr " Название"
+
+msgid "Index of entries"
+msgstr "Список записей"
+
+msgid "Move up"
+msgstr "Переместить вверх"
+
+msgid "Move down"
+msgstr "Переместить вниз"
 
 msgid "You must specify a regular file"
 msgstr "Вы должны указать обычный файл"
@@ -828,6 +660,174 @@ msgstr "Выбор"
 
 msgid "Bye, then!"
 msgstr "До свидания!"
+
+msgid "Invalid entry number"
+msgstr "Неверный номер записи"
+
+msgid "saving"
+msgstr "сохранение"
+
+msgid ""
+"The file has been created with a newer version of Gringotts. If you save it "
+"using this one, some formatting can be lost."
+msgstr ""
+"Файл был создан в более новой версии Gringotts. Если вы сохраните его "
+"используя данную версию, некоторое форматирование может быть потеряно."
+
+msgid "Tabs Width"
+msgstr ""
+
+msgid "The text searched could not be found!"
+msgstr "Искомый текст не может быть найден!"
+
+msgid "Wrap around?"
+msgstr "Переносить?"
+
+msgid "Text not found. Continue search from beginning?"
+msgstr "Текст не найден. Продолжить с начала?"
+
+#, c-format
+msgid "Cannot get MEMLOCK resource limit: %s"
+msgstr ""
+
+#, c-format
+msgid ""
+"Increase the memory locking limit to at least %d bytes. Current limit: %d "
+"bytes.\n"
+"See /usr/share/doc/gringotts/README for \n"
+"directions or alternatively make gringotts\n"
+"non-SUID-root\n"
+msgstr ""
+
+msgid "The process is setuid root, but I can't lock memory paging"
+msgstr "Процесс запущен с SUID, но не возможно залочить страницу памяти"
+
+msgid ""
+"Cannot drop root user privileges. Someone is hacking this process. I cannot "
+"go on"
+msgstr ""
+"Не могу сбросить привелегии рута. Что-то мешает этому процессу. Не могу "
+"продолжать."
+
+msgid ""
+"Cannot drop root group privileges. Someone is hacking this process. I cannot "
+"go on"
+msgstr ""
+"Не могу сбросить привелегии рута. Что-то мешает этому процессу. Не могу "
+"продолжать."
+
+msgid "For security reasons, you cannot run Gringotts as root user."
+msgstr "Для безопасности, вы не можете запускать Gringotts как root."
+
+msgid "Try to compile with --disable-root-filter in ./configure"
+msgstr ""
+"Попробуйте скомпилитровать с опцией --disable-root-filter в ./configure"
+
+msgid "Try using -s"
+msgstr "Попробуйте использовать -s"
+
+msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
+msgstr "stdin, stdout и/или stderr неверны. Продолжение невозможно."
+
+msgid "Invalid LANG environment variable:"
+msgstr ""
+
+msgid "Invalid XAUTHORITY environment variable:"
+msgstr ""
+
+msgid "Invalid DISPLAY environment variable:"
+msgstr ""
+
+msgid "optimal"
+msgstr "оптимальный"
+
+msgid "good"
+msgstr "хороший"
+
+msgid "low"
+msgstr "низкий"
+
+msgid "Security monitor"
+msgstr "Монитор безопасности"
+
+msgid "Running without root privileges"
+msgstr "Запущено без привилегий рута."
+
+msgid "Memory protection from core dumps"
+msgstr "Защита памяти против сброса памяти"
+
+msgid "Memory protection from swap writings"
+msgstr "Защита памяти против записи в своп"
+
+msgid "Memory protection from ptrace spying"
+msgstr "Защита памяти против слежения ptrace"
+
+msgid "Environmental variables validation"
+msgstr "Проверка переменных окружения"
+
+msgid "stdout/stdin/stderr validation"
+msgstr "Проверка stdout/stdin/stderr"
+
+msgid "Enforced use of /dev/random"
+msgstr "Принудительное использование  /dev/random"
+
+msgid "Strict prohibition to root user"
+msgstr "Строгое запрещение для пользователя root"
+
+msgid "Cannot open file to attach."
+msgstr "Не могу открыть файл для вложения."
+
+msgid "Only regular files can be attached."
+msgstr "Только обычный файл может быть присоединен."
+
+msgid "Sorry, currently you can attach files only up to 2 Mb"
+msgstr "Извините, вы можете вложить файлов только на 2 Мб."
+
+msgid "Enter comment"
+msgstr "Введите комментарий"
+
+msgid ""
+"Please enter a comment for this\n"
+"file (max. 32 chars)"
+msgstr ""
+"Введите комментарий для этого\n"
+"файла (макс. 32 символа)"
+
+msgid "none"
+msgstr "нет"
+
+msgid "attaching"
+msgstr "вложение"
+
+msgid "Cannot encode tempfile."
+msgstr "Не могу закодировать временный файл."
+
+msgid "Cannot decode tempfile."
+msgstr "Не могу декодировать временный файл."
+
+msgid "Cannot create file, or file already existent."
+msgstr "Не могу создать файл, или он уже существует."
+
+msgid "File name"
+msgstr "Имя файла"
+
+msgid "Dimension"
+msgstr "Размер"
+
+msgid "bytes"
+msgstr "байт"
+
+msgid "Comment"
+msgstr "Комментарий"
+
+msgid "Kb"
+msgstr "Кб"
+
+msgid "Mb"
+msgstr "Мб"
+
+msgid "<no file attached>"
+msgstr "<файл не присоединен>"
 
 #~ msgid "Invalid environment variables. They could have been manipulated."
 #~ msgstr "Неверные переменные окружения. Они могли быть изменены."
