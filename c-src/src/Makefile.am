@@ -37,4 +37,4 @@ gringotts_LDADD = @POPT@ @GTK2_LIBS@ @GDKPIX_LIBS@ @LIBGRG_LIBS@
 install-exec-local:
 	strip $(DESTDIR)$(bindir)/gringotts
 	chmod u+s $(DESTDIR)$(bindir)/gringotts
-	
+
