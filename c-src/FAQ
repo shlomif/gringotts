@@ -24,7 +24,7 @@ A: Very safe, and not entirely safe. If a malicious user put his hands on a file
    created with Gringotts (Grg, from now on), there's virtually nothing he can
    do to open it without knowing the password. It can't retrieve any information
    about the content - neither the type of password, nor the kind of data
-   contained. It's all locked. 
+   contained. It's all locked.
 
 
 Q: What if the attacker can access the system I'm working into?
@@ -127,7 +127,7 @@ A: When using a file, the "password quality" is very secure because both its
 	 and aren't disposed in any particular pattern, for example in some binary
 	 data), a 32 byte file is just as good as a 512 Kb one.
      Is this a weakness? No! A good hashing algorithm (and the two used by
-	 Gringotts are the best) will scramble the data in a very impredictable 
+	 Gringotts are the best) will scramble the data in a very impredictable
 	 manner, so there's NO way to guess the key without knowing the password. In
 	 a word: just pick a password and use it, and don't worry! :-)
    * It's better not to leave files on the hard drive, anyway. Store them in
@@ -196,7 +196,7 @@ A: You can make the program use /dev/random instead of /dev/urandom as the
    later versions.
    /dev/random returns only true random data; when no more random data are
    available, it stops and waits for the entropy sources.
-   In such cases, it will block the application. When alot of random data is 
+   In such cases, it will block the application. When alot of random data is
    required (i.e. in saving and loading of files, etc), it can be a real pain.
    Using /dev/urandom will provide a constant stream of numbers, calculating
    them with a cryptographically strong algorythm based on the true random data
@@ -237,7 +237,7 @@ A: Your mileage may vary. Basically, all the algorithms used are safe ones.
 Q: Which is the best hashing algorithm to use?
 
 A: Again, it's a matter of personal preference. Both SHA1 and RIPEMD-160 are
-   designed to be safe, and no one yet has proved they aren't. 
+   designed to be safe, and no one yet has proved they aren't.
    Just pick one of them: SHA1 is american, and Ripemd-160 is european, if this
    means something to you.
 
@@ -330,7 +330,7 @@ A: It should be reasonably compatible with many UNIXes. If it isn't, please tell
    me. It is currently supported in Linux (RedHat, Mandrake, Gentoo, Debian) and
    FreeBSD.
    I don't think I'll ever port it to native Windows systems. They lack many of
-   the special features Gringotts uses to ensure data safety. I simply don't 
+   the special features Gringotts uses to ensure data safety. I simply don't
    want to spend time to find workarounds for them. Anyway, maybe it can be
    ported to the cygwin environment; stay tuned! ;)
    Gringotts could be ported easily to PHP, and published on the web, providing

@@ -6,7 +6,7 @@ CVS repository image, the tarball or an RPM file. Here is how to handle
 each of them:
 
 							-= CVS=-
-							
+
 You can access to cvs repository of Pluto-devel with these data:
 
 CVSROOT:	:pserver:anonymous@cvs.pluto.linux.it:/Devel
@@ -75,7 +75,7 @@ configure script; type ./configure --help to learn more.
 
 --enable-root-filter
 	normally, root user can't start Gringotts. This can be
-	avoided specifying a Gringotts commandline option; if you 
+	avoided specifying a Gringotts commandline option; if you
 	want to make this unavoidable, use this ./configure switch.
 
 --enable-maintainer-mode
@@ -100,7 +100,7 @@ Finally, let's suppose you have an RPM. Gringotts behave just normally,
 so to compile a source RPM you'll do:
 
   rpm --rebuild gringotts-x.y.z-1.src.rpm
-  
+
 or, in a rpm 4.1-based system such as RedHat 8.0,
 
   rpmbuild --rebuild gringotts-x.y.z-1.src.rpm

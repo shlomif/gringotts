@@ -13,22 +13,22 @@
 2006-03-28 Shlomi Fish <shlomif@iglu.org.il>
 	* Fix a data corruption bug with the search function.
 	* Fix the "Find again" functionality.
-	* Eliminate many compilation warnings caused due to a confusion between 
+	* Eliminate many compilation warnings caused due to a confusion between
 	signed and unsigned char strings.
 	* Integrated a patch by wwp that:
 		* Fixes proto for find() in src/grg_entries_vis.h (not really used anyway)
 		* Fixes compilation on FC3 (missing #includes to stdio.h)
-		* Adds sensitivity to HTAB environment variable to change the 
+		* Adds sensitivity to HTAB environment variable to change the
 		horizontal tab value in the main edition widget (default: 8)
 
 2006-04-04 Shlomi Fish <shlomif@iglu.org.il>
 	* Fix a data corruption bug caused by the previous data corruption bug
-	fix, in which before the search the entry's widget's text was not synced 
+	fix, in which before the search the entry's widget's text was not synced
 	into memory.
 
 2007-01-01 Shlomi Fish <shlomif@iglu.org.il>
 	* Made sure that the "Preferences" dialog does not crash gringotts, due
-	to saying "g_free (fdesc)" instead of 
+	to saying "g_free (fdesc)" instead of
 	"pango_font_description_free (fdesc)".
 	* Released as gringotts-shlomif-0.4.4
 
@@ -76,7 +76,7 @@
 	* Tagged and released gringotts-1.2.9pre4
 
 2008-01-25 Shlomi Fish <shlomif@iglu.org.il>
-	* Tagged and released gringotts-1.2.9. (With no significant changes 
+	* Tagged and released gringotts-1.2.9. (With no significant changes
 	since gringotts-1.2.9pre4).
 
 	----------------------------------
@@ -85,7 +85,7 @@
 
 	* Few fixes in the ask password and define password dialogs:
 	* change button order to be HIG compliant (GNOME, XFce and others)
-	* fix behaviour of dialogs when pressing Esc by watching the right	
+	* fix behaviour of dialogs when pressing Esc by watching the right
 		gtk_dialog response type
 	* fix few logics issues when asking for password and not checking
 		if the dialog has been cancelled
@@ -98,11 +98,11 @@
 
 	* Thanks to wwp for the patch.
 
-	* Fix for the prefs, so that file-save dirty flag is set only when 
+	* Fix for the prefs, so that file-save dirty flag is set only when
 	appropriate (when file format options has changed and been applied).
 	(thanks to wwp for the patch.)
 
-	* Applied a patch from wwp that enforces the parsing of prefs 
+	* Applied a patch from wwp that enforces the parsing of prefs
 	(when loading), and makes it a real tag parser. (Thanks to wwp).
 
 	* Applied a patch from wwp as a correction to a previous patch of
@@ -114,7 +114,7 @@
 
 2008-09-03 Shlomi Fish <shlomif@iglu.org.il>
 
-	* Applied a series of patches by Rorschach to add an optional 
+	* Applied a series of patches by Rorschach to add an optional
 	"minimize-to-tray-icon" feature for gringotts.
 
 	* Tagged and relased gringotts-1.2.10pre2.

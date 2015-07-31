@@ -1,7 +1,7 @@
 * fix the text processing of the options in src/grg_prefs_io.c:
     - more robust checking for if a character is a digit.
     - check for '\0' character.
-    - 
+    -
 
 -- 1.3 --
 

@@ -6,7 +6,7 @@ noinst_HEADERS = libgrg_crypt.h libgrg_structs.h libgrg_utils.h
 
 include_HEADERS = libgringotts.h
 
-libgringotts_la_SOURCES = libgrg_crypt.c libgrg_structs.c libgrg_utils.c libgrg_tmp.c 
+libgringotts_la_SOURCES = libgrg_crypt.c libgrg_structs.c libgrg_utils.c libgrg_tmp.c
 
 libgringotts_la_LDFLAGS = -version-info @LIBGRG_INTERFACE@:@LIBGRG_RELEASE@:@LIBGRG_AGE@
 
