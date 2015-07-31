@@ -1,4 +1,4 @@
-.navbar 
+.navbar
 {
     display: none;
 }
@@ -7,9 +7,9 @@
     background-color : white;
 }
 p.desc { margin-left : 3em }
-.note 
-{ 
-    border-color : black; 
+.note
+{
+    border-color : black;
     border-style : double;
     padding : 0.5em;
 }

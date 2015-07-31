@@ -1,7 +1,7 @@
 /*
     CSS Stylesheet for better-scm.berlios.de
     Copyright (c) Shlomi Fish, 2003-2005
-    Feel free to use, modify and re-distribute under the terms of the 
+    Feel free to use, modify and re-distribute under the terms of the
     MIT X11 License (http://www.opensource.org/licenses/mit-license.php)
 
     $Id: style.css 175 2005-04-17 07:43:41Z shlomif $
@@ -31,9 +31,9 @@ a:hover { color : red }
 }
 
 p.desc { margin-left : 3em }
-h2 
-{ 
-    background-color: #FFEE00  
+h2
+{
+    background-color: #FFEE00
 }
 h2, h3, h4
 {
@@ -52,19 +52,19 @@ h2, h3, h4
     margin-left: 0;
 }
 ul.navbarmain
-{ 
-    padding-left : 1em; 
+{
+    padding-left : 1em;
     font-size: 80%;
     font-family: sans-serif;
 }
-ul.navbarnested 
-{ 
-    padding-left : 0em ; 
+ul.navbarnested
+{
+    padding-left : 0em ;
     margin-left : 2em;
 }
-.note 
-{ 
-    border-color : black; 
+.note
+{
+    border-color : black;
     border-style : double;
     padding : 0.5em;
     background-color : #98FB98; /* PaleGreen */
@@ -97,7 +97,7 @@ ul.my li
     margin-bottom: 0em;
 }
 .vcs
-{    
+{
     margin-top: 0.5em;
     clear: left;
 }
@@ -142,7 +142,7 @@ ul.my li
     margin-right : 30px;
     padding-top: 0.5em;
 }
-/* Workaround to get the <hr /> element at the bottom to properly display 
+/* Workaround to get the <hr /> element at the bottom to properly display
    with Konqueror 3.3.x
    */
 .footer hr
