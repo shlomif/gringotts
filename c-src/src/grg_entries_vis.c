@@ -40,7 +40,7 @@ enum {
 #define DEFAULT_TAB_WIDTH 		8
 
 static GObjectClass *parent_class = NULL;
-	
+
 static GtkClipboard *clip = NULL;
 static gboolean isThereAClip = FALSE;
 
@@ -76,7 +76,7 @@ void gtk_source_view_set_tabs_width (GtkCustomTextView *view,
 							 guint          width);
 GType gtk_custom_text_view_get_type (void);
 static gboolean set_tab_stops_internal (GtkCustomTextView *view);
-static gint	calculate_real_tab_width 		(GtkCustomTextView     *view, 
+static gint	calculate_real_tab_width 		(GtkCustomTextView     *view,
 							 guint              tab_size,
 							 gchar              c);
 
@@ -99,7 +99,7 @@ void entries_vis_init (void){
 	mdl = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 	structSheet = gtk_tree_view_new_with_model (GTK_TREE_MODEL (mdl));
 	g_object_unref (G_OBJECT (mdl));
-	
+
 	cr1=gtk_cell_renderer_text_new ();
 	cr2=gtk_cell_renderer_text_new ();
 	cr3=gtk_cell_renderer_text_new ();
@@ -135,12 +135,12 @@ gtk_custom_text_view_class_init (GtkCustomTextViewClass *klass)
 	GObjectClass	 *object_class;
 	GtkTextViewClass *textview_class;
 	GtkWidgetClass   *widget_class;
-	
+
 	object_class 	= G_OBJECT_CLASS (klass);
 	textview_class 	= GTK_TEXT_VIEW_CLASS (klass);
 	parent_class 	= g_type_class_peek_parent (klass);
 	widget_class 	= GTK_WIDGET_CLASS (klass);
-	
+
 	object_class->get_property = gtk_custom_text_view_get_property;
 	object_class->set_property = gtk_custom_text_view_set_property;
 
@@ -169,16 +169,16 @@ gtk_custom_text_view_set_tabs_width (GtkCustomTextView *view,
 				guint          width)
 {
 	guint save_width;
-	
+
 	g_return_if_fail (GTK_CUSTOM_TEXT_VIEW (view));
 	g_return_if_fail (width <= MAX_TAB_WIDTH);
 	g_return_if_fail (width > 0);
 
 	if (view->tabs_width == width)
 		return;
-	
+
 	gtk_widget_ensure_style (GTK_WIDGET (view));
-	
+
 	save_width = view->tabs_width;
 	view->tabs_width = width;
 	if (set_tab_stops_internal (view))
@@ -216,43 +216,43 @@ gtk_custom_text_view_get_type (void)
 	return our_type;
 }
 
-static void 
+static void
 gtk_custom_text_view_set_property (GObject      *object,
 			      guint         prop_id,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
 	GtkCustomTextView *view;
-	
+
 	g_return_if_fail (GTK_IS_CUSTOM_TEXT_VIEW (object));
 
 	view = GTK_CUSTOM_TEXT_VIEW (object);
-    
+
 	switch (prop_id)
 	{
 		case PROP_TABS_WIDTH:
-			gtk_custom_text_view_set_tabs_width (view, 
+			gtk_custom_text_view_set_tabs_width (view,
 							g_value_get_uint (value));
 			break;
-		
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
 }
 
-static void 
+static void
 gtk_custom_text_view_get_property (GObject    *object,
 			      guint       prop_id,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
 	GtkCustomTextView *view;
-	
+
 	g_return_if_fail (GTK_IS_CUSTOM_TEXT_VIEW (object));
 
 	view = GTK_CUSTOM_TEXT_VIEW (object);
-    
+
 	switch (prop_id)
 	{
 		case PROP_TABS_WIDTH:
@@ -276,11 +276,11 @@ set_tab_stops_internal (GtkCustomTextView *view)
 
 	if (real_tab_width < 0)
 		return FALSE;
-	
+
 	tab_array = pango_tab_array_new (1, TRUE);
 	pango_tab_array_set_tab (tab_array, 0, PANGO_TAB_LEFT, real_tab_width);
 
-	gtk_text_view_set_tabs (GTK_TEXT_VIEW (view), 
+	gtk_text_view_set_tabs (GTK_TEXT_VIEW (view),
 				tab_array);
 
 	pango_tab_array_free (tab_array);
@@ -334,7 +334,7 @@ void entries_vis_deinit (void){
 	del_needle ();
 }
 
-GtkWidget 
+GtkWidget
 *get_updated_sheet (gboolean hasData){
 	/*if (current_mode == SIMPLE_ENTRY) {*/
 		g_signal_handler_block (entryBuf, simpleSigID);
@@ -345,7 +345,7 @@ GtkWidget
 		return simpleSheet;
 	/*} else {
 		GtkTreeIter iter;
-		
+
 		mdl = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 		gtk_list_store_append(mdl, &iter);
 		gtk_list_store_set(mdl, &iter, 0, "www.prosa.com", 1, "admin", 2, "nIitnPp", -1);
@@ -426,9 +426,9 @@ find (GtkWidget *widget, gpointer callback_data)
         GtkWidget *parent = gtk_widget_get_toplevel(widget);
 
 	/* Save the entry into memory, so if update() is called next it will
-	 * be saved. 
+	 * be saved.
 	 * */
-	sync_entry(); 
+	sync_entry();
 
 	if (!again)
 		if (!grg_find_dialog

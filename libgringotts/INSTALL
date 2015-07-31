@@ -6,7 +6,7 @@ CVS repository image, the tarball or an RPM file. Here is how to handle
 each of them:
 
 							-= CVS=-
-							
+
 You can access to cvs repository of Pluto-devel with these data:
 
 CVSROOT:	:pserver:anonymous@cvs.pluto.linux.it:/Devel

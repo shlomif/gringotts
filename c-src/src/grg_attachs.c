@@ -363,7 +363,7 @@ set_ID (gpointer ignore, gpointer void_combo_attach)
     if (gtk_combo_box_get_active_iter (combo_attach, &iter))
     {
         GValue value = { 0, };
-        
+
         gtk_tree_model_get_value (gtk_combo_box_get_model (combo_attach),
                 &iter, ATTACHMENT_ID, &value);
         current_attach_ID = g_value_get_int (&value);
@@ -426,7 +426,7 @@ grg_attachment_fill_combo_box (GtkComboBox * combo_attach)
 
         model = gtk_combo_box_get_model(combo_attach);
         gtk_list_store_clear (GTK_LIST_STORE (model));
-        
+
         gtk_list_store_append (GTK_LIST_STORE (model), &iter);
         gtk_list_store_set (GTK_LIST_STORE (model), &iter,
                 ATTACHMENT_TITLE, _("<no file attached>"),
@@ -443,7 +443,7 @@ grg_attachment_fill_combo_box (GtkComboBox * combo_attach)
         GtkTreeModel *model;
         model = gtk_combo_box_get_model(combo_attach);
         gtk_list_store_clear (GTK_LIST_STORE (model));
-        
+
         current_attach_ID =
             ((struct grg_attachment *) ceal->data)->ID;
         while (ceal)

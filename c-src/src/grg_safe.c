@@ -79,7 +79,7 @@ static gboolean grg_kver_ge (int a, int b, int c) {
     X = atoi(s1);
     Y = atoi(s2);
     Z = atoi(s3);
-    return 
+    return
         ((X > a) ||
             (
                 (X ==a) &&

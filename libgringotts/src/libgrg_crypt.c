@@ -230,7 +230,7 @@ select_key (const GRG_CTX gctx, const GRG_KEY keystruct, int *dim)
 				     24) ? (unsigned char *)keystruct->
 				    key_192_ripe : (unsigned char *)keystruct->key_256_ripe),
 				   *dim);
-	
+
 	return key;
 }
 
@@ -246,7 +246,7 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 
 	len = memDim - LIBGRG_DATA_POS;
 	tmp = ((char *) mem) + LIBGRG_DATA_POS;
-	
+
 	dIV = grg_get_block_size_static (gctx->crypt_algo);
 	IV = grg_memdup ((unsigned char *)tmp, dIV);
 	if (!IV){
@@ -262,7 +262,7 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 		grg_unsafe_free (IV);
 		return GRG_MEM_ALLOCATION_ERR;
 	}
-	
+
 	curdata = ecdata;
 	curlen = len;
 
@@ -291,7 +291,7 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 	grg_free (gctx, key, keylen);
 	key = NULL;
 	grg_unsafe_free (IV);
-		
+
 	mdecrypt_generic (mod, ecdata, len);
 
 	mcrypt_generic_deinit (mod);
@@ -317,7 +317,7 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 	}
 
 	grg_unsafe_free (CRC32b);
-		
+
 	//reads the uncompressed data length
 
 	dimdata = grg_memdup (curdata, LIBGRG_DATA_DIM_LEN);
@@ -345,7 +345,7 @@ decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 			grg_unsafe_free (ecdata);
 			return GRG_MEM_ALLOCATION_ERR;
 		}
-		
+
 		if (gctx->comp_algo)	//bz2
 		{
 			unsigned int uint_oDim = oDim;
@@ -455,7 +455,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 	chunk = NULL;
 	grg_free (gctx, compData, compDim);
 	compData = NULL;
-	
+
 	if (!toCRC1)
 		return GRG_MEM_ALLOCATION_ERR;
 
@@ -469,7 +469,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 	CRC1 = NULL;
 	grg_free (gctx, toCRC1, compDim);
 	toCRC1 = NULL;
-	
+
 	if (!toEnc)
 		return GRG_MEM_ALLOCATION_ERR;
 
@@ -503,7 +503,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 		toEnc = NULL;
 		return GRG_MEM_ALLOCATION_ERR;
 	}
-	
+
 	grg_XOR_mem (key, dKey, IV, dIV);
 
 	err = mcrypt_generic_init (mod, key, dKey, IV);
@@ -524,7 +524,7 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 	mcrypt_generic_deinit (mod);
 	mcrypt_module_close (mod);
 
-	//adds algorithm and salt 
+	//adds algorithm and salt
 
 	algo = (unsigned char) (gctx->crypt_algo | gctx->hash_algo | gctx->
 				comp_algo | gctx->comp_lvl);
@@ -764,7 +764,7 @@ grg_encrypt_file (const GRG_CTX gctx, const GRG_KEY keystruct,
 	res = grg_encrypt_file_direct (gctx, keystruct, fd, origData,
 				       origDim);
 	close (fd);
-	
+
 	if (res < 0)
 		unlink (path);
 
@@ -805,10 +805,10 @@ grg_decrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, const void *mem,
 		 const long memDim, unsigned char **origData, long *origDim)
 {
 	int ret;
-	
+
 	if (!mem || !gctx || !keystruct)
 			return GRG_ARGUMENT_ERR;
-	
+
 	ret = validate_mem (gctx, mem, memDim);
 
 	if (ret < 0)

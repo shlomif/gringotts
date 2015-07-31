@@ -39,7 +39,7 @@ void report_err (gchar * msg, gboolean X, gboolean doquit,
 		 GtkWidget * parent);
 
 /* Asks a question for a boolean answer. */
-grg_response grg_ask_dialog (gchar * title, gchar * question, 
+grg_response grg_ask_dialog (gchar * title, gchar * question,
         gboolean allowcanc, GtkWidget * parent);
 
 /* Associates the Gringotts icon with the given window. */
@@ -58,7 +58,7 @@ void grg_display_file (gchar * file);
 /* callback to submit a form when enter is pressed */
 gboolean return_submit (GtkWidget * w, GdkEventKey * ev, GtkWidget * w2);
 
-GtkWidget * 
+GtkWidget *
 grg_toolbar_insert_stock(GtkToolbar *toolbar,
     const gchar *stock_id,
     const char *tooltip_text,

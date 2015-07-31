@@ -27,7 +27,7 @@
  *   noteworthy
  * o Add compatibility tests, i.e. decrypting a "old" known-as-good file
  * o testA() fails sometimes. I wonder why.
- */ 
+ */
 
 #include <stdlib.h>
 #include <string.h>
@@ -74,7 +74,7 @@ static void doTest (char *desc, TEST_FUNC test)
 
 static int test1()
 {//creation of a context
-	gctx = grg_context_initialize ("TST", GRG_TWOFISH, GRG_RIPEMD_160, GRG_BZIP, GRG_LVL_GOOD, GRG_SEC_PARANOIA); 
+	gctx = grg_context_initialize ("TST", GRG_TWOFISH, GRG_RIPEMD_160, GRG_BZIP, GRG_LVL_GOOD, GRG_SEC_PARANOIA);
 	if (gctx)
 		return OK;
 	else
@@ -83,7 +83,7 @@ static int test1()
 
 static int test2()
 {//verifies that the values of the created context are consistent
-	if (grg_get_key_size(gctx) != 32 || 
+	if (grg_get_key_size(gctx) != 32 ||
 		grg_get_block_size(gctx) != 16 ||
 		grg_ctx_get_crypt_algo(gctx) != GRG_TWOFISH ||
 		grg_ctx_get_hash_algo(gctx) != GRG_RIPEMD_160 ||
@@ -102,7 +102,7 @@ static int test3()
 	grg_ctx_set_comp_ratio(gctx, GRG_LVL_BEST);
 	grg_ctx_set_security_lvl(gctx, GRG_SEC_NORMAL);
 
-	if (grg_get_key_size(gctx) != 32 || 
+	if (grg_get_key_size(gctx) != 32 ||
 		grg_get_block_size(gctx) != 16 ||
 		grg_ctx_get_crypt_algo(gctx) != GRG_SERPENT ||
 		grg_ctx_get_hash_algo(gctx) != GRG_SHA1 ||
@@ -152,16 +152,16 @@ static int test6()
 
 	based = grg_encode64 (orig, olen, NULL);
 	debased = grg_decode64 (based, -1, &olen);
-	
+
 	if (strncmp ((char *)orig, (char *)debased, olen) == 0)
 		ret = OK;
 	else
 		ret = KO;
-	
+
 	free (orig);
 	free (based);
 	free (debased);
-	
+
 	return ret;
 }
 
@@ -246,7 +246,7 @@ static int testA()
 	#define PWD7 "q123456"
 	#define PWD8 "23.23k2"
 	// p1=p2 ; p4=p5 ; p4<p3 ; p2<p4<p6 ; p5<p7<p8<p9 ; 0 < [p*] < 1
-	
+
 	double p1 = grg_ascii_pwd_quality (PWD1, -1),
 		p2 = grg_ascii_pwd_quality (PWD2, -1),
 		p3 = grg_ascii_pwd_quality (PWD3, -1),
@@ -299,7 +299,7 @@ static int testB()
 	p1 = grg_file_pwd_quality (name1); unlink (name1);
 	p2 = grg_file_pwd_quality (name2); unlink (name2);
 	p3 = grg_file_pwd_quality (name3); unlink (name3);
-	
+
 	if (p1 >= p2 || p2 >= p3 ||
 		p1 <= 0 || p1 >= 1 ||
 		p2 <= 0 || p2 >= 1 ||
@@ -399,7 +399,7 @@ static int testG()
 		return ret;
 	}
 	close (fd);
-	
+
 	fd = open (name, O_RDONLY);
 	if (fd < 0)
 		return KO;
@@ -465,7 +465,7 @@ static int testI()
 		free (data);
 		return ret;
 	}
-	
+
 	ret=grg_decrypt_file (gctx, key, name, &data2, &ffdim);
 	if (ret < 0){
 		free (data);

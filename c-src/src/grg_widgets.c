@@ -292,7 +292,7 @@ grg_find_dialog (gchar ** needle, gboolean * only_current,
 	*only_current =
 		gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (chk1));
 	*case_sens = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (chk2));
-	
+
 	gtk_widget_destroy (dialog);
 
 	return TRUE;
@@ -405,7 +405,7 @@ grg_display_file (gchar * file)
 	}
 }
 
-GtkWidget * 
+GtkWidget *
 grg_toolbar_insert_stock(GtkToolbar *toolbar,
     const gchar *stock_id,
     const char *tooltip_text,

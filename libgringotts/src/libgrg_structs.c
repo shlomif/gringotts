@@ -68,7 +68,7 @@ grg_context_initialize (const char *header,
 			const grg_security_lvl sec_lvl)
 {
 	GRG_CTX ret = (GRG_CTX) malloc (sizeof (struct _grg_context));
-		
+
 	if (!ret)
 		return NULL;
 
@@ -231,7 +231,7 @@ GRG_KEY
 grg_key_clone (const GRG_KEY src)
 {
 	GRG_KEY clone = (GRG_KEY) malloc (sizeof (struct _grg_key));
-	
+
 	if (clone)
 		memcpy (clone, src, sizeof (struct _grg_key));
 

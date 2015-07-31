@@ -639,7 +639,7 @@ grg_entries_load_from_string (gchar * str, GtkWidget * parent, gboolean X)
  * @txt: a pointer to a byte sequence to store the data in. It must be freed after use!
  * @pwd: the password to decode data
  * @fd: a file pointer to read data from
- * 
+ *
  * Wrapper to grg_load_crypted, to add UTF-8 validation.
  *
  * Returns: 0 if OK; an error code otherwise (see libgringotts' docs)
@@ -773,10 +773,10 @@ grg_entries_find (gchar * needle, glong offset, gboolean only_current,
 			grg_entries_nth (cur);
 		return ret;
 	}
-	
+
 	/* FIXME: this update() is quite misplaced, it's not meant to be
 	  called directly */
 	update();
-	
+
 	return result;
 }

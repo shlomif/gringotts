@@ -24,6 +24,6 @@ install-exec-local:
 	@echo ----------------------------------------------------------------------
 	@echo
 	@echo
-	
+
 uninstall-local:
 	rm -f $(DESTDIR)$(libdir)/pkgconfig/libgringotts.pc

@@ -30,7 +30,7 @@ Have a nice day, and thank you very much,
 
 	Features
 
-This application aims to be as complete and (ehm) feature-ful (?) as possible, 
+This application aims to be as complete and (ehm) feature-ful (?) as possible,
 with a stress on lightness and simplicity. Currently it features:
 
     * Fast, lightweight GTK2 interface
@@ -86,12 +86,12 @@ Taken from README.Debian by:
 Startup failure
 ---------------
 
-If gringotts crashes on startup with a segmentation fault or the message                            
-"gringotts-CRITICAL **: Increase the memory locking limit to at least                            
+If gringotts crashes on startup with a segmentation fault or the message
+"gringotts-CRITICAL **: Increase the memory locking limit to at least
 51200000 bytes. Current limit: <n> bytes.", you have to increase the
 locked memory on your system.
 
-One option would be to copy the gringotts executable and make it not 
+One option would be to copy the gringotts executable and make it not
 SUID-root. If you're interested in the other option - read on.
 
 It might also be a good idea to switch to check if your login manager
@@ -203,7 +203,7 @@ in any particular order:
 
 	Copyright notes
 
-The "Gringotts" application itself is (c) (better, copyleft) 2002 by 
+The "Gringotts" application itself is (c) (better, copyleft) 2002 by
 Germano Rizzo <mano78@users.sourceforge.net>.
 
 You can use, modify and redistribute them /as you wish/ (it's free software! :),

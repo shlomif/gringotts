@@ -31,7 +31,7 @@ struct _GtkCustomTextView
 	guint		tabs_width;
 };
 
-struct _GtkCustomTextViewClass 
+struct _GtkCustomTextViewClass
 {
 	GtkTextViewClass parent_class;
 };

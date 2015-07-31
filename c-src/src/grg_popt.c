@@ -77,7 +77,7 @@ dump_content (gchar * fname, gint ennum, gchar * enpage)
 		   "problem, such as resource exhaustion. Attempting "
 		   "to exit cleanly...",
 			    0, 1, NULL);
-	
+
 	case GRG_ARGUMENT_ERR:
 		report_err (_
 			    ("Gringotts internal error. Cannot finish operation."),
@@ -137,11 +137,11 @@ dump_content (gchar * fname, gint ennum, gchar * enpage)
 			   "problem, such as resource exhaustion. Attempting "
 			   "to exit cleanly...",
 					0, 1, NULL);
-		
+
 		case GRG_ARGUMENT_ERR:
 			report_err (_("Gringotts internal error. Cannot finish operation."),
 					0, 1, NULL);
-	
+
 		case GRG_READ_PWD_ERR:
 			report_err (_("Wrong password! Re-enter it"), 0, 0,
 				    NULL);

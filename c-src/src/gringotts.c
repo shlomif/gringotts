@@ -367,7 +367,7 @@ update (void)
 	gtk_label_set_text (GTK_LABEL (title),
 			    isStuffed ? grg_entries_get_ID () : GRG_CAP_NAME
 			    " " GRG_VERSION);
-	
+
 	gtk_widget_hide(edit);
 	edit=get_updated_sheet(isStuffed);
 	gtk_widget_show(edit);
@@ -523,7 +523,7 @@ revert (void)
 			   "to exit cleanly...");
 			emergency_quit();
 		}
-		
+
 		case GRG_ARGUMENT_ERR:
 		{
 			grg_msg (_
@@ -675,7 +675,7 @@ load_file (gchar * input_filename)
 		   "to exit cleanly...");
 		emergency_quit();
 	}
-	
+
 	case GRG_ARGUMENT_ERR:
 	{
 		close (fd);
@@ -766,7 +766,7 @@ load_file (gchar * input_filename)
 			   "to exit cleanly...");
 			emergency_quit();
 		}
-		
+
 		case GRG_ARGUMENT_ERR:
 		{
 			msg = _("Gringotts internal error. Cannot finish operation.");
@@ -1085,7 +1085,7 @@ save_as (const gchar * fpath)
 		   "to exit cleanly...");
 		emergency_quit();
 	}
-	
+
 	case GRG_ARGUMENT_ERR:
 	{
 		grg_msg (_
@@ -1132,7 +1132,7 @@ save_as (const gchar * fpath)
 #ifdef MAINTAINER_MODE
 		g_assert_not_reached ();
 #else
-		grg_msg (_("Gringotts internal error. Cannot finish operation."), 
+		grg_msg (_("Gringotts internal error. Cannot finish operation."),
 			GTK_MESSAGE_ERROR, win1);
 #endif
 		break;
@@ -1563,9 +1563,9 @@ grg_interface (void)
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scroll),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
-	
+
 	edit = get_updated_sheet (FALSE);
-	
+
 	gtk_container_add (GTK_CONTAINER (scroll), edit);
 
 	/* the title widget */
@@ -1630,10 +1630,10 @@ grg_interface (void)
         button = gtk_tool_button_new (grg_get_security_button(), _("Security"));
 
         gtk_tool_item_set_tooltip_text (button, str);
-        
+
         g_signal_connect (button, "clicked",
             grg_security_monitor, NULL);
-        
+
         gtk_toolbar_insert (GTK_TOOLBAR (tbar_main), button, -1);
     }
 	g_free (str);
@@ -1699,9 +1699,9 @@ grg_interface (void)
         GtkToolItem * button;
 
         button = gtk_tool_item_new ();
-        gtk_container_add (GTK_CONTAINER (button), 
+        gtk_container_add (GTK_CONTAINER (button),
                 gtk_label_new (_("Attached files")));
-        
+
         gtk_tool_item_set_tooltip_text (button, "");
 
         gtk_toolbar_insert (GTK_TOOLBAR (tbar_attach), button, -1);
@@ -1741,9 +1741,9 @@ grg_interface (void)
         GtkToolItem * button;
 
         button = gtk_tool_item_new ();
-        gtk_container_add (GTK_CONTAINER (button), 
+        gtk_container_add (GTK_CONTAINER (button),
                 GTK_WIDGET (combo_attach));
-        
+
         gtk_tool_item_set_tooltip_text (button, _("List of attached files"));
 
         gtk_toolbar_insert (GTK_TOOLBAR (tbar_attach), button, -1);
@@ -1792,7 +1792,7 @@ grg_interface (void)
 	gtk_window_set_geometry_hints (GTK_WINDOW (win1), NULL,
 									&geometry, GDK_HINT_MIN_SIZE);
 	/* and apply custom size preferences */
-	gtk_widget_set_size_request (win1, grg_prefs_mainwin_width,	
+	gtk_widget_set_size_request (win1, grg_prefs_mainwin_width,
 									grg_prefs_mainwin_height);
 	g_signal_connect (G_OBJECT (win1), "size_allocate", G_CALLBACK (mainwin_resize),
 			  NULL);
@@ -1813,7 +1813,7 @@ void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data)
 		/* The window is either iconified, or on another workspace */
 		gtk_widget_show_all(win1);
 		gtk_window_deiconify(GTK_WINDOW(win1));
-	}else{  
+	}else{
 		gtk_widget_hide(win1);
 		gtk_status_icon_set_visible(GTK_STATUS_ICON(status_icon), TRUE);
 	}
@@ -1904,7 +1904,7 @@ main (gint argc, gchar ** argv)
 	guchar *version = grg_get_version (); /* libgringotts version */
 	gint prefs_err;
 	gboolean root = FALSE;
-	
+
 
 	if (!grg_mlockall_and_drop_root_privileges ())
 		exit (1);

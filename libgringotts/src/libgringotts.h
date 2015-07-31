@@ -24,7 +24,7 @@
 #include <sys/types.h>
 
 // if you feel a wee bit confused please
-// read the manual, tipically found at 
+// read the manual, tipically found at
 // /usr/share/doc/libgringotts-<version>/manual.htm
 
 // TYPEDEFS & ENUMERATIONS

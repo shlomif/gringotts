@@ -5,7 +5,7 @@ It all occupies just too much memory. Moreover, it's mlock()ed, so the
 program lives always on the edge... :(
 
 If you open the pref windows and press OK without change anything, the file
-becomes saveable even if you didn't actually make any modification. I'm sorry, 
+becomes saveable even if you didn't actually make any modification. I'm sorry,
 but the severity of the problem isn't worth the complexity of the fix, IMHO.
 
 When opening files with non-latin1 filenames, the title of the window in some

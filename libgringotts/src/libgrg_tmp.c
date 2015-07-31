@@ -154,7 +154,7 @@ grg_tmpfile_read (const GRG_CTX gctx, const GRG_TMPFILE tf,
 	enc_data = (unsigned char *) malloc (dim + HEADER_LEN);
 	if (!enc_data)
 		return GRG_MEM_ALLOCATION_ERR;
-	
+
 	read (tf->tmpfd, enc_data, dim + HEADER_LEN);
 
 	if (mdecrypt_generic (tf->crypt, enc_data, dim + HEADER_LEN))
@@ -175,7 +175,7 @@ grg_tmpfile_read (const GRG_CTX gctx, const GRG_TMPFILE tf,
 		grg_unsafe_free (enc_data);
 		return GRG_MEM_ALLOCATION_ERR;
 	}
-	
+
 	if (data_len)
 		*data_len = dim;
 

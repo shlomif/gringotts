@@ -65,7 +65,7 @@ grg_memdup (const unsigned char *src, long len)
 		return NULL;
 
 	ret = (unsigned char *) malloc (len);
-	
+
 	if (ret)
 		memcpy (ret, src, len);
 
@@ -223,7 +223,7 @@ grg_rnd_seq_direct (const GRG_CTX gctx, unsigned char *toOverwrite,
 
 	if (csize < 0)
 		csize = strlen ((char *)toOverwrite);
-	
+
 #ifdef HAVE__DEV_RANDOM
 	read (gctx->rnd, toOverwrite, csize);
 #else
@@ -253,7 +253,7 @@ unsigned char *
 grg_rnd_seq (const GRG_CTX gctx, const unsigned int size)
 {
 	unsigned char *ret;
-	
+
 	if (!gctx || size < 1)
 		return NULL;
 
@@ -302,7 +302,7 @@ grg_free (const GRG_CTX gctx, void *alloc_data, const long dim)
 
 	if (!pntr)
 		return;
-	
+
 	if (gctx)
 		grg_rnd_seq_direct (gctx, (unsigned char *)pntr, (dim >= 0) ? dim : strlen (pntr));
 
@@ -334,15 +334,15 @@ grg_unsafe_free (void *alloc_data)
  * Calculates an indicative value proportional to the password
  * "quality". Returns a value from 0 to 1, where 0 is the worst
  * password (4 char, all numeric), 1 the approximation of 256
- * bits of real data in the password, or better. The scale is 
- * logarythmic, so it will grow faster for shorter passwords than 
+ * bits of real data in the password, or better. The scale is
+ * logarythmic, so it will grow faster for shorter passwords than
  * for larger ones, since improvements in a scarcely-secure password
  * are more valuable than improvements in better ones.<br>
  * Anyway, this should be used only for ASCII-like passwords, null
- * terminated. If you want to eval more "generic" sequences of 
+ * terminated. If you want to eval more "generic" sequences of
  * bytes, use grg_file_pwd_quality. If you use multibyte encodings,
  * you must convert them to your locale encoding before evaluation.
- * 
+ *
  * Returns: a double between 0 and 1, inclusive
  */
 double
@@ -428,9 +428,9 @@ grg_ascii_pwd_quality (const char *pwd, const long pwd_len)
  * Calculates an indicative value proportional to the password
  * "quality", in the case you want to use a file content as a
  * password. Returns a value from 0 to 1, where 0 is the worst
- * case (empty file), 1 the approximation of 256 bits of real 
+ * case (empty file), 1 the approximation of 256 bits of real
  * data, or better. The scale is linear.
- * 
+ *
  * Returns: a double between 0 and 1, inclusive
  */
 double
@@ -516,7 +516,7 @@ grg_encode64 (const unsigned char *in, const int inlen,
 		*out++ = (origlen < 2) ? '=' : basis_64[(in[1] << 2) & 0x3c];
 		*out++ = '=';
 	}
-	
+
 	ret[olen - 1] = '\0';
 
 	return ret;
@@ -533,7 +533,7 @@ grg_decode64 (const unsigned char *in, const int inlen,
 	if (!in)
 		return NULL;
 
-	tmpinlen = (inlen >= 0) ? inlen : strlen ((char *)in); 
+	tmpinlen = (inlen >= 0) ? inlen : strlen ((char *)in);
 
 	olen = tmpinlen / 4 * 3;
 	if (in[tmpinlen - 1] == '=')
@@ -607,7 +607,7 @@ grg_file_shred (const char *path, const int npasses)
 		close (fd);
 		return GRG_SHRED_CANT_OPEN_FILE;
 	}
-	
+
 	tmpnpasses = (npasses > 0) ? npasses : 1;
 
 	fstat (fd, &buf);
