@@ -28,7 +28,7 @@ Have a nice day, and thank you very much,
 
 Features
 
-This library aims to be as complete as possible, but with a stress on 
+This library aims to be as complete as possible, but with a stress on
 lightness and simplicity. Currently it features:
 
     * High stress on safety & security
@@ -78,7 +78,7 @@ File format 3 comes from a very interesting discussion with Bob Mathews
 ------------------------------------------------------------------------
 Copyright notes
 
-The "libGringotts" library itself is (c) (better, copyleft) 2002 by 
+The "libGringotts" library itself is (c) (better, copyleft) 2002 by
 Germano Rizzo <mano@pluto.linux.it>.
 
 You can use, modify and redistribute them /as you wish/ (it's free
@@ -90,5 +90,5 @@ and the GNU project <http://www.gnu.org>for having created such a
 wonderful concept!
 
 Being quoted by Joanna K. Rowling's books, the very name Gringotts could
-be (c), (r) or (tm) by her or someone in her behalf, altough I'm not aware 
+be (c), (r) or (tm) by her or someone in her behalf, altough I'm not aware
 of it. In case I'm violating any law, just let me know.
