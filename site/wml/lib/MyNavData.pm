@@ -9,7 +9,7 @@ my $hosts =
 {
     'main' =>
     {
-        'base_url' => "http://gringotts.berlios.de/",
+        'base_url' => "http://gringotts.shlomifish.org/",
     },
 };
 
