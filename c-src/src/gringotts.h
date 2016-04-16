@@ -23,6 +23,7 @@
 #define GRINGOTTS_H
 
 #include "grg_defs.h"
+#include <gtk/gtk.h>
 
 extern GList *garbage;
 
@@ -106,5 +107,7 @@ void set_editor_font (const gchar * font_desc);
 
 void update (void);
 extern const char *gringotts_xpm[115];
+
+extern void pack_start_defaults(GtkBox * box, GtkWidget * widget);
 
 #endif

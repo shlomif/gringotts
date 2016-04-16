@@ -214,7 +214,7 @@ grg_list_run (void)
 					      GTK_DIALOG_MODAL, GTK_STOCK_OK,
 					      GTK_RESPONSE_OK, NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), GRG_PAD);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), GRG_PAD);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), GRG_PAD);
 
 	sw = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
@@ -237,7 +237,7 @@ grg_list_run (void)
 	add_columns (GTK_TREE_VIEW (treeview));
 
 	tbar = gtk_toolbar_new ();
-	gtk_toolbar_set_orientation (GTK_TOOLBAR (tbar),
+	gtk_orientable_set_orientation (GTK_ORIENTABLE (tbar),
 				     GTK_ORIENTATION_VERTICAL);
 #if 0
 	gtk_toolbar_set_icon_size (GTK_TOOLBAR (tbar),
@@ -245,11 +245,11 @@ grg_list_run (void)
 #endif
 	bup = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), GTK_STOCK_GO_UP,
 					_("Move up"),
-					(GtkSignalFunc) move_row,
+					(GCallback) move_row,
 					GINT_TO_POINTER (TRUE), -1);
 	bdown = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar),
 					  GTK_STOCK_GO_DOWN, _("Move down"),
-					  (GtkSignalFunc) move_row,
+					  (GCallback) move_row,
 					  GINT_TO_POINTER (FALSE), -1);
 
 	hbox = gtk_hbox_new (FALSE, GRG_PAD);
@@ -257,7 +257,7 @@ grg_list_run (void)
 	gtk_box_pack_start (GTK_BOX (hbox), tbar, FALSE, TRUE, 0);
 	gtk_box_pack_start (GTK_BOX (hbox), sw, TRUE, TRUE, 0);
 
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox, TRUE,
 			    TRUE, 0);
 	gtk_window_set_default_size (GTK_WINDOW (dialog), 180, 250);
 
