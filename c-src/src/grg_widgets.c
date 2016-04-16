@@ -79,6 +79,11 @@ return_submit (GtkWidget * w, GdkEventKey * ev, GtkWidget * w2)
 	return FALSE;
 }
 
+void pack_start_defaults(GtkBox * box, GtkWidget * widget)
+{
+    gtk_box_pack_start(box, widget, TRUE, TRUE, 0);
+}
+
 /**
  * grg_input_dialog:
  * @title: the title of the input dialog
@@ -109,7 +114,7 @@ grg_input_dialog (gchar * title, gchar * qtext, gchar * preset,
 					 GTK_RESPONSE_OK);
 
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), GRG_PAD);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), GRG_PAD);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), GRG_PAD);
 
 	label = gtk_label_new (qtext);
 
@@ -121,9 +126,9 @@ grg_input_dialog (gchar * title, gchar * qtext, gchar * preset,
 		gtk_entry_set_text (GTK_ENTRY (question), preset);
 	gtk_entry_set_visibility (GTK_ENTRY (question), !is_pass);
 
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     label);
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     question);
 
 	gtk_widget_grab_focus (question);
@@ -182,11 +187,11 @@ grg_ask_dialog (gchar * title, gchar * question, gboolean allowcanc,
 					 GTK_RESPONSE_OK);
 
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), GRG_PAD);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), GRG_PAD);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), GRG_PAD);
 
 	label = gtk_label_new (question);
 
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     label);
 
 	gtk_widget_show_all (dialog);
@@ -248,7 +253,7 @@ grg_find_dialog (gchar ** needle, gboolean * only_current,
 					 GTK_RESPONSE_OK);
 
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 3);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 3);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), 3);
 
 	label = gtk_label_new (_("Enter the string to find:"));
 
@@ -267,13 +272,13 @@ grg_find_dialog (gchar ** needle, gboolean * only_current,
 	chk2 = gtk_check_button_new_with_label (_("Case sensitive"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (chk2), *case_sens);
 
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     label);
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     question);
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     chk1);
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     chk2);
 
 	gtk_widget_grab_focus (question);
@@ -319,11 +324,10 @@ grg_wait_msg (gchar * reason, GtkWidget * parent)
 					    GTK_DIALOG_DESTROY_WITH_PARENT,
 					    NULL);
 	gtk_widget_show_all (wait);
-	gtk_dialog_set_has_separator (GTK_DIALOG (wait), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (wait), GRG_PAD);
 
 	hbox_wait = gtk_hbox_new (FALSE, GRG_PAD * 2);
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (wait)->vbox), hbox_wait,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(wait))), hbox_wait,
 			    FALSE, FALSE, 0);
 
 	pix = gdk_pixbuf_new_from_xpm_data (wait_xpm);
@@ -353,7 +357,7 @@ grg_wait_message_change_reason (GtkWidget * wait, gchar * reason)
 	gchar *msg = g_strdup_printf ("%s,\n%s...", _("Please wait"), reason);
 
 	child1 = gtk_container_get_children (GTK_CONTAINER
-					     (GTK_DIALOG (wait)->vbox));
+					     (gtk_dialog_get_content_area(GTK_DIALOG(wait))));
 	child2 = gtk_container_get_children (GTK_CONTAINER (child1->data));
 
 	gtk_label_set_text (GTK_LABEL (child2->next->data), msg);
@@ -409,7 +413,7 @@ GtkWidget *
 grg_toolbar_insert_stock(GtkToolbar *toolbar,
     const gchar *stock_id,
     const char *tooltip_text,
-    GtkSignalFunc callback,
+    GCallback callback,
     gpointer user_data,
     gint position)
 {

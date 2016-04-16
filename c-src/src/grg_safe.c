@@ -429,23 +429,23 @@ grg_security_monitor(void)
 	(struct rlimit *) grg_malloc(sizeof(struct rlimit));
 
     if (!geteuid() || !getegid()) {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Running without root privileges"), red);
     } else {
 	if (!getuid() || !getgid()) {
-	    ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	    ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 			  _("Running without root privileges"), yellow);
 	} else {
-	    ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	    ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 			  _("Running without root privileges"), green);
 	}
     }
     getrlimit(RLIMIT_CORE, rl);
     if (rl->rlim_cur || rl->rlim_max) {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Memory protection from core dumps"), red);
     } else {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Memory protection from core dumps"), green);
     }
     g_free(rl);
@@ -453,42 +453,40 @@ grg_security_monitor(void)
 #ifdef HAVE_MLOCKALL
     /* the pwd isn't stored in cleartext anyway */
     if (mem_safe) {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Memory protection from swap writings"), green);
     } else {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Memory protection from swap writings"), yellow);
     }
 #endif
     if (ptrace_safe) {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Memory protection from ptrace spying"), green);
     } else {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Memory protection from ptrace spying"), red);
     }
 #if defined(ENV_CHECK) && (defined(HAVE_CLEARENV) || defined(HAVE_ENVIRON))
-    ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+    ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		  _("Environmental variables validation"), green)
 #else
-    ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+    ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		  _("Environmental variables validation"), red)
 #endif
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("stdout/stdin/stderr validation"), green)
 	if (grg_ctx_get_security_lvl(gctx) == GRG_SEC_PARANOIA) {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Enforced use of /dev/random"), green);
     } else {
-	ADD_INDICATOR(GTK_DIALOG(dialog)->vbox,
+	ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)),
 		      _("Enforced use of /dev/random"), yellow);
     }
 #ifdef ROOT_FILTER
-    ADD_INDICATOR(GTK_DIALOG(dialog)->
-		  vbox, _("Strict prohibition to root user"), green)
+    ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)), _("Strict prohibition to root user"), green)
 #else
-    ADD_INDICATOR(GTK_DIALOG(dialog)->
-		  vbox, _("Strict prohibition to root user"), yellow)
+    ADD_INDICATOR(gtk_dialog_get_content_area(GTK_DIALOG(dialog)), _("Strict prohibition to root user"), yellow)
 #endif
 	gtk_widget_show_all(dialog);
     gtk_dialog_run(GTK_DIALOG(dialog));

@@ -102,7 +102,7 @@ IF (NOT PKG_CONFIG_FOUND)
 	MESSAGE (FATAL_ERROR "pkg-config not found...")
 ENDIF (NOT PKG_CONFIG_FOUND)
 
-pkg_check_modules (GTK REQUIRED gtk+-2.0>=2.12)
+pkg_check_modules (GTK REQUIRED gtk+-3.0>=3.0)
 IF (NOT GTK_FOUND)
 	MESSAGE(FATAL_ERROR "You don't seem to have gtk >= 2.10 development libraries installed...")
 ENDIF (NOT GTK_FOUND)
@@ -129,9 +129,11 @@ ENDIF (NOT POPT_FOUND)
 # ADD_DEFINITIONS (-DDATADIR=\\\"${CMAKE_INSTALL_PREFIX}/share\\\")
 # ADD_DEFINITIONS (-DBUILDTYPE=\\\"${CMAKE_BUILD_TYPE}\\\")
 ADD_DEFINITIONS (-DHAVE_CONFIG_H=1)
-ADD_DEFINITIONS (-DLOCALEDIR=\"${CMAKE_INSTALL_PREFIX}/share/locale\")
-ADD_DEFINITIONS (-DDOCDIR=\"${CMAKE_INSTALL_PREFIX}/share/doc\")
-
+ADD_DEFINITIONS (-DLOCALEDIR=\\\"${CMAKE_INSTALL_PREFIX}/share/locale\\\")
+ADD_DEFINITIONS (-DDOCDIR=\\\"${CMAKE_INSTALL_PREFIX}/share/doc\\\")
+ADD_DEFINITIONS (
+        "-Werror=implicit-function-declaration"
+)
 IF (${CMAKE_BUILD_TYPE} MATCHES "Debug")
 	SET (CMAKE_C_FLAGS "-Wall")
 ELSE (${CMAKE_BUILD_TYPE} NOT MATCHES "Debug")

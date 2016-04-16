@@ -545,7 +545,7 @@ grg_pref_dialog (GtkWidget * parent)
 	notebook = gtk_notebook_new ();
 	gtk_notebook_append_page (GTK_NOTEBOOK (notebook), tab1,
 				  gtk_label_new (_("Algorithms")));
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (prefs)->vbox), notebook,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(prefs))), notebook,
 			    TRUE, TRUE, GRG_PAD);
 
 	/*second page: General options */

@@ -436,8 +436,8 @@ find (GtkWidget *widget, gpointer callback_data)
 			return;
 
 	buf = grg_entries_get_Body ();
-	if (((current_mode == SIMPLE_ENTRY) && GTK_WIDGET_HAS_FOCUS (simpleSheet))/* ||
-		((current_mode == STRUCT_ENTRY) && GTK_WIDGET_HAS_FOCUS (structSheet))*/)
+	if (((current_mode == SIMPLE_ENTRY) && gtk_widget_has_focus (simpleSheet))/* ||
+		((current_mode == STRUCT_ENTRY) && gtk_widget_has_focus (structSheet))*/)
 	{
 		cursor = gtk_text_buffer_get_mark (entryBuf, "insert");
 		gtk_text_buffer_get_iter_at_mark (entryBuf, &position,

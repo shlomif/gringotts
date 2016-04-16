@@ -74,8 +74,13 @@ meta_browse (GtkWidget * data, GtkWidget * entry)
 	gint response;
 
 	GtkWidget *dlg =
-		GTK_WIDGET (GTK_WIDGET ((GTK_WIDGET (data->parent))->parent)->
-			    parent);
+        gtk_widget_get_parent(
+            gtk_widget_get_parent(
+                gtk_widget_get_parent(
+                    data
+                )
+            )
+        );
 
     file_chooser = gtk_file_chooser_dialog_new (_("Open..."),
             GTK_WINDOW (dlg),
@@ -324,32 +329,32 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog),
 					 GTK_RESPONSE_OK);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 3);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 3);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), 3);
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-	NEW_LABEL (GTK_DIALOG (dialog)->vbox, _("Choose password type:"));
+	NEW_LABEL (gtk_dialog_get_content_area(GTK_DIALOG(dialog)), _("Choose password type:"));
 
 	NEW_RADIO_BUTTON (chk_pwd, NULL, toggle_pwd_chg_file, TYPE_PWD,
-			  _("String"), GTK_DIALOG (dialog)->vbox);
+			  _("String"), gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 	NEW_RADIO_BUTTON (chk_file,
 			  gtk_radio_button_get_group (GTK_RADIO_BUTTON
 						      (chk_pwd)),
 			  toggle_pwd_chg_file, TYPE_FILE, _("File"),
-			  GTK_DIALOG (dialog)->vbox);
+			  gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 	NEW_RADIO_BUTTON (chk_disk,
 			  gtk_radio_button_get_group (GTK_RADIO_BUTTON
 						      (chk_pwd)),
 			  toggle_pwd_chg_file, TYPE_DISK, _("Disk"),
-			  GTK_DIALOG (dialog)->vbox);
+			  gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 
-	NEW_SEPARATOR (GTK_DIALOG (dialog)->vbox);
+	NEW_SEPARATOR (gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 
 	label = gtk_label_new (_("Enter new password:"));
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     label);
 
 	vbox_pwd = gtk_vbox_new (FALSE, GRG_PAD);
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     vbox_pwd);
 
 	label2 = gtk_label_new (_("Enter it again for confirmation:"));
@@ -367,9 +372,9 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 			  G_CALLBACK (return_submit), (gpointer) dialog);
 	gtk_entry_set_visibility (GTK_ENTRY (question2), FALSE);
 
-	gtk_box_pack_start_defaults (GTK_BOX (vbox_pwd), question);
-	gtk_box_pack_start_defaults (GTK_BOX (vbox_pwd), label2);
-	gtk_box_pack_start_defaults (GTK_BOX (vbox_pwd), question2);
+	pack_start_defaults (GTK_BOX (vbox_pwd), question);
+	pack_start_defaults (GTK_BOX (vbox_pwd), label2);
+	pack_start_defaults (GTK_BOX (vbox_pwd), question2);
 
 	hbox_file = gtk_hbox_new (FALSE, GRG_PAD);
 
@@ -382,26 +387,26 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 	browse = gtk_button_new_from_stock (GTK_STOCK_OPEN);
 	g_signal_connect (G_OBJECT (browse), "clicked",
 			  G_CALLBACK (meta_browse), (gpointer) file_entry);
-	gtk_box_pack_start_defaults (GTK_BOX (hbox_file), file_entry);
-	gtk_box_pack_start_defaults (GTK_BOX (hbox_file), browse);
+	pack_start_defaults (GTK_BOX (hbox_file), file_entry);
+	pack_start_defaults (GTK_BOX (hbox_file), browse);
 
-	NEW_SEPARATOR (GTK_DIALOG (dialog)->vbox);
+	NEW_SEPARATOR (gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 
 	quality = gtk_progress_bar_new ();
 	gtk_progress_bar_set_text (GTK_PROGRESS_BAR (quality),
 				   _("password quality"));
 	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (quality), 0.0);
 
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     quality);
 
 	/*show all...*/
 	gtk_widget_grab_focus (question);
-	gtk_widget_show_all (GTK_DIALOG (dialog)->vbox);
+	gtk_widget_show_all (gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 	/*...but the file selection part*/
-	gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox),
+	pack_start_defaults (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))),
 				     hbox_file);
-	gtk_box_reorder_child (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox_file,
+	gtk_box_reorder_child (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox_file,
 			       7);
 
 	while (TRUE)
@@ -574,23 +579,23 @@ grg_ask_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg),
 					 GTK_RESPONSE_CANCEL);
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 3);
-	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dlg)->vbox), 3);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dlg))), 3);
 	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
 
-	NEW_LABEL (GTK_DIALOG (dlg)->vbox, _("Choose password type:"));
+	NEW_LABEL (gtk_dialog_get_content_area(GTK_DIALOG(dlg)), _("Choose password type:"));
 	NEW_RADIO_BUTTON (chk_pwd, NULL, toggle_pwd_file, TYPE_PWD,
-			  _("String"), GTK_DIALOG (dlg)->vbox);
+			  _("String"), gtk_dialog_get_content_area(GTK_DIALOG(dlg)));
 	NEW_RADIO_BUTTON (chk_file,
 			  gtk_radio_button_get_group (GTK_RADIO_BUTTON
 						      (chk_pwd)),
 			  toggle_pwd_file, TYPE_FILE, _("File"),
-			  GTK_DIALOG (dlg)->vbox);
+			  gtk_dialog_get_content_area(GTK_DIALOG(dlg)));
 	NEW_RADIO_BUTTON (chk_disk,
 			  gtk_radio_button_get_group (GTK_RADIO_BUTTON
 						      (chk_pwd)),
 			  toggle_pwd_file, TYPE_DISK, _("Disk"),
-			  GTK_DIALOG (dlg)->vbox);
-	NEW_SEPARATOR (GTK_DIALOG (dlg)->vbox);
+			  gtk_dialog_get_content_area(GTK_DIALOG(dlg)));
+	NEW_SEPARATOR (gtk_dialog_get_content_area(GTK_DIALOG(dlg)));
 
 	hbox = gtk_hbox_new (FALSE, GRG_PAD);
 	entry = gtk_entry_new ();
@@ -610,11 +615,11 @@ grg_ask_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 	sigbrowse_blocked = TRUE;
 	gtk_box_pack_start (GTK_BOX (hbox), util_button, FALSE, FALSE, 0);
 
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlg)->vbox), hbox, FALSE,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dlg))), hbox, FALSE,
 			    FALSE, 0);
 
 	dlabel = gtk_label_new (_("Insert a disk and press Ok"));
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlg)->vbox), dlabel, FALSE,
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG(dlg))), dlabel, FALSE,
 			    FALSE, 0);
 
 	gtk_widget_grab_focus (entry);

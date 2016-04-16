@@ -108,18 +108,18 @@ grg_menu_create (GtkWidget * window)
 	gtk_menu_shell_append (GTK_MENU_SHELL (file), wid);
 
 	NEW_MENU_ITEM (bnew, _("_New"), do_new, NULL, file, GTK_STOCK_NEW,
-		       GDK_N, GDK_CONTROL_MASK);
+		       GDK_KEY_N, GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (file);
 	NEW_MENU_ITEM (bopen, _("_Open"), meta_load, NULL, file,
-		       GTK_STOCK_OPEN, GDK_O, GDK_CONTROL_MASK);
+		       GTK_STOCK_OPEN, GDK_KEY_O, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bsave, _("_Save"), save, NULL, file, GTK_STOCK_SAVE,
-		       GDK_S, GDK_CONTROL_MASK);
+		       GDK_KEY_S, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bsas, _("Save _As"), meta_save_as, NULL, file,
-		       GTK_STOCK_SAVE_AS, GDK_A, GDK_CONTROL_MASK);
+		       GTK_STOCK_SAVE_AS, GDK_KEY_A, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (brev, _("_Revert"), revert, NULL, file,
-		       GTK_STOCK_REVERT_TO_SAVED, GDK_R, GDK_CONTROL_MASK);
+		       GTK_STOCK_REVERT_TO_SAVED, GDK_KEY_R, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bclose, _("_Close"), file_close, NULL, file,
-		       GTK_STOCK_CLOSE, GDK_W, GDK_CONTROL_MASK);
+		       GTK_STOCK_CLOSE, GDK_KEY_W, GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (file);
 	recent = grg_recent_dox;
 	while ((recent != NULL) && (i < GRG_RECENT_LIMIT))
@@ -130,7 +130,7 @@ grg_menu_create (GtkWidget * window)
 	}
 	NEW_MENU_SEPARATOR (file);
 	NEW_MENU_ITEM (bquit, _("_Quit"), meta_quit, NULL, file,
-		       GTK_STOCK_QUIT, GDK_Q, GDK_CONTROL_MASK);
+		       GTK_STOCK_QUIT, GDK_KEY_Q, GDK_CONTROL_MASK);
 
 
 	wid = gtk_menu_item_new_with_mnemonic (_("_File"));
@@ -147,29 +147,29 @@ grg_menu_create (GtkWidget * window)
 	gtk_menu_shell_append (GTK_MENU_SHELL (edit), wid);
 
 	NEW_MENU_ITEM (badd, _("Add"), insert, NULL, edit, GTK_STOCK_ADD,
-		       GDK_D, GDK_CONTROL_MASK);
+		       GDK_KEY_D, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (brem, _("Remove"), del, NULL, edit, GTK_STOCK_REMOVE,
-		       GDK_E, GDK_CONTROL_MASK);
+		       GDK_KEY_E, GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (edit);
 	NEW_MENU_ITEM (bcut, _("Cu_t"), cucopa, GINT_TO_POINTER (GRG_CUT),
-		       edit, GTK_STOCK_CUT, GDK_X, GDK_CONTROL_MASK);
+		       edit, GTK_STOCK_CUT, GDK_KEY_X, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bcop, _("_Copy"), cucopa, GINT_TO_POINTER (GRG_COPY),
-		       edit, GTK_STOCK_COPY, GDK_C, GDK_CONTROL_MASK);
+		       edit, GTK_STOCK_COPY, GDK_KEY_C, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bpaste, _("_Paste"), cucopa,
 		       GINT_TO_POINTER (GRG_PASTE), edit, GTK_STOCK_PASTE,
-		       GDK_V, GDK_CONTROL_MASK);
+		       GDK_KEY_V, GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (edit);
 	NEW_MENU_ITEM (bfind, _("_Find"), find, GINT_TO_POINTER (FALSE), edit,
-		       GTK_STOCK_FIND, GDK_F, GDK_CONTROL_MASK);
+		       GTK_STOCK_FIND, GDK_KEY_F, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bfinda, _("Find a_gain"), find, GINT_TO_POINTER (TRUE),
-		       edit, GTK_STOCK_FIND, GDK_F3, 0);
+		       edit, GTK_STOCK_FIND, GDK_KEY_F3, 0);
 	NEW_MENU_SEPARATOR (edit);
 	NEW_MENU_ITEM (bpwd, _("Change Pass_word"), chpwd, NULL, edit,
-		       GTK_STOCK_CONVERT, GDK_C,
+		       GTK_STOCK_CONVERT, GDK_KEY_C,
 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (edit);
 	NEW_MENU_ITEM (bpref, _("P_references"), launch_prefs, NULL, edit,
-		       GTK_STOCK_PREFERENCES, GDK_P, GDK_CONTROL_MASK);
+		       GTK_STOCK_PREFERENCES, GDK_KEY_P, GDK_CONTROL_MASK);
 
 	wid = gtk_menu_item_new_with_mnemonic (_("_Edit"));
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), edit);
@@ -186,20 +186,20 @@ grg_menu_create (GtkWidget * window)
 
 	NEW_MENU_ITEM (bmfirst, _("_First"), move_around,
 		       GINT_TO_POINTER (GRG_MV_FIRST), nav,
-		       GTK_STOCK_GOTO_FIRST, GDK_I, GDK_CONTROL_MASK);
+		       GTK_STOCK_GOTO_FIRST, GDK_KEY_I, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bmback, _("_Back"), move_around,
 		       GINT_TO_POINTER (GRG_MV_PREV), nav, GTK_STOCK_GO_BACK,
-		       GDK_K, GDK_CONTROL_MASK);
+		       GDK_KEY_K, GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bmfor, _("For_ward"), move_around,
 		       GINT_TO_POINTER (GRG_MV_NEXT), nav,
-		       GTK_STOCK_GO_FORWARD, GDK_W,
+		       GTK_STOCK_GO_FORWARD, GDK_KEY_W,
 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (bmlast, _("_Last"), move_around,
 		       GINT_TO_POINTER (GRG_MV_LAST), nav,
-		       GTK_STOCK_GOTO_LAST, GDK_T, GDK_CONTROL_MASK);
+		       GTK_STOCK_GOTO_LAST, GDK_KEY_T, GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (nav);
 	NEW_MENU_ITEM (bmind, _("_Index"), meta_list, NULL, nav,
-		       GTK_STOCK_INDEX, GDK_X,
+		       GTK_STOCK_INDEX, GDK_KEY_X,
 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 
 	wid = gtk_menu_item_new_with_mnemonic (_("_Navigation"));
@@ -216,7 +216,7 @@ grg_menu_create (GtkWidget * window)
 	gtk_menu_shell_append (GTK_MENU_SHELL (tools), wid);
 
 	NEW_MENU_ITEM (bwipe, _("_Wipe file"), wipe_file, NULL, tools,
-		       GTK_STOCK_CLEAR, GDK_D,
+		       GTK_STOCK_CLEAR, GDK_KEY_D,
 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 
 	wid = gtk_menu_item_new_with_mnemonic (_("_Tools"));
@@ -233,16 +233,16 @@ grg_menu_create (GtkWidget * window)
 	gtk_menu_shell_append (GTK_MENU_SHELL (help), wid);
 
 	NEW_MENU_ITEM (babo, _("_Security monitor"), grg_security_monitor,
-		       NULL, help, GTK_STOCK_HELP, GDK_S,
+		       NULL, help, GTK_STOCK_HELP, GDK_KEY_S,
 		       GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (help);
 	NEW_MENU_ITEM (babo, "_README", readme, NULL, help, GTK_STOCK_HELP,
-		       GDK_R, GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+		       GDK_KEY_R, GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 	NEW_MENU_ITEM (babo, "_FAQ", faq, NULL, help, GTK_STOCK_HELP,
-		       GDK_F, GDK_SHIFT_MASK | GDK_CONTROL_MASK);
+		       GDK_KEY_F, GDK_SHIFT_MASK | GDK_CONTROL_MASK);
 	NEW_MENU_SEPARATOR (help);
 	NEW_MENU_ITEM (babo, _("_About"), about, NULL, help, GTK_STOCK_HELP,
-		       GDK_B, GDK_CONTROL_MASK);
+		       GDK_KEY_B, GDK_CONTROL_MASK);
 
 	wid = gtk_menu_item_new_with_mnemonic (_("_Help"));
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (wid), help);
