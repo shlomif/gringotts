@@ -861,8 +861,8 @@ meta_load (void)
     file_chooser = gtk_file_chooser_dialog_new (_("Open..."),
             GTK_WINDOW(win1),
             GTK_FILE_CHOOSER_ACTION_OPEN,
-            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            "_Cancel", GTK_RESPONSE_CANCEL,
+            "_Open", GTK_RESPONSE_ACCEPT,
             NULL);
 
 	response = gtk_dialog_run (GTK_DIALOG (file_chooser));
@@ -1153,8 +1153,8 @@ meta_save_as (void)
     file_chooser = gtk_file_chooser_dialog_new (_("Save as...."),
                                       GTK_WINDOW(win1),
                                       GTK_FILE_CHOOSER_ACTION_SAVE,
-                                      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                      GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                      "_Cancel", GTK_RESPONSE_CANCEL,
+                                      "_Save", GTK_RESPONSE_ACCEPT,
                                       NULL);
     gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (file_chooser), TRUE);
     response = gtk_dialog_run (GTK_DIALOG (file_chooser));
@@ -1353,8 +1353,8 @@ attach_file (void)
     file_chooser = gtk_file_chooser_dialog_new (_("Select file..."),
             GTK_WINDOW(win1),
             GTK_FILE_CHOOSER_ACTION_OPEN,
-            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            "_Cancel", GTK_RESPONSE_CANCEL,
+            "_Open", GTK_RESPONSE_ACCEPT,
             NULL);
 
     response = gtk_dialog_run (GTK_DIALOG (file_chooser));
@@ -1407,8 +1407,8 @@ save_attached_file (void)
     file_chooser = gtk_file_chooser_dialog_new (_("Save as...."),
                                       GTK_WINDOW(win1),
                                       GTK_FILE_CHOOSER_ACTION_SAVE,
-                                      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                      GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                      "_Cancel", GTK_RESPONSE_CANCEL,
+                                      "_Save", GTK_RESPONSE_ACCEPT,
                                       NULL);
 
     response = gtk_dialog_run (GTK_DIALOG (file_chooser));
@@ -1436,8 +1436,8 @@ wipe_file (void)
     file_chooser = gtk_file_chooser_dialog_new (_("File to wipe"),
             GTK_WINDOW(win1),
             GTK_FILE_CHOOSER_ACTION_OPEN,
-            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-            GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+            "_Cancel", GTK_RESPONSE_CANCEL,
+            "_Open", GTK_RESPONSE_ACCEPT,
             NULL);
 
 	response = gtk_dialog_run (GTK_DIALOG (file_chooser));
