@@ -1,3 +1,6 @@
+/B
+/b
+/build
 c-src/cmake/Shlomif_Common.cmake
 site/wml/dest
 site/wml/include.mak
