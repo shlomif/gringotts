@@ -23,7 +23,6 @@
 
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <mcrypt.h>
 
 #include "grg_defs.h"
 #include "gringotts.h"
