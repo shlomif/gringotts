@@ -53,17 +53,17 @@
 /* appends a stock item to a toolbar */
 #define	TOOLBAR_INS_STOCK(tbar, stock, callback, tooltip) \
 	grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
-		(GtkSignalFunc) callback, NULL, -1)
+		(GCallback) callback, NULL, -1)
 
 /* appends a stock item to a toolbar, assigning it to a widget */
 #define	TOOLBAR_INS_STOCK_WIDGET(tbar, stock, callback, tooltip, wid) \
 	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
-		(GtkSignalFunc) callback, NULL, -1)
+		(GCallback) callback, NULL, -1)
 
 /* appends a stock item to a toolbar, assigning it to a widget and passing a value to the callback */
 #define	TOOLBAR_INS_STOCK_WIDGET_SIGNAL(tbar, stock, callback, tooltip, signal, wid) \
 	wid = grg_toolbar_insert_stock (GTK_TOOLBAR (tbar), stock, tooltip, \
-		(GtkSignalFunc) callback, GINT_TO_POINTER (signal), -1)
+		(GCallback) callback, GINT_TO_POINTER (signal), -1)
 
 /* appends a space to a toolbar */
 #define TOOLBAR_INS_SPACE(tbar) \
@@ -1809,7 +1809,8 @@ grg_interface (void)
 
 void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data)
 {
-	if(gdk_window_get_state(GTK_WIDGET(win1)->window)==1 ||gdk_window_get_state(GTK_WIDGET(win1)->window)==2) {
+    const GdkWindowState state = gdk_window_get_state(gtk_widget_get_window(GTK_WIDGET(win1)));
+    if (state == 1 || state == 2) {
 		/* The window is either iconified, or on another workspace */
 		gtk_widget_show_all(win1);
 		gtk_window_deiconify(GTK_WINDOW(win1));

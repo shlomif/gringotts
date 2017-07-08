@@ -62,7 +62,7 @@ GtkWidget *
 grg_toolbar_insert_stock(GtkToolbar *toolbar,
     const gchar *stock_id,
     const char *tooltip_text,
-    GtkSignalFunc callback,
+    GCallback callback,
     gpointer user_data,
     gint position);
 
