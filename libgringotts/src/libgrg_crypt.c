@@ -393,7 +393,8 @@ grg_encrypt_mem (const GRG_CTX gctx, const GRG_KEY keystruct, void **mem,
 	char *compData;
 	unsigned char *chunk, *toCRC1, *CRC1, *toEnc, *key, *IV,
 		*toCRC2, *CRC2, algo;
-	unsigned int dIV, dKey, err;
+	unsigned int dIV, dKey;
+    int err;
 	long compDim, uncDim;
 	MCRYPT mod;
 
