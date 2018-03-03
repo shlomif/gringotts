@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gringotts 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-11 12:17+0300\n"
+"POT-Creation-Date: 2018-03-03 15:52+0200\n"
 "PO-Revision-Date: 2005-05-14 10:27+0200\n"
 "Last-Translator: Germano Rizzo <mano78@users.sourceforge.net>\n"
 "Language-Team: ITALIAN <IT@li.org>\n"
@@ -14,6 +14,294 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Cannot open file to attach."
+msgstr "Non posso aprire il file da allegare"
+
+msgid "Only regular files can be attached."
+msgstr "Possono essere allegati solo file normali."
+
+msgid "Sorry, currently you can attach files only up to 2 Mb"
+msgstr "Scusa, per ora puoi allegare file solo fino a 2 Mb"
+
+msgid "Enter comment"
+msgstr "Inserisci commento"
+
+msgid ""
+"Please enter a comment for this\n"
+"file (max. 32 chars)"
+msgstr ""
+"Per favore, inserisci un commento\n"
+"per questo file (max. 32 caratteri)"
+
+msgid "none"
+msgstr "niente"
+
+msgid "attaching"
+msgstr "sto allegando"
+
+msgid "Cannot encode tempfile."
+msgstr "Non riesco a criptare il file temporaneo."
+
+msgid "Cannot decode tempfile."
+msgstr "Non riesco a decriptare il file temporaneo."
+
+msgid "saving"
+msgstr "salvataggio"
+
+msgid "Cannot create file, or file already existent."
+msgstr "Non posso creare il file, o file già esistente."
+
+msgid "File name"
+msgstr "Nome del file"
+
+msgid "Dimension"
+msgstr "Dimensione"
+
+msgid "bytes"
+msgstr "byte"
+
+msgid "Comment"
+msgstr "Commento"
+
+msgid "Kb"
+msgstr "Kb"
+
+msgid "Mb"
+msgstr "Mb"
+
+msgid "<no file attached>"
+msgstr "<nessun file allegato>"
+
+msgid "Invalid entry number"
+msgstr "Il numero della pagina non è valido"
+
+msgid "assembling data"
+msgstr "costruzione dati"
+
+msgid "cleaning up"
+msgstr "pulizia"
+
+msgid ""
+"The file has been created with a newer version of Gringotts. If you save it "
+"using this one, some formatting can be lost."
+msgstr ""
+"Il file è stato creato con una versione più recente di Gringotts.Se lo salvi "
+"utilizzando quella corrente, potresti perdere della formattazione."
+
+msgid "Tabs Width"
+msgstr ""
+
+msgid "The text searched could not be found!"
+msgstr "Testo non trovato!"
+
+msgid "Wrap around?"
+msgstr "Ricomincio?"
+
+msgid "Text not found. Continue search from beginning?"
+msgstr "Testo non trovato. Continuo dall'inizio?"
+
+msgid " Index "
+msgstr " Indice"
+
+msgid " Title "
+msgstr " Titolo"
+
+msgid "Index of entries"
+msgstr "Indice delle pagine"
+
+msgid "Move up"
+msgstr "Sposta su"
+
+msgid "Move down"
+msgstr "Sposta giù"
+
+msgid "_New"
+msgstr "_Nuovo"
+
+msgid "_Open"
+msgstr "_Apri..."
+
+msgid "_Save"
+msgstr "_Salva"
+
+msgid "Save _As"
+msgstr "Sa_lva con nome..."
+
+msgid "_Revert"
+msgstr "_Ripristina"
+
+msgid "_Close"
+msgstr "_Chiudi"
+
+msgid "_Quit"
+msgstr "_Esci"
+
+msgid "_File"
+msgstr "_File"
+
+msgid "Add"
+msgstr "Aggiungi"
+
+msgid "Remove"
+msgstr "Rimuovi"
+
+msgid "Cu_t"
+msgstr "Ta_glia"
+
+msgid "_Copy"
+msgstr "_Copia"
+
+msgid "_Paste"
+msgstr "_Incolla"
+
+msgid "_Find"
+msgstr "Tr_ova"
+
+msgid "Find a_gain"
+msgstr "Trova di _nuovo"
+
+msgid "Change Pass_word"
+msgstr "Cambia Pass_word"
+
+msgid "P_references"
+msgstr "_Preferenze"
+
+msgid "_Edit"
+msgstr "_Modifica"
+
+msgid "_First"
+msgstr "_Inizio"
+
+msgid "_Back"
+msgstr "I_ndietro"
+
+msgid "For_ward"
+msgstr "_Avanti"
+
+msgid "_Last"
+msgstr "Fin_e"
+
+msgid "_Index"
+msgstr "In_dice"
+
+msgid "_Navigation"
+msgstr "Na_vigazione"
+
+msgid "_Wipe file"
+msgstr "_Distruggi file"
+
+msgid "_Tools"
+msgstr "S_trumenti"
+
+msgid "_Security monitor"
+msgstr "Monitor della _sicurezza"
+
+msgid "_About"
+msgstr "_Informazioni su..."
+
+msgid "_Help"
+msgstr "Ai_uto"
+
+msgid "Warning"
+msgstr "Attenzione"
+
+msgid "it isn't possible to hide password typing; be extremely careful!"
+msgstr "non è possibile nascondere la password; stai molto attento!"
+
+msgid "The selected file doesn't exists"
+msgstr "Il file selezionato non esiste"
+
+msgid "You've selected a directory or a symlink"
+msgstr "Hai selezionato una directory o un symlink"
+
+msgid "Gringotts internal error. Cannot finish operation."
+msgstr "Errore interno di Gringotts. Non posso completare l'operazione."
+
+msgid "This file doesn't seem to be a valid Gringotts one!"
+msgstr "Questo non sembra essere un file di Gringotts valido!"
+
+msgid "Uh-oh! I can't read from the file!"
+msgstr "Oh-oh! Non posso leggere dal file!"
+
+msgid "The file appears to be corrupted!"
+msgstr "Il file sembra rovinato!"
+
+msgid "File is too big"
+msgstr "Il file è troppo grande"
+
+msgid "You must enter a valid password!"
+msgstr "Devi inserire una password valida!"
+
+msgid "Wrong password! Re-enter it"
+msgstr "Password errata! Riprova"
+
+msgid "Problem with libmcrypt, probably a faulty installation"
+msgstr "Problema con libmcrypt, probabilmente un'installazione difettosa"
+
+msgid "Saved data contain invalid UTF-8 chars"
+msgstr "I dati salvati contengono caratteri UTF-8 invalidi"
+
+msgid "shows the help"
+msgstr "mostra l'help"
+
+msgid "specify the input file to open"
+msgstr "specifica il file di input da aprire"
+
+msgid "FILE"
+msgstr "FILE"
+
+msgid "allow usage as root -- DANGEROUS"
+msgstr "permette l'uso come root -- PERICOLOSO"
+
+msgid "force use of /dev/random -- slower"
+msgstr "uso forzato di /dev/random"
+
+msgid "dump the content of a file"
+msgstr "stampa il contenuto di un file"
+
+msgid "index of the entry to dump"
+msgstr "numero della pagina da stampare"
+
+msgid "NUM"
+msgstr "NUM"
+
+msgid "title of the entry to dump"
+msgstr "titolo della pagina da stampare"
+
+msgid "TXT"
+msgstr "TXT"
+
+msgid "securely wipe a file"
+msgstr "cancella un file in sicurezza"
+
+msgid "passes in file wiping"
+msgstr "passi nella cancellazione"
+
+msgid ""
+"It isn't possible to redirect data to stdin, as it is a potential security "
+"flaw."
+msgstr ""
+"Non si possono redirezionare dati allo stdin, perché è un potenziale buco di "
+"sicurezza."
+
+msgid "The file does not exist"
+msgstr "Il file non esiste"
+
+msgid ""
+"Are you sure you want to wipe this file?\n"
+"Its content will be securely erased, so no\n"
+"recover is possible."
+msgstr ""
+"Sei sicuro di voler eliminare questo file?\n"
+"Il suo contenuto sarà cancellato in maniera\n"
+"sicura, perciò non sarà possibile recuperarlo."
+
+msgid "File wiping failed"
+msgstr "Distruzione non riuscita"
+
+msgid "You must specify a file to dump (with the -f switch)"
+msgstr "Devi specificare un file da stampare (con lo switch -f)"
 
 msgid "Invalid preferences file. Resetting to defaults."
 msgstr "File delle preferenze non valido. Reimposto i valori predefiniti."
@@ -117,192 +405,164 @@ msgstr "Cancella gli appunti alla chiusura di un file"
 msgid "Clear clipboard on exit"
 msgstr "Cancella gli appunti all'uscita"
 
-msgid "Warning"
-msgstr "Attenzione"
+msgid "Open..."
+msgstr "Apri..."
 
-msgid "it isn't possible to hide password typing; be extremely careful!"
-msgstr "non è possibile nascondere la password; stai molto attento!"
+msgid "You must specify a regular file"
+msgstr "Devi specificare un file normale"
 
-msgid "The selected file doesn't exists"
-msgstr "Il file selezionato non esiste"
+msgid "reading file"
+msgstr "lettura file"
 
-msgid "You've selected a directory or a symlink"
-msgstr "Hai selezionato una directory o un symlink"
+msgid "Please insert a disk in the first floppy drive"
+msgstr "Inserire un dischetto nel primo floppy drive"
 
-msgid "Gringotts internal error. Cannot finish operation."
-msgstr "Errore interno di Gringotts. Non posso completare l'operazione."
+msgid "The disk is not write protected. For security reasons, I'll not use it."
+msgstr ""
+"Il disco non è protetto dalla scrittura. Per\n"
+"ragioni di sicurezza, non è possibile usarlo."
 
-msgid "This file doesn't seem to be a valid Gringotts one!"
-msgstr "Questo non sembra essere un file di Gringotts valido!"
+msgid "reading floppy"
+msgstr "lettura dischetto"
 
-msgid "Uh-oh! I can't read from the file!"
-msgstr "Oh-oh! Non posso leggere dal file!"
+msgid "Enter new password"
+msgstr "Inserisci una nuova password"
 
-msgid "The file appears to be corrupted!"
-msgstr "Il file sembra rovinato!"
+msgid "Choose file"
+msgstr "Scegli il file"
 
-msgid "File is too big"
-msgstr "Il file è troppo grande"
+msgid "Insert a disk and press Ok"
+msgstr "Inserire un dischetto e premere Ok"
 
-msgid "You must enter a valid password!"
-msgstr "Devi inserire una password valida!"
+msgid "New password"
+msgstr "Nuova password"
 
-msgid "Wrong password! Re-enter it"
-msgstr "Password errata! Riprova"
+msgid "Choose password type:"
+msgstr "Scegli il tipo di Password:"
 
-msgid "Problem with libmcrypt, probably a faulty installation"
-msgstr "Problema con libmcrypt, probabilmente un'installazione difettosa"
+msgid "String"
+msgstr "Stringa"
 
-msgid "Saved data contain invalid UTF-8 chars"
-msgstr "I dati salvati contengono caratteri UTF-8 invalidi"
+msgid "File"
+msgstr "File"
 
-msgid "shows the help"
-msgstr "mostra l'help"
+msgid "Disk"
+msgstr "Dischetto"
 
-msgid "specify the input file to open"
-msgstr "specifica il file di input da aprire"
+msgid "Enter new password:"
+msgstr "Inserisci una nuova password:"
 
-msgid "FILE"
-msgstr "FILE"
+msgid "Enter it again for confirmation:"
+msgstr "Inseriscila di nuovo per conferma:"
 
-msgid "allow usage as root -- DANGEROUS"
-msgstr "permette l'uso come root -- PERICOLOSO"
+msgid "password quality"
+msgstr "qualità"
 
-msgid "force use of /dev/random -- slower"
-msgstr "uso forzato di /dev/random"
+msgid "The password is too short, it must be at least 4 chars"
+msgstr "La password è troppo corta, deve essere almeno 4 caratteri"
 
-msgid "dump the content of a file"
-msgstr "stampa il contenuto di un file"
+msgid "The two passwords are different"
+msgstr "Le due password sono differenti"
 
-msgid "index of the entry to dump"
-msgstr "numero della pagina da stampare"
+msgid "Enter password"
+msgstr "Inserisci la password"
 
-msgid "NUM"
-msgstr "NUM"
+msgid "Quit"
+msgstr "Esci"
 
-msgid "title of the entry to dump"
-msgstr "titolo della pagina da stampare"
+msgid "Choice"
+msgstr "Scelta"
 
-msgid "TXT"
-msgstr "TXT"
+msgid "Bye, then!"
+msgstr "Allora ciao!"
 
-msgid "securely wipe a file"
-msgstr "cancella un file in sicurezza"
+#, c-format
+msgid "Cannot get MEMLOCK resource limit: %s"
+msgstr ""
 
-msgid "passes in file wiping"
-msgstr "passi nella cancellazione"
+#, c-format
+msgid ""
+"Increase the memory locking limit to at least %d bytes. Current limit: %d "
+"bytes.\n"
+"See /usr/share/doc/gringotts/README for \n"
+"directions or alternatively make gringotts\n"
+"non-SUID-root\n"
+msgstr ""
+
+msgid "The process is setuid root, but I can't lock memory paging"
+msgstr ""
+"Il processo è setuid root, ma non posso bloccare il paging della memoria"
 
 msgid ""
-"It isn't possible to redirect data to stdin, as it is a potential security "
-"flaw."
+"Cannot drop root user privileges. Someone is hacking this process. I cannot "
+"go on"
 msgstr ""
-"Non si possono redirezionare dati allo stdin, perché è un potenziale buco di "
-"sicurezza."
-
-msgid "The file does not exist"
-msgstr "Il file non esiste"
+"Non posso rilasciare i privilegi di utente root. Qualcuno sta controllando "
+"questo processo. Non posso continuare."
 
 msgid ""
-"Are you sure you want to wipe this file?\n"
-"Its content will be securely erased, so no\n"
-"recover is possible."
+"Cannot drop root group privileges. Someone is hacking this process. I cannot "
+"go on"
 msgstr ""
-"Sei sicuro di voler eliminare questo file?\n"
-"Il suo contenuto sarà cancellato in maniera\n"
-"sicura, perciò non sarà possibile recuperarlo."
+"Non posso rilasciare i privilegi di gruppo root. Qualcuno sta controllando "
+"questo processo. Non posso continuare."
 
-msgid "File wiping failed"
-msgstr "Distruzione non riuscita"
+msgid "For security reasons, you cannot run Gringotts as root user."
+msgstr "Per ragioni di sicurezza, non puoi avviare Gringotts come utente root."
 
-msgid "You must specify a file to dump (with the -f switch)"
-msgstr "Devi specificare un file da stampare (con lo switch -f)"
+msgid "Try to compile with --disable-root-filter in ./configure"
+msgstr "Prova a compilare con lo switch di ./configure --disable-root-filter."
 
-msgid "_New"
-msgstr "_Nuovo"
+msgid "Try using -s"
+msgstr "Prova a usare -s"
 
-msgid "_Open"
-msgstr "_Apri..."
+msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
+msgstr "stdin, stdout e/o stderr non sono validi. Non posso continuare."
 
-msgid "_Save"
-msgstr "_Salva"
+msgid "Invalid LANG environment variable:"
+msgstr ""
 
-msgid "Save _As"
-msgstr "Sa_lva con nome..."
+msgid "Invalid XAUTHORITY environment variable:"
+msgstr ""
 
-msgid "_Revert"
-msgstr "_Ripristina"
+msgid "Invalid DISPLAY environment variable:"
+msgstr ""
 
-msgid "_Close"
-msgstr "_Chiudi"
+msgid "optimal"
+msgstr "ottimale"
 
-msgid "_Quit"
-msgstr "_Esci"
+msgid "good"
+msgstr "buona"
 
-msgid "_File"
-msgstr "_File"
+msgid "low"
+msgstr "bassa"
 
-msgid "Add"
-msgstr "Aggiungi"
+msgid "Security monitor"
+msgstr "Monitor della sicurezza"
 
-msgid "Remove"
-msgstr "Rimuovi"
+msgid "Running without root privileges"
+msgstr "In funzione senza i privilegi di root"
 
-msgid "Cu_t"
-msgstr "Ta_glia"
+msgid "Memory protection from core dumps"
+msgstr "Protezione della memoria da core dump"
 
-msgid "_Copy"
-msgstr "_Copia"
+msgid "Memory protection from swap writings"
+msgstr "Protezione della memoria da scritture nello swap"
 
-msgid "_Paste"
-msgstr "_Incolla"
+msgid "Memory protection from ptrace spying"
+msgstr "Protezione della memoria da ptrace"
 
-msgid "_Find"
-msgstr "Tr_ova"
+msgid "Environmental variables validation"
+msgstr "Validazione delle variabili d'ambiente"
 
-msgid "Find a_gain"
-msgstr "Trova di _nuovo"
+msgid "stdout/stdin/stderr validation"
+msgstr "Validazione di stdout/stdin/stderr"
 
-msgid "Change Pass_word"
-msgstr "Cambia Pass_word"
+msgid "Enforced use of /dev/random"
+msgstr "Uso forzato di /dev/random"
 
-msgid "P_references"
-msgstr "_Preferenze"
-
-msgid "_Edit"
-msgstr "_Modifica"
-
-msgid "_First"
-msgstr "_Inizio"
-
-msgid "_Back"
-msgstr "I_ndietro"
-
-msgid "For_ward"
-msgstr "_Avanti"
-
-msgid "_Last"
-msgstr "Fin_e"
-
-msgid "_Index"
-msgstr "In_dice"
-
-msgid "_Navigation"
-msgstr "Na_vigazione"
-
-msgid "_Wipe file"
-msgstr "_Distruggi file"
-
-msgid "_Tools"
-msgstr "S_trumenti"
-
-msgid "_Security monitor"
-msgstr "Monitor della _sicurezza"
-
-msgid "_About"
-msgstr "_Informazioni su..."
-
-msgid "_Help"
-msgstr "Ai_uto"
+msgid "Strict prohibition to root user"
+msgstr "Proibizione totale all'utente root"
 
 msgid "Error"
 msgstr "Errore"
@@ -379,21 +639,12 @@ msgstr ""
 msgid "loading"
 msgstr "caricamento"
 
-msgid "assembling data"
-msgstr "costruzione dati"
-
-msgid "cleaning up"
-msgstr "pulizia"
-
 msgid ""
 "The current password is expired.\n"
 "You should change it, or modify this setting in the preferences"
 msgstr ""
 "La password attuale è scaduta.\n"
 "Dovresti cambiarla, o modificare l'impostazione nelle preferenze"
-
-msgid "Open..."
-msgstr "Apri..."
 
 msgid "My first page"
 msgstr "La mia prima pagina"
@@ -549,257 +800,6 @@ msgstr "Vedi il file COPYING o visita http://www.gnu.org/copyleft/gpl.html"
 
 msgid "File to load does not exists or it is invalid"
 msgstr "Il file da aprire non esiste o non è valido"
-
-msgid " Index "
-msgstr " Indice"
-
-msgid " Title "
-msgstr " Titolo"
-
-msgid "Index of entries"
-msgstr "Indice delle pagine"
-
-msgid "Move up"
-msgstr "Sposta su"
-
-msgid "Move down"
-msgstr "Sposta giù"
-
-msgid "You must specify a regular file"
-msgstr "Devi specificare un file normale"
-
-msgid "reading file"
-msgstr "lettura file"
-
-msgid "Please insert a disk in the first floppy drive"
-msgstr "Inserire un dischetto nel primo floppy drive"
-
-msgid "The disk is not write protected. For security reasons, I'll not use it."
-msgstr ""
-"Il disco non è protetto dalla scrittura. Per\n"
-"ragioni di sicurezza, non è possibile usarlo."
-
-msgid "reading floppy"
-msgstr "lettura dischetto"
-
-msgid "Enter new password"
-msgstr "Inserisci una nuova password"
-
-msgid "Choose file"
-msgstr "Scegli il file"
-
-msgid "Insert a disk and press Ok"
-msgstr "Inserire un dischetto e premere Ok"
-
-msgid "New password"
-msgstr "Nuova password"
-
-msgid "Choose password type:"
-msgstr "Scegli il tipo di Password:"
-
-msgid "String"
-msgstr "Stringa"
-
-msgid "File"
-msgstr "File"
-
-msgid "Disk"
-msgstr "Dischetto"
-
-msgid "Enter new password:"
-msgstr "Inserisci una nuova password:"
-
-msgid "Enter it again for confirmation:"
-msgstr "Inseriscila di nuovo per conferma:"
-
-msgid "password quality"
-msgstr "qualità"
-
-msgid "The password is too short, it must be at least 4 chars"
-msgstr "La password è troppo corta, deve essere almeno 4 caratteri"
-
-msgid "The two passwords are different"
-msgstr "Le due password sono differenti"
-
-msgid "Enter password"
-msgstr "Inserisci la password"
-
-msgid "Quit"
-msgstr "Esci"
-
-msgid "Choice"
-msgstr "Scelta"
-
-msgid "Bye, then!"
-msgstr "Allora ciao!"
-
-msgid "Invalid entry number"
-msgstr "Il numero della pagina non è valido"
-
-msgid "saving"
-msgstr "salvataggio"
-
-msgid ""
-"The file has been created with a newer version of Gringotts. If you save it "
-"using this one, some formatting can be lost."
-msgstr ""
-"Il file è stato creato con una versione più recente di Gringotts.Se lo salvi "
-"utilizzando quella corrente, potresti perdere della formattazione."
-
-msgid "Tabs Width"
-msgstr ""
-
-msgid "The text searched could not be found!"
-msgstr "Testo non trovato!"
-
-msgid "Wrap around?"
-msgstr "Ricomincio?"
-
-msgid "Text not found. Continue search from beginning?"
-msgstr "Testo non trovato. Continuo dall'inizio?"
-
-#, c-format
-msgid "Cannot get MEMLOCK resource limit: %s"
-msgstr ""
-
-#, c-format
-msgid ""
-"Increase the memory locking limit to at least %d bytes. Current limit: %d "
-"bytes.\n"
-"See /usr/share/doc/gringotts/README for \n"
-"directions or alternatively make gringotts\n"
-"non-SUID-root\n"
-msgstr ""
-
-msgid "The process is setuid root, but I can't lock memory paging"
-msgstr ""
-"Il processo è setuid root, ma non posso bloccare il paging della memoria"
-
-msgid ""
-"Cannot drop root user privileges. Someone is hacking this process. I cannot "
-"go on"
-msgstr ""
-"Non posso rilasciare i privilegi di utente root. Qualcuno sta controllando "
-"questo processo. Non posso continuare."
-
-msgid ""
-"Cannot drop root group privileges. Someone is hacking this process. I cannot "
-"go on"
-msgstr ""
-"Non posso rilasciare i privilegi di gruppo root. Qualcuno sta controllando "
-"questo processo. Non posso continuare."
-
-msgid "For security reasons, you cannot run Gringotts as root user."
-msgstr "Per ragioni di sicurezza, non puoi avviare Gringotts come utente root."
-
-msgid "Try to compile with --disable-root-filter in ./configure"
-msgstr "Prova a compilare con lo switch di ./configure --disable-root-filter."
-
-msgid "Try using -s"
-msgstr "Prova a usare -s"
-
-msgid "stdin, stdout and/or stderr are invalid. Cannot continue."
-msgstr "stdin, stdout e/o stderr non sono validi. Non posso continuare."
-
-msgid "Invalid LANG environment variable:"
-msgstr ""
-
-msgid "Invalid XAUTHORITY environment variable:"
-msgstr ""
-
-msgid "Invalid DISPLAY environment variable:"
-msgstr ""
-
-msgid "optimal"
-msgstr "ottimale"
-
-msgid "good"
-msgstr "buona"
-
-msgid "low"
-msgstr "bassa"
-
-msgid "Security monitor"
-msgstr "Monitor della sicurezza"
-
-msgid "Running without root privileges"
-msgstr "In funzione senza i privilegi di root"
-
-msgid "Memory protection from core dumps"
-msgstr "Protezione della memoria da core dump"
-
-msgid "Memory protection from swap writings"
-msgstr "Protezione della memoria da scritture nello swap"
-
-msgid "Memory protection from ptrace spying"
-msgstr "Protezione della memoria da ptrace"
-
-msgid "Environmental variables validation"
-msgstr "Validazione delle variabili d'ambiente"
-
-msgid "stdout/stdin/stderr validation"
-msgstr "Validazione di stdout/stdin/stderr"
-
-msgid "Enforced use of /dev/random"
-msgstr "Uso forzato di /dev/random"
-
-msgid "Strict prohibition to root user"
-msgstr "Proibizione totale all'utente root"
-
-msgid "Cannot open file to attach."
-msgstr "Non posso aprire il file da allegare"
-
-msgid "Only regular files can be attached."
-msgstr "Possono essere allegati solo file normali."
-
-msgid "Sorry, currently you can attach files only up to 2 Mb"
-msgstr "Scusa, per ora puoi allegare file solo fino a 2 Mb"
-
-msgid "Enter comment"
-msgstr "Inserisci commento"
-
-msgid ""
-"Please enter a comment for this\n"
-"file (max. 32 chars)"
-msgstr ""
-"Per favore, inserisci un commento\n"
-"per questo file (max. 32 caratteri)"
-
-msgid "none"
-msgstr "niente"
-
-msgid "attaching"
-msgstr "sto allegando"
-
-msgid "Cannot encode tempfile."
-msgstr "Non riesco a criptare il file temporaneo."
-
-msgid "Cannot decode tempfile."
-msgstr "Non riesco a decriptare il file temporaneo."
-
-msgid "Cannot create file, or file already existent."
-msgstr "Non posso creare il file, o file già esistente."
-
-msgid "File name"
-msgstr "Nome del file"
-
-msgid "Dimension"
-msgstr "Dimensione"
-
-msgid "bytes"
-msgstr "byte"
-
-msgid "Comment"
-msgstr "Commento"
-
-msgid "Kb"
-msgstr "Kb"
-
-msgid "Mb"
-msgstr "Mb"
-
-msgid "<no file attached>"
-msgstr "<nessun file allegato>"
 
 #~ msgid "Invalid environment variables. They could have been manipulated."
 #~ msgstr ""
