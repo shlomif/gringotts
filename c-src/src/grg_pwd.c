@@ -428,6 +428,8 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 			gchar *ret2 =
 				(gchar *)
 				gtk_entry_get_text (GTK_ENTRY (question2));
+            grg_trim_password_trailing_newlines(ret1);
+            grg_trim_password_trailing_newlines(ret2);
 			gint pwd_len = strlen (ret1);
 
 			if (g_utf8_strlen (ret1, -1) < 4)
@@ -634,9 +636,13 @@ grg_ask_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 		switch (curr_type_pwd_req)
 		{
 		case TYPE_PWD:
-			key = grg_key_gen ((guchar*)gtk_entry_get_text
-					   (GTK_ENTRY (entry)), -1);
+        {
+        gchar * password =gtk_entry_get_text
+					   (GTK_ENTRY (entry));
+        grg_trim_password_trailing_newlines(password);
+			key = grg_key_gen ((guchar*)password, -1);
 			exit = TRUE;
+        }
 			break;
 		case TYPE_FILE:
 		{
