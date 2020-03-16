@@ -1,6 +1,6 @@
 =encoding utf8
 
-=head1 gringotts and libgrinotts.
+=head1 gringotts and libgringotts.
 
 See L<http://gringotts.shlomifish.org/> :
 
