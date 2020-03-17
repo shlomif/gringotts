@@ -423,11 +423,13 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 		case TYPE_PWD:
 		{
 			gchar *ret1 =
-				(gchar *)
-				gtk_entry_get_text (GTK_ENTRY (question));
+				g_strdup(
+					gtk_entry_get_text (GTK_ENTRY (question))
+				);
 			gchar *ret2 =
-				(gchar *)
-				gtk_entry_get_text (GTK_ENTRY (question2));
+				g_strdup(
+					gtk_entry_get_text (GTK_ENTRY (question2))
+				);
 			grg_trim_password_trailing_newlines(ret1);
 			grg_trim_password_trailing_newlines(ret2);
 			gint pwd_len = strlen (ret1);
@@ -441,7 +443,7 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 				gtk_entry_set_text (GTK_ENTRY (question2),
 						    "");
 
-				break;
+				goto pwd_release;
 			}
 
 			if (!STR_EQ (ret1, ret2))
@@ -453,12 +455,15 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 				gtk_entry_set_text (GTK_ENTRY (question2),
 						    "");
 
-				break;
+				goto pwd_release;
 			}
 
 			key = grg_key_gen ((guchar*)ret1, pwd_len);
 
 			exit = TRUE;
+pwd_release:
+			g_free(ret1);
+			g_free(ret2);
 			break;
 		}
 		case TYPE_FILE:
@@ -637,9 +642,10 @@ grg_ask_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 		{
 		case TYPE_PWD:
 		{
-			gchar * password = gtk_entry_get_text (GTK_ENTRY (entry));
+			gchar * password = g_strdup(gtk_entry_get_text (GTK_ENTRY (entry)));
 			grg_trim_password_trailing_newlines(password);
 			key = grg_key_gen ((guchar*)password, -1);
+			g_free(password);
 			exit = TRUE;
 		}
 		break;
