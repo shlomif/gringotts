@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 # vim:fenc=utf-8
 #
-# Copyright © 2019 Shlomi Fish <shlomif@cpan.org>
+# Written by Shlomi Fish <shlomif@cpan.org> at 2019
+# based on libgringotts by Germano Rizzo.
 #
-# Distributed under the terms of the Expat license.
+# Distributed under the terms of the GPL - version
+# 2 or at your option any later version.
 
 import os
 import platform
@@ -13,10 +15,6 @@ from cffi import FFI
 
 
 class Gringotts(object):
-    # TEST:$num_befs_weights=5;
-    NUM_BEFS_WEIGHTS = 5
-    FCS_STATE_SUSPEND_PROCESS = 5
-
     def __init__(self, ffi=None, lib=None):
         if ffi:
             self.ffi = ffi
