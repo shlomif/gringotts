@@ -243,5 +243,10 @@ int grg_file_shred (const char *path, const int npasses);
     def new_fcs_user_handle(self):
         return self.__class__(ffi=self.ffi, lib=self.lib)
 
+    def test1(self):
+        gctx = self.lib.grg_context_initialize_defaults("GRG".encode('ascii'))
+        print(gctx)
+
 
 g = Gringotts()
+g.test1()
