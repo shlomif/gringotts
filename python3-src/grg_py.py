@@ -245,6 +245,9 @@ int grg_file_shred (const char *path, const int npasses);
 
     def test1(self):
         gctx = self.lib.grg_context_initialize_defaults("GRG".encode('ascii'))
+        key = self.lib.grg_key_gen("rindolf24".encode('utf-8'), -1)
+        print(key)
+        self.lib.grg_key_free(gctx, key)
         print(gctx)
         self.lib.grg_context_free(gctx)
 
