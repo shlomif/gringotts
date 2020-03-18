@@ -7,6 +7,7 @@
 
 import os
 import platform
+import unittest
 
 from cffi import FFI
 
@@ -248,7 +249,7 @@ int grg_file_shred (const char *path, const int npasses);
         gctx = self.lib.grg_context_initialize_defaults("GRG".encode('ascii'))
         key = self.lib.grg_key_gen("rindolf24".encode('utf-8'), -1)
         print(key)
-        fd = os.open("/tmp/rindolf.grg", os.O_RDONLY)
+        fd = os.open("./tests/data/rindolf.grg", os.O_RDONLY)
         print(fd)
 
         text = self.ffi.new('unsigned char * *')
@@ -260,11 +261,23 @@ int grg_file_shred (const char *path, const int npasses);
         text_buf = self.ffi.buffer(text_str, length[0])
 
         print(bytes(text_buf))
+        self.unittest.assertTrue(
+            "<body>Go forth.</body>" in bytes(text_buf).decode('utf-8'))
         os.close(fd)
         self.lib.grg_key_free(gctx, key)
         print(gctx)
         self.lib.grg_context_free(gctx)
 
 
-g = Gringotts()
-g.test1()
+class MyTests(unittest.TestCase):
+    def test1(self):
+        g = Gringotts()
+        g.unittest = self
+        g.test1()
+
+
+if __name__ == "__main__":
+    # plan(7)
+    from pycotap import TAPTestRunner
+    suite = unittest.TestLoader().loadTestsFromTestCase(MyTests)
+    TAPTestRunner().run(suite)
