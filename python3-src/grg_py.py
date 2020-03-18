@@ -250,19 +250,21 @@ int grg_file_shred (const char *path, const int npasses);
         fd = os.open("./tests/data/rindolf.grg", os.O_RDONLY)
         print(fd)
 
-        text = self.ffi.new('unsigned char * *')
-        length = self.ffi.new('long *')
+        text = self.ffi.new('unsigned char * *', self.ffi.NULL)
+        length = self.ffi.new('long *', 0)
         errcode = self.lib.grg_decrypt_file_direct(
             gctx, key, fd, text, length)
         print(errcode)
         text_str = text[0]
-        text_buf = self.ffi.buffer(text_str, length[0])
+        text_buf = bytes(self.ffi.buffer(text_str, length[0]))
+        self.lib.grg_free(gctx, text_str, -1)
 
-        print(bytes(text_buf))
-        self.unittest.assertTrue(
-            "<body>Go forth.</body>" in bytes(text_buf).decode('utf-8'))
         os.close(fd)
         self.lib.grg_key_free(gctx, key)
+
+        # print(bytes(text_buf))
+        self.unittest.assertTrue(
+            "<body>Go forth.</body>" in text_buf.decode('utf-8'))
         print(gctx)
         self.lib.grg_context_free(gctx)
 
