@@ -5,6 +5,7 @@
 #
 # Distributed under the terms of the Expat license.
 
+import os
 import platform
 
 from cffi import FFI
@@ -247,6 +248,19 @@ int grg_file_shred (const char *path, const int npasses);
         gctx = self.lib.grg_context_initialize_defaults("GRG".encode('ascii'))
         key = self.lib.grg_key_gen("rindolf24".encode('utf-8'), -1)
         print(key)
+        fd = os.open("/tmp/rindolf.grg", os.O_RDONLY)
+        print(fd)
+
+        text = self.ffi.new('unsigned char * *')
+        length = self.ffi.new('long *')
+        errcode = self.lib.grg_decrypt_file_direct(
+            gctx, key, fd, text, length)
+        print(errcode)
+        text_str = text[0]
+        text_buf = self.ffi.buffer(text_str, length[0])
+
+        print(bytes(text_buf))
+        os.close(fd)
         self.lib.grg_key_free(gctx, key)
         print(gctx)
         self.lib.grg_context_free(gctx)
