@@ -246,6 +246,7 @@ int grg_file_shred (const char *path, const int npasses);
     def test1(self):
         gctx = self.lib.grg_context_initialize_defaults("GRG".encode('ascii'))
         print(gctx)
+        self.lib.grg_context_free(gctx)
 
 
 g = Gringotts()
