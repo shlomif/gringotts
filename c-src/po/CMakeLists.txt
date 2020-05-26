@@ -11,7 +11,7 @@ IF(NOT MSGFMT)
 			------")
 ELSE(NOT MSGFMT)
 
-	SET(catalogname sakura)
+	SET(catalogname gringotts)
 
 	FILE (GLOB PO_FILES *.po)
 	FILE (GLOB SOURCES ../src/*.c)
@@ -19,13 +19,13 @@ ELSE(NOT MSGFMT)
 	ADD_CUSTOM_TARGET(translations ALL)
 
 	ADD_CUSTOM_COMMAND(TARGET translations
-		COMMAND ${XGETTEXT} -o sakura.pot --keyword=_ --keyword=N_ --no-location --from-code=utf-8 ${SOURCES}
+		COMMAND ${XGETTEXT} -o gringotts.pot --keyword=_ --keyword=N_ --no-location --from-code=utf-8 ${SOURCES}
 		DEPENDS ${_poFile})
 	FOREACH(_poFile ${PO_FILES})
 		GET_FILENAME_COMPONENT(_lang ${_poFile} NAME_WE)
 		SET(_moFile ${_lang}.mo)
 		ADD_CUSTOM_COMMAND(TARGET translations
-				COMMAND ${MSGMERGE} -q -U ${_poFile} --backup=none sakura.pot
+				COMMAND ${MSGMERGE} -q -U ${_poFile} --backup=none gringotts.pot
 				COMMAND ${MSGFMT} --check -o ${_moFile} ${_poFile}
 				DEPENDS ${_poFile})
 		INSTALL(FILES ${CMAKE_BINARY_DIR}/po/${_moFile}

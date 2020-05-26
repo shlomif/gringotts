@@ -166,36 +166,11 @@ ADD_EXECUTABLE (gringotts-exe
         src/grg_xpm.c
         )
 
-# ADD_DEPENDENCIES (sakura src/sakura.c src/sakura.h)
-
 ADD_SUBDIRECTORY (po)
 
 INSTALL (TARGETS "gringotts-exe" RUNTIME DESTINATION bin RENAME "gringotts")
-# INSTALL (FILES sakura.desktop DESTINATION share/applications)
-# INSTALL (FILES terminal-tango.svg DESTINATION share/pixmaps)
-#IF (POD2MAN)
-#	INSTALL (FILES ${sakura_BINARY_DIR}/sakura.1 DESTINATION share/man/man1)
-#ENDIF (POD2MAN)
-
-# INSTALL (FILES INSTALL DESTINATION share/doc/sakura)
-
-FILE (GLOB MO_FILES po/*.mo)
 
 CONFIGURE_FILE(
     ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
     ${CMAKE_CURRENT_BINARY_DIR}/config.h
     )
-
-SET_DIRECTORY_PROPERTIES (PROPERTIES
-	ADDITIONAL_MAKE_CLEAN_FILES "${MO_FILES};po/sakura.pot")
-SET (EXECUTABLE_OUTPUT_PATH src)
-
-ADD_CUSTOM_TARGET (distclean
-	rm -f Makefile cmake_install.cmake CMakeCache.txt install_manifest.txt
-	COMMAND rm -f po/*.mo po/gringotts.pot po/Makefile po/cmake_install.cmake
-	COMMAND rm -rf CMakeFiles po/CMakeFiles)
-
-# IF (POD2MAN)
-# ADD_CUSTOM_TARGET(man ALL
-# 	COMMAND ${POD2MAN} -u --section=1 --release=${VERSION} --center '' ${gringotts_SOURCE_DIR}/gringotts.pod grin.1)
-# ENDIF (POD2MAN)
