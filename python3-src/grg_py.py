@@ -265,6 +265,7 @@ int grg_file_shred (const char *path, const int npasses);
         # print(bytes(text_buf))
         self.unittest.assertTrue(
             "<body>Go forth.</body>" in text_buf.decode('utf-8'))
+        print(text_buf.decode('utf-8'))
         print(gctx)
         self.lib.grg_context_free(gctx)
 

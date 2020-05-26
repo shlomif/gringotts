@@ -24,10 +24,10 @@
 
 #define GRG_RECENT_LIMIT 	6
 
-GSList *grg_recent_dox;
+extern GSList *grg_recent_dox;
 
-void grg_recent_dox_init (void);
-void grg_recent_dox_deinit (void);
-void grg_recent_dox_push (const gchar * file);
+extern void grg_recent_dox_init (void);
+extern void grg_recent_dox_deinit (void);
+extern void grg_recent_dox_push (const gchar * file);
 
 #endif
