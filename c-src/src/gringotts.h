@@ -25,10 +25,10 @@
 #include "grg_defs.h"
 #include <gtk/gtk.h>
 
-GList *garbage;
+extern GList *garbage;
 
-GRG_CTX gctx;
-glong pwdbirth;
+extern GRG_CTX gctx;
+extern glong pwdbirth;
 
 	/*callbacks for menu items */
 

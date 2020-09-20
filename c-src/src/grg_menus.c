@@ -31,6 +31,21 @@
 
 #include <gdk/gdkkeysyms.h>
 
+/* menu File */
+GtkWidget *bnew, *bopen, *bsave, *bsas, *brev, *bclose, *bquit;
+
+/* menu Edit */
+GtkWidget *badd, *brem, *bcut, *bcop, *bpaste, *bfind, *bfinda, *bpwd, *bpref;
+
+/* menu Navigation */
+GtkWidget *bmfirst, *bmback, *bmfor, *bmlast, *bmind;
+
+/* menu Tools */
+GtkWidget *bwipe;
+
+/* menu Help */
+GtkWidget *babo;
+
 #define NEW_MENU_ITEM(var, text, cb, data, parent, img, key, mod) \
 	var = gtk_image_menu_item_new_with_mnemonic(text); \
 	gtk_menu_shell_append (GTK_MENU_SHELL (parent), var); \

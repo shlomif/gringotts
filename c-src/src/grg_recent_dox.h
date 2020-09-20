@@ -24,7 +24,7 @@
 
 #define GRG_RECENT_LIMIT 	6
 
-GSList *grg_recent_dox;
+extern GSList *grg_recent_dox;
 
 void grg_recent_dox_init (void);
 void grg_recent_dox_deinit (void);
