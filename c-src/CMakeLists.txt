@@ -171,6 +171,15 @@ ADD_EXECUTABLE (gringotts-exe
 ADD_SUBDIRECTORY (po)
 
 INSTALL (PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/gringotts-exe" DESTINATION bin RENAME "gringotts")
+# INSTALL (FILES sakura.desktop DESTINATION share/applications)
+# INSTALL (FILES terminal-tango.svg DESTINATION share/pixmaps)
+#IF (POD2MAN)
+#	INSTALL (FILES ${sakura_BINARY_DIR}/sakura.1 DESTINATION share/man/man1)
+#ENDIF (POD2MAN)
+
+# INSTALL (FILES INSTALL DESTINATION share/doc/sakura)
+
+FILE (GLOB MO_FILES po/*.mo)
 
 CONFIGURE_FILE(
     ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
