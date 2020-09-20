@@ -172,7 +172,7 @@ ADD_EXECUTABLE (gringotts-exe
 
 ADD_SUBDIRECTORY (po)
 
-INSTALL (TARGETS "gringotts-exe" RUNTIME DESTINATION bin RENAME "gringotts")
+INSTALL (PROGRAMS "${CMAKE_CURRENT_BINARY_DIR}/gringotts-exe" DESTINATION bin RENAME "gringotts")
 # INSTALL (FILES sakura.desktop DESTINATION share/applications)
 # INSTALL (FILES terminal-tango.svg DESTINATION share/pixmaps)
 #IF (POD2MAN)
