@@ -1580,7 +1580,7 @@ grg_interface (void)
 
 	/* the title widget */
 	title = gtk_label_new ("");
-	gtk_misc_set_alignment (GTK_MISC (title), 0.1, 0.5);
+	gtk_misc_set_alignment (GTK_MISC (title), (gfloat)0.1, 0.5);
 	btitle = gtk_button_new_with_mnemonic (_("E_dit..."));
 	g_signal_connect (G_OBJECT (btitle), "clicked", G_CALLBACK (retitle),
 			  NULL);
@@ -1817,7 +1817,7 @@ grg_interface (void)
 }
 
 
-void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data)
+static void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data GCC_UNUSED)
 {
 	if(gtk_widget_get_visible(GTK_WIDGET(win1))) {
 		/* The window is either iconified, or on another workspace */
@@ -1829,29 +1829,29 @@ void tray_icon_on_click(GtkStatusIcon *status_icon, gpointer user_data)
 	}
 }
 
-void tray_button_view(GtkMenuItem *item, gpointer window)
+static void tray_button_view(GtkMenuItem *item GCC_UNUSED, gpointer window)
 {
 	gtk_widget_show(GTK_WIDGET(window));
 	gtk_window_deiconify(GTK_WINDOW(window));
 }
 
-void tray_button_exit(GtkMenuItem *item, gpointer user_data)
+static void tray_button_exit(GtkMenuItem *item GCC_UNUSED, gpointer user_data GCC_UNUSED)
 {
 	meta_quit();
 }
 
-void tray_button_about(GtkMenuItem *item, gpointer user_data)
+static void tray_button_about(GtkMenuItem *item GCC_UNUSED, gpointer user_data GCC_UNUSED)
 {
 	about();
 }
 
-void trayIconPopup(GtkStatusIcon *status_icon, guint button, guint32 activate_time, gpointer popUpMenu)
+static void trayIconPopup(GtkStatusIcon *status_icon, guint button, guint32 activate_time, gpointer popUpMenu)
 {
 	gtk_menu_popup(GTK_MENU(popUpMenu), NULL, NULL, gtk_status_icon_position_menu, status_icon, button, activate_time);
 }
 
 /* Creates a GTK-Tray-icon: */
-GtkStatusIcon *create_tray_icon(void)
+static GtkStatusIcon *create_tray_icon(void)
 {
 	GtkStatusIcon *tray_icon;
 
@@ -1866,7 +1866,7 @@ GtkStatusIcon *create_tray_icon(void)
 }
 
 /* Initiates the Tray-icon: */
-void tray_icon_init(void)
+static void tray_icon_init(void)
 {
 	GtkWidget *menu, *menuItemView, *menuItemExit, *menuItemAbout, *menuItemSeparator;
 	GtkStatusIcon *tray_icon;
@@ -1911,7 +1911,7 @@ gint
 main (gint argc, gchar ** argv)
 {
 	gchar *file2load = NULL, *file2loadInArgv = NULL, *finalfile = NULL;
-	guchar *version = grg_get_version (); /* libgringotts version */
+	gchar *version = grg_get_version (); /* libgringotts version */
 	gint prefs_err;
 	gboolean root = FALSE;
 
@@ -1919,7 +1919,7 @@ main (gint argc, gchar ** argv)
 	if (!grg_mlockall_and_drop_root_privileges ())
 		exit (1);
 
-	gctx = grg_context_initialize_defaults ((guchar*)"GRG");
+	gctx = grg_context_initialize_defaults ("GRG");
 
 	/*parse cmdline args */
 	grg_parse_argv (argc, argv, &file2loadInArgv, &root);

@@ -24,25 +24,6 @@
 
 #include <gtk/gtk.h>
 
-static void grg_trim_password_trailing_newlines(gchar * const pwd)
-{
-    gchar * const start = pwd;
-    gchar * end = strchr(start, '\0');
-    --end;
-    while (end >= start)
-    {
-        const gchar ch = *end;
-        if ((ch == '\n')||(ch == '\r'))
-        {
-            *end = '\0';
-            --end;
-        }
-        else
-        {
-            break;
-        }
-    }
-}
 /*Asks for a new password, validating it.*/
 GRG_KEY grg_new_pwd_dialog (GtkWidget * parent, gboolean *cancelled);
 

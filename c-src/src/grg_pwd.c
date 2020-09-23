@@ -41,6 +41,7 @@
 #if defined(BLOCK_DEV_IS_FLOPPY) && defined(HAVE_LINUX_FD_H)
 #include <linux/fd.h>
 #endif
+#include "rinutils/unused.h"
 
 #define TYPE_PWD	0
 #define TYPE_FILE	1
@@ -66,6 +67,26 @@
 
 #define NEW_SEPARATOR(box) \
 	gtk_box_pack_start (GTK_BOX (box), gtk_hseparator_new (), FALSE, FALSE, GRG_PAD);
+
+static void grg_trim_password_trailing_newlines(gchar * const pwd)
+{
+    gchar * const start = pwd;
+    gchar * end = strchr(start, '\0');
+    --end;
+    while (end >= start)
+    {
+        const gchar ch = *end;
+        if ((ch == '\n')||(ch == '\r'))
+        {
+            *end = '\0';
+            --end;
+        }
+        else
+        {
+            break;
+        }
+    }
+}
 
 static void
 meta_browse (GtkWidget * data, GtkWidget * entry)
@@ -112,7 +133,8 @@ static GRG_KEY
 read_pwd_file (const gchar * path, GtkWidget * dlg, gboolean X)
 {
 	GtkWidget *wait = NULL;
-	gint fd, len;
+	gint fd;
+    off_t len;
 	gchar *upath;
     guchar *pwd;
 	GRG_KEY key;
@@ -141,9 +163,9 @@ read_pwd_file (const gchar * path, GtkWidget * dlg, gboolean X)
 	if (X)
 		wait = grg_wait_msg (_("reading file"), dlg);
 
-	pwd = mmap (NULL, len, PROT_READ, MAP_PRIVATE, fd, 0);
-	key = grg_key_gen (pwd, len);
-	munmap (pwd, len);
+	pwd = mmap (NULL, (size_t)len, PROT_READ, MAP_PRIVATE, fd, 0);
+	key = grg_key_gen ((const char *)pwd, (int)len);
+	munmap (pwd, (size_t)len);
 	close (fd);
 
 	if (X)
@@ -156,7 +178,8 @@ static GRG_KEY
 read_pwd_disk (GtkWidget * dlg, gboolean X)
 {
 	GtkWidget *wait = NULL;
-	gint fd, len;
+	gint fd;
+    off_t len;
 	guchar *file;
 	GRG_KEY key = NULL;
 
@@ -194,9 +217,9 @@ read_pwd_disk (GtkWidget * dlg, gboolean X)
 	if (X)
 		wait = grg_wait_msg (_("reading floppy"), dlg);
 
-	file = mmap (NULL, len, PROT_READ, MAP_PRIVATE, fd, 0);
-	key = grg_key_gen (file, len);
-	munmap (file, len);
+	file = mmap (NULL, (size_t)len, PROT_READ, MAP_PRIVATE, fd, 0);
+	key = grg_key_gen ((const char *)file, (int)len);
+	munmap (file, (size_t)len);
 	close (fd);
 
 	if (X)
@@ -251,13 +274,13 @@ toggle_pwd_chg_file (GtkWidget * data, gpointer value)
 }
 
 static void
-vis_quality (gpointer ignore, gpointer type)
+vis_quality (gpointer ignore GCC_UNUSED, gpointer type)
 {
 	switch (GPOINTER_TO_INT (type))
 	{
 	case TYPE_PWD:
 	{
-		gsize bout;
+		gsize bout = 0;
 		gchar *sq = NULL;
 
 		if (!mapIsUTF)
@@ -266,7 +289,7 @@ vis_quality (gpointer ignore, gpointer type)
 						 NULL, &bout, NULL);
 
 		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (quality),
-					       grg_ascii_pwd_quality ((guchar*)(mapIsUTF
+					       grg_ascii_pwd_quality ((const char*)(mapIsUTF
 								      ?
 								      gtk_entry_get_text
 								      (GTK_ENTRY
@@ -279,7 +302,7 @@ vis_quality (gpointer ignore, gpointer type)
 								       -1)));
 
 		if (!mapIsUTF)
-			GRGFREE (sq, bout);
+			GRGFREE (sq, (long)bout);
 	}
 		break;
 	case TYPE_FILE:
@@ -290,7 +313,7 @@ vis_quality (gpointer ignore, gpointer type)
 								  (file_entry)),
 					      -1, NULL, NULL, NULL);
 		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (quality),
-					       grg_file_pwd_quality ((guchar*)upath));
+					       grg_file_pwd_quality ((char*)upath));
 		g_free (upath);
 	}
 		break;
@@ -437,7 +460,7 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 				);
 			grg_trim_password_trailing_newlines(ret1);
 			grg_trim_password_trailing_newlines(ret2);
-			gint pwd_len = strlen (ret1);
+			size_t pwd_len = strlen (ret1);
 
 			if (g_utf8_strlen (ret1, -1) < 4)
 			{
@@ -463,7 +486,7 @@ grg_new_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 				goto pwd_release;
 			}
 
-			key = grg_key_gen ((guchar*)ret1, pwd_len);
+			key = grg_key_gen (ret1, pwd_len);
 
 			exit = TRUE;
 pwd_release:
@@ -508,7 +531,7 @@ static guint sigclear, sigbrowse, curr_type_pwd_req = TYPE_PWD;
 static gboolean sigbrowse_blocked;
 
 static void
-clear_entry (GtkWidget * data, GtkWidget * dentry)
+clear_entry (GtkWidget * data GCC_UNUSED, GtkWidget * dentry)
 {
 	gtk_entry_set_text (GTK_ENTRY (dentry), "");
 }
@@ -519,7 +542,7 @@ toggle_pwd_file (GtkWidget * data, gpointer value)
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (data)))
 		return;
 
-	curr_type_pwd_req = GPOINTER_TO_INT (value);
+	curr_type_pwd_req = GPOINTER_TO_UINT (value);
 
 	switch (curr_type_pwd_req)
 	{
@@ -649,7 +672,7 @@ grg_ask_pwd_dialog (GtkWidget * parent, gboolean * cancelled)
 		{
 			gchar * password = g_strdup(gtk_entry_get_text (GTK_ENTRY (entry)));
 			grg_trim_password_trailing_newlines(password);
-			key = grg_key_gen ((guchar*)password, -1);
+			key = grg_key_gen ((const char*)password, -1);
 			g_free(password);
 			exit = TRUE;
 		}

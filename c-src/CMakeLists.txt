@@ -143,7 +143,7 @@ ENDIF (${CMAKE_BUILD_TYPE} MATCHES "Debug")
 IF ("$ENV{FCS_CLANG}")
     # ADD_DEFINITIONS("-Weverything -Wno-language-extension-token -Wno-padded -Wno-gnu-statement-expression -Wno-unused-parameter -Wno-vla -Wno-cast-align -Wno-used-but-marked-unused -Wno-cast-qual -Wno-comma -Wno-disabled-macro-expansion -Wno-extra-semi-stmt -Wno-documentation-unknown-command -Wno-documentation -Wno-documentation-deprecated-sync -Wno-pass-failed -Wno-implicit-fallthrough")
     # ADD_DEFINITIONS("-Weverything")
-    ADD_DEFINITIONS("-Weverything  -Wno-documentation-unknown-command -Wno-documentation -Wno-padded -Wno-reserved-id-macro")
+    ADD_DEFINITIONS("-Weverything -Wno-deprecated-declarations -Wno-documentation-unknown-command -Wno-documentation -Wno-padded -Wno-reserved-id-macro")
 ENDIF ()
 
 IF ("$ENV{FCS_GCC}")
