@@ -49,6 +49,7 @@
 #include <libgringotts.h>
 
 #include "gringotts.h"
+#include "rinutils/unused.h"
 
 /* appends a stock item to a toolbar */
 #define	TOOLBAR_INS_STOCK(tbar, stock, callback, tooltip) \
@@ -122,7 +123,7 @@ nyi (void)
 }*/
 
 static void
-garbage_collect (gpointer att, gpointer user_data)
+garbage_collect (gpointer att, gpointer user_data GCC_UNUSED)
 {
 	GRGAFREE (att);
 }
@@ -186,12 +187,20 @@ launch_prefs (void)
 	grg_pref_dialog (win1);
 }
 
+#if defined(__GNUC__)
+#define GCC_fallthrough __attribute__((fallthrough));
+#define GCC_NORETURN __attribute__((noreturn))
+#else
+#define GCC_fallthrough
+#define GCC_NORETURN
+#endif
+
 /**
  * quit:
  *
  * Exits the main application cycle, releasing the resources.
  */
-void
+GCC_NORETURN void
 quit (gint code)
 {
 	grg_key_free (gctx, key);
@@ -214,6 +223,7 @@ quit (gint code)
 /**
  * `Ungracefully' quits, shutting down all resources in a safe way
  */
+GCC_NORETURN
 void
 emergency_quit (void)
 {
@@ -304,7 +314,7 @@ backup_file (gchar * filename)
  * Controls if update_saveable() can be called, and if so calls it.
  */
 void
-meta_saveable (gpointer data, gpointer user_data)
+meta_saveable (gpointer data GCC_UNUSED, gpointer user_data)
 {
 	if (started)
 		update_saveable ((grg_saveable) GPOINTER_TO_INT (user_data));
@@ -422,8 +432,8 @@ file_close (void)
 			return resp;
 		case GRG_YES:
 			save ();
+            GCC_fallthrough
 		case GRG_NO:
-		default:
 			if (grg_prefs_clip_clear_on_close)
 				clear_clipboard ();
 		}
@@ -894,7 +904,7 @@ meta_load (void)
  * used by the recent files menu.
  */
 void
-meta_load_file (gpointer callback_data, gchar * callback_action)
+meta_load_file (gpointer callback_data GCC_UNUSED, gchar * callback_action)
 {
 	load_file (callback_action);
 }
@@ -905,7 +915,7 @@ meta_load_file (gpointer callback_data, gchar * callback_action)
  * Displays the entry in the specified direction.
  */
 void
-move_around (gpointer callback_data, guint callback_action)
+move_around (gpointer callback_data GCC_UNUSED, guint callback_action)
 {
 	sync_entry ();
 	switch (callback_action)
@@ -1287,7 +1297,7 @@ meta_list (void)
 }
 
 static void
-destroy_splash (GtkWidget * w, GdkEvent * ev, GtkWidget * w2)
+destroy_splash (GtkWidget * w GCC_UNUSED, GdkEvent * ev GCC_UNUSED, GtkWidget * w2)
 {
 	gtk_widget_destroy (w2);
 	g_source_remove (tout);
@@ -1517,7 +1527,7 @@ set_editor_font (const gchar * font_desc)
 }
 
 static void
-mainwin_resize (GtkWidget *widget, GtkAllocation *allocation)
+mainwin_resize (GtkWidget *widget GCC_UNUSED, GtkAllocation *allocation)
 {
 	g_return_if_fail(allocation != NULL);
 
