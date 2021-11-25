@@ -58,6 +58,10 @@ SET(CPACK_SOURCE_IGNORE_FILES
     "/Presets/testing-presets"
 )
 
+INCLUDE ("${CMAKE_SOURCE_DIR}/cmake/rinutils_bootstrap.cmake")
+
+RINUTILS_SET_UP_FLAGS()
+
 IF(WIN32 AND NOT UNIX)
     # There is a bug in NSI that does not handle full unix paths properly. Make
     # sure there is at least one set of four (4) backlasshes.
