@@ -2,6 +2,8 @@
 #
 # http://www.pleyades.net/david/sakura.php
 
+CMAKE_MINIMUM_REQUIRED (VERSION 3.8 FATAL_ERROR)
+
 INCLUDE ("${CMAKE_SOURCE_DIR}/cmake/shlomif_common_bootstrap.cmake")
 SHLOMIF_COMMON_SETUP("${private_mod_path}")
 
@@ -27,6 +29,7 @@ SET(CPACK_SOURCE_IGNORE_FILES
     "/_CPack_Packages/"
     "/CMakeFiles/"
     "/.deps/"
+    "\\\\.tidyall\\\\.d"
     "^${base_with_ver}(-Source|-Linux)?/"
     "${base_with_ver}.tar\\\\.(gz|bz2|Z|lzma|xz)$"
     "\\\\.o$"
@@ -85,8 +88,6 @@ ENDIF(WIN32 AND NOT UNIX)
 SET(CPACK_PACKAGE_EXECUTABLES
     "gringotts" "Gringotts"
 )
-
-CMAKE_MINIMUM_REQUIRED (VERSION 2.8 FATAL_ERROR)
 
 PROJECT (gringotts)
 SET (AUTHOR "Shlomi Fish" INTERNAL "Author")
