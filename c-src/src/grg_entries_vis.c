@@ -342,7 +342,7 @@ GtkWidget
 				  hasData ? grg_entries_get_Body () : "",
 				  -1);
 		g_signal_handler_unblock (entryBuf, simpleSigID);
-		return simpleSheet;
+		return GTK_WIDGET(simpleSheet);
 	/*} else {
 		GtkTreeIter iter;
 
@@ -436,7 +436,7 @@ find (GtkWidget *widget, gpointer callback_data)
 			return;
 
 	buf = grg_entries_get_Body ();
-	if (((current_mode == SIMPLE_ENTRY) && gtk_widget_has_focus (simpleSheet))/* ||
+	if (((current_mode == SIMPLE_ENTRY) && gtk_widget_has_focus (GTK_WIDGET(simpleSheet)))/* ||
 		((current_mode == STRUCT_ENTRY) && gtk_widget_has_focus (structSheet))*/)
 	{
 		cursor = gtk_text_buffer_get_mark (entryBuf, "insert");
