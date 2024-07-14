@@ -342,7 +342,7 @@ GtkWidget
 				  hasData ? grg_entries_get_Body () : "",
 				  -1);
 		g_signal_handler_unblock (entryBuf, simpleSigID);
-		return simpleSheet;
+		return GTK_WIDGET(simpleSheet);
 	/*} else {
 		GtkTreeIter iter;
 
